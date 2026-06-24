@@ -1,0 +1,25 @@
+# ── secrets (NEVER commit) ──
+.env
+.env.local
+*.key
+*.pem
+# .env.example はテンプレートなので追跡する(下で明示)
+!.env.example
+
+# ── local tooling / editor ──
+.claude/
+.vscode/
+.idea/
+.DS_Store
+
+# ── python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# ── generated artifacts (regenerable) ──
+paper1.html
+persona_*.json
+culture_result_*.json

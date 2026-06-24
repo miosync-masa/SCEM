@@ -1,0 +1,5 @@
+# 構造層(エンジン)のみなら標準ライブラリだけで動く(追加依存なし)。
+# Culture層 / Community層(LLM)と図の生成に以下が必要:
+openai>=1.0
+python-dotenv>=1.0
+matplotlib>=3.5
