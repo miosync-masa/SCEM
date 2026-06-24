@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software or model, please cite it as below."
+title: "SCEM — Situated Cohort Exposure Model"
+abstract: >-
+  A computational, falsifiable model that reconstructs "generations" not as
+  birth-year cohorts but as continuous profiles of how the impact vectors of
+  social events land on life-stage sensitivity windows. Includes the structural
+  engine (3-axis impact model, sensitivity curves, REFRAME firing, vector-native
+  interference), a 156-event sourced database (Japan), a Culture-layer hypothesis
+  generator, and the Paper 1 preprint draft.
+type: software
+authors:
+  - family-names: Iizumi
+    given-names: Masamichi
+    affiliation: "Miosync, Inc."
+  - family-names: Iizumi
+    given-names: Tamaki
+    affiliation: "Miosync, Inc."
+version: 1.0.0
+date-released: "2026-06-24"
+license: MIT
+repository-code: "https://github.com/miosync-masa/SCEM"
+keywords:
+  - generations
+  - cohort analysis
+  - situated cohort exposure model
+  - collective exposure structure
+  - media theory
+  - cognitive development
+  - life-stage sensitivity windows
+  - computational sociology

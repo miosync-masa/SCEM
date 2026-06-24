@@ -117,4 +117,4 @@ Masamichi Iizumi, Tamaki Iizumi (Miosync, Inc.)
 }
 ```
 
-© 2026 Miosync, Inc. License: TBD.
+© 2026 Masamichi Iizumi, Tamaki Iizumi (Miosync, Inc.). License: [MIT](LICENSE).
