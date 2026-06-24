@@ -1,5 +1,8 @@
 # SCEM — Situated Cohort Exposure Model
 
+[![DOI](https://zenodo.org/badge/1279042311.svg)](https://doi.org/10.5281/zenodo.20827897)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **社会事象の作用ベクトルが、ライフステージの感受性窓にどう着弾したか**から「世代」を計算するモデル。
 
 > **中心的主張:** 世代とは出生年コホートではなく、**社会事象の作用ベクトルが認知発達上の感受性窓(life-stage sensitivity windows)にどう着弾したかで決まる連続プロファイル**である。
@@ -108,12 +111,16 @@ cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 Masamichi Iizumi, Tamaki Iizumi (Miosync, Inc.)
 
 ```bibtex
-@misc{iizumi2026scem,
-  title  = {Situated Cohort Exposure Model (SCEM): Reconstructing Generations
-            from Social Event Impact Vectors and Life-Stage Sensitivity Windows},
-  author = {Iizumi, Masamichi and Iizumi, Tamaki},
-  year   = {2026},
-  note   = {Preprint, Miosync, Inc.}
+@software{iizumi2026scem,
+  title     = {Situated Cohort Exposure Model (SCEM): Reconstructing Generations
+               from Social Event Impact Vectors and Life-Stage Sensitivity Windows},
+  author    = {Iizumi, Masamichi and Iizumi, Tamaki},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {1.0.0},
+  doi       = {10.5281/zenodo.20827897},
+  url       = {https://doi.org/10.5281/zenodo.20827897},
+  note      = {Concept DOI (all versions); v1.0.0 = 10.5281/zenodo.20827898}
 }
 ```
 

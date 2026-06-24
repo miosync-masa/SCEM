@@ -19,7 +19,15 @@ authors:
 version: 1.0.0
 date-released: "2026-06-24"
 license: MIT
+doi: 10.5281/zenodo.20827897
 repository-code: "https://github.com/miosync-masa/SCEM"
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20827897
+    description: "Concept DOI (all versions)"
+  - type: doi
+    value: 10.5281/zenodo.20827898
+    description: "Version DOI (v1.0.0)"
 keywords:
   - generations
   - cohort analysis
