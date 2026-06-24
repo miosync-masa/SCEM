@@ -28,7 +28,10 @@ plt.rcParams["font.family"] = "Hiragino Sans"
 plt.rcParams["axes.unicode_minus"] = False
 
 YEARS = [1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010]
-PICKS_DIR = "picks_cache"
+from pathlib import Path as _Path
+_ROOT = _Path(__file__).resolve().parent.parent
+PICKS_DIR = str(_ROOT / "cache" / "picks_cache")
+_FIGS = _ROOT / "figures"
 
 
 # ───────────────────────────────────────────────
@@ -64,7 +67,8 @@ def figure2():
     ax.grid(True, alpha=0.25)
     ax.legend(loc="lower right", fontsize=10, framealpha=0.9)
     fig.tight_layout()
-    fig.savefig("fig2_cohort_fingerprint.png", dpi=200)
+    _FIGS.mkdir(exist_ok=True)
+    fig.savefig(str(_FIGS / "fig2_cohort_fingerprint.png"), dpi=200)
     plt.close(fig)
     print("[saved] fig2_cohort_fingerprint.png")
 
@@ -151,7 +155,8 @@ def figure3():
     ax.set_ylim(len(LINEAGES) - 0.5, -1.6)
     ax.grid(False)
     fig.tight_layout()
-    fig.savefig("fig3_music_disruption.png", dpi=200)
+    _FIGS.mkdir(exist_ok=True)
+    fig.savefig(str(_FIGS / "fig3_music_disruption.png"), dpi=200)
     plt.close(fig)
     print("[saved] fig3_music_disruption.png")
 

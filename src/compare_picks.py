@@ -12,7 +12,8 @@ import json
 import glob
 
 
-PICKS_DIR = "picks_cache"
+from pathlib import Path as _Path
+PICKS_DIR = str(_Path(__file__).resolve().parent.parent / "cache" / "picks_cache")
 AXIS_LABELS = {
     "music": "🎵 音楽軸",
     "sport": "⚽ スポーツ軸",

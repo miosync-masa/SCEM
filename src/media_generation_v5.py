@@ -14,6 +14,9 @@ from __future__ import annotations
 import sys
 import media_generation_v4 as v4
 import event_loader as L
+from pathlib import Path
+
+_DATA = str(Path(__file__).resolve().parent.parent / "data" / "events_patched.jsonl")
 
 
 # ── ローダーEvent → v4 Event 変換 ──
@@ -99,7 +102,7 @@ def patched_mode_weight(ev: "v4.Event", age: int) -> float:
 v4.mode_weight = patched_mode_weight
 
 
-def load_events(path: str = "events_patched.jsonl") -> list["v4.Event"]:
+def load_events(path: str = _DATA) -> list["v4.Event"]:
     loader_events, errors = L.load_jsonl(path)
     if errors:
         print(f"[warn] {len(errors)}件スキップ", file=sys.stderr)
@@ -183,7 +186,7 @@ def report_3axis(birth_year: int, events: list["v4.Event"], top_n: int = 8):
 
 if __name__ == "__main__":
     birth = int(sys.argv[1]) if len(sys.argv) > 1 else 1981
-    path = sys.argv[2] if len(sys.argv) > 2 else "events_patched.jsonl"
+    path = sys.argv[2] if len(sys.argv) > 2 else _DATA
     events = load_events(path)
     print(f"[info] {len(events)}件を {birth}年生まれで分析\n")
     report_3axis(birth, events)

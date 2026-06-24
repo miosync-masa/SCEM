@@ -223,7 +223,8 @@ def validate(events: list[Event]) -> dict:
 
 
 if __name__ == "__main__":
-    path = sys.argv[1] if len(sys.argv) > 1 else "events.jsonl"
+    from pathlib import Path
+    path = sys.argv[1] if len(sys.argv) > 1 else str(Path(__file__).resolve().parent.parent / "data" / "events_patched.jsonl")
     birth = int(sys.argv[2]) if len(sys.argv) > 2 else 1981
     events, errors = load_jsonl(path)
     report = validate(events)

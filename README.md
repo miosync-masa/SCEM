@@ -6,7 +6,7 @@
 
 マーケティングの「Z世代論」が抱える三つの欠陥——恣意的なカットオフ・反証不能性・出生年への単一還元——を、計算可能で反証可能なモデルで置き換える。Mannheim (1928) の定性的世代論を計算可能にし、Strauss & Howe (1991) の恣意的カットオフを連続関数に置き換える。
 
-- 📄 論文(preprint draft, 日本語): [`paper1_media_generation.md`](paper1_media_generation.md)
+- 📄 論文(preprint draft, 日本語): [`docs/paper1_media_generation.md`](docs/paper1_media_generation.md)
 - 🏛 正典アーキテクチャ(v6 FIXED): [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ---
@@ -37,9 +37,9 @@
 - **9世代バッチ(1970–2010)**: PASSIVE 密度は **1980–85年生まれでピーク(0.80)** を取り以降減衰、ACTIVE/REFRAME は単調上昇し2000年前後で接近(3軸の均衡化)。
 - **文化選択肢空間の断絶**: 1985→1990(「掘る文化→流される文化」)、1995→2000(「アイドル前提→TikTok前提」)。
 
-![Figure 2](fig2_cohort_fingerprint.png)
+![Figure 2](figures/fig2_cohort_fingerprint.png)
 
-![Figure 3](fig3_music_disruption.png)
+![Figure 3](figures/fig3_music_disruption.png)
 
 ---
 
@@ -47,18 +47,18 @@
 
 ```bash
 # 構造層(エンジン)は標準ライブラリのみで動く
-python3 media_generation_v5.py 1981          # 1981年生まれの3軸プロファイル
+python3 src/media_generation_v5.py 1981       # 1981年生まれの3軸プロファイル
 
 # 9世代バッチ
-python3 -c "import media_generation_v5 as v5; v5.batch_compare([1970,1975,1980,1985,1990,1995,2000,2005,2010], v5.load_events())"
+PYTHONPATH=src python3 -c "import media_generation_v5 as v5; v5.batch_compare([1970,1975,1980,1985,1990,1995,2000,2005,2010], v5.load_events())"
 
-# 図の生成(matplotlib が必要)
-python3 make_figures.py                       # fig2 / fig3
+# 図の生成(matplotlib が必要)→ figures/ に出力
+python3 src/make_figures.py
 
 # Culture層・Community層(LLM)は OpenAI API キーが必要
 cp .env.example .env   # 各自のキーを記入(.env は .gitignore 済み)
-python3 generate_picks.py --batch
-python3 community_experiment.py
+python3 src/generate_picks.py --batch
+python3 src/community_experiment.py
 ```
 
 依存(LLM層・図のみ): [`requirements.txt`](requirements.txt) を参照(`openai`, `python-dotenv`, `matplotlib`)。
@@ -68,27 +68,26 @@ python3 community_experiment.py
 ## リポジトリ構成
 
 ```
-ARCHITECTURE.md            正典アーキテクチャ v6 (FIXED)
-paper1_media_generation.md preprint 本文(全7章 + 付録A–D)
-build_html.py              md → 印刷用HTML(→PDF)
+README.md  ARCHITECTURE.md  requirements.txt  .env.example
 
-media_generation_v4.py     構造層 計算コア(感受性カーブ/3モード/干渉/REFRAME/被り判定)
-media_generation_v5.py     データ接続・3軸レポート・多世代バッチ
-event_loader.py            156件DB ローダー
-events_patched.jsonl       社会事象データベース(日本, 156件, 出典URL付き)
+src/
+  media_generation_v4.py   構造層 計算コア(感受性カーブ/3モード/干渉/REFRAME/被り判定)
+  media_generation_v5.py   データ接続・3軸レポート・多世代バッチ
+  event_loader.py          156件DB ローダー
+  culture_axis.py          Culture層(構造×文化サブクラスタ)
+  generate_picks.py        世代別pickリスト生成
+  compare_picks.py         pickリスト世代比較
+  culture_interactive.py   対話的Culture探索
+  community_experiment.py  Community層 例示(閉鎖度×伝播速度の分岐ペルソナ)
+  test_domainless.py       domain冗長性の実測(domain廃止を正当化)
+  test_lag.py              情報–具現化ラグの味見
+  make_figures.py          Figure 2 / 3 生成(→ figures/)
+  build_html.py            docs/paper.md → 印刷用HTML(→PDF)
 
-culture_axis.py            Culture層(構造×文化サブクラスタ)
-generate_picks.py          世代別pickリスト生成
-compare_picks.py           pickリスト世代比較
-culture_interactive.py     対話的Culture探索
-picks_cache/               9世代分のpickリスト(キャッシュ)
-
-community_experiment.py    Community層 例示(閉鎖度×伝播速度の分岐ペルソナ)
-community_experiment_cache.json  上記の生成キャッシュ(Appendix D)
-
-test_domainless.py         domain冗長性の実測(domain廃止を正当化)
-test_lag.py                情報–具現化ラグの味見
-make_figures.py            Figure 2 / 3 生成
+data/    events_patched.jsonl   社会事象DB(日本, 156件, 出典URL付き)
+docs/    paper1_media_generation.md  preprint 本文(全7章 + 付録A–D)
+figures/ fig2_cohort_fingerprint.png  fig3_music_disruption.png
+cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 ```
 
 ---

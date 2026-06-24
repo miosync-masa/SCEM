@@ -42,7 +42,10 @@ from culture_axis import build_structure_summary
 load_dotenv()
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
 EMBED_MODEL = "text-embedding-3-small"
-CACHE = "community_experiment_cache.json"
+from pathlib import Path as _Path
+_ROOT = _Path(__file__).resolve().parent.parent
+CACHE = str(_ROOT / "cache" / "community_experiment_cache.json")
+_DATA = str(_ROOT / "data" / "events_patched.jsonl")
 
 client = OpenAI()
 
@@ -62,7 +65,7 @@ PREFERENCE = "横乗り系(スケート/スノボ文化・PUNK/ミクスチャ�
 # ── 軸A: offset適用でイベントを読み込む(events_patched.jsonlは編集しない) ──
 def load_events_with_offset(offset: int):
     out = []
-    for line in open("events_patched.jsonl", encoding="utf-8"):
+    for line in open(_DATA, encoding="utf-8"):
         line = line.strip()
         if not line or line.startswith("//") or line.startswith("#"):
             continue

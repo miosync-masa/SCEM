@@ -20,7 +20,8 @@ from __future__ import annotations
 import json
 from collections import defaultdict
 
-PATH = "events_patched.jsonl"
+from pathlib import Path
+PATH = str(Path(__file__).resolve().parent.parent / "data" / "events_patched.jsonl")
 COHORTS = [1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010]
 TEEN = (12, 17)   # 人格形成期
 

@@ -12,8 +12,10 @@ Run: python3 build_html.py   → paper1.html
 """
 import html as _html
 
-SRC = "paper1_media_generation.md"
-OUT = "paper1.html"
+from pathlib import Path
+_ROOT = Path(__file__).resolve().parent.parent
+SRC = str(_ROOT / "docs" / "paper1_media_generation.md")
+OUT = str(_ROOT / "docs" / "paper1.html")
 
 md = open(SRC, encoding="utf-8").read()
 

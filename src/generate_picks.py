@@ -34,7 +34,8 @@ from culture_axis import build_structure_summary
 load_dotenv()
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
 
-PICKS_DIR = "picks_cache"
+from pathlib import Path as _Path
+PICKS_DIR = str(_Path(__file__).resolve().parent.parent / "cache" / "picks_cache")
 
 SYSTEM_PROMPT = """あなたは「年齢同期型メディア世代論」の文化選択肢を設計する担当です。
 
