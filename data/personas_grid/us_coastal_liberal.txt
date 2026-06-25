@@ -1,8 +1,8 @@
 ========================================================================
   Contextual Mode Resolver — US  premise=secular_white_coastal_graduate
 ========================================================================
-  事象 12 件の mode 解決: 両モデル一致 12 / 不一致tie-break 0 / ambient既定PASSIVE 0
-  LOD0 指紋: PASSIVE 0.0 / ACTIVE 0.0 / REFRAME 0.461
+  事象 12 件の mode 解決: 両モデル一致 6 / 不一致tie-break 6 / ambient既定PASSIVE 0
+  LOD0 指紋: PASSIVE 0.0 / ACTIVE 0.433 / REFRAME 0.435
 
 ========================================================================
   US 1985 × Fight × 自分の選択で状況に介入する  [premise=secular_white_coastal_graduate]
@@ -10,17 +10,18 @@
 ========================================================================
 status: SAT  (attempts=1)
 
-[summary] 政治制度への参照点が繰り返し書き換わる中で、状況を観察するだけでなく自分の選択で介入しようとする Fight 型の人物。
+[summary] 人格形成期に政治制度への参照点を大きく書き換えられ、成人初期には危機と希望の干渉の中で自分の選択による介入を学んだ Fight 型の人物。
 
 [narrative]
-16歳の「9.11 同時多発テロ」が人格形成期に高重みの参照点書き換えとして着弾し、政治制度や安全保障への前提が早くから揺らいだ。23歳の「Lehman Shock」と「Obama Election / オバマ当選」が成人初期適応期に重なり、制度不信と制度変革への期待が同時に形成された。27〜28歳の「Student Debt Crisis」「Sandy Hook」「Black Lives Matter」によって、経済的不公平・銃暴力・人種正義が相互に結びつき、Fight 方向として「自分の選択で状況に介入する」戦略が表れる。ただし LOD0 上の mode は一貫して参照点書き換えであり、ACTIVE 事象があったとは解釈しない。
+16歳で「9.11 同時多発テロ」が参照点書き換えとして強く着弾し、政治制度や安全保障への基本的な見取り図が早期に組み替えられた。23歳では「Lehman Shock」の参照点書き換えと「Obama Election / オバマ当選」の能動分岐が同時期に干渉し、制度不信だけでなく、自分の投票・職業選択・公共的発言で状況に介入する感覚が形成された。27〜28歳の「Student Debt Crisis」「Sandy Hook」「Black Lives Matter」は、個人の負債・暴力・正義の問題を受け身で眺めるのではなく、選択と参加を通じて押し返す Fight 的応答を補強した。30代以降の「Obergefell v. Hodges」「Trump Election」「COVID Restrictions」「Housing Surge」は、社会実装期においても制度変化を自分の生活設計や政治的態度に引き寄せて扱う傾向として表れる。
 
-[projection] core一致 75% (閾値70%) → matched=['9.11 同時多発テロ', 'Lehman Shock', 'Obama Election / オバマ当選', 'Student Debt Crisis', 'Black Lives Matter', 'Sandy Hook']
+[projection] core一致 100% (閾値70%) → matched=['9.11 同時多発テロ', 'Lehman Shock', 'Obama Election / オバマ当選', 'Student Debt Crisis', 'Black Lives Matter', 'Trump Election', 'Obergefell v. Hodges', 'Sandy Hook']
 
 [provenance] (各解釈 → LOD0 事象)
-  ・人格形成期に、政治制度や安全保障への基本的な参照点が書き換わった  ⇐ ['9.11 同時多発テロ']
-  ・成人初期に、制度への不信と制度変革への期待が同時に発生した  ⇐ ['Lehman Shock', 'Obama Election / オバマ当選']
-  ・経済的不公平を個人問題ではなく制度問題として捉え、介入すべき対象と見る  ⇐ ['Student Debt Crisis', 'Lehman Shock']
-  ・社会正義や公共安全の問題を、自分の選択で関与すべき政治的課題として認識する  ⇐ ['Black Lives Matter', 'Sandy Hook']
-  ・Fight 型の応答方向は、ACTIVE 事象の存在ではなく、複数の参照点書き換えが蓄積した後の解釈上の応答として表れる  ⇐ ['9.11 同時多発テロ', 'Lehman Shock', 'Obama Election / オバマ当選', 'Student Debt Crisis', 'Black Lives Matter']
+  ・政治制度を安定した背景ではなく、危機によって書き換わる対象として見る基本姿勢  ⇐ ['9.11 同時多発テロ', 'Lehman Shock']
+  ・受け身に流されるより、自分の選択で状況へ介入しようとする Fight 型の応答方向  ⇐ ['Obama Election / オバマ当選', 'Student Debt Crisis', 'Sandy Hook', 'Housing Surge']
+  ・成人初期に、経済危機による制度不信と政治参加への期待が同時に作動したため、批判性と介入意欲が結びついた  ⇐ ['Lehman Shock', 'Obama Election / オバマ当選']
+  ・社会正義や構造的不平等を、個人的問題ではなく制度へ働きかけるべき課題として捉える傾向  ⇐ ['Black Lives Matter', 'Student Debt Crisis', 'Obergefell v. Hodges']
+  ・暴力や公共安全の問題に対して、沈黙よりも態度表明や制度的対応を選びやすい  ⇐ ['Sandy Hook', 'Student Debt Crisis']
+  ・30代以降も、政治的分断・公衆衛生・住宅環境の変化を生活上の制約としてだけでなく、判断と行動の対象として扱う  ⇐ ['Trump Election', 'COVID Restrictions', 'Housing Surge']
 

@@ -388,15 +388,37 @@ def main():
             if model in contrib:
                 interpretations += expand_interpretations(rec["name"], contrib[model], model, country, premise_changes)
 
+    # ── Step 4b: Claude を「解釈のみの追加観測者」として畳み込む(Claude_events_{tag}.jsonl があれば)──
+    #   設計: LOD0(events_merged の数値属性)は ChatGPT×Gemini のまま不変。Claude は LOD1(解釈)にのみ寄与。
+    #   目的: Gemini が破損で落とした先頭共同体(US Coastal Liberal / UK London Multicultural)を
+    #         ChatGPT 単独のまま残さず、第2観測者 Claude で 2 観測者化する(Gemini オミット決定の第一歩)。
+    claude_path = DATA / f"Claude_events_{tag}.jsonl"
+    claude_err: list = []
+    n_claude_events = 0
+    if claude_path.exists():
+        claude_events, claude_err = load_jsonl(claude_path)
+        claude_norm: dict = {}
+        for ev in claude_events:
+            claude_norm.setdefault(match_key(ev), ev)
+        merged_keys = {k for k, _, _ in merged_events}
+        name_by_key = {k: rec["name"] for k, rec, _ in merged_events}
+        for k, ev in claude_norm.items():
+            if k in merged_keys:
+                interpretations += expand_interpretations(name_by_key[k], ev, "claude", country, premise_changes)
+                n_claude_events += 1
+            else:
+                warnings.append(("claude_event_unmatched", ev.get("name", ""), f"key '{k}' が merged に無い"))
+
     # ── Step 5: disagreements 抽出(consensus event のみ。片側のみ event は対象外) ──
     # スキーマ汎用化: chatgpt_value / gemini_value(mode も domain も effective_year もここに入る)。
     # premise が "_event_level" の行は event 単位の不一致(domain / effective_year / reframe_group)。
-    def disagree(event_name, year, premise, dtype, cval, gval, crat=None, grat=None, note=None):
+    def disagree(event_name, year, premise, dtype, cval, gval, crat=None, grat=None, note=None,
+                 claude_value=None, claude_rationale=None):
         return {
             "event_name": event_name, "year": year, "premise": premise,
             "disagreement_type": dtype,
-            "chatgpt_value": cval, "gemini_value": gval,
-            "chatgpt_rationale": crat, "gemini_rationale": grat,
+            "chatgpt_value": cval, "gemini_value": gval, "claude_value": claude_value,
+            "chatgpt_rationale": crat, "gemini_rationale": grat, "claude_rationale": claude_rationale,
             "interpretation_note": note,
             "interpretive_axis": None, "real_community_parallel": None, "paper2_significance": None,
         }
@@ -450,6 +472,27 @@ def main():
         for p in sorted(gps - cps):
             disagreements.append(disagree(name, rec["year"], p, "premise_only_in_gemini",
                                           None, ge_i[p]["expected_mode"], None, ge_i[p]["rationale"]))
+
+    # (5c) Claude(追加観測者)× 既存観測者の mode 不一致(共有 premise のみ)。
+    for k, rec, contrib in merged_events:
+        name = rec["name"]
+        cl_i = by_event_model[name].get("claude", {})
+        if not cl_i:
+            continue
+        cg_i = by_event_model[name].get("chatgpt", {})
+        ge_i = by_event_model[name].get("gemini", {})
+        for p in sorted(set(cl_i) & set(cg_i)):
+            if cl_i[p]["expected_mode"] != cg_i[p]["expected_mode"]:
+                disagreements.append(disagree(name, rec["year"], p, "mode_chatgpt_vs_claude",
+                                              cg_i[p]["expected_mode"], None, cg_i[p]["rationale"], None,
+                                              claude_value=cl_i[p]["expected_mode"],
+                                              claude_rationale=cl_i[p]["rationale"]))
+        for p in sorted(set(cl_i) & set(ge_i)):
+            if cl_i[p]["expected_mode"] != ge_i[p]["expected_mode"]:
+                disagreements.append(disagree(name, rec["year"], p, "mode_gemini_vs_claude",
+                                              None, ge_i[p]["expected_mode"], None, ge_i[p]["rationale"],
+                                              claude_value=cl_i[p]["expected_mode"],
+                                              claude_rationale=cl_i[p]["rationale"]))
 
     # ── 出力 ──
     def write_jsonl(path, rows):
@@ -510,12 +553,20 @@ def main():
     for k in ge_only_keys:
         L.append(f"- {ge_norm[k]['name']}")
     L.append("\n## interpretations\n")
-    L.append(f"- 総レコード数: **{len(interpretations)}**(chatgpt {src_counter['chatgpt']} / gemini {src_counter['gemini']})")
+    _src_str = f"chatgpt {src_counter['chatgpt']} / gemini {src_counter['gemini']}" + (
+        f" / claude {src_counter['claude']}" if src_counter.get('claude') else "")
+    L.append(f"- 総レコード数: **{len(interpretations)}**({_src_str})")
+    if src_counter.get('claude'):
+        L.append(f"- Claude(追加観測者・解釈のみ)で畳み込んだ event: **{n_claude_events}** 件"
+                 f"(Gemini 破損で落ちた先頭共同体を 2 観測者化。LOD0 数値は ChatGPT×Gemini のまま不変)")
     L.append(f"- premise 正規化(religion_race_region_education 順へ並べ替え)した件数: **{len(premise_changes)}**\n")
     L.append("## disagreements\n")
     L.append(f"- 総数: **{len(disagreements)}**")
     L.append("- premise 単位(解釈ベルト由来):")
-    for t in ("mode", "premise_only_in_chatgpt", "premise_only_in_gemini"):
+    for t in ("mode", "premise_only_in_chatgpt", "premise_only_in_gemini",
+              "mode_chatgpt_vs_claude", "mode_gemini_vs_claude"):
+        if t.endswith("claude") and not dis_counter.get(t):
+            continue
         L.append(f"  - {t}: {dis_counter.get(t, 0)}")
     L.append("- event 単位 = observer-dependent labeling(premise=`_event_level`。"
              "矛盾ではなく、単一FACTのどの表示タグを選んだかの分散):")
@@ -563,7 +614,12 @@ def main():
           f"(consensus {len(consensus_keys)} + singleton {len(cg_only_keys)+len(ge_only_keys)} "
           f"[chatgpt_only {len(cg_only_keys)} / gemini_only {len(ge_only_keys)}])")
     print(f"[2] interpretations_{country}.jsonl: {len(interpretations)} レコード "
-          f"(chatgpt {src_counter['chatgpt']} / gemini {src_counter['gemini']})")
+          f"(chatgpt {src_counter['chatgpt']} / gemini {src_counter['gemini']}"
+          + (f" / claude {src_counter['claude']}" if src_counter.get('claude') else "") + ")")
+    if src_counter.get('claude'):
+        print(f"      + Claude 追加観測者: {n_claude_events} event 畳み込み(2観測者化)。"
+              f"claude×chatgpt mode不一致 {dis_counter.get('mode_chatgpt_vs_claude',0)} / "
+              f"claude×gemini {dis_counter.get('mode_gemini_vs_claude',0)}")
     print(f"[3] disagreements_{country}.jsonl: {len(disagreements)} 件")
     print(f"      premise単位: mode {dis_counter.get('mode',0)} / "
           f"only_chatgpt {dis_counter.get('premise_only_in_chatgpt',0)} / "

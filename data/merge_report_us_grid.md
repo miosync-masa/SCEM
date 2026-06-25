@@ -41,16 +41,18 @@
 
 ## interpretations
 
-- 総レコード数: **180**(chatgpt 96 / gemini 84)
+- 総レコード数: **192**(chatgpt 96 / gemini 84 / claude 12)
+- Claude(追加観測者・解釈のみ)で畳み込んだ event: **12** 件(Gemini 破損で落ちた先頭共同体を 2 観測者化。LOD0 数値は ChatGPT×Gemini のまま不変)
 - premise 正規化(religion_race_region_education 順へ並べ替え)した件数: **0**
 
 ## disagreements
 
-- 総数: **80**
+- 総数: **86**
 - premise 単位(解釈ベルト由来):
   - mode: 49
   - premise_only_in_chatgpt: 12
   - premise_only_in_gemini: 0
+  - mode_chatgpt_vs_claude: 6
 - event 単位 = observer-dependent labeling(premise=`_event_level`。矛盾ではなく、単一FACTのどの表示タグを選んだかの分散):
   - domain_observer_choice: 6
   - effective_year_interpretation: 3

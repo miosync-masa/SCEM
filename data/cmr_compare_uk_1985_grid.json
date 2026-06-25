@@ -15,21 +15,13 @@
         "Austerity / 緊縮政策 × Same-sex marriage legalization / 同性婚合法化"
       ],
       "reframe": [],
-      "mfr": 0.38461538461538464,
+      "mfr": 0.3076923076923077,
       "cmrlog": [
-        {
-          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
-          "base_mode_majority": "PASSIVE",
-          "resolved_mode": "REFRAME",
-          "n_matched": 1,
-          "rationale": "Londonの公共交通と多文化都市の安全感が同時に揺らぎ、日常空間の基準値が書き換わった。移民二世には都市所属と監視される共同体の二重性として着弾した。",
-          "source_model": "chatgpt"
-        },
         {
           "event": "Austerity / 緊縮政策",
           "base_mode_majority": "REFRAME",
           "resolved_mode": "ACTIVE",
-          "n_matched": 1,
+          "n_matched": 2,
           "rationale": "ロンドンの移民二世中産層には、公共サービス・奨学金・雇用機会の縮小として進路や政治参加を促した。都市内部の格差認識を強めた。",
           "source_model": "chatgpt"
         },
@@ -37,7 +29,7 @@
           "event": "NHS waiting-list crisis / NHS 待機リスト危機",
           "base_mode_majority": "REFRAME",
           "resolved_mode": "ACTIVE",
-          "n_matched": 1,
+          "n_matched": 2,
           "rationale": "ロンドン移民二世中産層には、家族の医療アクセス・民間医療利用・介護判断を迫った。NHSへの期待を維持しつつ代替策を考える能動的着弾である。",
           "source_model": "chatgpt"
         },
@@ -45,7 +37,7 @@
           "event": "Repeal of Section 28 / Section 28 撤廃",
           "base_mode_majority": "PASSIVE",
           "resolved_mode": "REFRAME",
-          "n_matched": 1,
+          "n_matched": 2,
           "rationale": "ロンドン多文化リベラル層には、学校で語れるものの範囲が変わる公教育コードの転換として着弾した。LGBTQの可視性が制度上の前提になった。",
           "source_model": "chatgpt"
         },
@@ -53,7 +45,7 @@
           "event": "Windrush scandal / Windrush スキャンダル",
           "base_mode_majority": "PASSIVE",
           "resolved_mode": "REFRAME",
-          "n_matched": 1,
+          "n_matched": 2,
           "rationale": "ロンドン移民二世中産層には、形式上の合法性だけでは所属が保証されないという基準変更として着弾した。国家書類と人種化された市民権の関係を再認識させた。",
           "source_model": "chatgpt"
         }
@@ -71,8 +63,16 @@
         "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
       ],
       "reframe": [],
-      "mfr": 0.38461538461538464,
+      "mfr": 0.46153846153846156,
       "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "首都で起きた国家的危機として強く認識されたが、生活圏と共同体コードの変更は相対的に限定的だった。安全保障国家への信頼・不信が背景として刷り込まれた。",
+          "source_model": "chatgpt"
+        },
         {
           "event": "Austerity / 緊縮政策",
           "base_mode_majority": "REFRAME",
@@ -127,8 +127,16 @@
         "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
       ],
       "reframe": [],
-      "mfr": 0.46153846153846156,
+      "mfr": 0.5384615384615384,
       "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "事件は全国ニュースとして共有されたが、北部旧工業地帯の日常課題は雇用・地域衰退に残った。安全保障不安は背景化した。",
+          "source_model": "chatgpt"
+        },
         {
           "event": "Brexit referendum and withdrawal / EU離脱国民投票",
           "base_mode_majority": "REFRAME",
@@ -191,8 +199,16 @@
         "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票"
       ],
       "reframe": [],
-      "mfr": 0.38461538461538464,
+      "mfr": 0.46153846153846156,
       "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "スコットランドでも国民的事件として記憶されたが、地域政治の中心は後の自治・独立論へ移った。直接の行動強制より背景的記憶になりやすい。",
+          "source_model": "chatgpt"
+        },
         {
           "event": "Austerity / 緊縮政策",
           "base_mode_majority": "REFRAME",
@@ -247,16 +263,8 @@
         "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
       ],
       "reframe": [],
-      "mfr": 0.5384615384615384,
+      "mfr": 0.46153846153846156,
       "cmrlog": [
-        {
-          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
-          "base_mode_majority": "PASSIVE",
-          "resolved_mode": "REFRAME",
-          "n_matched": 2,
-          "rationale": "北アイルランドのカトリック共同体には、テロと国家治安の記憶が既存の紛争経験と重なった。暴力の意味づけと監視国家への距離感が再解釈された。",
-          "source_model": "chatgpt"
-        },
         {
           "event": "Austerity / 緊縮政策",
           "base_mode_majority": "REFRAME",
@@ -319,16 +327,8 @@
         "NHS waiting-list crisis / NHS 待機リスト危機 × Windrush scandal / Windrush スキャンダル"
       ],
       "reframe": [],
-      "mfr": 0.6153846153846154,
+      "mfr": 0.5384615384615384,
       "cmrlog": [
-        {
-          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
-          "base_mode_majority": "PASSIVE",
-          "resolved_mode": "REFRAME",
-          "n_matched": 2,
-          "rationale": "北アイルランドのプロテスタント共同体にも、テロ対策と国家防衛の記憶が宗派的安全観と結びついた。英国国家への帰属と治安期待が再確認された。",
-          "source_model": "chatgpt"
-        },
         {
           "event": "Austerity / 緊縮政策",
           "base_mode_majority": "REFRAME",
@@ -399,16 +399,8 @@
         "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル"
       ],
       "reframe": [],
-      "mfr": 0.5384615384615384,
+      "mfr": 0.46153846153846156,
       "cmrlog": [
-        {
-          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
-          "base_mode_majority": "PASSIVE",
-          "resolved_mode": "REFRAME",
-          "n_matched": 2,
-          "rationale": "英国アジア系、とりわけムスリムを含む都市共同体には、公共空間での疑視と所属の問い直しとして着弾した。安全事件が人種化・宗教化された経験となった。",
-          "source_model": "chatgpt"
-        },
         {
           "event": "Austerity / 緊縮政策",
           "base_mode_majority": "REFRAME",
@@ -475,7 +467,7 @@
       "cmrlog": [
         {
           "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
-          "base_mode_majority": "PASSIVE",
+          "base_mode_majority": "REFRAME",
           "resolved_mode": "ACTIVE",
           "n_matched": 2,
           "rationale": "Leaveタウン型の共同体では、移民・統合・治安をめぐる政治的態度表明を促す材料になった。後の移民規制要求へ接続しやすい能動的着弾である。",
@@ -563,7 +555,7 @@
       "cmrlog": [
         {
           "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
-          "base_mode_majority": "PASSIVE",
+          "base_mode_majority": "REFRAME",
           "resolved_mode": "ACTIVE",
           "n_matched": 2,
           "rationale": "リベラル高学歴層には、多文化主義と市民的自由を守りつつ安全保障をどう扱うかという基準値の再編として着弾した。単なる危機ではなく統治コードの問題になった。",
