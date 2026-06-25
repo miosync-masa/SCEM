@@ -78,6 +78,17 @@ COMMUNITIES_GRID = {
         ("Suburban MC",      "mainline_protestant_white_suburban_bachelor"),
         ("Rural Conserv",    "evangelical_white_rural_no_college"),
     ],
+    "uk": [
+        ("London Multicult", "middle_class_london_immigrant_2nd_gen_russell_group"),
+        ("Home Counties MC", "middle_class_home_counties_native_4plus_gen_russell_group"),
+        ("N.Post-indust",    "working_class_northern_england_native_4plus_gen_gcse"),
+        ("Scotland",         "working_class_scotland_native_4plus_gen_gcse"),
+        ("NI Catholic",      "working_class_northern_ireland_catholic_4plus_gen_gcse"),
+        ("NI Protestant",    "working_class_northern_ireland_protestant_4plus_gen_gcse"),
+        ("British Asian",    "middle_class_london_asian_2nd_gen_russell_group"),
+        ("Brexit LeaveTown", "working_class_leave_town_native_4plus_gen_no_qualifications"),
+        ("Univ Remain",      "middle_class_london_native_2nd_gen_oxbridge"),
+    ],
 }
 
 # grid 版は event_id で安定マッチ(label, event_id)
@@ -89,6 +100,15 @@ EVENTS_GRID = {
         ("Dobbs/中絶", "us_dobbs_2022"), ("COVID規制", "us_covid_restrictions_2020"),
         ("銃乱射", "us_sandy_hook_2012"), ("学生ローン", "us_student_debt_2012"),
         ("住宅価格高騰", "us_housing_surge_2021"), ("公民権法", "us_civil_rights_act_1964"),
+    ],
+    "uk": [
+        ("Brexit", "uk_brexit_2016"), ("7/7爆破", "uk_77_bombings_2005"),
+        ("2008危機", "uk_financial_crisis_2008"), ("緊縮", "uk_austerity_2010"),
+        ("授業料", "uk_tuition_fees_2010"), ("Section28撤廃", "uk_section28_repeal_2003"),
+        ("スコット独立", "uk_scottish_referendum_2014"), ("同性婚", "uk_same_sex_marriage_2014"),
+        ("移民論争", "uk_immigration_debate_2015"), ("Windrush", "uk_windrush_2018"),
+        ("COVID", "uk_covid_lockdown_2020"), ("生活費危機", "uk_cost_of_living_2022"),
+        ("NHS危機", "uk_nhs_crisis_2022"),
     ],
 }
 

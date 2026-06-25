@@ -152,5 +152,6 @@ if __name__ == "__main__":
     draw("us", "Same Event × Community → Resolved Mode  [US]")
     draw("uk", "Same Event × Community → Resolved Mode  [UK]")
     draw("us", "Same Event × Community → Resolved Mode  [US grid 8×12]", variant="grid")
+    draw("uk", "Same Event × Community → Resolved Mode  [UK grid 9×13]", variant="grid")
     draw_fingerprints("us", 1985)
     draw_fingerprints("uk", 1985)
