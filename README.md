@@ -101,6 +101,7 @@ data/    events_patched.jsonl   社会事象DB(日本, 156件, 出典URL付き)
          disagreements_us.jsonl(観測者依存の証拠)/ merge_report_us.md
          events_uk_*.jsonl / *_uk.jsonl  UK 版(Gemini UK は破損→txtから復旧, .broken.jsonl に退避)
 docs/    paper1_media_generation.md  preprint 本文(全7章 + 付録A–D)
+         paper2_cmr_report.md  paper2_grid_spec.md  paper2_prompt_{us,uk}.md(再現用 DeepResearch プロンプト)
 figures/ fig2_cohort_fingerprint.png  fig3_music_disruption.png
 cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 ```
