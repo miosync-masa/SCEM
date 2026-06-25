@@ -32,34 +32,40 @@ MIXED = "#9b59b6"   # 複数 mode が同セルに
 NODATA = "#e8e8e8"
 
 
-def cell_modes(interps, patterns):
+def cell_modes(interps, spec, grid_mode):
     modes = set()
     for it in interps:
-        if it.get("premise") and CM.premise_matches(it["premise"], patterns):
+        p = it.get("premise")
+        if p and ((p == spec) if grid_mode else CM.premise_matches(p, spec)):
             modes.add(CM.MODE_ABBR.get(it["expected_mode"], it["expected_mode"]))
     order = {"PAS": 0, "ACT": 1, "REF": 2}
     return sorted(modes, key=lambda m: order.get(m, 9))
 
 
-def build(country):
-    I = [json.loads(l) for l in (DATA / f"interpretations_{country}.jsonl")
+def build(country, variant="v1"):
+    grid_mode = variant != "v1"
+    tag = country if not grid_mode else f"{country}_{variant}"
+    I = [json.loads(l) for l in (DATA / f"interpretations_{tag}.jsonl")
          .read_text(encoding="utf-8").splitlines() if l.strip()]
     by_event = collections.defaultdict(list)
+    by_eid = collections.defaultdict(list)
     for it in I:
         by_event[it["event_name"]].append(it)
-    comms = CM.COMMUNITIES[country]
-    events = CM.EVENTS[country]
+        if it.get("event_id"):
+            by_eid[it["event_id"]].append(it)
+    comms = CM.COMMUNITIES_GRID[country] if grid_mode else CM.COMMUNITIES[country]
+    events = CM.EVENTS_GRID[country] if grid_mode else CM.EVENTS[country]
     comm_names = [n for n, _ in comms]
     ev_labels = [lab for lab, _ in events]
     grid = []   # [row][col] = list of modes
-    for _, sub in events:
-        interps = [it for ev, lst in by_event.items() if sub in ev for it in lst]
-        grid.append([cell_modes(interps, pats) for _, pats in comms])
+    for _, spec in events:
+        interps = by_eid.get(spec, []) if grid_mode else [it for ev, lst in by_event.items() if spec in ev for it in lst]
+        grid.append([cell_modes(interps, cspec, grid_mode) for _, cspec in comms])
     return ev_labels, comm_names, grid
 
 
-def draw(country, title):
-    ev_labels, comm_names, grid = build(country)
+def draw(country, title, variant="v1"):
+    ev_labels, comm_names, grid = build(country, variant)
     nrow, ncol = len(ev_labels), len(comm_names)
     fig, ax = plt.subplots(figsize=(1.7 * ncol + 3.5, 0.62 * nrow + 2))
     flips = 0
@@ -103,7 +109,8 @@ def draw(country, title):
     ax.legend(handles=legend, loc="upper left", bbox_to_anchor=(1.01, 1.0),
               fontsize=9, frameon=False)
     fig.tight_layout()
-    out = Path(__file__).resolve().parent / "figures" / f"fig_p2_modematrix_{country}.png"
+    suffix = country if variant == "v1" else f"{country}_{variant}"
+    out = Path(__file__).resolve().parent / "figures" / f"fig_p2_modematrix_{suffix}.png"
     out.parent.mkdir(exist_ok=True)
     fig.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)
@@ -144,5 +151,6 @@ def draw_fingerprints(country, birth_year):
 if __name__ == "__main__":
     draw("us", "Same Event × Community → Resolved Mode  [US]")
     draw("uk", "Same Event × Community → Resolved Mode  [UK]")
+    draw("us", "Same Event × Community → Resolved Mode  [US grid 8×12]", variant="grid")
     draw_fingerprints("us", 1985)
     draw_fingerprints("uk", 1985)

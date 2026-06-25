@@ -43,7 +43,9 @@ def repair_line(line: str) -> str:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--country", required=True)
-    ap.add_argument("--src", required=True, help="破損 Gemini 出力 txt(1行1イベント)")
+    ap.add_argument("--src", required=True, help="破損 Gemini 出力(1行1イベント)")
+    ap.add_argument("--out", default=None,
+                    help="出力先(既定 Gemini_events_{country}_v1.jsonl)。grid等は明示する")
     args = ap.parse_args()
 
     src = Path(args.src)
@@ -81,10 +83,11 @@ def main():
         stats["events"] += 1
         stats["interps_kept"] += len(clean)
 
-    out = DATA / f"Gemini_events_{args.country}_v1.jsonl"
-    if out.exists():
-        broken = DATA / f"Gemini_events_{args.country}_v1.broken.jsonl"
-        broken.write_text(out.read_text(encoding="utf-8"), encoding="utf-8")
+    out = Path(args.out) if args.out else DATA / f"Gemini_events_{args.country}_v1.jsonl"
+    if not out.is_absolute():
+        out = Path(__file__).resolve().parent / out
+    if out.exists():   # 既存の出力があれば .broken に退避(破損元 src は別物なので触らない)
+        out.with_suffix(out.suffix + ".bak").write_text(out.read_text(encoding="utf-8"), encoding="utf-8")
     out.write_text("\n".join(json.dumps(o, ensure_ascii=False) for o in recovered) + "\n", encoding="utf-8")
 
     print(f"[recover] {src.name} → {out.name}")
@@ -92,7 +95,7 @@ def main():
     print(f"  健全 interpretation(premise有)採用: {stats['interps_kept']}")
     print(f"  premise喪失の先頭ag破棄: {stats['first_group_dropped']} 件(rationaleはevent_rationale_recoveredへ退避)")
     print(f"  possible_modes 既定補完: {stats['possible_modes_defaulted']} 件 / source_urls 空→[]: {stats['source_urls_emptied']} 件")
-    print(f"  ※ 破損元は Gemini_events_{args.country}_v1.broken.jsonl に退避")
+    print(f"  ※ 出力: {out.name}(破損元 {src.name} はそのまま保持)")
 
 
 if __name__ == "__main__":

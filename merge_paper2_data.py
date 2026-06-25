@@ -325,11 +325,14 @@ def expand_interpretations(event_name: str, ev: dict, source_model: str, country
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--country", default="us", help="us | uk")
+    ap.add_argument("--variant", default="v1", help="v1(探索) | grid(設計済み完全グリッド)")
     args = ap.parse_args()
     country = args.country.lower()
+    variant = args.variant.lower()
+    tag = f"{country}_{variant}" if variant != "v1" else country   # 出力名: v1は従来通り、それ以外は _grid 等
 
-    cg_path = DATA / f"events_{country}_v1.jsonl"
-    ge_path = DATA / f"Gemini_events_{country}_v1.jsonl"
+    cg_path = DATA / f"events_{country}_{variant}.jsonl"
+    ge_path = DATA / f"Gemini_events_{country}_{variant}.jsonl"
     for p in (cg_path, ge_path):
         if not p.exists():
             raise SystemExit(f"[error] 入力が見つかりません: {p}")
@@ -339,18 +342,20 @@ def main():
     warnings: list = []
     premise_changes: list = []
 
-    # ── Step 1: 名前マッチング ──
+    # ── Step 1: マッチング(event_id があればそれを優先、無ければ正規化名)──
+    def match_key(ev):
+        return ev["event_id"] if ev.get("event_id") else normalize_name(ev["name"])
     cg_norm = {}
     for ev in cg_events:
-        n = normalize_name(ev["name"])
+        n = match_key(ev)
         if n in cg_norm:
-            warnings.append(("name_collision_chatgpt", ev["name"], f"正規化衝突 '{n}'"))
+            warnings.append(("name_collision_chatgpt", ev["name"], f"キー衝突 '{n}'"))
         cg_norm.setdefault(n, ev)
     ge_norm = {}
     for ev in ge_events:
-        n = normalize_name(ev["name"])
+        n = match_key(ev)
         if n in ge_norm:
-            warnings.append(("name_collision_gemini", ev["name"], f"正規化衝突 '{n}'"))
+            warnings.append(("name_collision_gemini", ev["name"], f"キー衝突 '{n}'"))
         ge_norm.setdefault(n, ev)
 
     consensus_keys = sorted(set(cg_norm) & set(ge_norm))
@@ -450,10 +455,10 @@ def main():
     def write_jsonl(path, rows):
         path.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n", encoding="utf-8")
 
-    ev_out = DATA / f"events_{country}_merged.jsonl"
-    int_out = DATA / f"interpretations_{country}.jsonl"
-    dis_out = DATA / f"disagreements_{country}.jsonl"
-    rep_out = DATA / f"merge_report_{country}.md"
+    ev_out = DATA / f"events_{tag}_merged.jsonl"
+    int_out = DATA / f"interpretations_{tag}.jsonl"
+    dis_out = DATA / f"disagreements_{tag}.jsonl"
+    rep_out = DATA / f"merge_report_{tag}.md"
 
     write_jsonl(ev_out, [rec for _, rec, _ in merged_events])
     write_jsonl(int_out, interpretations)
@@ -466,7 +471,8 @@ def main():
     # 必須カバー(国別。未設定の国は N/A)
     all_names = [rec["name"] for _, rec, _ in merged_events]
     blob = " || ".join(all_names)
-    required = REQUIRED_BY_COUNTRY.get(country, [])
+    # 必須カバーは v1(探索)に対する US 固定リストのみ。grid 等は独自の固定12なので N/A。
+    required = REQUIRED_BY_COUNTRY.get(country, []) if variant == "v1" else []
     required_status = [(label, any(kw in blob for kw in kws)) for label, kws in required]
 
     # ── merge_report ──

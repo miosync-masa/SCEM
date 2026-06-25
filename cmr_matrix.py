@@ -66,6 +66,32 @@ EVENTS = {
     ],
 }
 
+# grid 版の 8 community(正準 premise で完全一致)
+COMMUNITIES_GRID = {
+    "us": [
+        ("Coastal Liberal",  "secular_white_coastal_graduate"),
+        ("Bible Belt Evang", "evangelical_white_bible_belt_no_college"),
+        ("Rust Belt WWC",    "mainline_protestant_white_rust_belt_no_college"),
+        ("Black community",  "secular_black_urban_some_college"),
+        ("Latino Immigrant", "catholic_hispanic_urban_some_college"),
+        ("Mormon/Utah",      "mormon_white_mountain_west_bachelor"),
+        ("Suburban MC",      "mainline_protestant_white_suburban_bachelor"),
+        ("Rural Conserv",    "evangelical_white_rural_no_college"),
+    ],
+}
+
+# grid 版は event_id で安定マッチ(label, event_id)
+EVENTS_GRID = {
+    "us": [
+        ("同性婚", "us_obergefell_2015"), ("9.11", "us_sept11_2001"),
+        ("2008危機", "us_lehman_2008"), ("オバマ当選", "us_obama_election_2008"),
+        ("トランプ当選", "us_trump_election_2016"), ("BLM", "us_blm_2013"),
+        ("Dobbs/中絶", "us_dobbs_2022"), ("COVID規制", "us_covid_restrictions_2020"),
+        ("銃乱射", "us_sandy_hook_2012"), ("学生ローン", "us_student_debt_2012"),
+        ("住宅価格高騰", "us_housing_surge_2021"), ("公民権法", "us_civil_rights_act_1964"),
+    ],
+}
+
 MODE_ABBR = {"PASSIVE": "PAS", "ACTIVE": "ACT", "REFRAME": "REF"}
 
 
@@ -80,22 +106,38 @@ def premise_matches(premise: str, patterns) -> bool:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--country", default="us")
+    ap.add_argument("--variant", default="v1", help="v1 | grid")
     args = ap.parse_args()
     c = args.country
+    tag = c if args.variant == "v1" else f"{c}_{args.variant}"
 
-    I = [json.loads(l) for l in (DATA / f"interpretations_{c}.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
-    by_event = collections.defaultdict(list)
+    I = [json.loads(l) for l in (DATA / f"interpretations_{tag}.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+    by_event = collections.defaultdict(list)   # name → interps
+    by_eid = collections.defaultdict(list)     # event_id → interps
     for it in I:
         by_event[it["event_name"]].append(it)
+        if it.get("event_id"):
+            by_eid[it["event_id"]].append(it)
 
-    comms = COMMUNITIES[c]
-    events = EVENTS[c]
+    grid_mode = args.variant != "v1"
+    comms = COMMUNITIES_GRID[c] if grid_mode else COMMUNITIES[c]
+    events = EVENTS_GRID[c] if grid_mode else EVENTS[c]
     comm_names = [n for n, _ in comms]
 
-    def cell(interps, patterns):
+    def interps_for(spec):
+        """v1: event_name 部分文字列 / grid: event_id 完全一致。"""
+        if grid_mode:
+            return by_eid.get(spec, [])
+        return [it for ev, lst in by_event.items() if spec in ev for it in lst]
+
+    def matches(premise, spec):
+        """grid: 正準premise完全一致 / v1: トークンパターン。"""
+        return (premise == spec) if grid_mode else premise_matches(premise, spec)
+
+    def cell(interps, spec):
         modes = set()
         for it in interps:
-            if it.get("premise") and premise_matches(it["premise"], patterns):
+            if it.get("premise") and matches(it["premise"], spec):
                 modes.add(MODE_ABBR.get(it["expected_mode"], it["expected_mode"]))
         order = {"PAS": 0, "ACT": 1, "REF": 2}
         return "/".join(sorted(modes, key=lambda m: order.get(m, 9))) if modes else "—"
@@ -119,7 +161,7 @@ def main():
     covered = 0               # 1セル以上データのあるイベント
     cells_observed = cells_flipped = 0   # Cell-level MFR 用
     for label, sub in events:
-        interps = [it for ev, lst in by_event.items() if sub in ev for it in lst]
+        interps = interps_for(sub)
         base = base_majority(interps)
         cells = [cell(interps, pats) for _, pats in comms]
         distinct = set(m for cl in cells for m in cl.split("/") if m != "—")
