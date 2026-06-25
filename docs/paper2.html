@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contextual Mode Resolver — SCEM Paper 2</title>
+<style>
+  :root { --ink:#1a1a1a; --rule:#ccc; }
+  html { font-size: 15px; }
+  body {
+    color: var(--ink);
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+    line-height: 1.8;
+    max-width: 820px; margin: 0 auto; padding: 48px 32px 96px;
+    text-align: justify;
+  }
+  h1 { font-size: 1.7rem; line-height:1.4; font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; }
+  h2 { font-size: 1.3rem; margin-top: 2.2em; border-bottom: 2px solid var(--ink); padding-bottom:.2em;
+        font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; }
+  h3 { font-size: 1.08rem; margin-top: 1.8em;
+        font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; }
+  p, li { font-size: 1rem; }
+  code { font-family: "SFMono-Regular", Menlo, monospace; font-size: .88em;
+          background:#f3f3f3; padding:1px 4px; border-radius:3px; }
+  pre code { display:block; padding:10px; overflow-x:auto; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size:.92rem; }
+  th, td { border: 1px solid var(--rule); padding: 6px 10px; text-align: left; }
+  th { background: #f3f3f3; }
+  img { max-width: 100%; height: auto; display:block; margin: 1em auto; }
+  hr { border:none; border-top:1px solid var(--rule); margin: 2em 0; }
+  blockquote { border-left: 4px solid #888; margin:1em 0; padding:.2em 1em; color:#333; background:#fafafa; }
+  a { color:#0b3d91; }
+  @media print {
+    body { max-width:none; padding:0; }
+    h2, h3 { page-break-after: avoid; }
+    table, img, blockquote, pre { page-break-inside: avoid; }
+    a { color: var(--ink); text-decoration:none; }
+    @page { margin: 18mm 16mm; }
+  }
+</style>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+    svg: { fontCache: 'global' }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
+</head>
+<body>
+<div id="content">読み込み中…(初回はネット接続が必要)</div>
+<script id="md" type="text/markdown"># 文脈依存モード問題と Contextual Mode Resolver:同一の社会事象はなぜ共同体ごとに別の世代経験になるのか
+
+**The Contextual Mode Resolver: How the Same Social Event Becomes a Different Generational Experience Across Communities (A Cross-National Extension of SCEM)**
+
+Masamichi Iizumi¹*, Tamaki Iizumi¹
+
+¹ Miosync, Inc. — Independent Research
+\* Corresponding author: m.iizumi@miosync.email
+
+**Preprint version 0.9 (working draft) — 2026-06-25**
+*Companion to Paper 1「年齢同期型メディア世代論(SCEM)」(SocArXiv). This draft establishes the Contextual Mode Resolver and reports designed cross-national comparison grids (US/UK). Prolific empirical validation remains future work.*
+
+---
+
+## Abstract
+
+Paper 1 で提示した Situated Cohort Exposure Model(SCEM)は、各社会事象に **PASSIVE(受動着弾)/ ACTIVE(能動分岐)/ REFRAME(参照点書き換え)** という単一の作用モードを与えていた。しかし作用モードは事象に固有ではない。**同じ「Brexit」が、ロンドンの移民二世中産層には所属基準の書き換え(REFRAME)として、Leave タウンの労働者層には投票による意思表示(ACTIVE)として着弾する。** 本稿はこの **文脈依存モード問題(The Contextual Mode Problem)** を正面から扱い、`Event.mode` を固定値から **`Event × Premise Layer → ResolvedImpact`** へと持ち上げる作用素 **Contextual Mode Resolver(CMR)** を定式化・実装する。
+
+CMR は二つの独立な LLM 観測者(本研究では ChatGPT と Gemini)に、固定された共同体前提(premise)の集合の上で各事象の作用モードを判定させ、両者を統合する。観測者間の不一致それ自体を消すのではなく **観測者依存性(observer-dependence)として測定対象に組み込む**。我々はさらに、生成された世代プロファイルが捏造でないことを保証するために **4 つの公理(Honest Structuralism)** ── アンカー保存・非上書き・射影整合・由来追跡可能性 ── を課し、ペルソナ生成を **制約充足問題(CSP)/ SAT・UNSAT** として扱う LOD ペルソナ生成器を実装した。
+
+実証として、米国(8 共同体 × 12 事象 = 96 セル)と英国(9 共同体 × 13 事象 = 117 セル)の **設計された完全比較グリッド** を構築した。固定 premise の上では、**選定した高争点事象において Event レベルの Mode Flip Rate は両国とも 100%**(全事象が少なくとも一つの共同体間でモード分岐する)であり、セルレベルでは US 74% / UK 63%、二観測者間のモード不一致は US 49 / UK 48 件であった。共同体間の指紋距離(Contextual Divergence Index)は US 0.321 / UK 0.338。最後に、**同一の出生年(1985)・同一の自己記述入力**を与えても、premise を変えるだけで LOD ペルソナの由来構造(provenance)が体系的に分岐することを示す(Coastal Liberal は全 REFRAME、Bible Belt は 9.11 を ACTIVE 分岐として引き受ける)。
+
+**Keywords:** generations, contextual mode resolver, observer-dependence, situated cohort exposure model (SCEM), constraint satisfaction, LLM-as-annotator, honest structuralism, cross-national comparison, Brexit, computational sociology
+
+---
+
+## Abstract (English)
+
+In Paper 1, the Situated Cohort Exposure Model (SCEM) assigned each social event a single mode of impact — PASSIVE (passive imprinting), ACTIVE (forced decision), or REFRAME (reference-point rewriting). But the mode is not intrinsic to the event. **The same "Brexit" lands as a rewriting of belonging (REFRAME) for second-generation immigrant middle-class Londoners, yet as an act of self-expression through voting (ACTIVE) for working-class voters in a Leave town.** This paper confronts this **Contextual Mode Problem** and lifts `Event.mode` from a fixed value to an operator, the **Contextual Mode Resolver (CMR)**: `Event × Premise Layer → ResolvedImpact`.
+
+CMR has two independent LLM observers (here, ChatGPT and Gemini) resolve the mode of each event over a fixed set of community premises, and merges them — not by erasing inter-observer disagreement but by **treating observer-dependence as a measured quantity.** To guarantee that the generated cohort profiles are not fabricated, we impose **four axioms (Honest Structuralism)** — anchor preservation, non-overwrite, projection consistency, and provenance traceability — and implement an LOD persona generator that frames persona synthesis as a **constraint-satisfaction problem (SAT/UNSAT).**
+
+Empirically, we construct **designed full comparison grids** for the US (8 communities × 12 events = 96 cells) and UK (9 × 13 = 117). On fixed premises, the **Event-level Mode Flip Rate is 100% in both countries for the selected high-contention events** (every event flips mode across at least one pair of communities); the Cell-level rate is 74% (US) / 63% (UK), and inter-observer mode disagreements number 49 (US) / 48 (UK). The Contextual Divergence Index across communities is 0.321 (US) / 0.338 (UK). Finally, holding birth year (1985) and self-report inputs constant, varying only the premise systematically diverges the provenance of generated LOD personas (Coastal Liberal resolves entirely to REFRAME; the Bible Belt takes 9/11 as an ACTIVE branch).
+
+---
+
+## 1. Introduction
+
+### 1.1 Paper 1 が残した問い
+
+Paper 1 は「世代とは出生年コホートではなく、社会事象の作用ベクトルが感受性窓にどう着弾したかで決まる連続プロファイルである」と主張し、各事象に 3 作用モード(PASSIVE / ACTIVE / REFRAME)を割り当てて世代指紋を計算した。だが Paper 1 §2.5 で予告したとおり、この設計には未解決の前提が一つ残っていた ── **作用モードは事象に固有か?** という問いである。
+
+答えは否だ。2015 年の同性婚合法化は、Coastal Liberal には「自分たちの規範が国の規範になった」確認(REFRAME)であり、Bible Belt Evangelical には「自分の立場を表明せねばならない」圧力(ACTIVE)である。同じ Brexit が、ロンドン移民二世には開放的英国という所属基準の崩壊(REFRAME)、Leave タウン労働者には「声を取り戻す」投票行動(ACTIVE)になる。**事象は同じでも、それがどの作用モードに変換されるかは、受け手の共同体が持つ規範コード(Code)・所属(Community)に依存する。**
+
+### 1.2 本稿の貢献
+
+本稿は次の三点を行う。
+
+1. **Contextual Mode Resolver(CMR)の定式化**:`Event.mode` を固定値から `Event × Premise Layer → ResolvedImpact` という作用素へ持ち上げる(§3.1)。
+2. **観測者依存性の測定化**:二つの独立な LLM 観測者(ChatGPT / Gemini)に同一 premise 集合上でモードを判定させ、両者の不一致を消去せず **observer-dependence として測る**(§3.2, §5.1)。
+3. **Honest Structuralism による生成保証**:4 公理と CSP/SAT-UNSAT 枠組みにより、生成された世代プロファイル・ペルソナが LOD0(数理アンカー)に由来追跡可能であることを保証する(§3.3, §3.4)。
+
+そのうえで、米英の **設計された完全比較グリッド**(US 96 セル / UK 117 セル)で CMR を走らせ、モード分岐率・観測者不一致・共同体間発散・同年生まれペルソナの分岐を報告する(§5)。
+
+### 1.3 なぜ海外版か
+
+文脈依存モード問題は、規範コードが共同体ごとに鋭く異なる社会でこそ可視化される。米国(宗教 × 人種 × 地域 × 学歴)と英国(階級 × 地域 × 移民世代 × EU 距離)は、**同一事象が共同体ごとに別モードへ変換される度合いが大きい自然実験場**である。日本単独では Community 軸の分散が小さく、CMR の効果が見えにくい。海外版は SCEM の Community 層を実証的に駆動する本丸である。
+
+---
+
+## 2. Conceptual Framework
+
+### 2.1 3 作用モードの再掲
+
+SCEM の作用モードは以下の三つ(Paper 1 §3.1)。本稿でも定義は不変である。
+
+- **PASSIVE(受動着弾)**:本人の選択を介さず、環境として刷り込まれる曝露。
+- **ACTIVE(能動分岐)**:本人に立場選択・意思決定を迫る事象。
+- **REFRAME(参照点書き換え)**:「当たり前」の基準値そのものを書き換える事象。
+
+これら 3 軸は **決して合算しない**(Paper 1 の設計原則)。世代指紋は (PASSIVE, ACTIVE, REFRAME) の三つ組として保持される。
+
+### 2.2 文脈依存モード問題(The Contextual Mode Problem)
+
+Paper 1 では各事象に単一モードを固定していた。本稿の出発点は、**そのモードが受け手の前提層(premise)に依存して変わる**という観察である。形式的には:
+
+> 事象 $e$ の作用モードは、$e$ の属性だけでは決まらず、受け手の共同体前提 $\pi$ との対 $(e, \pi)$ によって解決(resolve)される。
+
+これを **Contextual Mode Problem** と呼ぶ。premise $\pi$ は本研究では「規範コード・所属・地域・学歴」を結合した正準文字列(canonical premise)として与える(§4.2)。
+
+### 2.3 観測者依存性(Observer-dependence)
+
+$(e, \pi)$ から作用モードを解決するのは、本研究では大規模言語モデルである。ここで重要なのは、**異なる LLM 観測者は同じ $(e, \pi)$ を異なるモードに解決しうる**という事実だ。我々はこれをノイズとして平均消去するのではなく、構造的な情報として扱う:
+
+- **ChatGPT** は「何が起きたか(what happened)」を相対的に客観記述する LOD0 寄りの観測者として振る舞う傾向がある。
+- **Gemini** は「それが社会的に何を意味したか(what it socially meant)」を解釈する LOD1 寄りの観測者として振る舞う傾向がある。
+
+両者のモード不一致は、事象が「出来事」と「意味」のどちらの相で受け止められたかの指標になる。**観測者依存性は、消すべきバイアスではなく、測るべき量である**(§5.1 で 49/48 件として定量化)。
+
+> **データ収集上の決定(2026-06-25)**:Gemini は出力のシリアライズ破損が頻発し(§7.1)、復旧のたびに先頭共同体を 1 つ失う。本研究のグリッドは ChatGPT × Gemini で構築したが、**今後の第 2 観測者は Claude Research に置き換える**。既存の Gemini データは「当時こう解決できた」記録として保持する(公理 4)。
+
+### 2.4 Honest Structuralism — 4 公理
+
+LLM に世代プロファイルやペルソナを生成させる以上、「もっともらしいが数理アンカーに由来しない作り話」を排除する仕組みが要る。我々は次の 4 公理を課す。
+
+1. **Anchor Preservation(アンカー保存)**:成人後に出会った事象を人格形成アンカーにできない(時間アンカー違反の禁止)。
+2. **Non-overwrite(非上書き)**:LOD0(曝露構造)が確定した事実を、上位 LOD(解釈・物語)が書き換えてはならない。
+3. **Projection Consistency(射影整合)**:生成された解釈は、核となる LOD0 事象に一定割合以上、由来追跡可能でなければならない(閾値 70%)。
+4. **Provenance Traceability(由来追跡可能性)**:各解釈は「どの LOD0 事象から導かれたか」を明示せねばならない。
+
+これらの公理は、CMR の出力(§3.4 のペルソナ)を SAT(整合)/ UNSAT(矛盾)として判定可能にする。
+
+---
+
+## 3. Model and Methods
+
+### 3.1 Contextual Mode Resolver(作用素としてのモード)
+
+CMR は次の写像である:
+
+$$\text{CMR}: (e, \pi) \mapsto \text{ResolvedImpact}(e, \pi) = (\text{mode}, \text{rationale}, \text{effect\_emphasis}, \text{source\_model})$$
+
+ここで mode ∈ {PASSIVE, ACTIVE, REFRAME}、rationale はその共同体での着弾理由(LLM の自然言語出力)、effect_emphasis は作用ベクトルのどの成分が強調されたか、source_model は観測者の識別子である。
+
+複数観測者からの解決を統合するとき、両者が一致すれば確定(`resolved_agree`)、不一致なら **多数決 + 優先順位(ACTIVE > REFRAME > PASSIVE; 決断強制を優先)** で tie-break する(`resolved_disagree`)。該当する解釈が無い事象は **ambient PASSIVE**(国家的事象への既定受動曝露)とする。
+
+### 3.2 二観測者マージ・パイプライン
+
+`merge_paper2_data.py` が ChatGPT 出力と第 2 観測者出力を統合する。要点:
+
+- **event_id によるマッチング**(無い場合は正規化名)。名前は `/` と `(` でのみ切る(COVID-19 のハイフン衝突を避ける)。
+- **canonical premise への正規化**:US は `religion_race_region_education`、UK は `class_region_immigration_education`(LGBT は Section 28 と同性婚で分割)。
+- 出力:`events_{tag}_merged.jsonl`(LOD0 合意)、`interpretations_{tag}.jsonl`(全 premise 解釈)、`disagreements_{tag}.jsonl`(観測者不一致)、`merge_report_{tag}.md`。`tag = country`(v1)または `country_grid`。
+
+### 3.3 LOD 階層と CSP/SAT-UNSAT
+
+ペルソナ生成は **LOD(Level of Detail)階層**の制約充足問題として実装する(`lod_persona.py`)。
+
+- **LOD0** = 曝露構造(数理アンカー)。出生年 + CMR 解決済みモード列から計算される世代指紋。**捏造不能な固定点**。
+- **LOD1** = 応答方向(Fight / Flight)、**LOD2** = 戦略、**LOD3** = 文脈(職業・地域・自己記述)。
+
+生成器は (1) 決定論的制約整合検査(時間アンカー違反 = 公理 1)→ (2) LLM 生成 + LLM 自己 UNSAT 判定(公理 2)→ (3) **射影検証ループ**(公理 3:核事象の 70% 以上が provenance に現れるまで再生成、不足事象を次プロンプトへ差し戻す)を行う。閾値未達で max_retries 超過なら **UNSAT(projection)** を返す。これにより「数理アンカーに由来しないペルソナ」は構造的に拒否される。
+
+### 3.4 指標:MFR と CDI
+
+- **Mode Flip Rate(MFR)**:
+  - *Event レベル* = 少なくとも一つの共同体間でモードが分岐した事象 / データのある事象。
+  - *Cell レベル* = resolved mode が **base_mode_majority**(その事象の全 premise 解釈の最頻モード)と異なるセル / 観測セル。
+  - 注:US/UK の merged は単一の base_mode_event を持たない(possible_modes のみ)。ゆえに flip 判定の基準は base_mode_majority に固定する。
+- **Contextual Divergence Index(CDI)**:固定出生年で各共同体の 3 軸指紋を計算し、その**共同体間平均ユークリッド距離**を取る。共同体前提だけで世代指紋がどれだけ割れるかの尺度。
+
+---
+
+## 4. Data
+
+### 4.1 設計された完全比較グリッド
+
+探索的(v1)収集では premise 語彙が観測者間でバラバラになり、モード一致が偶然になる(US v1 でモード不一致はわずか 1 件)。そこで **共同体と事象を固定した完全グリッド**を設計した。
+
+| | 共同体 × 事象 | セル | 設計 |
+|---|---|---|---|
+| **US grid** | 8 × 12 | 96 | 宗教 × 人種 × 地域 × 学歴 |
+| **UK grid** | 9 × 13 | 117 | 階級 × 地域 × 移民世代 × EU 距離 |
+
+DeepResearch 用の自己完結プロンプトは `docs/paper2_prompt_{us,uk}.md`、グリッド仕様は `docs/paper2_grid_spec.md`。
+
+### 4.2 正準 premise(canonical premise)
+
+各共同体は結合文字列で一意化する。例:
+
+- US:`secular_white_coastal_graduate`(Coastal Liberal)、`evangelical_white_bible_belt_no_college`(Bible Belt)。
+- UK:`middle_class_london_immigrant_2nd_gen_russell_group`(London Multicultural)、`working_class_leave_town_native_4plus_gen_no_qualifications`(Brexit Leave Town)。
+
+両観測者が**同一 premise 文字列を共有**することで、初めてセル単位のモード不一致が測定可能になる(全リストは Appendix A)。
+
+### 4.3 正直な復旧と限界(公理 4 の運用)
+
+Gemini の出力は毎回シリアライズ破損し(`possible_modes` 空・`affected_groups` 配列崩壊)、決定論的修復器 `recover_gemini_jsonl.py` で復旧した。修復方針は **捏造しない**:premise を失った先頭共同体は解釈にせず、その rationale を `event_rationale_recovered` に退避する。結果、Gemini 側は **US 7/8・UK 8/9 共同体**しか回収できず、先頭の Coastal Liberal(US)/ London Multicultural(UK)は **ChatGPT 単独**になった。この欠落は figure 上で単一モード表示として残し、隠蔽しない。
+
+---
+
+## 5. Results
+
+### 5.1 同一事象 × 共同体 → モード変換マトリクス
+
+固定 premise グリッドでモード変換マトリクスを描いた(Figure 1)。`—`(欠損)はゼロ、密な行列が得られた。
+
+![US mode matrix](../figures/fig_p2_modematrix_us_grid.png)
+![UK mode matrix](../figures/fig_p2_modematrix_uk_grid.png)
+
+| | Event-level MFR | Cell-level MFR | 観測者間モード不一致 |
+|---|---|---|---|
+| **US grid** | 12/12 = **100%** | 71/96 = 74% | **49**(v1 は 1) |
+| **UK grid** | 13/13 = **100%** | 74/117 = 63% | **48** |
+
+**選定した高争点事象において、Event レベル MFR は両国 100%** ── すべての事象が、少なくとも一つの共同体ペアでモードを切り替えた。これは「事象が母数からランダムに引かれた」結果ではなく、**規範コードが鋭く割れる争点事象を意図的に選んだ**ことの帰結である(この限定は §7.2 で明示する)。観測者間不一致が v1 の 1 件から 49/48 件へ跳ねたのは、premise を正準固定したことで両モデルが同一前提を共有し、初めてモード不一致が比較可能になったためである。
+
+### 5.2 Brexit:仮説どおりの共同体分岐と実 rationale
+
+英国 Brexit 行は、共同体前提だけでモードが体系的に分岐した(実データ rationale を併記)。
+
+| Community (premise) | mode | rationale(実出力・抜粋) |
+|---|---|---|
+| London Multicultural | **REFRAME** | 「開放的英国という所属基準が揺らぐ事件。欧州移動・多文化都市の当然性が書き換わった」(chatgpt) |
+| University Remain (Oxbridge) | **REFRAME** | 「国の自己像・欧州への帰属の基準値が揺らぎ、アイデンティティの再定義を迫られる」(gemini) |
+| Brexit Leave Town | **ACTIVE** | 「投票による意思表示と地域回復の選択として能動的に関与。主権回復が政治的自己効力感の軸に」(chatgpt) |
+| N. England post-industrial | REF→**ACT**(観測者分岐) | chatgpt:「『声を取り戻す』経験」(REFRAME) / gemini:「エリート支配への反逆として Leave に投票、政治的動員」(ACTIVE) |
+| Scotland | **REFRAME** | 「残留多数にもかかわらず強制離脱させられ、英国への所属意識が崩壊」(gemini) |
+| NI Protestant | **ACTIVE** | 「連合王国の主権回復という大義に共鳴し、能動的に支持・適応」(gemini) |
+| NI Catholic | **REFRAME** | 「ハードボーダー復活の危機により、和平合意に基づく所属のベースラインが揺らいだ」(gemini) |
+
+北イングランド行は **観測者依存性そのもの**を示す:ChatGPT は Brexit を「基準値の書き換え(REFRAME)」、Gemini は「政治的動員(ACTIVE)」と解決した。同じ共同体・同じ事象でも、「出来事」相と「意味/行為」相で観測者が割れる。
+
+### 5.3 同年生まれ・別共同体 — 指紋と CDI
+
+1985 年生まれを固定し、グリッドの全共同体で LOD0 を解決して世代指紋を計算した(`cmr_compare.py --variant grid`)。
+
+![US fingerprints](../figures/fig_p2_fingerprints_us_1985_grid.png)
+![UK fingerprints](../figures/fig_p2_fingerprints_uk_1985_grid.png)
+
+- **US(CDI = 0.321)**:Coastal Liberal / Suburban MC は **REFRAME 支配**(Cell-MFR 92% / 83%)、Bible Belt・Rust Belt・Latino・Rural・Mormon は **ACTIVE 支配**(MFR 17%)。同じ 1985 生まれでも、共同体前提だけで指紋が REFRAME 軸 ⇄ ACTIVE 軸に反転する。
+- **UK(CDI = 0.338)**:全共同体が PASSIVE 支配だが REFRAME 量が分岐(NI Protestant 0.80 / Home Counties 0.00)。Brexit Leave Town が Cell-MFR 69% と最も base からズレる。
+
+### 5.4 同一入力ペルソナの分岐(Community 効果の単離)
+
+CMR の眼目は「同じ人物入力でも、所属共同体が違えば別の世代経験になる」ことだ。これを最も純粋に見るため、**出生年 1985・応答 Fight・戦略「自分の選択で状況に介入する」を全条件で固定し、premise だけを変えて** LOD ペルソナを生成した(全 4 本 SAT、provenance 付き)。
+
+**US:Coastal Liberal vs Bible Belt(同一入力)**
+
+- *Coastal Liberal*(LOD0 指紋 P0.0 / A0.0 / **R0.461**、観測者一致 12/12):生成 narrative は「LOD0 上の mode は一貫して参照点書き換えであり、**ACTIVE 事象があったとは解釈しない**」と明示。Fight は「複数の REFRAME 蓄積後の解釈上の応答」として現れる。
+- *Bible Belt*(P0.0 / **A0.387** / R0.0、観測者不一致 7/12 を tie-break):同じ Fight 入力でも「**16 歳の 9.11 が能動分岐として着弾**し、政治を自分で引き受ける土台ができた」と、9.11 を ACTIVE として引き受ける。
+
+→ **同一の自己記述入力(Fight)が、共同体前提を変えるだけで、まったく異なる provenance に解決される。** Coastal は「REFRAME の累積として」、Bible Belt は「ACTIVE 分岐の引き受けとして」同じ Fight を正当化する。これが Contextual Mode Resolver の作動証拠である。
+
+**UK:London Multicultural vs Brexit Leave Town(同一入力)**
+
+- 両者とも core 一致 100% で SAT。London は Section 28 撤廃・7/7 を若年期の参照点書き換えとし、生活費危機・NHS 危機で Fight が現れる。Leave Town は 2008 危機・緊縮を参照点書き換え、スコットランド独立投票を能動分岐とし「黙って耐えるより投票・発言・地域内判断で押し返す」。共同体前提が干渉構造(どの事象がどの年齢で重なるか)を変え、同じ Fight でも別の事象群に支えられる。
+
+ペルソナ全文は `data/personas_grid/{us_coastal_liberal, us_bible_belt, uk_london_multicultural, uk_brexit_leave_town}.txt`。
+
+---
+
+## 6. Discussion
+
+### 6.1 三つの仮説の検証
+
+- **H1(モードは事象に固有でない)**:支持。Event-level MFR 100%、全争点事象が共同体間でモード分岐(§5.1)。
+- **H2(共同体前提がモード変換を駆動する)**:支持。Brexit の階級・地域・EU 距離による分岐(§5.2)、CDI 0.32–0.34 の指紋発散(§5.3)、同一入力ペルソナの provenance 分岐(§5.4)。
+- **H3(観測者依存性は構造的情報である)**:支持。premise 固定下で観測者間不一致が 1 → 49/48 件へ顕在化し(§5.1)、北イングランド Brexit のように「出来事/意味」相の割れとして解釈可能(§5.2)。
+
+### 6.2 観測者依存性は欠陥ではなく特徴
+
+二つの LLM が同じ事象を別モードに解決するとき、素朴には「どちらが正しいか」を問いたくなる。本研究の立場は異なる:**両方とも、その観測スタンスにおいて正しい**。ChatGPT は「出来事」を、Gemini は「社会的意味」を解決する。両者の差は、事象がコミュニティ内で「環境として受けたか/行為として引き受けたか/基準として書き換えたか」の多義性そのものを写し取る。これは [[user_ontology_21c_mathematics]] の立場 ── 複数の妥当な経路が同一の不変対象を保つ ── の作用素レベルでの現れである。
+
+### 6.3 Paper 1 との関係
+
+Paper 1 は構造層(集団曝露構造)を確立した。本稿は Community 層を実証的に駆動し、`Event.mode` を固定値から作用素へ持ち上げた。Paper 1 の世代指紋は「ある共同体前提での CMR 解決の特殊例(あるいは全 premise 集約)」として再解釈できる。SCEM 全体の射程(個人内面・自己効力感はスコープ外)は本稿でも不変である。
+
+---
+
+## 7. Limitations
+
+### 7.1 第 2 観測者の品質と置き換え
+
+Gemini は出力を毎回シリアライズ破損させ、決定論復旧でも各事象の先頭共同体を失った(US 7/8・UK 8/9)。先頭の Coastal Liberal / London Multicultural は ChatGPT 単独となり、これらの行では観測者依存性が測れていない。**今後の第 2 観測者は Claude Research に置き換える**(§2.3 注)。merge パイプラインの `source_model` は汎用なので、`Claude_events_*.jsonl` の投入でコード変更はほぼ不要。
+
+### 7.2 「100%」の正しい読み方
+
+Event-level MFR 100% は **「ランダムな全社会事象」ではなく「選定した高争点事象集合」での値**である。規範コードが鋭く割れる事象を意図的に選んだ結果であり、社会事象全体の母数を代表しない。論文本文では必ず "in selected high-contention events" と限定する。
+
+### 7.3 実証(Prolific)はまだ無い
+
+CMR の解決モードは LLM 観測者の判定であり、実在の個人回答による検証(Prolific パネル)はまだ行っていない。§5.4 のペルソナは「LOD0 に由来追跡可能な構造的に整合な生成」であって、実在人物の記述ではない。CDI・MFR は固定 premise・選定事象上の指標であり、母集団推定ではない。
+
+### 7.4 単一出生年・単一戦略のデモ
+
+§5.3–5.4 は 1985 年生まれ・Fight 固定の単離デモである。出生年や応答方向を動かしたときの CMR 挙動の網羅は将来課題。
+
+---
+
+## 8. Conclusion
+
+作用モードは事象に固有ではない。同じ Brexit が、ロンドン移民二世には所属基準の書き換えとして、Leave タウン労働者には投票による意思表示として着弾する。本稿は Contextual Mode Resolver によってこの文脈依存モード問題を計算可能にし、二観測者の不一致を消さずに observer-dependence として測り、Honest Structuralism の 4 公理で生成を数理アンカーに縛った。米英の設計済みグリッド(96 / 117 セル)で、争点事象の Event-level Mode Flip Rate は両国 100%、共同体間指紋発散 CDI は 0.32–0.34、そして同一入力ペルソナが premise だけで体系的に分岐することを示した。「同じ出来事を、別の世代経験へ変換する装置としての共同体」が、測定可能な対象になった。実在個人による検証は Paper 3(Prolific)に委ねる。
+
+---
+
+## Appendix A. 正準 premise 一覧
+
+**US(8 共同体)**:`secular_white_coastal_graduate`(Coastal Liberal)/ `evangelical_white_bible_belt_no_college`(Bible Belt)/ `mainline_protestant_white_rust_belt_no_college`(Rust Belt WWC)/ `secular_black_urban_some_college`(Black)/ `catholic_hispanic_urban_some_college`(Latino Immigrant)/ `mormon_white_mountain_west_bachelor`(Mormon)/ `mainline_protestant_white_suburban_bachelor`(Suburban MC)/ `evangelical_white_rural_no_college`(Rural Conservative)。
+
+**UK(9 共同体)**:`middle_class_london_immigrant_2nd_gen_russell_group`(London Multicultural)/ `middle_class_home_counties_native_4plus_gen_russell_group`(Home Counties MC)/ `working_class_northern_england_native_4plus_gen_gcse`(N. post-industrial)/ `working_class_scotland_native_4plus_gen_gcse`(Scotland)/ `working_class_northern_ireland_catholic_4plus_gen_gcse`(NI Catholic)/ `working_class_northern_ireland_protestant_4plus_gen_gcse`(NI Protestant)/ `middle_class_london_asian_2nd_gen_russell_group`(British Asian)/ `working_class_leave_town_native_4plus_gen_no_qualifications`(Brexit Leave Town)/ `middle_class_london_native_2nd_gen_oxbridge`(University Remain)。
+
+## Appendix B. 再現性
+
+```
+# マージ(両観測者統合)
+python3 merge_paper2_data.py --country us --variant grid
+python3 merge_paper2_data.py --country uk --variant grid
+# モード変換マトリクス / MFR
+python3 cmr_matrix.py --country us --variant grid
+python3 cmr_matrix.py --country uk --variant grid
+# 同年生まれ指紋 / CDI
+python3 cmr_compare.py --country us --variant grid
+python3 cmr_compare.py --country uk --variant grid
+# 図(Fig1 マトリクス + Fig3 指紋)
+python3 make_paper2_figures.py
+# ペルソナ(要 OpenAI: arch -arm64 python3.12)
+arch -arm64 python3.12 lod_persona.py --country us --birth_year 1985 \
+  --response Fight --strategy "自分の選択で状況に介入する" \
+  --premise secular_white_coastal_graduate --variant grid
+```
+
+Paper 1 エンジン(`media_generation_v4.py` / `v5.py`)と `events_patched.jsonl`(日本)は **無改変**(import のみ)。
+
+## References
+
+主要な位置づけ参照は Paper 1 と共有(Mannheim 1928; Strauss & Howe 1991; Ryder 1965; Schuman & Scott 1989; Krosnick & Alwin 1989; Ghitza, Gelman & Auerbach 2023; Knudsen; Hensch; Lazer et al.; Argyle et al.)。本稿固有の方法論的参照(LLM-as-annotator の観測者依存性、CSP 枠組み)は本投稿版で拡充予定。
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+  // 1) 数式を保護(marked が _ や * を誤変換するのを防ぐ)
+  const raw = document.getElementById('md').textContent;
+  const store = [];
+  let protectedMd = raw
+    .replace(/\$\$([\s\S]+?)\$\$/g, (m,x)=>{ store.push('\\['+x+'\\]'); return '@@MJ'+(store.length-1)+'@@'; })
+    .replace(/\$([^\$\n]+?)\$/g,       (m,x)=>{ store.push('\\('+x+'\\)'); return '@@MJ'+(store.length-1)+'@@'; });
+  // 2) Markdown -> HTML
+  marked.setOptions({ gfm:true, breaks:false });
+  let out = marked.parse(protectedMd);
+  // 3) 数式を復元
+  out = out.replace(/@@MJ(\d+)@@/g, (m,i)=>store[+i]);
+  document.getElementById('content').innerHTML = out;
+  // 4) MathJax 組版
+  if (window.MathJax && window.MathJax.typesetPromise) window.MathJax.typesetPromise();
+  else window.addEventListener('load', ()=> window.MathJax && window.MathJax.typesetPromise && window.MathJax.typesetPromise());
+</script>
+</body>
+</html>
