@@ -169,6 +169,7 @@ cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 次の課題:
 - **実証(Prolific パネル)**: プロファイル一致率・断絶境界・干渉特異性・CMR 解決モードの人手検証。
 - **第2観測者を Claude Research に置換**(Gemini の出力破損対策)。先頭共同体の欠落(US Coastal Liberal / UK London Multicultural)を補完。
+- **Exposure Adapters / Dynamic SCEM**([`docs/exposure_adapters_spec.md`](docs/exposure_adapters_spec.md)): 実体曝露(統計・政策データ)と情報曝露(GDELT 等)を別系統で観測し Core で統合。**GDELT は本体に組み込まず Information Exposure Adapter 仕様に留める**(報道空間の波の観測であって実体曝露・個人内面の測定ではない)。まずは US/UK 完全グリッド版 CMR の確立を最優先。
 
 ---
 

@@ -343,6 +343,24 @@ GDELT のような大規模インフラは、**情報曝露構造の自動化レ
 
 この区別により、SCEM は静的な事象データベースから、**情報曝露を自動取得しつつ実体曝露を別系統で接地する動的モデル(Dynamic SCEM)** へ拡張できる。観測者依存性(§2.3)も、この枠組みでは「情報曝露の観測スタンスの差」として自然に位置づけられる。
 
+### 8.1 層構成:Core / CMR / Exposure Adapters
+
+拡張は本体を肥大させず、**差し替え可能な曝露供給層(Exposure Adapters)** を Core/CMR の下に置く形で行う。本体(Core/CMR)は曝露の出自に依存せず、正規化済み Event レコードのみを受け取る。
+
+```text
+SCEM Core      年齢同期 / 3作用モード / effect_vector / interference / REFRAME fire   (Paper 1, 実装済)
+CMR Layer      Community / Code / premise / resolved_mode / rationale                (Paper 2, 実装済)
+Exposure
+ Adapters      curated_event_db(済)/ DeepResearch grid(済)/ official_statistics /
+               policy_datasets / gdelt_adapter(情報曝露・仕様のみ)                  (将来)
+```
+
+GDELT のような大規模インフラは **本体の中核に置かず、Information Exposure Adapter の仕様**に留める(無料 API・運用制約に本体設計が引きずられるのを避けるため)。GDELT Adapter の入出力契約は `media_observed_salience / tone_trajectory / burstiness / geographic_spread / language_spread / effective_attention_year / candidate_reframe_periods` を出力し、**実体曝露構造・個人の心理状態・実際の制度/生活影響の完全測定は非対象**とする。REFRAME の発火判定は Adapter ではなく Core の reference_value 差分式が行い、Adapter は候補期間を提示するに留める。詳細仕様は [`docs/exposure_adapters_spec.md`](exposure_adapters_spec.md)。
+
+### 8.2 統合の原則
+
+実体曝露と情報曝露は別系統で観測し、**最後に Core の effect_vector 上で統合する**。情報曝露は salience と effective_attention_year を、実体曝露は effect_vector の実体成分と reference_value を供給する。どちらか一方では Event は完成しない。「報道が多い = 生活が変わった」という誤った等値を、この分離が構造的に防ぐ。当面は GDELT を Future 仕様に留め、**US/UK 完全グリッド版 CMR の確立を最優先**とする。
+
 ---
 
 ## 9. Conclusion
