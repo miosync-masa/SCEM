@@ -16,6 +16,8 @@
 
 > ⚠️ 表現注意(巴さん指摘):100% は **「ランダムな全社会事象」ではなく「選定した高争点イベント集合」での Event-level MFR**。論文では "in selected high-contention events" と必ず限定する。
 
+> 🆕 **完全グリッド達成(§8.5)**:固定 Community × 固定 Event の **設計済み比較行列** を US(8×12=96)・UK(9×13=117)で構築、`—` ゼロ。premise 正準固定により **cross-model mode 不一致が US 49 / UK 48 件**測定可能に(探索 v1 では 1 件)。「見えた → **測った**」へ到達。
+
 一方で、巴さんの依頼のうち **数値スコア系(code_factors / salience_multiplier / effect_vector_delta / Normative Code Pressure)は出していません**。これらは現データに存在せず、付ければ Honest Structuralism(Axiom 2)違反になるためです(§6 で詳述)。
 
 ---
@@ -170,6 +172,36 @@ python3 make_paper2_figures.py                # Fig 2 / Fig 3(figures/ へ)
 
 成果物: `figures/fig_p2_*.png`、`data/cmr_compare_{us,uk}_1985.json`。
 Paper 1 エンジン(`media_generation_v4/v5.py`)・`events_patched.jsonl` は無改変。
+
+---
+
+## 8.5 完全グリッド結果(v2: designed comparison matrix)— **更新**
+
+§1-§4 の探索的(v1)結果に対し、固定 Community × 固定 Event の**完全グリッド**を DeepResearch で取得・統合した(`paper2_prompt_{us,uk}.md` のプロンプト、ChatGPT + Gemini)。`—`(欠損)がほぼ消え、**設計された母数**の上で指標が出る。
+
+| | events × communities | cells | `—` | mode 不一致(両モデル) | Event-level MFR | Cell-level MFR |
+|---|---|---|---|---|---|---|
+| **US grid** | 8 × 12 | **96** | 0 | **49**(v1 は 1) | 12/12 = **100%** | 71/96 = 74% |
+| **UK grid** | 9 × 13 | **117** | 0 | **48** | 13/13 = **100%** | 74/117 = 63% |
+
+![US grid](../figures/fig_p2_modematrix_us_grid.png)
+![UK grid](../figures/fig_p2_modematrix_uk_grid.png)
+
+**何が強くなったか**:premise を**正準文字列で固定**したことで、両モデルが**同一 premise を共有** → cross-model の mode 不一致が **49 / 48 件**測定可能に(v1 は premise 語彙がバラバラで mode 一致 1 件のみだった)。セルの「PAS/ACT」等は、その (event, community) で **ChatGPT と Gemini が mode で割れている = observer-dependence のセル単位可視化**。
+
+**UK Brexit が仮説どおりに分岐**(白音の一撃):
+
+| Community | Brexit resolved mode |
+|---|---|
+| London Multicultural | REFRAME(国の自己像の書き換え) |
+| University-educated Remain | REFRAME |
+| Brexit Leave Town | ACTIVE(投票による意思表示) |
+| Scotland | REFRAME(UK内帰属参照点の揺らぎ) |
+| Northern Ireland Protestant | ACTIVE |
+
+→ §Paper 2 の H2(UK は階級・地域・EU距離で mode 変換)を直接支持。
+
+**正直な限界(grid 固有)**:Gemini は毎回**先頭 community を破損で落とす**(US: Coastal Liberal / UK: London Multicultural)。txt から決定論復旧(`recover_gemini_jsonl.py`)で 7/8・8/9 を救出、欠落 community は **ChatGPT-only**(単一 mode 表示)。捏造はしない。完全な両モデル網羅には、その community を犠牲枠から外して Gemini を再生成する。
 
 ---
 
