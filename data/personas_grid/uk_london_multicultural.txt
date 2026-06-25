@@ -1,0 +1,26 @@
+========================================================================
+  Contextual Mode Resolver — UK  premise=middle_class_london_immigrant_2nd_gen_russell_group
+========================================================================
+  事象 13 件の mode 解決: 両モデル一致 13 / 不一致tie-break 0 / ambient既定PASSIVE 0
+  LOD0 指紋: PASSIVE 0.906 / ACTIVE 0.438 / REFRAME 0.629
+
+========================================================================
+  UK 1985 × Fight × 自分の選択で状況に介入する  [premise=middle_class_london_immigrant_2nd_gen_russell_group]
+  生年1985 / LOD1=Fight / LOD2=自分の選択で状況に介入する / LOD3=None
+========================================================================
+status: SAT  (attempts=1)
+
+[summary] 制度変化を強く受け止めつつ、危機局面では自分の選択で介入しようとするFight型の実装志向の人物。
+
+[narrative]
+18歳の「Repeal of Section 28 / Section 28 撤廃」と20歳の「7/7 London bombings / 7-7 ロンドン同時爆破」で社会制度と安全保障への参照点が書き換わり、成人後の公共制度を見る基準が形成された。29歳では「Scottish independence referendum / スコットランド独立投票」と「Same-sex marriage legalization / 同性婚合法化」が受動着弾し、同時期の「Austerity / 緊縮政策」は能動分岐として、制度変化をただ観察するだけでなく自分の立場を選ぶ圧力になった。31歳以降の「Immigration and refugee debate / 移民・難民論争」と「Windrush scandal / Windrush スキャンダル」は所属・市民権・公正さの参照点をさらに更新し、37〜38歳の「Cost of living crisis / 生活費危機」と「NHS waiting-list crisis / NHS 待機リスト危機」では、生活と公共サービスに対して自分の選択で状況に介入するFight戦略が表れやすい。
+
+[projection] core一致 100% (閾値70%) → matched=['Scottish independence referendum / スコットランド独立投票', 'Same-sex marriage legalization / 同性婚合法化', 'Immigration and refugee debate / 移民・難民論争', '7/7 London bombings / 7-7 ロンドン同時爆破', 'Windrush scandal / Windrush スキャンダル', 'Repeal of Section 28 / Section 28 撤廃', 'NHS waiting-list crisis / NHS 待機リスト危機', 'Austerity / 緊縮政策']
+
+[provenance] (各解釈 → LOD0 事象)
+  ・社会制度や権利の変化を、外部から強く着弾するものとして受け止める傾向  ⇐ ['Scottish independence referendum / スコットランド独立投票', 'Same-sex marriage legalization / 同性婚合法化']
+  ・安全保障、教育制度、包摂をめぐる参照点が若年成人期から書き換わっている  ⇐ ['Repeal of Section 28 / Section 28 撤廃', '7/7 London bombings / 7-7 ロンドン同時爆破']
+  ・Fight型として、財政・生活・医療の圧力に対して自分の選択で介入しようとする  ⇐ ['Austerity / 緊縮政策', '2008 financial crisis / 2008 金融危機', 'Cost of living crisis / 生活費危機', 'NHS waiting-list crisis / NHS 待機リスト危機']
+  ・移民・市民権・制度的公正をめぐる問題が、社会実装期の判断基準を更新している  ⇐ ['Immigration and refugee debate / 移民・難民論争', 'Windrush scandal / Windrush スキャンダル']
+  ・成人初期には、国家の帰属、婚姻平等、緊縮政策が同時に干渉し、政治的立場を選ぶ圧力が高まった  ⇐ ['Same-sex marriage legalization / 同性婚合法化', 'Scottish independence referendum / スコットランド独立投票', 'Austerity / 緊縮政策']
+

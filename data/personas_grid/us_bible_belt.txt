@@ -1,0 +1,25 @@
+========================================================================
+  Contextual Mode Resolver — US  premise=evangelical_white_bible_belt_no_college
+========================================================================
+  事象 12 件の mode 解決: 両モデル一致 5 / 不一致tie-break 7 / ambient既定PASSIVE 0
+  LOD0 指紋: PASSIVE 0.0 / ACTIVE 0.387 / REFRAME 0.0
+
+========================================================================
+  US 1985 × Fight × 自分の選択で状況に介入する  [premise=evangelical_white_bible_belt_no_college]
+  生年1985 / LOD1=Fight / LOD2=自分の選択で状況に介入する / LOD3=None
+========================================================================
+status: SAT  (attempts=1)
+
+[summary] 人格形成期の9.11と成人初期の政治・経済分岐に押され、傍観ではなく自分の選択で介入しようとするFight型の人物。
+
+[narrative]
+16歳で「9.11 同時多発テロ」が人格形成期に能動分岐として着弾し、政治制度を安全保障や価値判断の問題として自分で引き受ける土台ができた。23歳では「Obama Election / オバマ当選」と「Lehman Shock」が同時期に重なり、希望と不信、制度参加と経済的警戒が干渉しながら、状況に対して自分の選択で介入するFight方向を強めた。27〜28歳の「Student Debt Crisis」「Black Lives Matter」「Sandy Hook」は、生活・公正・安全をめぐる争点を自分の立場で選び取る圧力として働き、受け流すよりも投票、発言、所属集団内での態度表明などで状況に関与する戦略として表れる。
+
+[projection] core一致 75% (閾値70%) → matched=['Obama Election / オバマ当選', '9.11 同時多発テロ', 'Lehman Shock', 'Student Debt Crisis', 'Black Lives Matter', 'Sandy Hook']
+
+[provenance] (各解釈 → LOD0 事象)
+  ・Fight型の応答方向：外部の政治制度変化を単なる環境変化として受けるのではなく、立場を選び、意思決定で応じる傾向。  ⇐ ['9.11 同時多発テロ', 'Obama Election / オバマ当選', 'Lehman Shock']
+  ・自分の選択で状況に介入する戦略：投票、発言、所属コミュニティ内での態度表明など、能動分岐に沿った介入行動を取りやすい。  ⇐ ['Obama Election / オバマ当選', 'Student Debt Crisis', 'Black Lives Matter']
+  ・希望と制度不信が同時に作動する成人初期適応：変革への期待と経済的警戒が衝突し、政治判断を先送りしにくくする。  ⇐ ['Lehman Shock', 'Obama Election / オバマ当選']
+  ・生活負担・社会正義・公共安全が結びついた争点感覚：個人の暮らしと制度選択を切り離せず、態度決定を迫られやすい。  ⇐ ['Black Lives Matter', 'Student Debt Crisis', 'Sandy Hook']
+

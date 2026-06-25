@@ -1,0 +1,26 @@
+========================================================================
+  Contextual Mode Resolver — UK  premise=working_class_leave_town_native_4plus_gen_no_qualifications
+========================================================================
+  事象 13 件の mode 解決: 両モデル一致 7 / 不一致tie-break 6 / ambient既定PASSIVE 0
+  LOD0 指紋: PASSIVE 1.216 / ACTIVE 0.483 / REFRAME 0.658
+
+========================================================================
+  UK 1985 × Fight × 自分の選択で状況に介入する  [premise=working_class_leave_town_native_4plus_gen_no_qualifications]
+  生年1985 / LOD1=Fight / LOD2=自分の選択で状況に介入する / LOD3=None
+========================================================================
+status: SAT  (attempts=1)
+
+[summary] 制度不信と生活圧の着弾を受けつつ、政治的分岐点では自分の選択で介入しようとするFight型の実装期成人。
+
+[narrative]
+25歳の「2008 financial crisis / 2008 金融危機」と29歳の「Austerity / 緊縮政策」で経済と制度への参照点が書き換わり、同じ29歳の「Scottish independence referendum / スコットランド独立投票」で自分の立場を選ぶ能動分岐を経験している。33歳の「Windrush scandal / Windrush スキャンダル」は受動着弾として制度への不信を強めるが、31歳の「Immigration and refugee debate / 移民・難民論争」などの能動分岐があるため、ただ流されるよりも自分の選択で状況に介入するFight方向が自然に表れる。37〜38歳には「Cost of living crisis / 生活費危機」と「NHS waiting-list crisis / NHS 待機リスト危機」が生活と公衆衛生の参照点をさらに書き換え、身近な制度問題に対して黙って耐えるより、投票・発言・地域内の判断で押し返そうとする。
+
+[projection] core一致 100% (閾値70%) → matched=['Windrush scandal / Windrush スキャンダル', 'NHS waiting-list crisis / NHS 待機リスト危機', 'Scottish independence referendum / スコットランド独立投票', '2008 financial crisis / 2008 金融危機', 'Austerity / 緊縮政策', 'Cost of living crisis / 生活費危機', 'Immigration and refugee debate / 移民・難民論争', 'Repeal of Section 28 / Section 28 撤廃']
+
+[provenance] (各解釈 → LOD0 事象)
+  ・Fight型の応答方向。政治的・制度的な分岐点で自分の立場を選ばされ、その選択経験が受動的な諦めではなく介入志向として表れる。  ⇐ ['Scottish independence referendum / スコットランド独立投票', 'Immigration and refugee debate / 移民・難民論争', 'Repeal of Section 28 / Section 28 撤廃', '7/7 London bombings / 7-7 ロンドン同時爆破', 'Same-sex marriage legalization / 同性婚合法化']
+  ・制度不信の背景。成人後の社会実装期に、制度が人を守らない／取りこぼすという受動的な着弾を受けている。  ⇐ ['Windrush scandal / Windrush スキャンダル', 'NHS waiting-list crisis / NHS 待機リスト危機']
+  ・生活防衛的な介入戦略。経済危機・緊縮・生活費上昇により、状況を静観せず、家計・地域・政治判断を通じて自分の選択で介入しようとする。  ⇐ ['2008 financial crisis / 2008 金融危機', 'Austerity / 緊縮政策', 'Cost of living crisis / 生活費危機', 'Tuition fee rise to £9,000 / 大学授業料引き上げ']
+  ・制度問題と生活圧が結びついて認識される傾向。生活費危機、移民・難民論争、NHS危機がWindrushの制度的不正と干渉し、個別問題ではなく『制度全体への介入課題』として捉えやすい。  ⇐ ['Cost of living crisis / 生活費危機', 'Windrush scandal / Windrush スキャンダル', 'Immigration and refugee debate / 移民・難民論争', 'NHS waiting-list crisis / NHS 待機リスト危機']
+  ・成人初期の政治的選択が、経済政策や権利拡張の判断と絡み合い、以後の『自分で選んで押し返す』姿勢の基盤になる。  ⇐ ['Austerity / 緊縮政策', 'Scottish independence referendum / スコットランド独立投票', 'Same-sex marriage legalization / 同性婚合法化']
+

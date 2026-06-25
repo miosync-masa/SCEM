@@ -68,6 +68,7 @@ class LODConstraints:
     country: str = "jp"                       # "jp"(Paper1 Japan) | "us" | "uk"
     premise: Optional[str] = None             # us/uk のみ。個人の religion_race_region_education。
                                               # None なら全premise集約(一般person)。
+    variant: str = "v1"                       # us/uk のデータ版: "v1"(探索) | "grid"(完全グリッド)
 
 
 # ───────────────────────────────────────────────
@@ -160,12 +161,14 @@ def _resolve_mode(event_name: str, premise: Optional[str], interp_index: dict):
     return best, "resolved_disagree", dict(cnt)
 
 
-def build_us_v4_events(country: str, premise: Optional[str]):
-    """events_{country}_merged.jsonl + interpretations_{country}.jsonl から
-    mode 解決済みの v4.Event リストを作る。返り値: (events, resolution_log)。"""
-    merged = [json.loads(l) for l in (DATA / f"events_{country}_merged.jsonl")
+def build_us_v4_events(country: str, premise: Optional[str], variant: str = "v1"):
+    """events_{tag}_merged.jsonl + interpretations_{tag}.jsonl から
+    mode 解決済みの v4.Event リストを作る。tag = country(v1) | f"{country}_{variant}"(grid)。
+    返り値: (events, resolution_log)。"""
+    tag = country if variant == "v1" else f"{country}_{variant}"
+    merged = [json.loads(l) for l in (DATA / f"events_{tag}_merged.jsonl")
               .read_text(encoding="utf-8").splitlines() if l.strip()]
-    interps = [json.loads(l) for l in (DATA / f"interpretations_{country}.jsonl")
+    interps = [json.loads(l) for l in (DATA / f"interpretations_{tag}.jsonl")
                .read_text(encoding="utf-8").splitlines() if l.strip()]
     interp_index: dict = {}
     for it in interps:
@@ -199,9 +202,9 @@ def build_us_v4_events(country: str, premise: Optional[str]):
     return events, log
 
 
-def build_us_lod0(birth_year: int, country: str, premise: Optional[str]):
+def build_us_lod0(birth_year: int, country: str, premise: Optional[str], variant: str = "v1"):
     """US/UK LOD0 を構築。返り値: (lod0_dict, v4_events, resolution_log)。"""
-    events, log = build_us_v4_events(country, premise)
+    events, log = build_us_v4_events(country, premise, variant)
     lod0 = _lod0_from_v4_events(birth_year, events)
     how_counter = _Counter(h for _, _, h in log)
     lod0["resolution"] = {
@@ -391,9 +394,10 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES,
         # Contextual Mode Resolver(§2.5): premise で mode 解決 → US LOD0
         if constraints.lod0_exposure:
             lod0 = constraints.lod0_exposure
-            events, _log = build_us_v4_events(constraints.country, constraints.premise)
+            events, _log = build_us_v4_events(constraints.country, constraints.premise, constraints.variant)
         else:
-            lod0, events, _log = build_us_lod0(constraints.birth_year, constraints.country, constraints.premise)
+            lod0, events, _log = build_us_lod0(constraints.birth_year, constraints.country,
+                                               constraints.premise, constraints.variant)
     else:
         events = v5.load_events()
         lod0 = constraints.lod0_exposure or build_lod0_exposure(constraints.birth_year, events)
@@ -486,13 +490,13 @@ def run_cli(args):
     by = args.birth_year or (1990 if args.country in ("us", "uk") else 1981)
     c = LODConstraints(
         birth_year=by, lod1_response=args.response, lod2_strategy=args.strategy,
-        country=args.country, premise=args.premise,
+        country=args.country, premise=args.premise, variant=args.variant,
     )
     title = f"{args.country.upper()} {by} × {args.response} × {args.strategy}"
     if args.premise:
         title += f"  [premise={args.premise}]"
     if args.country in ("us", "uk"):
-        lod0, _ev, _log = build_us_lod0(by, args.country, args.premise)
+        lod0, _ev, _log = build_us_lod0(by, args.country, args.premise, args.variant)
         r = lod0["resolution"]
         print("=" * 72)
         print(f"  Contextual Mode Resolver — {r['country'].upper()}  premise={r['premise']}")
@@ -552,6 +556,7 @@ if __name__ == "__main__":
     ap.add_argument("--response", default=None, help="Fight | Flight")
     ap.add_argument("--strategy", default=None)
     ap.add_argument("--premise", default=None, help="us/uk: 個人の religion_race_region_education(省略=全premise集約)")
+    ap.add_argument("--variant", default="v1", help="us/uk データ版: v1 | grid")
     ap.add_argument("--cumulative", action="store_true", help="retry を累積方式に")
     args = ap.parse_args()
 

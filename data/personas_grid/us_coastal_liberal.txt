@@ -1,0 +1,26 @@
+========================================================================
+  Contextual Mode Resolver — US  premise=secular_white_coastal_graduate
+========================================================================
+  事象 12 件の mode 解決: 両モデル一致 12 / 不一致tie-break 0 / ambient既定PASSIVE 0
+  LOD0 指紋: PASSIVE 0.0 / ACTIVE 0.0 / REFRAME 0.461
+
+========================================================================
+  US 1985 × Fight × 自分の選択で状況に介入する  [premise=secular_white_coastal_graduate]
+  生年1985 / LOD1=Fight / LOD2=自分の選択で状況に介入する / LOD3=None
+========================================================================
+status: SAT  (attempts=1)
+
+[summary] 政治制度への参照点が繰り返し書き換わる中で、状況を観察するだけでなく自分の選択で介入しようとする Fight 型の人物。
+
+[narrative]
+16歳の「9.11 同時多発テロ」が人格形成期に高重みの参照点書き換えとして着弾し、政治制度や安全保障への前提が早くから揺らいだ。23歳の「Lehman Shock」と「Obama Election / オバマ当選」が成人初期適応期に重なり、制度不信と制度変革への期待が同時に形成された。27〜28歳の「Student Debt Crisis」「Sandy Hook」「Black Lives Matter」によって、経済的不公平・銃暴力・人種正義が相互に結びつき、Fight 方向として「自分の選択で状況に介入する」戦略が表れる。ただし LOD0 上の mode は一貫して参照点書き換えであり、ACTIVE 事象があったとは解釈しない。
+
+[projection] core一致 75% (閾値70%) → matched=['9.11 同時多発テロ', 'Lehman Shock', 'Obama Election / オバマ当選', 'Student Debt Crisis', 'Black Lives Matter', 'Sandy Hook']
+
+[provenance] (各解釈 → LOD0 事象)
+  ・人格形成期に、政治制度や安全保障への基本的な参照点が書き換わった  ⇐ ['9.11 同時多発テロ']
+  ・成人初期に、制度への不信と制度変革への期待が同時に発生した  ⇐ ['Lehman Shock', 'Obama Election / オバマ当選']
+  ・経済的不公平を個人問題ではなく制度問題として捉え、介入すべき対象と見る  ⇐ ['Student Debt Crisis', 'Lehman Shock']
+  ・社会正義や公共安全の問題を、自分の選択で関与すべき政治的課題として認識する  ⇐ ['Black Lives Matter', 'Sandy Hook']
+  ・Fight 型の応答方向は、ACTIVE 事象の存在ではなく、複数の参照点書き換えが蓄積した後の解釈上の応答として表れる  ⇐ ['9.11 同時多発テロ', 'Lehman Shock', 'Obama Election / オバマ当選', 'Student Debt Crisis', 'Black Lives Matter']
+
