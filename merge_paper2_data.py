@@ -200,9 +200,13 @@ def load_jsonl(path: Path) -> tuple[list[dict], list[tuple]]:
     return rows, errors
 
 
+# grid 版で追加された前方互換フィールド(v1 には無い→存在する時のみ通す=既存出力不変)
+PASSTHROUGH = ["event_id", "country", "event_cluster", "exposure_type", "confidence_reason"]
+
+
 def lod0_record(ev: dict, source_models: list[str]) -> dict:
     """events_merged.jsonl 用の LOD0 レコード(affected_groups を含めない)。"""
-    return {
+    rec = {
         "name": ev["name"],
         "year": ev.get("year"),
         "effective_year": ev.get("effective_year"),
@@ -220,6 +224,10 @@ def lod0_record(ev: dict, source_models: list[str]) -> dict:
         "source_models": source_models,
         "source_urls": ev.get("source_urls", []),
     }
+    for k in PASSTHROUGH:
+        if k in ev:
+            rec[k] = ev[k]
+    return rec
 
 
 def merge_consensus(cg: dict, ge: dict, warnings: list) -> dict:
@@ -263,7 +271,7 @@ def merge_consensus(cg: dict, ge: dict, warnings: list) -> dict:
             return a if a is not None else b
         return avg(float(a), float(b))
 
-    return {
+    rec = {
         "name": name,
         "year": year,
         "effective_year": eff,
@@ -281,6 +289,10 @@ def merge_consensus(cg: dict, ge: dict, warnings: list) -> dict:
         "source_models": ["chatgpt", "gemini"],
         "source_urls": list(dict.fromkeys((cg.get("source_urls") or []) + (ge.get("source_urls") or []))),
     }
+    for k in PASSTHROUGH:   # grid 版フィールドを ChatGPT 側から通す(存在時のみ)
+        if k in cg:
+            rec[k] = cg[k]
+    return rec
 
 
 def expand_interpretations(event_name: str, ev: dict, source_model: str, country: str,
@@ -291,16 +303,22 @@ def expand_interpretations(event_name: str, ev: dict, source_model: str, country
         canon, changed = canonicalize_premise(raw)
         if changed:
             premise_changes.append((source_model, raw, canon))
-        # effect_emphasis は UK 版用フィールド。US では存在せず null。
-        emphasis = ag.get("effect_emphasis") if country != "us" else None
-        out.append({
+        # effect_emphasis は US/UK 共通(巴さん指摘)。データに無ければ None。
+        # (US v1 には存在しないので None のまま=既存出力は不変。grid 版では保持される)
+        emphasis = ag.get("effect_emphasis")
+        rec = {
             "event_name": event_name,
             "source_model": source_model,
             "premise": canon,
             "expected_mode": ag.get("expected_mode"),
             "rationale": ag.get("rationale"),
             "effect_emphasis": emphasis,
-        })
+        }
+        if ag.get("rationale_scope"):       # grid 版フィールド(v1 には無い→不変)
+            rec["rationale_scope"] = ag["rationale_scope"]
+        if ev.get("event_id"):              # 由来追跡用に event_id も載せる(存在時)
+            rec["event_id"] = ev["event_id"]
+        out.append(rec)
     return out
 
 

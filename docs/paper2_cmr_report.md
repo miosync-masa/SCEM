@@ -191,7 +191,7 @@ Paper 1 →(年齢同期された作用プロファイル)→ **Paper 2**(その
    "agreement": 0.5, "rationale_variants": ["...","..."]}
   ```
   → 「CMR は単一正解でなく分布」という Paper 2 の主張に昇格できる(現段階は honest な単一値+tie-break)。
-- **完全グリッド**:固定 Community × 固定 Event(US 8×12 / UK 9×12)で DeepResearch を再実行し `—` を消す(§7、`docs/paper2_grid_spec.md` に仕様)。
+- **完全グリッド**:固定 Community × 固定 Event(US 8×12 / UK 9×13、LGBT系分割)で DeepResearch を再実行し `—` を消す(§7、`docs/paper2_grid_spec.md` に仕様)。
 - **Code 数値化**:`code_factors` 等は別モジュールとして後回し(現状 rationale で主張を支えられる)。
 
 ---
