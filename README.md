@@ -84,7 +84,7 @@ arch -arm64 python3.12 lod_persona.py --country us --birth_year 1985 \
   --premise secular_white_coastal_graduate --variant grid
 ```
 
-> **データ収集メモ:** グリッドは ChatGPT × Gemini で構築したが、Gemini は出力破損が頻発(`recover_gemini_jsonl.py` で決定論復旧・捏造なし、各事象の先頭共同体を喪失)。**今後の第2観測者は Claude Research に置き換える**。既存 Gemini データは「当時こう解決できた」記録として保持する(公理4)。
+> **データ収集メモ:** グリッドは ChatGPT × Gemini で構築。Gemini は*内容*(rationale)は良質だが*梱包*が壊れる(出力のシリアライズ破損で各事象の先頭共同体を喪失。`recover_gemini_jsonl.py` で決定論復旧・捏造なし)。方針は **Gemini 全置換ではなく複数観測者化**:Gemini の回収済み内容は保持し(公理4)、破損で欠けた所を Claude で埋め、可能な所は **ChatGPT × Gemini × Claude** の追加観測者にする(置換ではなく追加)。
 
 ---
 
@@ -169,7 +169,7 @@ cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 
 次の課題:
 - **実証(Prolific パネル)**: プロファイル一致率・断絶境界・干渉特異性・CMR 解決モードの人手検証。
-- **第2観測者を Claude に置換**(Gemini の出力破損対策)。Gemini が落とした先頭共同体(US Coastal Liberal / UK London Multicultural)は **Claude で2観測者化済み**(`generate_claude_observer.py`、Claude×ChatGPT mode不一致 US6/UK2)。残り共同体への Claude 全面展開が次段階。
+- **複数観測者化(ChatGPT × Gemini × Claude)**:Gemini は内容良質・梱包破損(先頭共同体を喪失)。置換ではなく、欠けた所を Claude で補完(US Coastal Liberal / UK London Multicultural は **Claude で2観測者化済み**、`generate_claude_observer.py`、Claude×ChatGPT mode不一致 US6/UK2)。可能な所を3観測者へ拡張するのが次段階。
 - **Exposure Adapters / Dynamic SCEM**([`docs/exposure_adapters_spec.md`](docs/exposure_adapters_spec.md)): 実体曝露(統計・政策データ)と情報曝露(GDELT 等)を別系統で観測し Core で統合。**GDELT は本体に組み込まず Information Exposure Adapter 仕様に留める**(報道空間の波の観測であって実体曝露・個人内面の測定ではない)。まずは US/UK 完全グリッド版 CMR の確立を最優先。
 
 ---

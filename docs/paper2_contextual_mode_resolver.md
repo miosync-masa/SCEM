@@ -87,7 +87,7 @@ $(e, \pi)$ から作用モードを解決するのは、本研究では大規模
 
 両者のモード不一致は、事象が「出来事」と「意味」のどちらの相で受け止められたかの指標になる。**観測者依存性は、消すべきバイアスではなく、測るべき量である**(§5.1 で 49/48 件として定量化)。
 
-> **データ収集上の決定(2026-06-25)**:Gemini は出力のシリアライズ破損が頻発し(§7.1)、復旧のたびに先頭共同体を 1 つ失う。本研究のグリッドは ChatGPT × Gemini で構築したが、**今後の第 2 観測者は Claude Research に置き換える**。既存の Gemini データは「当時こう解決できた」記録として保持する(公理 4)。
+> **データ収集上の決定(2026-06-25)**:ここで Gemini の **内容と梱包を区別**する。Gemini の*判定内容*(rationale)は良質で、「社会的に何を意味したか」を捉える LOD1 寄り観測者として十分機能している(§5.2 の Brexit rationale 群がその例。cross-model 不一致 49/48 件=グリッドの測定可能性は ChatGPT × Gemini から生じている)。問題は*梱包*、すなわち出力のシリアライズ破損(復旧のたびに先頭共同体を 1 つ失う、§7.1)である。したがって方針は **Gemini の置換・破棄ではなく、複数観測者(multi-observer)化**:Gemini の回収済み内容は保持し、破損で欠けた箇所のみ Claude で補い、可能な箇所は **ChatGPT × Gemini × Claude** の追加観測者として扱う。
 
 ### 2.4 Honest Structuralism — 4 公理
 
@@ -173,7 +173,7 @@ DeepResearch 用の自己完結プロンプトは `docs/paper2_prompt_{us,uk}.md
 
 Gemini の出力は毎回シリアライズ破損し(`possible_modes` 空・`affected_groups` 配列崩壊)、決定論的修復器 `recover_gemini_jsonl.py` で復旧した。修復方針は **捏造しない**:premise を失った先頭共同体は解釈にせず、その rationale を `event_rationale_recovered` に退避する。結果、Gemini 側は **US 7/8・UK 8/9 共同体**しか回収できず、先頭の Coastal Liberal(US)/ London Multicultural(UK)は当初 **ChatGPT 単独**になった。
 
-**Claude による第 2 観測者補完(2026-06-25)。** この欠落を ChatGPT 単独のまま残さず、**Claude を第 2 観測者として当該 2 共同体に投入**した(`generate_claude_observer.py` → `Claude_events_*_grid.jsonl`)。Claude は各 (event, community) を共同体前提から **独立に**解決し(ChatGPT の解釈を写さない)、merge は Claude を **解釈のみの追加観測者**として畳み込む(LOD0 の数値属性は ChatGPT×Gemini のまま不変。`source_model="claude"`)。結果、Coastal Liberal / London Multicultural は **2 観測者化**され、ChatGPT の一律 REFRAME(退化した単一観測)に対し、Claude×ChatGPT のモード不一致が **US 6 件 / UK 2 件**観測された。これは Gemini オミット決定の第一歩であり、残り共同体への Claude 全面展開は将来課題(§7.1)。
+**Claude による第 2 観測者補完(2026-06-25)。** この欠落を ChatGPT 単独のまま残さず、**Claude を第 2 観測者として当該 2 共同体に投入**した(`generate_claude_observer.py` → `Claude_events_*_grid.jsonl`)。Claude は各 (event, community) を共同体前提から **独立に**解決し(ChatGPT の解釈を写さない)、merge は Claude を **解釈のみの追加観測者**として畳み込む(LOD0 の数値属性は ChatGPT×Gemini のまま不変。`source_model="claude"`)。結果、Coastal Liberal / London Multicultural は **2 観測者化**され、ChatGPT の一律 REFRAME(退化した単一観測)に対し、Claude×ChatGPT のモード不一致が **US 6 件 / UK 2 件**観測された。Claude は Gemini を**置換するのではなく補う**:Gemini の梱包破損で欠けた箇所を埋め、可能な箇所では将来 ChatGPT × Gemini × Claude の追加観測者として 3 観測者化しうる(§7.1)。
 
 ---
 
@@ -293,7 +293,7 @@ SCEM の出力は常に「ある出生年・共同体・嗜好・制度環境に
 
 ### 7.1 第 2 観測者の品質と置き換え
 
-Gemini は出力を毎回シリアライズ破損させ、決定論復旧でも各事象の先頭共同体を失った(US 7/8・UK 8/9)。先頭の Coastal Liberal / London Multicultural は当初 ChatGPT 単独となり観測者依存性が測れなかったが、**Claude を第 2 観測者として投入し 2 観測者化を完了した**(§4.3)。残る共同体は現状 ChatGPT×Gemini の 2 観測者であり、**第 2 観測者を全面的に Claude へ置き換える(Gemini オミット)** のが次段階である。merge パイプラインは Claude を解釈のみの追加観測者として畳み込めるため(`Claude_events_*.jsonl`)、全面展開でも LOD0 数値は保たれる。なお Claude 観測者の判定は本稿著者(Claude)による LLM-as-annotator であり、人手検証は Prolific(§7.3)に委ねる。
+Gemini は出力を毎回シリアライズ破損させ(梱包の問題であって判定内容の問題ではない、§2.3)、決定論復旧でも各事象の先頭共同体を失った(US 7/8・UK 8/9)。先頭の Coastal Liberal / London Multicultural は当初 ChatGPT 単独となり観測者依存性が測れなかったが、**Claude を第 2 観測者として投入し 2 観測者化を完了した**(§4.3)。残る共同体は現状 ChatGPT×Gemini の 2 観測者である。**方針は Gemini の置換ではなく複数観測者化**:Gemini の回収済み内容は保持しつつ、破損耐性のある Claude を追加し、可能な箇所を **ChatGPT × Gemini × Claude** の 3 観測者へ拡張する。merge パイプラインは Claude を解釈のみの追加観測者として畳み込めるため(`Claude_events_*.jsonl`)、拡張でも LOD0 数値は保たれる。なお Claude 観測者の判定は本稿著者(Claude)による LLM-as-annotator であり、人手検証は Prolific(§7.3)に委ねる。
 
 ### 7.2 「100%」の正しい読み方
 
