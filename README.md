@@ -72,6 +72,8 @@ python3 src/community_experiment.py
 
 ```
 README.md  ARCHITECTURE.md  requirements.txt  .env.example
+LOD_ARCHITECTURE.md          LOD と4戒律による解像度制御(Paper 2 理論基盤)
+lod_persona.py               LOD ペルソナ生成プロトタイプ(CSP / SAT-UNSAT, Paper 2 素材)
 
 src/
   media_generation_v4.py   構造層 計算コア(感受性カーブ/3モード/干渉/REFRAME/被り判定)
@@ -103,6 +105,7 @@ cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 - Prolific パネルによる実証(プロファイル一致率・断絶境界・干渉特異性)
 - **3C フレームワーク**: Culture / Community / **Code**(=共同体の「許可・禁止・黙認・推奨」の規範コード。プログラミング技能ではない)
 - **Contextual Mode Resolver**: 同一事象でも宗教・階層・地域規範・地政学的位置で作用モードが変わる。`Event.mode` を固定値でなく `Event × Community × Code → ResolvedImpact` として解決(海外版 SCEM の本丸)
+- **LOD アーキテクチャ**([`LOD_ARCHITECTURE.md`](LOD_ARCHITECTURE.md)): 曝露構造(LOD 0, 数理)からペルソナ(LOD 3, 解釈)までを解像度の階層として扱い、4戒律(Anchor Preservation / Non-overwrite / Projection Consistency / Provenance)を制約とする CSP として定式化。プロトタイプ [`lod_persona.py`](lod_persona.py) は LOD 制約を積んでペルソナを生成し、Projection Consistency と Axiom 違反で SAT/UNSAT を判定する(`arch -arm64 python3.12 lod_persona.py`)。
 
 ---
 
