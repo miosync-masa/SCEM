@@ -1,0 +1,1430 @@
+{
+  "country": "us",
+  "birth_year": 1985,
+  "cdi": 0.2524506775892995,
+  "profiles": {
+    "Coastal Liberal": {
+      "fingerprint": {
+        "P": 0.554,
+        "A": 0.343,
+        "R": 0.402
+      },
+      "interference": [
+        "Obama elected president / Obama当選 × Great Recession and Lehman Shock (2008 Financial Meltdown / リーマン・ショックと世界同時金融危機)",
+        "Afghanistan War begins / アフガニスタン戦争開始 × Columbine High School Massacre (1999 Gun Violence Inception / コロンバイン高校銃乱射事件と学校安全神話の崩壊)",
+        "USA PATRIOT Act / 愛国者法 × Columbine High School Massacre (1999 Gun Violence Inception / コロンバイン高校銃乱射事件と学校安全神話の崩壊)"
+      ],
+      "reframe": [
+        "trust_in_government_baseline",
+        "trust_in_government_baseline",
+        "digital_public_sphere_baseline"
+      ],
+      "mfr": 0.5857142857142857,
+      "cmrlog": [
+        {
+          "event": "Affordable Care Act / オバマケア成立",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ポータルサイトからの医療保険購入という新しい日常ルールを、ごく自然なインフラの変更として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Brown v. Board of Education / ブラウン判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Dobbs v. Jackson Women’s Health Organization / Dobbs判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Hurricane Katrina / ハリケーン・カトリーナ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "貧婚問題のシンボルとして悲劇的な気象災害のニュースを消費し、日常の常識として刷り込んで受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "January 6 Capitol attack / 連邦議会議事堂襲撃",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Loving v. Virginia / 異人種間結婚合法化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Montgomery Bus Boycott / モンゴメリー・バス・ボイコット",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Moon landing Apollo 11 / アポロ11号月面着陸",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "情報消費・仕事・交友の既定値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges / 同性婚全国合法化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Occupy Wall Street / オキュパイ運動",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Parkland shooting and March for Our Lives / パークランド銃乱射",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "当事者の高校生自身がSNSを使って全米デモを主導し、不作為の大人に対する怒りと銃暴力への許容基準値がリフレームされた",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Roe v. Wade / ロー対ウェイド判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 3,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Uvalde Robb Elementary shooting / ユヴァルディ銃乱射",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "繰り返される最悪の悲劇を絶望的な当たり前の風景（無力感の身体化）として消費し、日常を受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Voting Rights Act of 1965 / 投票権法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1973 Oil crisis / 第一次石油危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2020 election and mail voting dispute / 2020年選挙と郵便投票論争",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2024 presidential election and Trump return / 2024年大統領選・トランプ復帰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Afghanistan War begins / アフガニスタン戦争開始",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Afghanistan withdrawal / アフガニスタン撤退",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Americans with Disabilities Act / 障害者法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Bakke decision and affirmative action debate / バッキ判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Black Lives Matter hashtag begins / BLM起点",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Bush v. Gore and 2000 election dispute / 2000年大統領選挙訴訟",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Charlottesville Unite the Right rally / シャーロッツビル事件",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Citizens United decision / シチズンズ・ユナイテッド判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Clinton impeachment / クリントン弾劾",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Crack cocaine epidemic becomes national issue / クラック流行",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cuban Missile Crisis / キューバ危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Dot-com bubble peak / ドットコム・バブル",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Facebook launch and social networking / FacebookとSNS普及",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "情報消費・仕事・交友の既定値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Family separation at US border / 国境家族分離",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "多文化規範として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Ferguson unrest after Michael Brown / ファーガソン抗議",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Financial crisis and Lehman collapse / リーマンショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "First Trump impeachment / 第一次トランプ弾劾",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "George Floyd killing and BLM peak / ジョージ・フロイド後BLMピーク",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Gulf War / 湾岸戦争",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing bubble and subprime lending peak / 住宅バブル・サブプライム",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing price surge and affordability crisis / 住宅価格高騰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Inflation surge and gas prices / インフレ・ガソリン高",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "iPhone launch / iPhone登場",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "情報消費・仕事・交友の既定値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Iraq War begins / イラク戦争開始",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Israel-Hamas war and US campus protests / ガザ戦争と米大学抗議",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Kent State shootings / ケント州立大学銃撃",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "March on Washington and I Have a Dream / ワシントン大行進",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NAFTA passage / NAFTA成立",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Nixon ends gold convertibility / ニクソン・ショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "No Child Left Behind / 落ちこぼれ防止法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama elected president / Obama当選",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "PATCO strike firing / 航空管制官スト解雇",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Plaza Accord and dollar realignment / プラザ合意",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "市場ニュースや生活費変化として受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Reagan election and conservative turn / レーガン革命",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Rodney King beating and LA riots / ロドニー・キング事件とLA暴動",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Russia invades Ukraine / ロシアのウクライナ侵攻",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Same-sex marriage public majority and pre-Obergefell shift / 同性婚世論多数化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sputnik launch and space race shock / スプートニク・ショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Students for Fair Admissions decisions / 大学入試アファーマティブアクション判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "全国的規範の更新として日常的に受容されやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tea Party movement / ティーパーティー運動",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Telecommunications Act and media deregulation / 通信法改正",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "情報消費・仕事・交友の既定値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Trump elected president / Trump当選",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "TSA and airport security normalization / TSAと空港保安常態化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "USA PATRIOT Act / 愛国者法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Vietnam War escalation and draft / ベトナム戦争拡大と徴兵",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュース環境と移動安全規範として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Watergate and Nixon resignation / ウォーターゲートとニクソン辞任",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度信頼や市民規範の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "World Wide Web enters mass culture / ウェブ普及",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "情報消費・仕事・交友の既定値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "YouTube launch and online video norm / YouTube普及",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "情報消費・仕事・交友の既定値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Bill Clinton Presidential Election (1992 'It's the Economy, Stupid' / ビル・クリントン大統領選出と中道第三の道)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "団塊世代の若き大統領の登場により、カルチャーや政治の中道「第三の道」への基準が刷新される",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Black Lives Matter Inception (2013 Zimmerman Verdict / 『ブラック・ライブズ・マター』運動の創設と人種正義)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ネット上で拡散されるハッシュタグ（#BlackLivesMatter）を、当然の社会正義トレンドとして無意識のうちに受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Bush v. Gore / 2000 Election Crisis (Democracy Trust Controversy / 2000年大統領選挙紛争と最高裁判断)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "フロリダ票の再集計が最高裁の党派的判決によって打ち切られた姿を目撃し、民主的投票制度の正当性がリフレームされた",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Citizens United v. FEC (2010 Corporate Political Speech Landmark / 政治資金無制限化を認めた最高裁判決)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "企業による無制限の資金投下が言論の自由として認められ、民主的な選挙における個人の影響力に関する基準値が完全に冷笑化した",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Clinton Impeachment and Lewinsky Scandal (1998 Presidential Trust / クリントン大統領弾劾裁判とモラルの揺らぎ)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "個人の性的プライバシーと政治的パフォーマンスの境界、司法制度の濫用をめぐる倫理基準が冷笑的な形で書き換わる",
+          "source_model": "gemini"
+        },
+        {
+          "event": "COVID-19 Pandemic Lockdowns & Business Closures (2020 State of Emergency / 新型コロナウイルスパンデミックに伴う全米ロックダウン)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "リモートワーク、外出禁止、生命リスク。他者との接触頻度、医療行政の介入度に対する身体と衛生の基準が完全にリフレームされた",
+          "source_model": "gemini"
+        },
+        {
+          "event": "COVID-19 Vaccine Rollout and Mandates Polarization (2021 Polarization Crisis / ワクチン義務化と社会的分裂)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "科学的根拠に基づく集団接種は当然の公共義務。未接種者への社会的制限や、医療的社会防衛の基準を当然として再定義する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "DOMA Struck Down and Windsor Verdict (2013 LGBTQ Landmark Precursor / 連邦結婚保護法の否定と同性婚合法化の前哨戦)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "進歩するリベラル社会の自然な歴史的展開として違和感なく日常の一部として身体化し、受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Election of Barack Obama (2008 Racial Reframe / オバマ大統領選出と『Yes We Can』人種対立の変容)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ポスト・レイシズム（人種を超えた調和）の時代の幕開けを当然の歴史的進展として、日常の一部として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Emergence of the AIDS Crisis and Naming (1982 LGBTQ Crisis Peak / AIDS危機の本格化と社会的混乱)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "不治の病の噂をマスメディアを通じて恐ろしい出来事として耳にし、注意深く生きる日常として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "JFK Assassination (1963 National Trauma / ケネディ大統領暗殺事件と国民的喪失)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テレビ生中継による初の国民的トラウマであり、日常の一部として悲しみを身体化して受容した",
+          "source_model": "gemini"
+        },
+        {
+          "event": "NAFTA Agreement Signed (1994 Globalization Shift / 北米自由貿易協定の本格稼働と雇用のグローバル化)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "グローバルな効率化と安価な輸入品の恩恵を、自由貿易による経済発展という当たり前の常識として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Rise of Uber and Sharing Economy (2012 Gig Work Evolution / Uberの台頭とギグエコノミーによる労働の流動化)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "タクシーの代わりに個人アプリで車を呼ぶ便利で安価な体験を、当然の日常の都市型常識として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Rodney King Riots / LA Riots (1992 Social Justice Movement / ロドニー・キング判決とLA暴動)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テレビに映る激しい街の燃焼と暴動を、アメリカが抱える深い人種的傷跡として日常の延長で受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Waco Siege (1993 Federal Overreach Controversy / ウェーコ包囲事件と連邦政府への懐疑)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "カルト宗教と政府執行機関の対立の悲劇的な結末としてニュースを受け止め、連邦法の強制力として当たり前に受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Watergate Scandal and Resignation of Richard Nixon (1974 Distrust of Power / ウォーターゲート事件とニクソン大統領辞任)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "大統領が嘘をつき法を犯したことが白日の下に晒され、政府権力に対する健全な懐疑心の基準値が確立される",
+          "source_model": "gemini"
+        }
+      ]
+    },
+    "Bible Belt Evang": {
+      "fingerprint": {
+        "P": 0.564,
+        "A": 0.327,
+        "R": 0.436
+      },
+      "interference": [
+        "Iraq War begins / イラク戦争開始 × Invasion of Iraq (2003 Pre-emptive War Controversy / イラク戦争と予防戦争をめぐる世界的抗議)",
+        "Facebook launch and social networking / FacebookとSNS普及 × Great Recession and Lehman Shock (2008 Financial Meltdown / リーマン・ショックと世界同時金融危機)",
+        "YouTube launch and online video norm / YouTube普及 × Great Recession and Lehman Shock (2008 Financial Meltdown / リーマン・ショックと世界同時金融危機)"
+      ],
+      "reframe": [
+        "trust_in_government_baseline",
+        "trust_in_government_baseline",
+        "trust_in_government_baseline"
+      ],
+      "mfr": 0.2,
+      "cmrlog": [
+        {
+          "event": "Black Monday stock crash / ブラックマンデー",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "経済乱高下を遠くの出来事としてニュース上で受け止め、日常を受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Edward Snowden NSA disclosures / スノーデン暴露",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "対テロ対策の一環として致し方ない、または機密を漏洩した裏切り者のニュースとして受け止め、日常のルールとして受容した",
+          "source_model": "gemini"
+        },
+        {
+          "event": "O.J. Simpson trial verdict / OJシンプソン裁判",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テレビに映し出される人種的興奮と社会の分裂を、冷ややかに、当たり前のアメリカの分断の一部として身体化し受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Oklahoma City bombing / オクラホマシティ爆破事件",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "反政府過激思想による同胞殺戮の事実に愕然とし、行き過ぎた武装愛国主義への警戒が再定義され、基準が変化した",
+          "source_model": "gemini"
+        },
+        {
+          "event": "September 11 attacks / 9.11同時多発テロ",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "愛国心、結束、反テロ同盟、星条旗の掲揚など、日常の自明な防衛的空気として深く身体化し受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Deepwater Horizon Oil Spill (2010 Environmental Disaster / メキシコ湾原油流出事故と環境規制不信)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "地元の沿岸漁業や観光業への壊滅的打撃と、BPの事故責任を通じ、資本主義的開発の安全基準に対する信頼がリフレームされた",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Federal TikTok Ban Bill Signed (2024 Social Platform Geopolitics / TikTok強制売却・禁止法の署名成立)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "『中国共産党への情報流出を防ぐ当然の国家防衛の規制』としてテレビニュースの建前を無批判に受け入れ身体化する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "First Oil Crisis and Energy Panic (1973 Inflation Surge / 第一次オイルショックとエネルギー危機)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ガソリンスタンドの長蛇の列や日曜のガソリン販売規制を、日常的な生活制限として受け入れた",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Garn-St. Germain Depository Institutions Act (1982 Housing Finance Deregulation / 貯蓄貸付組合の自由化と住宅市場金融化)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "住宅ローンや不動産資金調達の仕組みが巧妙に変化していく流れを、日常の前提として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "George Floyd Murder & BLM Peak Protests (2020 Anti-racist Awakening / ジョージ・フロイド殺害事件とBLM大抗議運動)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "暴動や略奪への強い恐怖心から、警察予算削減への反対、治安の維持を叫ぶ対抗運動に深く動員",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Great Recession and Lehman Shock (2008 Financial Meltdown / リーマン・ショックと世界同時金融危機)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "生活保護の急増や節約生活を強いられるが、信仰のコミュニティ内の当たり前の助け合いとして受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Invasion of Iraq (2003 Pre-emptive War Controversy / イラク戦争と予防戦争をめぐる世界的抗議)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テロとの戦いの継続として政府の大義を当然の義務・愛国常識として無批判に刷り込まれ受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Kent State Shootings and Vietnam War Protest Peak (1970 Activism Crackdown / ケント州立大学銃撃事件と反戦運動の絶頂)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "「秩序を乱す過激派」に対する愛国的反発をベースに、ニクソンの『サイレント・マジョリティ』の一部として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Launch of Twitter (2006 Real-time Broadcast Shift / Twitterの登場と情報流通のリアルタイム化)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "ニュースが流れてくる短いタイムラインを、スマートフォンの常識の一部として特に意識せず受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Launch of YouTube (2005 UGC and Online Video Dawn / YouTubeの誕生とオンライン動画の普及)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "面白い動画、音楽、教会などの紹介映像を日常の一部として違和感なく受け入れ、身体化する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Nixon Shock / Gold Standard Abandonment (1971 Decoupling of Dollar / ニクソン・ショックと金本位制からの離脱)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "マクロ経済のルール変更を直接意識することなく、その後に訪れたスタグフレーションと物価高を日常として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Persian Gulf War (1991 Operation Desert Storm / 湾岸戦争とアメリカの圧倒的軍事力の再確認)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "生放送の戦闘映像を、絶対の正義とアメリカ軍の強さを当然の空気として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Post-Pandemic Inflation and Housing Price Surge (2021 Case-Shiller Peak / パンデミック後の超インフレと狂乱の住宅価格急騰)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "日用品、燃料、食料価格の激しい物価高騰と生活制限を、バイデン政権の失政として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Reagan Presidential Election and Conservative Triumph (1980 Reaganomics Beginning / レーガン大統領誕生と保守革命)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "『道徳的マジョリティ』としてのキリスト教保守派が国政の中心に立ち、信仰と愛国主義の結合が基準値として定着する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Savings and Loan Crisis Peak and Bailout (1989 Financial Crisis / S&L危機の露呈と金融救済法成立)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "地元の支店の統廃合を日常の中で目撃し、不況への備えの重要性を無意識的に受け入れる",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Silicon Valley Bank Collapse (2023 High-Tech Financial Run / シリコンバレー銀行の破綻とスタートアップ金融パニック)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "都市部のテックエリート達へのまたしても手厚い救済という諦念を抱きつつ、日常の景気サイクルとして受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Space Shuttle Challenger Disaster (1986 National Loss / スペースシャトル・チャレンジャー号爆発事故)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テレビ生中継中に起きた悲劇として日常的なショックを受け止め、悲しみを受容した",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Sputnik Launch and Shock (1957 Space Race Trigger / スプートニク・ショックと宇宙競争の幕開け)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "冷戦の危機感と宇宙時代の始まりというニュースを、日常の脅威・当たり前の空気として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Strong Dollar Peak & Fed Rate Hikes (2022 Global Monetary Tightening / FRBによる積極利上げとドル高のピーク)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "住宅ローンの利率変更の不利益を日常の景気不況の一部として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Subprime Mortgage Crisis Peak (2006 Foreclosure Waves / サブプライム住宅ローン危機の表面化と住宅バブルの崩壊)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "周囲の近所の差し押さえの看板が増えていく現実を、不景気の日常の景色として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Supreme Court Ends College Affirmative Action in SFFA v. Harvard (2023 Education Merit Shift / 最高裁による大学入試優遇措置の廃止判決)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "人種による優遇のない完全なカラーブラインドな社会の到来を、当然の政治的成果として身体化し受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Weak Dollar Low Point (2008 Aggressive Monetary Policy / 超低金利とドル指数の歴史的低水準)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "為替指数の乱高下は実感せず、ガソリンや食料品の値上がりを不況期における当然の生活の苦しさとして受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "WikiLeaks Disclosures and Manning Scandals (2010 Geopolitical Truth Leak / ウィキリークス外交電文リークとチェルシー・マニング事件)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "国家の機密を暴く反逆者としてのウィキリークスへの怒りを、当然の国益の防衛的観点から受容する",
+          "source_model": "gemini"
+        }
+      ]
+    },
+    "Rust Belt WWC": {
+      "fingerprint": {
+        "P": 0.567,
+        "A": 0.0,
+        "R": 0.0
+      },
+      "interference": [
+        "Iraq War begins / イラク戦争開始 × Invasion of Iraq (2003 Pre-emptive War Controversy / イラク戦争と予防戦争をめぐる世界的抗議)",
+        "September 11 attacks / 9.11同時多発テロ × Bush v. Gore and 2000 election dispute / 2000年大統領選挙訴訟",
+        "Bush v. Gore and 2000 election dispute / 2000年大統領選挙訴訟 × Columbine High School Massacre (1999 Gun Violence Inception / コロンバイン高校銃乱射事件と学校安全神話の崩壊)"
+      ],
+      "reframe": [],
+      "mfr": 0.0,
+      "cmrlog": []
+    },
+    "Black community": {
+      "fingerprint": {
+        "P": 0.598,
+        "A": 0.271,
+        "R": 0.395
+      },
+      "interference": [
+        "Iraq War begins / イラク戦争開始 × Invasion of Iraq (2003 Pre-emptive War Controversy / イラク戦争と予防戦争をめぐる世界的抗議)",
+        "Afghanistan War begins / アフガニスタン戦争開始 × Bush v. Gore / 2000 Election Crisis (Democracy Trust Controversy / 2000年大統領選挙紛争と最高裁判断)",
+        "USA PATRIOT Act / 愛国者法 × Bush v. Gore / 2000 Election Crisis (Democracy Trust Controversy / 2000年大統領選挙紛争と最高裁判断)"
+      ],
+      "reframe": [
+        "housing_affordability_baseline",
+        "racial_tension_baseline",
+        "racial_tension_baseline"
+      ],
+      "mfr": 0.30714285714285716,
+      "cmrlog": [
+        {
+          "event": "Affordable Care Act / オバマケア成立",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "既存症での保険加入制限撤廃と公的補助金により、生存安全のための医療アクセスへの生涯にわたる期待基準値が向上した",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Brown v. Board of Education / ブラウン判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Fall of the Berlin Wall / ベルリンの壁崩壊",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "地政学の大変革をテレビニュースの劇的な事件として見つめ、時代の新局面を受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Hurricane Katrina / ハリケーン・カトリーナ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "水没したニューオーリンズで見捨てられた黒人達の窮状を見て、政府の緊急管理能力と人種的ネグレクトへの失望がリフレームを誘発",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Loving v. Virginia / 異人種間結婚合法化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges / 同性婚全国合法化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Occupy Wall Street / オキュパイ運動",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Parkland shooting and March for Our Lives / パークランド銃乱射",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "都市部の日常の銃撃放置と異なり、裕福な白人郊外の時だけ全米運動化する格差への諦念を抱きつつ、日常の恐怖として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Sandy Hook Elementary shooting / サンディフック銃乱射",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "学校で常態化する恐怖心を身体化させながら、身辺保護の徹底を図る日常の一部として受け入れ受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Voting Rights Act of 1965 / 投票権法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1973 Oil crisis / 第一次石油危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Americans with Disabilities Act / 障害者法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Bakke decision and affirmative action debate / バッキ判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Black Lives Matter hashtag begins / BLM起点",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Dot-com bubble peak / ドットコム・バブル",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Ferguson unrest after Michael Brown / ファーガソン抗議",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Financial crisis and Lehman collapse / リーマンショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "George Floyd killing and BLM peak / ジョージ・フロイド後BLMピーク",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing bubble and subprime lending peak / 住宅バブル・サブプライム",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing price surge and affordability crisis / 住宅価格高騰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Inflation surge and gas prices / インフレ・ガソリン高",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "March on Washington and I Have a Dream / ワシントン大行進",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NAFTA passage / NAFTA成立",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Nixon ends gold convertibility / ニクソン・ショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "No Child Left Behind / 落ちこぼれ防止法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama elected president / Obama当選",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "PATCO strike firing / 航空管制官スト解雇",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Plaza Accord and dollar realignment / プラザ合意",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Rodney King beating and LA riots / ロドニー・キング事件とLA暴動",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Same-sex marriage public majority and pre-Obergefell shift / 同性婚世論多数化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Students for Fair Admissions decisions / 大学入試アファーマティブアクション判決",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "制度的権利や公民的帰属の基準値が直接書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Bill Clinton Presidential Election (1992 'It's the Economy, Stupid' / ビル・クリントン大統領選出と中道第三の道)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "「黒人初のシンパシー大統領」としてのクリントンを、日常的な黒人コミュニティの政治統合の流れの一部として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Black Lives Matter Inception (2013 Zimmerman Verdict / 『ブラック・ライブズ・マター』運動の創設と人種正義)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "トレイボン・マーティン射殺犯ジマーマンの無罪判決に直面し、白人による日常の超法規的暴力に抗する草の根人種抗議の権利基準値が確立された",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Bush v. Gore / 2000 Election Crisis (Democracy Trust Controversy / 2000年大統領選挙紛争と最高裁判断)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "もともと権力体制は公正ではないという諦観から、結果を当然の日常の出来事として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Columbine High School Massacre (1999 Gun Violence Inception / コロンバイン高校銃乱射事件と学校安全神話の崩壊)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "都市部のギャングや人種的暴力に比べ、白人郊外の銃乱射が突局大ニュースになる格差に複雑さを抱きつつ、日常のリスク増大として受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "COVID-19 Pandemic Lockdowns & Business Closures (2020 State of Emergency / 新型コロナウイルスパンデミックに伴う全米ロックダウン)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "エッセンシャルワーカーとして現場で働き続けなければ生きられない過酷さを、生命と労働の厳しさとして身体に刻み込んで受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "COVID-19 Vaccine Rollout and Mandates Polarization (2021 Polarization Crisis / ワクチン義務化と社会的分裂)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "かつての米国の不吉な医療実験の歴史などへの警戒と、実生活上必要な接種証明の狭間で、渋々刷り込まれ受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Donald Trump Presidential Election (2016 Red/Blue Polarization / ドナルド・トランプ大統領当選とポピュリズムの台頭)",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "白人至上主義的な揺り戻しを阻止すべく、街頭デモ、抵抗運動、寄付や反対票投下に強制的な行動を駆り立てられた",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Rodney King Riots / LA Riots (1992 Social Justice Movement / ロドニー・キング判決とLA暴動)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "黒人を暴行した警官の無罪判決と暴動の展開を見て、司法制度が本質的に不公正であるという前提・基準値へと書き換わる",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Supreme Court Ends College Affirmative Action in SFFA v. Harvard (2023 Education Merit Shift / 最高裁による大学入試優遇措置の廃止判決)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "数十年にわたるマイノリティの高等教育アクセスの機会保障制度が否定され、アメリカの『能力主義と人種機会』の公平基準値が最悪の形でリフレームされる",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Watergate Scandal and Resignation of Richard Nixon (1974 Distrust of Power / ウォーターゲート事件とニクソン大統領辞任)",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "権力構造はもともと汚職に満ちているという冷笑的な態度を当然のものとして受容する",
+          "source_model": "gemini"
+        },
+        {
+          "event": "Welfare Reform Act of 1996 (Personal Responsibility Legislation / 福祉改革法の成立と個人責任原則の徹底)",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "『働かなければ受け取れない福祉』への変更により、セーフティネットの期待基準値が崩壊し生存権への期待値が再定義された",
+          "source_model": "gemini"
+        }
+      ]
+    },
+    "Latino Immigrant": {
+      "fingerprint": {
+        "P": 0.604,
+        "A": 0.251,
+        "R": 0.316
+      },
+      "interference": [
+        "Iraq War begins / イラク戦争開始 × Invasion of Iraq (2003 Pre-emptive War Controversy / イラク戦争と予防戦争をめぐる世界的抗議)",
+        "Afghanistan War begins / アフガニスタン戦争開始 × Bush v. Gore / 2000 Election Crisis (Democracy Trust Controversy / 2000年大統領選挙紛争と最高裁判断)",
+        "USA PATRIOT Act / 愛国者法 × Bush v. Gore / 2000 Election Crisis (Democracy Trust Controversy / 2000年大統領選挙紛争と最高裁判断)"
+      ],
+      "reframe": [
+        "housing_affordability_baseline",
+        "housing_affordability_baseline",
+        "housing_affordability_baseline"
+      ],
+      "mfr": 0.09285714285714286,
+      "cmrlog": [
+        {
+          "event": "Occupy Wall Street / オキュパイ運動",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Uvalde Robb Elementary shooting / ユヴァルディ銃乱射",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "地域社会のヒスパニック系の子供達が犠牲になり、警官多数の不作為動画の流出により、警察の安全保障期待基準値が崩壊・リフレームされた",
+          "source_model": "gemini"
+        },
+        {
+          "event": "1973 Oil crisis / 第一次石油危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Dot-com bubble peak / ドットコム・バブル",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Family separation at US border / 国境家族分離",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "帰属・法的安全性・家族設計の基準値が直接変化する",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Financial crisis and Lehman collapse / リーマンショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing bubble and subprime lending peak / 住宅バブル・サブプライム",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing price surge and affordability crisis / 住宅価格高騰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Inflation surge and gas prices / インフレ・ガソリン高",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NAFTA passage / NAFTA成立",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Nixon ends gold convertibility / ニクソン・ショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "PATCO strike firing / 航空管制官スト解雇",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Plaza Accord and dollar realignment / プラザ合意",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "資産形成と住宅安全性の基準値が不平等経験として書き換わる",
+          "source_model": "chatgpt"
+        }
+      ]
+    }
+  }
+}

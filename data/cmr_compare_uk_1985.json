@@ -1,0 +1,1371 @@
+{
+  "country": "uk",
+  "birth_year": 1985,
+  "cdi": 0.12003788710481918,
+  "profiles": {
+    "London": {
+      "fingerprint": {
+        "P": 0.552,
+        "A": 0.348,
+        "R": 0.623
+      },
+      "interference": [
+        "Channel Crossings Small Boats Surge (英仏海峡小型ボート移民問題) × Cost of Living Crisis and House Price Surge (生活費危機と住宅価格再高騰)",
+        "New Labour landslide / ブレア政権成立 × Death of Diana, Princess of Wales (ダイアナ妃死去)",
+        "Queen Elizabeth II death / エリザベス2世崩御 × Cost of Living Crisis and House Price Surge (生活費危機と住宅価格再高騰)"
+      ],
+      "reframe": [
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline"
+      ],
+      "mfr": 0.2604166666666667,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / ロンドン同時爆破",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU enlargement migration / EU拡大後の移民増加",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Good Friday Agreement / 北アイルランド和平合意",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "英国政治の重要案件として認識するが、日常生活への直接作用は相対的に薄い",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Grenfell Tower fire / グレンフェル火災",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Suez Crisis / スエズ危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / ウィンドラッシュ・スキャンダル",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1975 EEC referendum / EEC残留国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1981 inner-city riots / ブリクストン等都市暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit transition ends / EU離脱完了",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Channel crossings become national issue / 小型ボート海峡横断問題",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Commonwealth Immigrants Act 1962 / 英連邦移民法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU referendum aftermath and hate-crime anxiety / Brexit直後の所属不安",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Help to Buy begins / Help to Buy開始",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "House price boom 1997-2007 / 住宅価格一次高騰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Maastricht Treaty and ERM crisis / マーストリヒトとERM危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Mini-budget and mortgage shock / ミニ予算と住宅ローンショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Notting Hill race riots / ノッティングヒル人種暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Powell Rivers of Blood speech / パウエル演説",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Record net migration debate / 純移民数記録と政治争点化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Right to Buy introduced / 公営住宅購入権",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "The Troubles intensify / 北アイルランド紛争の激化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "英国政治の重要案件として認識するが、日常生活への直接作用は相対的に薄い",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UK joins the EEC / EEC加盟",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UKIP and immigration politics surge / UKIP躍進と移民政治化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Middle Class": {
+      "fingerprint": {
+        "P": 0.571,
+        "A": 0.345,
+        "R": 0.623
+      },
+      "interference": [
+        "Channel Crossings Small Boats Surge (英仏海峡小型ボート移民問題) × Cost of Living Crisis and House Price Surge (生活費危機と住宅価格再高騰)",
+        "New Labour landslide / ブレア政権成立 × Death of Diana, Princess of Wales (ダイアナ妃死去)",
+        "Queen Elizabeth II death / エリザベス2世崩御 × Cost of Living Crisis and House Price Surge (生活費危機と住宅価格再高騰)"
+      ],
+      "reframe": [
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline"
+      ],
+      "mfr": 0.2708333333333333,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / ロンドン同時爆破",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU enlargement migration / EU拡大後の移民増加",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Good Friday Agreement / 北アイルランド和平合意",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "英国政治の重要案件として認識するが、日常生活への直接作用は相対的に薄い",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Grenfell Tower fire / グレンフェル火災",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Partygate scandal / パーティーゲート",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Suez Crisis / スエズ危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / ウィンドラッシュ・スキャンダル",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1975 EEC referendum / EEC残留国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1981 inner-city riots / ブリクストン等都市暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit transition ends / EU離脱完了",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Channel crossings become national issue / 小型ボート海峡横断問題",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Commonwealth Immigrants Act 1962 / 英連邦移民法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU referendum aftermath and hate-crime anxiety / Brexit直後の所属不安",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Help to Buy begins / Help to Buy開始",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "House price boom 1997-2007 / 住宅価格一次高騰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Maastricht Treaty and ERM crisis / マーストリヒトとERM危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Mini-budget and mortgage shock / ミニ予算と住宅ローンショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Notting Hill race riots / ノッティングヒル人種暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Powell Rivers of Blood speech / パウエル演説",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Record net migration debate / 純移民数記録と政治争点化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Right to Buy introduced / 公営住宅購入権",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "The Troubles intensify / 北アイルランド紛争の激化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "英国政治の重要案件として認識するが、日常生活への直接作用は相対的に薄い",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UK joins the EEC / EEC加盟",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UKIP and immigration politics surge / UKIP躍進と移民政治化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Working Class": {
+      "fingerprint": {
+        "P": 0.616,
+        "A": 0.513,
+        "R": 0.423
+      },
+      "interference": [
+        "Queen Elizabeth II death / エリザベス2世崩御 × Channel Crossings Small Boats Surge (英仏海峡小型ボート移民問題)",
+        "Good Friday Agreement / 北アイルランド和平合意 × Princess Diana death / ダイアナ妃死去",
+        "Queen Elizabeth II death / エリザベス2世崩御 × Cost of living and energy price crisis / 生活費・エネルギー危機"
+      ],
+      "reframe": [
+        "immigration_threshold_baseline",
+        "nhs_capacity_baseline",
+        "immigration_threshold_baseline"
+      ],
+      "mfr": 0.6041666666666666,
+      "cmrlog": [
+        {
+          "event": "Grenfell Tower fire / グレンフェル火災",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "家賃・購入不能・社会住宅不足が生活設計を直接変える",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list record crisis / NHS待機リスト記録的危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "地域医療アクセスと待機時間が生活安全の基準を変える",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Partygate scandal / パーティーゲート",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Queen Elizabeth II death / エリザベス2世崩御",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テレビ・新聞・公共儀礼を通じて全国的な集合記憶として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Suez Crisis / スエズ危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1973 oil crisis and inflation shock / オイルショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 global financial crisis / 2008金融危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2011 England riots / 2011年イングランド暴動",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2015 majority Conservative government / 保守党単独政権",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2024 general election and Starmer government / 2024総選挙・労働党政権",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Abolition of death penalty in Great Britain / 死刑廃止",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "AIDS crisis in the UK / AIDS危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity begins / 緊縮財政開始",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Beatlemania and 1960s youth culture / ビートルズと若者文化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Big Bang deregulation of the City / シティ金融ビッグバン",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "BSE mad cow disease crisis / BSE危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Channel Tunnel opens / 英仏海峡トンネル開通",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Charles III coronation / チャールズ3世戴冠",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テレビ・新聞・公共儀礼を通じて全国的な集合記憶として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Partnership Act / シビルパートナーシップ法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Climate Change Act 2008 / 気候変動法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Coal power phase-out completed / 石炭火力終了",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living and energy price crisis / 生活費・エネルギー危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "COVID-19 lockdown regulations / コロナ規制",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "地域医療アクセスと待機時間が生活安全の基準を変える",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "COVID vaccine rollout / ワクチン展開",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "地域医療アクセスと待機時間が生活安全の基準を変える",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Decimalisation of UK currency / 十進法通貨移行",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Devolution: Scotland and Wales / 分権改革",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "England wins the FIFA World Cup / 1966年W杯優勝",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Equality Act 2010 / 平等法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Falklands War / フォークランド戦争",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Foot-and-mouth disease outbreak / 口蹄疫",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Hong Kong handover / 香港返還",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Human Rights Act 1998 / 人権法",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Hunting Act / 狐狩り禁止",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "IMF crisis and sterling bailout / IMF危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Iraq War vote and invasion / イラク戦争",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "London 2012 Olympics / ロンドン五輪",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "London wins 2012 Olympics bid / ロンドン五輪決定",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Millennium Dome and new millennium / ミレニアム",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Miners strike / 炭鉱ストライキ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "MPs expenses scandal / 議員経費スキャンダル",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Net zero law / ネットゼロ法制化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "New Labour landslide / ブレア政権成立",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS post-austerity capacity strain / NHS緊縮後の逼迫",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "地域医療アクセスと待機時間が生活安全の基準を変える",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Poll Tax crisis / 人頭税危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Post-war rationing ends / 戦後配給終了",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Princess Diana death / ダイアナ妃死去",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "テレビ・新聞・公共儀礼を通じて全国的な集合記憶として身体化される",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Privatisation wave / 民営化の波",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Same-sex marriage legalised in England and Wales / 同性婚合法化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Section 28 enacted / セクション28",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "September 11 and UK security alignment / 9.11と対テロ同盟",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Thatcher election and market turn / サッチャー政権成立",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Top-up fees 3000 pounds / トップアップ授業料",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee cap reaches 9250 pounds / 授業料9250ポンド化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fees introduced / 大学授業料導入",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "University tuition cap raised to 9000 pounds / 大学授業料9000ポンド化",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Welfare Reform Act and benefits restructuring / 福祉改革",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Winter of Discontent / 不満の冬",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "旧工業地帯・低資格層では雇用、地域尊厳、階級帰属が同時に作用し、生活基準の参照点が書き換わる",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Univ-educated": {
+      "fingerprint": {
+        "P": 0.552,
+        "A": 0.349,
+        "R": 0.623
+      },
+      "interference": [
+        "Channel Crossings Small Boats Surge (英仏海峡小型ボート移民問題) × Cost of Living Crisis and House Price Surge (生活費危機と住宅価格再高騰)",
+        "New Labour landslide / ブレア政権成立 × Death of Diana, Princess of Wales (ダイアナ妃死去)",
+        "Queen Elizabeth II death / エリザベス2世崩御 × Cost of Living Crisis and House Price Surge (生活費危機と住宅価格再高騰)"
+      ],
+      "reframe": [
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline"
+      ],
+      "mfr": 0.2604166666666667,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / ロンドン同時爆破",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU enlargement migration / EU拡大後の移民増加",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Good Friday Agreement / 北アイルランド和平合意",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "英国政治の重要案件として認識するが、日常生活への直接作用は相対的に薄い",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Grenfell Tower fire / グレンフェル火災",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Suez Crisis / スエズ危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / ウィンドラッシュ・スキャンダル",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1975 EEC referendum / EEC残留国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1981 inner-city riots / ブリクストン等都市暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit transition ends / EU離脱完了",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Channel crossings become national issue / 小型ボート海峡横断問題",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Commonwealth Immigrants Act 1962 / 英連邦移民法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU referendum aftermath and hate-crime anxiety / Brexit直後の所属不安",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Help to Buy begins / Help to Buy開始",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "House price boom 1997-2007 / 住宅価格一次高騰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Maastricht Treaty and ERM crisis / マーストリヒトとERM危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Mini-budget and mortgage shock / ミニ予算と住宅ローンショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Notting Hill race riots / ノッティングヒル人種暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Powell Rivers of Blood speech / パウエル演説",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Record net migration debate / 純移民数記録と政治争点化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Right to Buy introduced / 公営住宅購入権",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "The Troubles intensify / 北アイルランド紛争の激化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 1,
+          "rationale": "英国政治の重要案件として認識するが、日常生活への直接作用は相対的に薄い",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UK joins the EEC / EEC加盟",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UKIP and immigration politics surge / UKIP躍進と移民政治化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Immigrant/Commonw": {
+      "fingerprint": {
+        "P": 0.592,
+        "A": 0.347,
+        "R": 0.623
+      },
+      "interference": [
+        "Channel Crossings Small Boats Surge (英仏海峡小型ボート移民問題) × Cost of Living Crisis and House Price Surge (生活費危機と住宅価格再高騰)",
+        "New Labour landslide / ブレア政権成立 × Death of Diana, Princess of Wales (ダイアナ妃死去)",
+        "Equality Act 2010 / 平等法 × 2008 Financial Crisis and Austerity (リーマンショックと緊縮財政)"
+      ],
+      "reframe": [
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline",
+        "housing_affordability_uk_baseline"
+      ],
+      "mfr": 0.25,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / ロンドン同時爆破",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU enlargement migration / EU拡大後の移民増加",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Grenfell Tower fire / グレンフェル火災",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Partygate scandal / パーティーゲート",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Suez Crisis / スエズ危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "都市中間層・移民二世では進学、職業、居住、所属の選択を迫る出来事として作用しやすい",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / ウィンドラッシュ・スキャンダル",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1975 EEC referendum / EEC残留国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "1981 inner-city riots / ブリクストン等都市暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit transition ends / EU離脱完了",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Channel crossings become national issue / 小型ボート海峡横断問題",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Commonwealth Immigrants Act 1962 / 英連邦移民法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "EU referendum aftermath and hate-crime anxiety / Brexit直後の所属不安",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Help to Buy begins / Help to Buy開始",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "House price boom 1997-2007 / 住宅価格一次高騰",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Maastricht Treaty and ERM crisis / マーストリヒトとERM危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Mini-budget and mortgage shock / ミニ予算と住宅ローンショック",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Notting Hill race riots / ノッティングヒル人種暴動",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Powell Rivers of Blood speech / パウエル演説",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Record net migration debate / 純移民数記録と政治争点化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Right to Buy introduced / 公営住宅購入権",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "高学歴都市層でも住宅取得が当然ではなくなり、都市滞留と移動の基準値が変わる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UK joins the EEC / EEC加盟",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "EU移動・就労・留学の不確実化により、進路や居住の意思決定を直接迫られる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "UKIP and immigration politics surge / UKIP躍進と移民政治化",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "多文化都市の中で所属・差別・市民性を再交渉する出来事になる",
+          "source_model": "chatgpt"
+        }
+      ]
+    }
+  }
+}

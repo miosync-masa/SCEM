@@ -77,6 +77,9 @@ lod_persona.py               LOD ペルソナ生成プロトタイプ(CSP / SAT-
 lod2_cluster.py              LOD2 戦略分岐を生成し cos クラスタリング(community_experiment と接続)
 merge_paper2_data.py         Paper 2 国別 event DB 統合(LOD0 事象 / LOD1 解釈を物理分離; --country us|uk)
 recover_gemini_jsonl.py      破損 Gemini 出力(txt)を決定論的に復旧(捏造なし。UK Gemini に使用)
+cmr_matrix.py                Same Event × Community → mode 変換マトリクス(Contextual Mode Resolver, Paper2)
+cmr_compare.py               Same Birth Year, Different Community 比較(指紋/MFR/CDI/CMRログ)
+make_paper2_figures.py       Paper2 Fig2(mode matrix)/ Fig3(community 指紋)生成
 
 src/
   media_generation_v4.py   構造層 計算コア(感受性カーブ/3モード/干渉/REFRAME/被り判定)
