@@ -233,7 +233,7 @@ def _call_llm(user_prompt: str) -> dict:
     raise RuntimeError(f"LLM 全 attempt 失敗: {last}")
 
 
-def build_user_prompt(c: LODConstraints, lod0: dict) -> str:
+def build_user_prompt(c: LODConstraints, lod0: dict, missing: Optional[list] = None) -> str:
     lines = [
         "## LOD 0(数理が計算した曝露構造 = 不動の骨格)",
         json.dumps(lod0, ensure_ascii=False, indent=2),
@@ -247,6 +247,19 @@ def build_user_prompt(c: LODConstraints, lod0: dict) -> str:
         "provenance で LOD0 事象への由来を明示(Axiom 4)してペルソナを生成してください。"
         "制約が LOD0 と矛盾する場合は status=UNSAT を返してください。",
     ]
+    if missing:
+        # 誘導された自己修正(directed self-correction): 前回の projection で
+        # provenance に現れなかった core 事象を差し戻し、今回は必ず含めさせる。
+        # これにより retry が「ブラインド再サンプリング」ではなく品質向上ループになる。
+        lines += [
+            "",
+            "## 【前回生成の不足 — Projection Consistency 未達(再生成)】",
+            "前回の provenance には、LOD0 の核となる事象のうち次が現れませんでした:",
+            "  " + " / ".join(missing),
+            "今回は上記の各事象について、それがこの人物に何歳でどう着弾し、指定の応答方向・"
+            "戦略にどう効くかを narrative と provenance に【必ず】明示してください(Axiom 3/4)。"
+            "ただし作り話で埋めず、LOD0 の事実(年齢・mode)に忠実に。",
+        ]
     return "\n".join(lines)
 
 
@@ -263,11 +276,13 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES) -> dict:
         return {"status": "UNSAT", "stage": "constraint_precheck",
                 "reason": reason, "attempts": 0, "persona": None}
 
-    # (2)(3) LLM 生成 + Projection 検証ループ
+    # (2)(3) LLM 生成 + Projection 検証ループ(誘導された自己修正つき)
     last_reason = None
     attempts = 0
+    missing = None          # 前回不足の core 事象。retry 時にプロンプトへ差し戻す。
+    rate_trace = []         # 各 attempt の projection 率(品質向上ループの可視化用)
     for attempts in range(1, max_retries + 1):
-        out = _call_llm(build_user_prompt(constraints, lod0))
+        out = _call_llm(build_user_prompt(constraints, lod0, missing))
 
         # (2) LLM 自己判定の UNSAT(Axiom 違反)
         if str(out.get("status", "")).upper() == "UNSAT":
@@ -277,17 +292,21 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES) -> dict:
 
         persona = out.get("persona") or out
         rate, matched, core = project_to_lod0(persona, lod0)
+        rate_trace.append(round(rate, 3))
 
         if rate >= PROJECTION_THRESHOLD:
             return {
                 "status": "SAT", "attempts": attempts, "persona": persona,
                 "projection": {
                     "rate": round(rate, 2), "threshold": PROJECTION_THRESHOLD,
-                    "matched": matched, "core": core,
+                    "matched": matched, "core": core, "rate_trace": rate_trace,
                 },
             }
+        # (3) 不足 core 事象を次回プロンプトへ差し戻す(directed self-correction)
+        missing = [name for name in core if name not in matched]
         last_reason = (f"Projection Consistency 不足: core事象 {len(matched)}/{len(core)} "
-                       f"({rate:.0%}) しか provenance に現れず(閾値 {PROJECTION_THRESHOLD:.0%})")
+                       f"({rate:.0%}) しか provenance に現れず(閾値 {PROJECTION_THRESHOLD:.0%})。"
+                       f"trace={rate_trace}")
 
     # (3) backstop: max_retries 超過
     return {"status": "UNSAT", "stage": "projection",
