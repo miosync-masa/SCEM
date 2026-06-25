@@ -24,7 +24,7 @@ import argparse
 import json
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent / "data"
+DATA = Path(__file__).resolve().parent.parent / "data"
 DEFAULT_MODES = ["PASSIVE", "ACTIVE", "REFRAME"]
 
 # 各 community(canonical premise)について {event_id: (mode, [effect_emphasis], rationale)}。

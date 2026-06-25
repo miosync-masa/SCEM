@@ -104,7 +104,7 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--title", required=True)
     args = ap.parse_args()
-    here = Path(__file__).resolve().parent
+    here = Path(__file__).resolve().parent.parent
     md = Path(args.md); md = md if md.is_absolute() else here / md
     out = Path(args.out); out = out if out.is_absolute() else here / out
     build(md, out, args.title)

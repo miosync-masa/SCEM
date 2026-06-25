@@ -38,7 +38,7 @@ from pathlib import Path
 from typing import Optional
 
 # Paper 1 エンジンは reorg 後 src/ にある。import only(無改変)。
-sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from dotenv import load_dotenv
 from openai import OpenAI
@@ -49,7 +49,7 @@ import media_generation_v5 as v5
 load_dotenv()
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
 
-DATA = Path(__file__).resolve().parent / "data"   # US/UK の merged / interpretations 置き場
+DATA = Path(__file__).resolve().parent.parent / "data"   # US/UK の merged / interpretations 置き場
 FORMATIVE_CAP = 22          # 社会接続期(18-22)の上限。これ以降に着弾した事象は人格形成アンカーになり得ない
 PROJECTION_THRESHOLD = 0.70  # §7.3 MVP の一致率閾値
 MAX_RETRIES = 3

@@ -25,12 +25,12 @@ import math
 from pathlib import Path
 
 import sys
-sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import media_generation_v4 as v4
 import media_generation_v5 as v5          # v4.mode_weight を個別peak版にパッチ
 import cmr_matrix as CM
 
-DATA = Path(__file__).resolve().parent / "data"
+DATA = Path(__file__).resolve().parent.parent / "data"
 MODE_PRIORITY = ["ACTIVE", "REFRAME", "PASSIVE"]
 US_DOMAIN_MAP = {
     "politics_institution": "POLITICS", "international_geopolitics": "GEOPOLITICS",

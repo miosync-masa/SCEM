@@ -24,7 +24,7 @@ import cmr_matrix as CM   # COMMUNITIES / EVENTS / premise_matches / MODE_ABBR �
 
 plt.rcParams["font.family"] = "Hiragino Sans"
 plt.rcParams["axes.unicode_minus"] = False
-DATA = Path(__file__).resolve().parent / "data"
+DATA = Path(__file__).resolve().parent.parent / "data"
 
 # mode → 色(単一)。混合は別色。
 MODE_COLOR = {"PAS": "#3b6fb0", "ACT": "#c0392b", "REF": "#2e8b57"}
@@ -110,7 +110,7 @@ def draw(country, title, variant="v1"):
               fontsize=9, frameon=False)
     fig.tight_layout()
     suffix = country if variant == "v1" else f"{country}_{variant}"
-    out = Path(__file__).resolve().parent / "figures" / f"fig_p2_modematrix_{suffix}.png"
+    out = Path(__file__).resolve().parent.parent / "figures" / f"fig_p2_modematrix_{suffix}.png"
     out.parent.mkdir(exist_ok=True)
     fig.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)

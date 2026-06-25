@@ -50,7 +50,7 @@ def main():
 
     src = Path(args.src)
     if not src.is_absolute():
-        src = Path(__file__).resolve().parent / src
+        src = Path(__file__).resolve().parent.parent / src
     lines = [l for l in src.read_text(encoding="utf-8").splitlines() if l.strip()]
 
     recovered, parse_fail = [], 0
@@ -85,7 +85,7 @@ def main():
 
     out = Path(args.out) if args.out else DATA / f"Gemini_events_{args.country}_v1.jsonl"
     if not out.is_absolute():
-        out = Path(__file__).resolve().parent / out
+        out = Path(__file__).resolve().parent.parent / out
     if out.exists():   # 既存の出力があれば .broken に退避(破損元 src は別物なので触らない)
         out.with_suffix(out.suffix + ".bak").write_text(out.read_text(encoding="utf-8"), encoding="utf-8")
     out.write_text("\n".join(json.dumps(o, ensure_ascii=False) for o in recovered) + "\n", encoding="utf-8")

@@ -165,9 +165,9 @@ UK も Brexit = **London:PASSIVE/ACTIVE、Immigrant/Commonwealth:ACTIVE/REFRAME*
 ## 8. 再現方法(全て LLM 不要・数理のみ)
 
 ```bash
-python3 cmr_matrix.py --country us            # mode 変換マトリクス(テキスト)
-python3 cmr_compare.py --country us --birth_year 1985   # Community 比較 + CMRログ + JSON
-python3 make_paper2_figures.py                # Fig 2 / Fig 3(figures/ へ)
+python3 src/cmr_matrix.py --country us            # mode 変換マトリクス(テキスト)
+python3 src/cmr_compare.py --country us --birth_year 1985   # Community 比較 + CMRログ + JSON
+python3 src/make_paper2_figures.py                # Fig 2 / Fig 3(figures/ へ)
 ```
 
 成果物: `figures/fig_p2_*.png`、`data/cmr_compare_{us,uk}_1985.json`。

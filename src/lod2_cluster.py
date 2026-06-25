@@ -23,12 +23,12 @@ import json
 import itertools
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import lod_persona as LP
 import community_experiment as CE   # cos / greedy_clusters / embed を再利用(LOD1〜2 と接続)
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 CACHE = ROOT / "cache" / "lod2_cluster_cache.json"
 BIRTH = 1981
 

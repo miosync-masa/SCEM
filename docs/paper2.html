@@ -406,18 +406,18 @@ GDELT のような大規模インフラは **本体の中核に置かず、Infor
 
 ```
 # マージ(両観測者統合)
-python3 merge_paper2_data.py --country us --variant grid
-python3 merge_paper2_data.py --country uk --variant grid
+python3 src/merge_paper2_data.py --country us --variant grid
+python3 src/merge_paper2_data.py --country uk --variant grid
 # モード変換マトリクス / MFR
-python3 cmr_matrix.py --country us --variant grid
-python3 cmr_matrix.py --country uk --variant grid
+python3 src/cmr_matrix.py --country us --variant grid
+python3 src/cmr_matrix.py --country uk --variant grid
 # 同年生まれ指紋 / CDI
-python3 cmr_compare.py --country us --variant grid
-python3 cmr_compare.py --country uk --variant grid
+python3 src/cmr_compare.py --country us --variant grid
+python3 src/cmr_compare.py --country uk --variant grid
 # 図(Fig1 マトリクス + Fig3 指紋)
-python3 make_paper2_figures.py
+python3 src/make_paper2_figures.py
 # ペルソナ(要 OpenAI: arch -arm64 python3.12)
-arch -arm64 python3.12 lod_persona.py --country us --birth_year 1985 \
+arch -arm64 python3.12 src/lod_persona.py --country us --birth_year 1985 \
   --response Fight --strategy "自分の選択で状況に介入する" \
   --premise secular_white_coastal_graduate --variant grid
 ```

@@ -16,7 +16,7 @@ import json
 import collections
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent / "data"
+DATA = Path(__file__).resolve().parent.parent / "data"
 
 # Community → premise トークンパターン(いずれかのトークン集合を全て含む premise が該当)
 COMMUNITIES = {

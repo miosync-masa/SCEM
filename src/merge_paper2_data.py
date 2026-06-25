@@ -31,7 +31,7 @@ import itertools
 from collections import Counter, defaultdict
 from pathlib import Path
 
-DATA = Path(__file__).resolve().parent / "data"
+DATA = Path(__file__).resolve().parent.parent / "data"
 
 # ── 必須カバー event(国別。英語 or 日本語の distinctive 部分文字列で在否チェック) ──
 #   US 固有事象(Roe/Dobbs/Obama 等)を UK に当てても無意味なので国別に分ける。
