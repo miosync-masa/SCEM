@@ -75,6 +75,7 @@ README.md  ARCHITECTURE.md  requirements.txt  .env.example
 LOD_ARCHITECTURE.md          LOD と4戒律による解像度制御(Paper 2 理論基盤)
 lod_persona.py               LOD ペルソナ生成プロトタイプ(CSP / SAT-UNSAT, Paper 2 素材)
 lod2_cluster.py              LOD2 戦略分岐を生成し cos クラスタリング(community_experiment と接続)
+merge_paper2_data.py         Paper 2 国別 event DB 統合(LOD0 事象 / LOD1 解釈を物理分離; --country us|uk)
 
 src/
   media_generation_v4.py   構造層 計算コア(感受性カーブ/3モード/干渉/REFRAME/被り判定)
@@ -91,6 +92,9 @@ src/
   build_html.py            docs/paper.md → 印刷用HTML(→PDF)
 
 data/    events_patched.jsonl   社会事象DB(日本, 156件, 出典URL付き)
+         events_{us}_v1.jsonl / Gemini_events_{us}_v1.jsonl  Paper2 入力(ChatGPT/Gemini DeepResearch)
+         events_us_merged.jsonl(LOD0)/ interpretations_us.jsonl(LOD1, source_model付)
+         disagreements_us.jsonl(観測者依存の証拠)/ merge_report_us.md
 docs/    paper1_media_generation.md  preprint 本文(全7章 + 付録A–D)
 figures/ fig2_cohort_fingerprint.png  fig3_music_disruption.png
 cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
