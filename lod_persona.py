@@ -32,6 +32,7 @@ from __future__ import annotations
 import os
 import sys
 import json
+import argparse
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
@@ -48,6 +49,7 @@ import media_generation_v5 as v5
 load_dotenv()
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
 
+DATA = Path(__file__).resolve().parent / "data"   # US/UK の merged / interpretations 置き場
 FORMATIVE_CAP = 22          # 社会接続期(18-22)の上限。これ以降に着弾した事象は人格形成アンカーになり得ない
 PROJECTION_THRESHOLD = 0.70  # §7.3 MVP の一致率閾値
 MAX_RETRIES = 3
@@ -63,6 +65,9 @@ class LODConstraints:
     lod2_strategy: Optional[str] = None      # "技術で攻める" 等
     lod3_context: Optional[dict] = None       # {profession, region, formative_anchor, ...}
     lod0_exposure: Optional[dict] = None      # None なら build_lod0_exposure で自動構築
+    country: str = "jp"                       # "jp"(Paper1 Japan) | "us" | "uk"
+    premise: Optional[str] = None             # us/uk のみ。個人の religion_race_region_education。
+                                              # None なら全premise集約(一般person)。
 
 
 # ───────────────────────────────────────────────
@@ -71,8 +76,14 @@ class LODConstraints:
 #     v5.load_events() → v4.analyze() → v5.mode_density()
 # ───────────────────────────────────────────────
 def build_lod0_exposure(birth_year: int, events=None) -> dict:
+    """Japan(Paper 1)LOD0。v5.load_events()(events_patched.jsonl)を既定で読む。"""
     if events is None:
         events = v5.load_events()
+    return _lod0_from_v4_events(birth_year, events)
+
+
+def _lod0_from_v4_events(birth_year: int, events) -> dict:
+    """v4.Event のリストから LOD0 プロファイルを構築(Japan/US 共通。Paper 1 エンジン無改変)。"""
     hits, interferences, reframe_fires, _overlap = v4.analyze(birth_year, events)
     dP = v5.mode_density(hits, v4.Mode.PASSIVE)
     dA = v5.mode_density(hits, v4.Mode.ACTIVE)
@@ -110,6 +121,97 @@ def build_lod0_exposure(birth_year: int, events=None) -> dict:
             for r in reframe_fires[:5]
         ],
     }
+
+
+# ───────────────────────────────────────────────
+# US/UK LOD0 = Contextual Mode Resolver(論文 §2.5)
+#   US merged は単一 mode を持たない(possible_modes のみ)。事象の mode は
+#   個人の premise で interpretations から解決される(Event × premise → ResolvedImpact)。
+#   解決済み mode で v4.Event を組み、既存 Paper 1 エンジン(v4.analyze)に投入する。
+# ───────────────────────────────────────────────
+from collections import Counter as _Counter
+
+_MODE_PRIORITY = ["ACTIVE", "REFRAME", "PASSIVE"]   # 不一致時のtie-break(決断強制を優先)
+
+# US ドメイン文字列 → v4.Domain(表示タグのみ。purified エンジンでは計算に非関与)
+_US_DOMAIN_MAP = {
+    "politics_institution": "POLITICS", "international_geopolitics": "GEOPOLITICS",
+    "media_technology": "MEDIA", "finance_assets": "FINANCE", "prices": "PRICE",
+    "education_system": "EDUCATION", "disaster_crisis": "DISASTER",
+    "economy_employment": "ECONOMY", "public_health": "HEALTH",
+    "platform": "PLATFORM", "lifestyle_culture": "LIFESTYLE",
+}
+
+
+def _resolve_mode(event_name: str, premise: Optional[str], interp_index: dict):
+    """Event × premise → ResolvedImpact の mode。
+    premise 指定: その premise の interpretation から解決。両モデル一致→確定、
+                  不一致→多数決+priority で tie-break(由来は disagreement に既出)。
+    premise None: その事象の全 interpretation(全premise・両モデル)を多数決で集約。
+    interpretation 無し: PASSIVE(ambient = 国家的事象への受動曝露の既定)。"""
+    cands = interp_index.get(event_name, [])
+    matched = [i for i in cands if (premise is None or i["premise"] == premise)]
+    if not matched:
+        return "PASSIVE", "default_ambient", None
+    cnt = _Counter(i["expected_mode"] for i in matched)
+    if len(cnt) == 1:
+        return next(iter(cnt)), "resolved_agree", None
+    best = sorted(cnt, key=lambda m: (-cnt[m], _MODE_PRIORITY.index(m) if m in _MODE_PRIORITY else 9))[0]
+    return best, "resolved_disagree", dict(cnt)
+
+
+def build_us_v4_events(country: str, premise: Optional[str]):
+    """events_{country}_merged.jsonl + interpretations_{country}.jsonl から
+    mode 解決済みの v4.Event リストを作る。返り値: (events, resolution_log)。"""
+    merged = [json.loads(l) for l in (DATA / f"events_{country}_merged.jsonl")
+              .read_text(encoding="utf-8").splitlines() if l.strip()]
+    interps = [json.loads(l) for l in (DATA / f"interpretations_{country}.jsonl")
+               .read_text(encoding="utf-8").splitlines() if l.strip()]
+    interp_index: dict = {}
+    for it in interps:
+        interp_index.setdefault(it["event_name"], []).append(it)
+
+    events, log = [], []
+    for o in merged:
+        mode, how, detail = _resolve_mode(o["name"], premise, interp_index)
+        dom_name = _US_DOMAIN_MAP.get(o.get("domain"), "POLITICS")
+        try:
+            dom = v4.Domain[dom_name]
+        except KeyError:
+            dom = v4.Domain.POLITICS
+        ev = v4.Event(
+            name=o["name"],
+            year=int(o.get("effective_year") or o.get("year")),   # 作用年で着弾年齢を計算
+            domain=dom,
+            mode=v4.Mode[mode],
+            agency=float(o.get("agency") or 0.3),
+            description="",
+            reframe_group=o.get("reframe_group"),
+            reference_value=o.get("reference_value"),
+            salience=float(o.get("salience") or 1.0),
+            effect_vector=dict(o.get("base_effect_vector") or {}),
+        )
+        # v5.patched_mode_weight が読む個別感受性ブリッジ属性
+        ev._peak_age = o.get("sensitivity_peak_age")   # type: ignore[attr-defined]
+        ev._spread = o.get("sensitivity_spread")        # type: ignore[attr-defined]
+        events.append(ev)
+        log.append((o["name"], mode, how))
+    return events, log
+
+
+def build_us_lod0(birth_year: int, country: str, premise: Optional[str]):
+    """US/UK LOD0 を構築。返り値: (lod0_dict, v4_events, resolution_log)。"""
+    events, log = build_us_v4_events(country, premise)
+    lod0 = _lod0_from_v4_events(birth_year, events)
+    how_counter = _Counter(h for _, _, h in log)
+    lod0["resolution"] = {
+        "country": country, "premise": premise or "(全premise集約)",
+        "events_total": len(events),
+        "resolved_agree": how_counter.get("resolved_agree", 0),
+        "resolved_disagree": how_counter.get("resolved_disagree", 0),
+        "default_ambient": how_counter.get("default_ambient", 0),
+    }
+    return lod0, events, log
 
 
 def core_anchor_events(lod0: dict) -> list[str]:
@@ -285,8 +387,16 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES,
           cumulative: bool = False) -> dict:
     """cumulative=False: 誘導された自己修正(毎回再生成。whack-a-mole あり)
        cumulative=True : 累積方式(最良ペルソナに不足分を追記。単調非減少を狙う)"""
-    events = v5.load_events()
-    lod0 = constraints.lod0_exposure or build_lod0_exposure(constraints.birth_year, events)
+    if constraints.country in ("us", "uk"):
+        # Contextual Mode Resolver(§2.5): premise で mode 解決 → US LOD0
+        if constraints.lod0_exposure:
+            lod0 = constraints.lod0_exposure
+            events, _log = build_us_v4_events(constraints.country, constraints.premise)
+        else:
+            lod0, events, _log = build_us_lod0(constraints.birth_year, constraints.country, constraints.premise)
+    else:
+        events = v5.load_events()
+        lod0 = constraints.lod0_exposure or build_lod0_exposure(constraints.birth_year, events)
 
     # (1) 決定論的 制約整合検査(未来矛盾)
     reason = check_constraints(constraints, events)
@@ -372,7 +482,31 @@ def print_result(title: str, constraints: LODConstraints, result: dict):
 
 
 # ───────────────────────────────────────────────
-if __name__ == "__main__":
+def run_cli(args):
+    by = args.birth_year or (1990 if args.country in ("us", "uk") else 1981)
+    c = LODConstraints(
+        birth_year=by, lod1_response=args.response, lod2_strategy=args.strategy,
+        country=args.country, premise=args.premise,
+    )
+    title = f"{args.country.upper()} {by} × {args.response} × {args.strategy}"
+    if args.premise:
+        title += f"  [premise={args.premise}]"
+    if args.country in ("us", "uk"):
+        lod0, _ev, _log = build_us_lod0(by, args.country, args.premise)
+        r = lod0["resolution"]
+        print("=" * 72)
+        print(f"  Contextual Mode Resolver — {r['country'].upper()}  premise={r['premise']}")
+        print("=" * 72)
+        print(f"  事象 {r['events_total']} 件の mode 解決: "
+              f"両モデル一致 {r['resolved_agree']} / 不一致tie-break {r['resolved_disagree']} / "
+              f"ambient既定PASSIVE {r['default_ambient']}")
+        print(f"  LOD0 指紋: PASSIVE {lod0['fingerprint']['PASSIVE']} / "
+              f"ACTIVE {lod0['fingerprint']['ACTIVE']} / REFRAME {lod0['fingerprint']['REFRAME']}\n")
+        c.lod0_exposure = lod0
+    print_result(title, c, solve(c, cumulative=args.cumulative))
+
+
+def run_japan_demos():
     # ── SAT: 1981年生まれ × Fight × 「技術で攻める」 ──
     sat = LODConstraints(
         birth_year=1981,
@@ -409,3 +543,20 @@ if __name__ == "__main__":
     )
     print_result("UNSAT 例(LLM自己判定): Flight自認 vs 構造的Fight(自己認識のズレ)",
                  mismatch, solve(mismatch))
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser(description="SCEM LOD ペルソナ生成(Japan/US/UK)")
+    ap.add_argument("--country", default="jp", help="jp(Paper1 Japan) | us | uk")
+    ap.add_argument("--birth_year", type=int, default=None)
+    ap.add_argument("--response", default=None, help="Fight | Flight")
+    ap.add_argument("--strategy", default=None)
+    ap.add_argument("--premise", default=None, help="us/uk: 個人の religion_race_region_education(省略=全premise集約)")
+    ap.add_argument("--cumulative", action="store_true", help="retry を累積方式に")
+    args = ap.parse_args()
+
+    # 引数が来たら単発実行。完全に無引数(jp/全None)なら従来の Japan デモスイート。
+    if args.country != "jp" or args.birth_year or args.response or args.strategy:
+        run_cli(args)
+    else:
+        run_japan_demos()

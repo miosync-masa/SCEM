@@ -202,7 +202,7 @@ event 単位の不一致は **「矛盾」ではない**。単一の多次元 FA
 - domain: 4 件
 - effective_year: 1 件
 
-## 必須カバー event 在否
+## 必須カバー event 在否(US)
 
 - [x] Roe v. Wade
 - [x] Dobbs

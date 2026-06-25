@@ -33,22 +33,26 @@ from pathlib import Path
 
 DATA = Path(__file__).resolve().parent / "data"
 
-# ── 必須カバー event(英語 or 日本語のいずれかの distinctive 部分文字列で在否チェック) ──
-REQUIRED = [
-    ("Roe v. Wade", ["Roe v. Wade", "ロー対ウェイド"]),
-    ("Dobbs", ["Dobbs"]),
-    ("Obergefell", ["Obergefell"]),
-    ("9.11 / September 11", ["September 11", "9.11", "9・11"]),
-    ("Lehman / リーマン", ["Lehman", "リーマン"]),
-    ("Obama当選", ["Obama elected", "Barack Obama", "Obama当選", "オバマ大統領選出"]),
-    ("BLM", ["Black Lives Matter", "BLM"]),
-    ("Trump当選", ["Trump elected", "Trump Presidential Election", "トランプ大統領当選", "Trump return"]),
-    ("コロナ規制", ["COVID-19 pandemic restrictions", "COVID-19 Pandemic Lockdowns", "コロナ規制", "ロックダウン"]),
-    ("銃乱射 (shooting)", ["shooting", "Shooting", "Massacre", "銃乱射", "銃撃"]),
-    ("AIDS", ["AIDS"]),
-    ("公民権法 / Civil Rights Act", ["Civil Rights Act", "公民権法"]),
-    ("投票権法 / Voting Rights Act", ["Voting Rights Act", "投票権法"]),
-]
+# ── 必須カバー event(国別。英語 or 日本語の distinctive 部分文字列で在否チェック) ──
+#   US 固有事象(Roe/Dobbs/Obama 等)を UK に当てても無意味なので国別に分ける。
+REQUIRED_BY_COUNTRY = {
+    "us": [
+        ("Roe v. Wade", ["Roe v. Wade", "ロー対ウェイド"]),
+        ("Dobbs", ["Dobbs"]),
+        ("Obergefell", ["Obergefell"]),
+        ("9.11 / September 11", ["September 11", "9.11", "9・11"]),
+        ("Lehman / リーマン", ["Lehman", "リーマン"]),
+        ("Obama当選", ["Obama elected", "Barack Obama", "Obama当選", "オバマ大統領選出"]),
+        ("BLM", ["Black Lives Matter", "BLM"]),
+        ("Trump当選", ["Trump elected", "Trump Presidential Election", "トランプ大統領当選", "Trump return"]),
+        ("コロナ規制", ["COVID-19 pandemic restrictions", "COVID-19 Pandemic Lockdowns", "コロナ規制", "ロックダウン"]),
+        ("銃乱射 (shooting)", ["shooting", "Shooting", "Massacre", "銃乱射", "銃撃"]),
+        ("AIDS", ["AIDS"]),
+        ("公民権法 / Civil Rights Act", ["Civil Rights Act", "公民権法"]),
+        ("投票権法 / Voting Rights Act", ["Voting Rights Act", "投票権法"]),
+    ],
+    # UK の必須リストは未設定(Brexit/NHS/Thatcher 等を環&masamichi が後で定義)。
+}
 
 # ── premise 正規化(religion_race_region_education 順)用カテゴリ辞書 ──
 RELIGION = {"evangelical", "mainline_protestant", "protestant", "secular",
@@ -83,6 +87,10 @@ ALIASES = {
     "occupy wall street movement": "occupy wall street",
     "generative ai boom and chatgpt public release": "chatgpt public release and generative ai shock",
     "affordable care act signed": "affordable care act",
+    # ── UK: 人間レビューで確定した同一事象(Gemini 形 → ChatGPT 形)──
+    "death of queen elizabeth ii": "queen elizabeth ii death",
+    "nhs waiting list crisis": "nhs waiting list record crisis",
+    "eu enlargement migration surge": "eu enlargement migration",
 }
 
 
@@ -165,7 +173,7 @@ def merge_effect_vectors(va: dict, vb: dict) -> dict:
             out[k] = avg(float(va[k]), float(vb[k]))
         else:
             out[k] = float(va.get(k, vb.get(k)))
-    return dict(sorted(out.items(), key=lambda kv: -kv[1]))
+    return dict(sorted(out.items(), key=lambda kv: (-kv[1], kv[0])))  # 同値はキー名で決定論化
 
 
 def pick_priority(a, b, order, default_first=True):
@@ -177,8 +185,19 @@ def pick_priority(a, b, order, default_first=True):
 # ───────────────────────────────────────────────
 # メイン
 # ───────────────────────────────────────────────
-def load_jsonl(path: Path) -> list[dict]:
-    return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+def load_jsonl(path: Path) -> tuple[list[dict], list[tuple]]:
+    """壊れた行はスキップして(rows, errors)を返す。DeepResearch 出力の不正行に頑健。
+    errors = [(行番号, 理由)]。"""
+    rows, errors = [], []
+    for ln, l in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        l = l.strip()
+        if not l:
+            continue
+        try:
+            rows.append(json.loads(l))
+        except json.JSONDecodeError as e:
+            errors.append((ln, str(e)[:60]))
+    return rows, errors
 
 
 def lod0_record(ev: dict, source_models: list[str]) -> dict:
@@ -297,8 +316,8 @@ def main():
         if not p.exists():
             raise SystemExit(f"[error] 入力が見つかりません: {p}")
 
-    cg_events = load_jsonl(cg_path)
-    ge_events = load_jsonl(ge_path)
+    cg_events, cg_err = load_jsonl(cg_path)
+    ge_events, ge_err = load_jsonl(ge_path)
     warnings: list = []
     premise_changes: list = []
 
@@ -426,17 +445,23 @@ def main():
     src_counter = Counter(it["source_model"] for it in interpretations)
     dis_counter = Counter(d["disagreement_type"] for d in disagreements)
     warn_counter = Counter(w[0] for w in warnings)
-    # 必須カバー
+    # 必須カバー(国別。未設定の国は N/A)
     all_names = [rec["name"] for _, rec, _ in merged_events]
     blob = " || ".join(all_names)
-    required_status = [(label, any(kw in blob for kw in kws)) for label, kws in REQUIRED]
+    required = REQUIRED_BY_COUNTRY.get(country, [])
+    required_status = [(label, any(kw in blob for kw in kws)) for label, kws in required]
 
     # ── merge_report ──
     L = []
     L.append(f"# Merge Report — Paper 2 {country.upper()} 版\n")
     L.append("## 入力\n")
-    L.append(f"- ChatGPT 版 (`{cg_path.name}`): **{len(cg_events)}** 件")
-    L.append(f"- Gemini 版 (`{ge_path.name}`): **{len(ge_events)}** 件\n")
+    L.append(f"- ChatGPT 版 (`{cg_path.name}`): **{len(cg_events)}** 件"
+             + (f" (JSON不正で{len(cg_err)}行スキップ)" if cg_err else ""))
+    L.append(f"- Gemini 版 (`{ge_path.name}`): **{len(ge_events)}** 件"
+             + (f" (JSON不正で{len(ge_err)}行スキップ)" if ge_err else "") + "\n")
+    if cg_err or ge_err:
+        L.append("> ⚠️ 入力に JSON 不正行あり(スキップ済)。捏造補修はしていない。"
+                 "二モデル統合には両ファイルの健全性が必要。\n")
     L.append("## マッチング結果\n")
     L.append(f"- consensus(両方で名前一致): **{len(consensus_keys)}** 件")
     L.append(f"- chatgpt_only: **{len(cg_only_keys)}** 件")
@@ -496,15 +521,20 @@ def main():
             L.append(f"- {t}: {c} 件")
     else:
         L.append("- (なし)")
-    L.append("\n## 必須カバー event 在否\n")
-    for label, ok in required_status:
-        L.append(f"- [{'x' if ok else ' '}] {label}")
+    L.append(f"\n## 必須カバー event 在否({country.upper()})\n")
+    if required_status:
+        for label, ok in required_status:
+            L.append(f"- [{'x' if ok else ' '}] {label}")
+    else:
+        L.append(f"- N/A({country.upper()} の必須リストは未設定)")
     rep_out.write_text("\n".join(L) + "\n", encoding="utf-8")
 
     # ── 標準出力(完了報告) ──
     print("=" * 64)
     print(f"  merge_paper2_data.py --country {country}  完了")
     print("=" * 64)
+    if cg_err or ge_err:
+        print(f"  ⚠️ JSON不正スキップ: chatgpt {len(cg_err)}行 / gemini {len(ge_err)}行(捏造補修なし)")
     print(f"[1] events_{country}_merged.jsonl: {len(merged_events)} 件 "
           f"(consensus {len(consensus_keys)} + singleton {len(cg_only_keys)+len(ge_only_keys)} "
           f"[chatgpt_only {len(cg_only_keys)} / gemini_only {len(ge_only_keys)}])")
@@ -522,9 +552,12 @@ def main():
     for j, a, b in jaccard_candidates:
         print(f"      {j}  「{a[:38]}」 ↔ 「{b[:38]}」")
     print(f"[5] warnings: {sum(warn_counter.values())} 件  " + dict(warn_counter).__repr__())
-    print(f"[6] 必須カバー: {sum(1 for _,ok in required_status if ok)}/{len(required_status)} 在")
-    for label, ok in required_status:
-        print(f"      {'✓' if ok else '✗'} {label}")
+    if required_status:
+        print(f"[6] 必須カバー: {sum(1 for _,ok in required_status if ok)}/{len(required_status)} 在")
+        for label, ok in required_status:
+            print(f"      {'✓' if ok else '✗'} {label}")
+    else:
+        print(f"[6] 必須カバー: N/A({country.upper()} の必須リスト未設定)")
     print(f"\n出力: {ev_out.name} / {int_out.name} / {dis_out.name} / {rep_out.name}")
 
 
