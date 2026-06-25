@@ -233,7 +233,8 @@ def _call_llm(user_prompt: str) -> dict:
     raise RuntimeError(f"LLM 全 attempt 失敗: {last}")
 
 
-def build_user_prompt(c: LODConstraints, lod0: dict, missing: Optional[list] = None) -> str:
+def build_user_prompt(c: LODConstraints, lod0: dict, missing: Optional[list] = None,
+                      best_persona: Optional[dict] = None) -> str:
     lines = [
         "## LOD 0(数理が計算した曝露構造 = 不動の骨格)",
         json.dumps(lod0, ensure_ascii=False, indent=2),
@@ -247,10 +248,24 @@ def build_user_prompt(c: LODConstraints, lod0: dict, missing: Optional[list] = N
         "provenance で LOD0 事象への由来を明示(Axiom 4)してペルソナを生成してください。"
         "制約が LOD0 と矛盾する場合は status=UNSAT を返してください。",
     ]
-    if missing:
-        # 誘導された自己修正(directed self-correction): 前回の projection で
-        # provenance に現れなかった core 事象を差し戻し、今回は必ず含めさせる。
-        # これにより retry が「ブラインド再サンプリング」ではなく品質向上ループになる。
+    if best_persona is not None and missing:
+        # 累積方式(cumulative augment best-so-far): whack-a-mole 対策。
+        # ゼロから再生成せず、これまでで最も LOD0 をカバーした最良ペルソナを土台に、
+        # 既存 provenance を一切削らず、不足 core 事象だけを追記させる(単調非減少)。
+        lines += [
+            "",
+            "## 【累積改善 — 直前までの最良ペルソナを土台に追記(削除厳禁)】",
+            "以下はこれまでで最も LOD0 をカバーしたあなたの生成です。",
+            json.dumps(best_persona, ensure_ascii=False, indent=2),
+            "この summary / narrative / provenance を【一字も削らず】保持したまま、",
+            "下記の不足 core 事象についてのみ、provenance に項目を追加し、narrative に",
+            "該当年齢での着弾を追記してください(既存の正しい紐づけは絶対に落とさない):",
+            "  " + " / ".join(missing),
+            "LOD0 の事実(年齢・mode)に忠実に。作り話で埋めない。",
+        ]
+    elif missing:
+        # 誘導された自己修正(directed self-correction, 再生成方式): 不足 core 事象を
+        # 差し戻して必ず含めさせる(ただし毎回ゼロから生成するため別事象を落とし得る=whack-a-mole)。
         lines += [
             "",
             "## 【前回生成の不足 — Projection Consistency 未達(再生成)】",
@@ -266,7 +281,10 @@ def build_user_prompt(c: LODConstraints, lod0: dict, missing: Optional[list] = N
 # ───────────────────────────────────────────────
 # CSP ソルバー本体: 制約検査 → LLM 生成 → Projection 検証ループ(§7.2)
 # ───────────────────────────────────────────────
-def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES) -> dict:
+def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES,
+          cumulative: bool = False) -> dict:
+    """cumulative=False: 誘導された自己修正(毎回再生成。whack-a-mole あり)
+       cumulative=True : 累積方式(最良ペルソナに不足分を追記。単調非減少を狙う)"""
     events = v5.load_events()
     lod0 = constraints.lod0_exposure or build_lod0_exposure(constraints.birth_year, events)
 
@@ -276,13 +294,18 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES) -> dict:
         return {"status": "UNSAT", "stage": "constraint_precheck",
                 "reason": reason, "attempts": 0, "persona": None}
 
-    # (2)(3) LLM 生成 + Projection 検証ループ(誘導された自己修正つき)
+    # (2)(3) LLM 生成 + Projection 検証ループ
     last_reason = None
     attempts = 0
     missing = None          # 前回不足の core 事象。retry 時にプロンプトへ差し戻す。
     rate_trace = []         # 各 attempt の projection 率(品質向上ループの可視化用)
+    best_persona, best_rate, best_matched = None, -1.0, []   # 累積方式の最良解
     for attempts in range(1, max_retries + 1):
-        out = _call_llm(build_user_prompt(constraints, lod0, missing))
+        prompt = build_user_prompt(
+            constraints, lod0, missing,
+            best_persona=best_persona if cumulative else None,
+        )
+        out = _call_llm(prompt)
 
         # (2) LLM 自己判定の UNSAT(Axiom 違反)
         if str(out.get("status", "")).upper() == "UNSAT":
@@ -294,18 +317,26 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES) -> dict:
         rate, matched, core = project_to_lod0(persona, lod0)
         rate_trace.append(round(rate, 3))
 
-        if rate >= PROJECTION_THRESHOLD:
+        # best-so-far 更新(累積方式は最良解を土台に追記していく)
+        if rate > best_rate:
+            best_rate, best_persona, best_matched = rate, persona, matched
+
+        # 採否は「これまでの最良」で判定(累積方式が単調になる)
+        eff_rate = best_rate if cumulative else rate
+        eff_persona = best_persona if cumulative else persona
+        eff_matched = best_matched if cumulative else matched
+        if eff_rate >= PROJECTION_THRESHOLD:
             return {
-                "status": "SAT", "attempts": attempts, "persona": persona,
+                "status": "SAT", "attempts": attempts, "persona": eff_persona,
                 "projection": {
-                    "rate": round(rate, 2), "threshold": PROJECTION_THRESHOLD,
-                    "matched": matched, "core": core, "rate_trace": rate_trace,
+                    "rate": round(eff_rate, 2), "threshold": PROJECTION_THRESHOLD,
+                    "matched": eff_matched, "core": core, "rate_trace": rate_trace,
                 },
             }
-        # (3) 不足 core 事象を次回プロンプトへ差し戻す(directed self-correction)
-        missing = [name for name in core if name not in matched]
-        last_reason = (f"Projection Consistency 不足: core事象 {len(matched)}/{len(core)} "
-                       f"({rate:.0%}) しか provenance に現れず(閾値 {PROJECTION_THRESHOLD:.0%})。"
+        # (3) 不足 core 事象を次回プロンプトへ差し戻す
+        missing = [name for name in core if name not in eff_matched]
+        last_reason = (f"Projection Consistency 不足: core事象 {len(eff_matched)}/{len(core)} "
+                       f"({eff_rate:.0%}) しか provenance に現れず(閾値 {PROJECTION_THRESHOLD:.0%})。"
                        f"trace={rate_trace}")
 
     # (3) backstop: max_retries 超過
