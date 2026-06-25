@@ -1,0 +1,439 @@
+{
+  "country": "us",
+  "birth_year": 1985,
+  "cdi": 0.32104991037835484,
+  "profiles": {
+    "Coastal Liberal": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.0,
+        "R": 0.461
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.9166666666666666,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "COVID Restrictions",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Dobbs Decision",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing Surge",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Lehman Shock",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Trump Election",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Bible Belt Evang": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.387,
+        "R": 0.0
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.16666666666666666,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Rust Belt WWC": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.387,
+        "R": 0.0
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.16666666666666666,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Black community": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.388,
+        "R": 0.462
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.5833333333333334,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "COVID Restrictions",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing Surge",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Latino Immigrant": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.387,
+        "R": 0.0
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.16666666666666666,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Mormon/Utah": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.387,
+        "R": 0.0
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.16666666666666666,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Suburban MC": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.092,
+        "R": 0.496
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.8333333333333334,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "COVID Restrictions",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing Surge",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Lehman Shock",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Trump Election",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Rural Conserv": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.387,
+        "R": 0.0
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.16666666666666666,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Representative interpretation from comparative social-history literature for thi",
+          "source_model": "chatgpt"
+        }
+      ]
+    }
+  }
+}

@@ -117,11 +117,13 @@ def draw(country, title, variant="v1"):
     print(f"[saved] {out.name}  (MFR {flips}/{covered}={mfr:.0%})")
 
 
-def draw_fingerprints(country, birth_year):
+def draw_fingerprints(country, birth_year, variant="v1"):
     """Figure 3: Same Birth Year, Different Community — 指紋(P/A/R)を Community 別に並べる。
-    cmr_compare_{country}_{by}.json(cmr_compare.py 出力)を読む。"""
+    cmr_compare_{country}_{by}[_grid].json(cmr_compare.py 出力)を読む。"""
     import numpy as np
-    src = DATA / f"cmr_compare_{country}_{birth_year}.json"
+    grid_mode = variant != "v1"
+    src = DATA / (f"cmr_compare_{country}_{birth_year}_grid.json" if grid_mode
+                  else f"cmr_compare_{country}_{birth_year}.json")
     if not src.exists():
         print(f"[skip fig3 {country}] {src.name} が無い(先に cmr_compare.py を実行)")
         return
@@ -139,11 +141,13 @@ def draw_fingerprints(country, birth_year):
     ax.set_xticks(x); ax.set_xticklabels(comms, fontsize=9.5, rotation=15, ha="right")
     ax.set_ylabel("作用モード密度(平均weight)")
     ax.set_title(f"Same Birth Year, Different Community — {country.upper()} {birth_year}年生まれ"
-                 f"\nContextual Divergence Index = {d['cdi']:.3f}", fontsize=12)
+                 + ("  [grid]" if grid_mode else "")
+                 + f"\nContextual Divergence Index = {d['cdi']:.3f}", fontsize=12)
     ax.legend(fontsize=9); ax.grid(axis="y", alpha=0.25)
     ax.set_ylim(0, max(P + A + R) * 1.2)
     fig.tight_layout()
-    out = DATA.parent / "figures" / f"fig_p2_fingerprints_{country}_{birth_year}.png"
+    suffix = f"{country}_{birth_year}" if not grid_mode else f"{country}_{birth_year}_grid"
+    out = DATA.parent / "figures" / f"fig_p2_fingerprints_{suffix}.png"
     fig.savefig(out, dpi=200); plt.close(fig)
     print(f"[saved] {out.name}")
 
@@ -155,3 +159,5 @@ if __name__ == "__main__":
     draw("uk", "Same Event × Community → Resolved Mode  [UK grid 9×13]", variant="grid")
     draw_fingerprints("us", 1985)
     draw_fingerprints("uk", 1985)
+    draw_fingerprints("us", 1985, variant="grid")
+    draw_fingerprints("uk", 1985, variant="grid")

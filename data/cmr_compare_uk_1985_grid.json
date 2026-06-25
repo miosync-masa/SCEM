@@ -1,0 +1,623 @@
+{
+  "country": "uk",
+  "birth_year": 1985,
+  "cdi": 0.33771214409740113,
+  "profiles": {
+    "London Multicult": {
+      "fingerprint": {
+        "P": 0.906,
+        "A": 0.438,
+        "R": 0.629
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Same-sex marriage legalization / 同性婚合法化"
+      ],
+      "reframe": [],
+      "mfr": 0.38461538461538464,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "Londonの公共交通と多文化都市の安全感が同時に揺らぎ、日常空間の基準値が書き換わった。移民二世には都市所属と監視される共同体の二重性として着弾した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "ロンドンの移民二世中産層には、公共サービス・奨学金・雇用機会の縮小として進路や政治参加を促した。都市内部の格差認識を強めた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 1,
+          "rationale": "ロンドン移民二世中産層には、家族の医療アクセス・民間医療利用・介護判断を迫った。NHSへの期待を維持しつつ代替策を考える能動的着弾である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "ロンドン多文化リベラル層には、学校で語れるものの範囲が変わる公教育コードの転換として着弾した。LGBTQの可視性が制度上の前提になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 1,
+          "rationale": "ロンドン移民二世中産層には、形式上の合法性だけでは所属が保証されないという基準変更として着弾した。国家書類と人種化された市民権の関係を再認識させた。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Home Counties MC": {
+      "fingerprint": {
+        "P": 1.151,
+        "A": 0.487,
+        "R": 0.0
+      },
+      "interference": [
+        "Austerity / 緊縮政策 × Same-sex marriage legalization / 同性婚合法化",
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.38461538461538464,
+      "cmrlog": [
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "Home Counties中産層では財政規律として受け止める余地があり、直接的生活危機としては弱かった。公共サービス縮小は背景的な国家運営コードになった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Home Counties中産層ではRemain/Leaveの分岐を含む明確な投票判断を迫った。資産・制度安定と主権認識を秤にかける能動的事件だった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Home Counties中産層には、公共サービス・住宅・国境管理をめぐる政策判断として作用した。投票や政党選好を再計算させる能動的争点になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Home Counties中産層ではNHS危機を認識しつつ、民間医療や資産で一部吸収できる。公共医療不安は背景化しやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Home Counties中産層には、連合王国の安定性を守るかどうかの政治的関心として着弾した。投票当事者でなくともユニオン維持の態度形成を促した。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "N.Post-indust": {
+      "fingerprint": {
+        "P": 1.089,
+        "A": 0.464,
+        "R": 0.603
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.46153846153846156,
+      "cmrlog": [
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北部労働者層には、地域の不満と主権回復を結びつける基準値の転換として着弾した。政治的に『声を取り戻す』経験になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北部労働者層には、暖房・食費・賃金の不足が生活基準そのものを下げた。階級的不安が日常の基準値として再固定された。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "COVID-19 lockdown / COVID-19 ロックダウン",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北部労働者層には、現場労働・健康格差・公共医療依存が重なり、安全と仕事の基準を変えた。階級ごとの感染リスク差が身体化された。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北部旧工業地帯では既存の脱工業化不安に金融危機が重なり、将来の雇用期待がさらに下方修正された。ロンドン金融中心モデルへの不信が強まった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北部労働者層では賃金・雇用・公共サービス圧迫の言説と接続しやすい。移民をめぐる政治的態度表明を促した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee rise to £9,000 / 大学授業料引き上げ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北部労働者層には、大学が階層上昇の当然経路ではなく債務リスクを伴う選択へ変わった。教育アクセスの基準値が書き換わった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Scotland": {
+      "fingerprint": {
+        "P": 1.018,
+        "A": 0.467,
+        "R": 0.621
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.38461538461538464,
+      "cmrlog": [
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "スコットランドでは緊縮がウェストミンスター批判と自治・独立論の燃料になった。地域政治の選択を迫る政策環境として着弾した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "スコットランド都市労働者層では、移民争点は英国全体の論争として届くが、独自の地域政治文脈に吸収されやすい。直接の基準書き換えはBrexitほど強くない。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "スコットランドでは独自NHS運営と英国全体の医療危機を比較する政治判断を促した。地域政府への評価と医療期待が結びついた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "スコットランド都市労働者層には、自分たちの国籍・福祉国家・将来を投票で定義する直接の基準変化だった。政治参加の意味そのものが書き換わった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee rise to £9,000 / 大学授業料引き上げ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "スコットランドは制度差があり、イングランドの授業料政治を距離を置いて見やすかった。むしろ地域制度の違いを背景的に強化した。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "NI Catholic": {
+      "fingerprint": {
+        "P": 1.361,
+        "A": 0.397,
+        "R": 0.708
+      },
+      "interference": [
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック共同体には、テロと国家治安の記憶が既存の紛争経験と重なった。暴力の意味づけと監視国家への距離感が再解釈された。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック労働者層には、公共部門依存と社会支援の削減をめぐる行動・抗議の契機になった。宗派間配分への感度も高めた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック労働者層には全国的景気後退として届いたが、宗派・地域政治の既存構造が解釈枠を保った。主作用は生活不安の背景化である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Same-sex marriage legalization / 同性婚合法化",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック共同体では宗教的家族観との調整が必要になり、態度表明を迫った。制度受容と教会規範の緊張が能動化した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック共同体には、連合王国からの離脱可能性が自らの国民的帰属の問いと共鳴した。統一アイルランド想像の参照点を動かした。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック共同体では、教育・宗教・家族規範をどう調停するかが共同体内で問われた。態度表明や学校選択を促す能動的着弾である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック共同体には、国家が所属を否認しうるという歴史的記憶と重なった。市民権の安全性への見方を再構成した。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "NI Protestant": {
+      "fingerprint": {
+        "P": 1.288,
+        "A": 0.462,
+        "R": 0.798
+      },
+      "interference": [
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル",
+        "NHS waiting-list crisis / NHS 待機リスト危機 × Windrush scandal / Windrush スキャンダル"
+      ],
+      "reframe": [],
+      "mfr": 0.6153846153846154,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント共同体にも、テロ対策と国家防衛の記憶が宗派的安全観と結びついた。英国国家への帰属と治安期待が再確認された。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント労働者層にも公共雇用・地域サービスへの圧力として届いた。共同体防衛と政策選好を能動化した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント共同体には、英国主権とユニオン維持をめぐる選択として作用した。支持・警戒のいずれにせよ政治的態度表明を迫った。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント労働者層にも家計・雇用不安として浸透したが、共同体所属の基準を直ちに書き換えるほどではなかった。危機は受動的な経済背景となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント共同体には、国境管理と英国主権の問題として能動的に響いた。共同体防衛と政策選好を結びつけた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Same-sex marriage legalization / 同性婚合法化",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント共同体にも宗教的規範との衝突として着弾した。共同体政治と家族観の防衛・再解釈を促した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント共同体には、ユニオンの耐久性を守る問題として政治的関与を促した。英国帰属の防衛感覚が強まった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント共同体にも、宗教的価値観と公教育内容の緊張として着弾した。制度変化への賛否を共同体内で意識させた。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "British Asian": {
+      "fingerprint": {
+        "P": 0.948,
+        "A": 0.43,
+        "R": 0.715
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "英国アジア系、とりわけムスリムを含む都市共同体には、公共空間での疑視と所属の問い直しとして着弾した。安全事件が人種化・宗教化された経験となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "英国アジア系中産層には、教育・公共部門職・家族扶助の戦略を見直す圧力になった。上昇移動の道筋を守るための意思決定を迫った。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "英国アジア系には、移民論争と国民帰属の再線引きとして着弾した。中産層であっても多文化英国の安全性が問い直された。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "英国アジア系中産層では、親世代の医療・介護をどう支えるかの判断が迫られた。家族責任と公共医療の境界を調整する事件になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Same-sex marriage legalization / 同性婚合法化",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "英国アジア系中産層には、リベラルな学校・職場コードと家族・宗教文化の調整を迫った。単なる背景でなく家庭内会話と態度形成を促す。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "英国アジア系中産層では、学校の包摂コードと家族・宗教文化の調整が課題になった。子どもの教育環境をどう理解するかの意思決定を促した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "英国アジア系には、移民二世・有色英国人の所属が条件付きにされうる事件として強く響いた。市民権と人種の関係を再定義させた。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Brexit LeaveTown": {
+      "fingerprint": {
+        "P": 1.216,
+        "A": 0.483,
+        "R": 0.658
+      },
+      "interference": [
+        "Cost of living crisis / 生活費危機 × Windrush scandal / Windrush スキャンダル",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル"
+      ],
+      "reframe": [],
+      "mfr": 0.6923076923076923,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Leaveタウン型の共同体では、移民・統合・治安をめぐる政治的態度表明を促す材料になった。後の移民規制要求へ接続しやすい能動的着弾である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Leaveタウン型共同体では、投票による意思表示と地域回復の選択として能動的に関与した。主権回復が政治的自己効力感の軸になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Leaveタウン型共同体では、Brexit後も生活が改善しないという失望と結びつき、政治的基準値を再び変えた。生活費危機は地域衰退感を固定した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Leaveタウンでは金融危機が『救済される都市金融、置き去りの地域』という参照点を固定した。後の反エリート政治の基盤として価値基準を書き換えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Leaveタウンでは移民論争が地域衰退の説明枠と結合し、投票・政治参加を促した。能動的な境界設定の争点になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Same-sex marriage legalization / 同性婚合法化",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Leaveタウン型保守層では、伝統的家族観への国家介入として受け止められやすい。文化政治への動員を促す能動的事件となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Leaveタウン型共同体には、主権・国民投票・中心からの離反という形式が強く響いた。後のBrexit的政治参加を準備する能動的経験になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Leaveタウン型保守層では、公教育が伝統的価値を変えるという警戒として受け止められやすい。学校・地域政治への態度表明を促した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee rise to £9,000 / 大学授業料引き上げ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Leaveタウン型の低資格層では、大学進学がさらに『自分たちの制度ではない』ものとして遠のいた。教育による上昇可能性の参照点が下がった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Univ Remain": {
+      "fingerprint": {
+        "P": 1.062,
+        "A": 0.496,
+        "R": 0.5
+      },
+      "interference": [
+        "Austerity / 緊縮政策 × Same-sex marriage legalization / 同性婚合法化",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "リベラル高学歴層には、多文化主義と市民的自由を守りつつ安全保障をどう扱うかという基準値の再編として着弾した。単なる危機ではなく統治コードの問題になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "Oxbridge系ロンドン層には政策論争として理解されやすく、生活基盤の崩壊ではなかった。統治・財政規律の背景コードとして受容されやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Oxbridge系ロンドン層には、自由移動・人権・多文化主義を守るべき政策争点として着弾した。反排外主義の態度表明を促した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Oxbridge系ロンドン層には、NHSの制度設計・財源・統治能力を問う政策課題として作用した。公的制度改革への態度形成を促した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Oxbridge系ロンドン層には、憲法秩序・国家設計・地域自治をめぐる政策判断を迫った。知的・政治的関与を促す直接イベントだった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "Oxbridge系ロンドン層には、市民権と教育の自由化を結ぶ基準値の転換として作用した。LGBTQ包摂が公的制度の当然条件へ近づいた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "Oxbridge系ロンドン層には、法の支配・人権・行政責任をめぐる政治的争点として着弾した。批判・支援・政策改革への関与を促した。",
+          "source_model": "chatgpt"
+        }
+      ]
+    }
+  }
+}

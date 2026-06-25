@@ -49,15 +49,19 @@ def _resolve(modes):
     return sorted(cnt, key=lambda m: (-cnt[m], MODE_PRIORITY.index(m) if m in MODE_PRIORITY else 9))[0]
 
 
-def load(country):
-    merged = [json.loads(l) for l in (DATA / f"events_{country}_merged.jsonl")
+def load(country, variant="v1"):
+    tag = country if variant == "v1" else f"{country}_{variant}"
+    merged = [json.loads(l) for l in (DATA / f"events_{tag}_merged.jsonl")
               .read_text(encoding="utf-8").splitlines() if l.strip()]
-    interps = [json.loads(l) for l in (DATA / f"interpretations_{country}.jsonl")
+    interps = [json.loads(l) for l in (DATA / f"interpretations_{tag}.jsonl")
                .read_text(encoding="utf-8").splitlines() if l.strip()]
-    idx = collections.defaultdict(list)
+    by_name = collections.defaultdict(list)
+    by_eid = collections.defaultdict(list)
     for it in interps:
-        idx[it["event_name"]].append(it)
-    return merged, idx
+        by_name[it["event_name"]].append(it)
+        if it.get("event_id"):
+            by_eid[it["event_id"]].append(it)
+    return merged, by_name, by_eid
 
 
 def make_event(o, mode):
@@ -79,16 +83,23 @@ def make_event(o, mode):
     return ev
 
 
-def community_profile(birth_year, merged, idx, patterns):
-    """1 Community の解決済 LOD0 + CMR ログ。"""
+def community_profile(birth_year, merged, by_name, by_eid, spec, grid_mode=False):
+    """1 Community の解決済 LOD0 + CMR ログ。
+    v1: spec=トークンパターン(premise_matches)。grid: spec=正準premise文字列(完全一致, event_idで照合)。"""
+    def interps_of(o):
+        return by_eid.get(o["event_id"], []) if grid_mode else by_name.get(o["name"], [])
+
+    def is_match(premise):
+        return (premise == spec) if grid_mode else CM.premise_matches(premise, spec)
+
     events, cmrlog = [], []
     for o in merged:
-        all_modes = [i["expected_mode"] for i in idx.get(o["name"], []) if i.get("premise")]
+        all_modes = [i["expected_mode"] for i in interps_of(o) if i.get("premise")]
         # base_mode_majority = 全premise解釈の最頻mode。
         # (注: US/UK merged は単一の base_mode_event を持たない=possible_modes のみ。
         #  ゆえに flip 判定の基準は base_mode_majority に固定する。)
         base_majority = _resolve(all_modes)
-        matched = [i for i in idx.get(o["name"], []) if i.get("premise") and CM.premise_matches(i["premise"], patterns)]
+        matched = [i for i in interps_of(o) if i.get("premise") and is_match(i["premise"])]
         comm_modes = [i["expected_mode"] for i in matched]
         resolved = _resolve(comm_modes) or "PASSIVE"   # 該当無→ambient PASSIVE
         events.append(make_event(o, resolved))
@@ -105,7 +116,7 @@ def community_profile(birth_year, merged, idx, patterns):
     dR = v5.mode_density(hits, v4.Mode.REFRAME)
     # MFR: base集約modeを持つ全事象のうち、resolvedがbaseと変わった割合
     flips = sum(1 for e in cmrlog)
-    have_base = sum(1 for o in merged if _resolve([i["expected_mode"] for i in idx.get(o["name"], []) if i.get("premise")]))
+    have_base = sum(1 for o in merged if _resolve([i["expected_mode"] for i in interps_of(o) if i.get("premise")]))
     return {
         "fingerprint": {"P": dP["mean"], "A": dA["mean"], "R": dR["mean"]},
         "interference": [f"{it['pair'][0]} × {it['pair'][1]}" for it in interf[:3]],
@@ -129,17 +140,20 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--country", default="us")
     ap.add_argument("--birth_year", type=int, default=1985)
+    ap.add_argument("--variant", default="v1", help="v1 | grid")
     args = ap.parse_args()
     c, by = args.country, args.birth_year
-    merged, idx = load(c)
-    comms = CM.COMMUNITIES[c]
+    grid_mode = args.variant != "v1"
+    merged, by_name, by_eid = load(c, args.variant)
+    comms = CM.COMMUNITIES_GRID[c] if grid_mode else CM.COMMUNITIES[c]
 
     profiles = {}
-    for name, pats in comms:
-        profiles[name] = community_profile(by, merged, idx, pats)
+    for name, spec in comms:
+        profiles[name] = community_profile(by, merged, by_name, by_eid, spec, grid_mode)
 
     print("=" * 92)
-    print(f"  Same Birth Year, Different Community — {c.upper()} {by}年生まれ")
+    print(f"  Same Birth Year, Different Community — {c.upper()} {by}年生まれ"
+          + ("  [grid]" if grid_mode else ""))
     print("=" * 92)
     print(f"\n  {'Community':<20}{'PASSIVE':>9}{'ACTIVE':>9}{'REFRAME':>9}{'MFR':>7}   支配")
     for name, p in profiles.items():
@@ -158,7 +172,8 @@ def main():
                   f"[{e['source_model']}] {e['rationale'][:40]}")
 
     # JSON 保存(Paper 2 素材)
-    out = DATA / f"cmr_compare_{c}_{by}.json"
+    suffix = f"{c}_{by}" if not grid_mode else f"{c}_{by}_grid"
+    out = DATA / f"cmr_compare_{suffix}.json"
     out.write_text(json.dumps({"country": c, "birth_year": by, "cdi": cdi(profiles),
                                "profiles": profiles}, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"\n[saved] {out.name}")
