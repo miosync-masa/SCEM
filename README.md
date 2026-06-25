@@ -74,6 +74,7 @@ python3 src/community_experiment.py
 README.md  ARCHITECTURE.md  requirements.txt  .env.example
 LOD_ARCHITECTURE.md          LOD と4戒律による解像度制御(Paper 2 理論基盤)
 lod_persona.py               LOD ペルソナ生成プロトタイプ(CSP / SAT-UNSAT, Paper 2 素材)
+lod2_cluster.py              LOD2 戦略分岐を生成し cos クラスタリング(community_experiment と接続)
 
 src/
   media_generation_v4.py   構造層 計算コア(感受性カーブ/3モード/干渉/REFRAME/被り判定)
