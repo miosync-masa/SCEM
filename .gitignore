@@ -20,6 +20,7 @@ __pycache__/
 venv/
 
 # ── generated artifacts (regenerable) ──
-paper1.html
+# 論文HTML(paper1.html/paper2.html)は build_paper_html.py で再生成可だが、
+# 配布用成果物として追跡する。
 persona_*.json
 culture_result_*.json
