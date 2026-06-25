@@ -9,7 +9,8 @@
 
 マーケティングの「Z世代論」が抱える三つの欠陥——恣意的なカットオフ・反証不能性・出生年への単一還元——を、計算可能で反証可能なモデルで置き換える。Mannheim (1928) の定性的世代論を計算可能にし、Strauss & Howe (1991) の恣意的カットオフを連続関数に置き換える。
 
-- 📄 論文(preprint draft, 日本語): [`docs/paper1_media_generation.md`](docs/paper1_media_generation.md)
+- 📄 Paper 1(preprint draft, 日本語): [`docs/paper1_media_generation.md`](docs/paper1_media_generation.md) · [HTML](docs/paper1.html)
+- 📄 Paper 2 — Contextual Mode Resolver(海外版, draft): [`docs/paper2_contextual_mode_resolver.md`](docs/paper2_contextual_mode_resolver.md) · [HTML](docs/paper2.html)
 - 🏛 正典アーキテクチャ(v6 FIXED): [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ---
@@ -46,6 +47,47 @@
 
 ---
 
+## Paper 2 — Contextual Mode Resolver(同一事象の文脈依存変換)
+
+Paper 1 では各事象に**単一の作用モード**を固定していた。だがモードは事象に固有ではない。**同じ「Brexit」が、ロンドン移民二世中産層には所属基準の書き換え(REFRAME)として、Leave タウンの労働者層には投票による意思表示(ACTIVE)として着弾する。** Paper 2 は `Event.mode` を固定値から作用素 **`Event × Premise → ResolvedImpact`(Contextual Mode Resolver, CMR)** へ持ち上げる。
+
+二つの独立な LLM 観測者(ChatGPT / Gemini)に固定 premise 上でモードを判定させ、不一致を消さず **observer-dependence として測る**。生成は **Honest Structuralism の4公理**(Anchor Preservation / Non-overwrite / Projection Consistency / Provenance)と CSP/SAT-UNSAT で数理アンカーに縛る。
+
+**設計された完全比較グリッド(designed comparison matrix):**
+
+| | 共同体 × 事象 | セル | Event-MFR | Cell-MFR | 観測者間モード不一致 | CDI |
+|---|---|---|---|---|---|---|
+| **US grid** | 8 × 12 | 96 | 12/12 = **100%** | 74% | 49 | 0.321 |
+| **UK grid** | 9 × 13 | 117 | 13/13 = **100%** | 63% | 48 | 0.338 |
+
+> Event-level MFR は **選定した高争点事象集合**での値(ランダムな全社会事象の母数ではない)。
+
+**主要結果:**
+- **同一事象の共同体間モード分岐**(Brexit: London=REFRAME / Leave Town=ACTIVE / NI Protestant=ACTIVE / Scotland=REFRAME)。
+- **同年生まれ・別共同体**で世代指紋が反転(US: Coastal Liberal=REFRAME支配 ⇄ Bible Belt=ACTIVE支配、CDI 0.32–0.34)。
+- **同一入力ペルソナの分岐**:1985生まれ・Fight 固定で premise だけ変えると provenance が体系的に割れる(Coastal は全REFRAME、Bible Belt は 9.11 を ACTIVE 分岐として引き受ける)。`data/personas_grid/`。
+
+![Paper2 US mode matrix](figures/fig_p2_modematrix_us_grid.png)
+
+![Paper2 UK mode matrix](figures/fig_p2_modematrix_uk_grid.png)
+
+```bash
+# 二観測者マージ → モード変換マトリクス / 同年生まれ指紋 / 図
+python3 merge_paper2_data.py --country us --variant grid
+python3 cmr_matrix.py        --country us --variant grid
+python3 cmr_compare.py       --country us --variant grid
+python3 make_paper2_figures.py
+
+# CMR ペルソナ(要 OpenAI; 同一入力・premise だけ変える)
+arch -arm64 python3.12 lod_persona.py --country us --birth_year 1985 \
+  --response Fight --strategy "自分の選択で状況に介入する" \
+  --premise secular_white_coastal_graduate --variant grid
+```
+
+> **データ収集メモ:** グリッドは ChatGPT × Gemini で構築したが、Gemini は出力破損が頻発(`recover_gemini_jsonl.py` で決定論復旧・捏造なし、各事象の先頭共同体を喪失)。**今後の第2観測者は Claude Research に置き換える**。既存 Gemini データは「当時こう解決できた」記録として保持する(公理4)。
+
+---
+
 ## クイックスタート
 
 ```bash
@@ -77,9 +119,10 @@ lod_persona.py               LOD ペルソナ生成プロトタイプ(CSP / SAT-
 lod2_cluster.py              LOD2 戦略分岐を生成し cos クラスタリング(community_experiment と接続)
 merge_paper2_data.py         Paper 2 国別 event DB 統合(LOD0 事象 / LOD1 解釈を物理分離; --country us|uk)
 recover_gemini_jsonl.py      破損 Gemini 出力(txt)を決定論的に復旧(捏造なし。UK Gemini に使用)
-cmr_matrix.py                Same Event × Community → mode 変換マトリクス(Contextual Mode Resolver, Paper2)
-cmr_compare.py               Same Birth Year, Different Community 比較(指紋/MFR/CDI/CMRログ)
-make_paper2_figures.py       Paper2 Fig2(mode matrix)/ Fig3(community 指紋)生成
+cmr_matrix.py                Same Event × Community → mode 変換マトリクス(--variant v1|grid)
+cmr_compare.py               Same Birth Year, Different Community 比較(指紋/MFR/CDI; --variant v1|grid)
+make_paper2_figures.py       Paper2 mode matrix / community 指紋 図(v1 + grid)
+build_paper_html.py          docs/*.md → 投稿体裁の単一HTML(marked.js + MathJax)
 
 src/
   media_generation_v4.py   構造層 計算コア(感受性カーブ/3モード/干渉/REFRAME/被り判定)
@@ -96,13 +139,17 @@ src/
   build_html.py            docs/paper.md → 印刷用HTML(→PDF)
 
 data/    events_patched.jsonl   社会事象DB(日本, 156件, 出典URL付き)
-         events_{us}_v1.jsonl / Gemini_events_{us}_v1.jsonl  Paper2 入力(ChatGPT/Gemini DeepResearch)
-         events_us_merged.jsonl(LOD0)/ interpretations_us.jsonl(LOD1, source_model付)
-         disagreements_us.jsonl(観測者依存の証拠)/ merge_report_us.md
-         events_uk_*.jsonl / *_uk.jsonl  UK 版(Gemini UK は破損→txtから復旧, .broken.jsonl に退避)
-docs/    paper1_media_generation.md  preprint 本文(全7章 + 付録A–D)
-         paper2_cmr_report.md  paper2_grid_spec.md  paper2_prompt_{us,uk}.md(再現用 DeepResearch プロンプト)
-figures/ fig2_cohort_fingerprint.png  fig3_music_disruption.png
+         events_{us,uk}_v1.jsonl / Gemini_events_*_v1.jsonl  Paper2 探索版入力(ChatGPT/Gemini)
+         events_{us,uk}_grid.jsonl / Gemini_events_*_grid.jsonl  設計グリッド(US 96 / UK 117 セル)
+         events_*_merged.jsonl(LOD0)/ interpretations_*.jsonl(LOD1, source_model付)
+         disagreements_*.jsonl(観測者依存の証拠)/ merge_report_*.md
+         cmr_compare_{us,uk}_1985_grid.json(同年生まれ指紋/CDI)
+         personas_grid/  CMR ペルソナ(同一入力・premise だけ変えた4本)
+docs/    paper1_media_generation.md / paper1.html   Paper 1 本文(全7章 + 付録A–D)
+         paper2_contextual_mode_resolver.md / paper2.html   Paper 2 本文(CMR)
+         paper2_cmr_report.md(巴向け報告)  paper2_grid_spec.md  paper2_prompt_{us,uk}.md(再現プロンプト)
+figures/ fig2_cohort_fingerprint.png  fig3_music_disruption.png(Paper1)
+         fig_p2_modematrix_*_grid.png  fig_p2_fingerprints_*_1985_grid.png(Paper2)
 cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 ```
 
@@ -110,13 +157,18 @@ cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)
 
 ## ステータス
 
-**Preprint v1**(タイムスタンプ確保目的)。本リポジトリは構造層 + Culture層(仮説生成器)を収録。
+**Paper 1: Preprint v1**(タイムスタンプ確保, DOI 取得済)。構造層 + Culture層(仮説生成器)を収録。
 
-**Paper 2 ロードマップ:**
-- Prolific パネルによる実証(プロファイル一致率・断絶境界・干渉特異性)
-- **3C フレームワーク**: Culture / Community / **Code**(=共同体の「許可・禁止・黙認・推奨」の規範コード。プログラミング技能ではない)
-- **Contextual Mode Resolver**: 同一事象でも宗教・階層・地域規範・地政学的位置で作用モードが変わる。`Event.mode` を固定値でなく `Event × Community × Code → ResolvedImpact` として解決(海外版 SCEM の本丸)
-- **LOD アーキテクチャ**([`LOD_ARCHITECTURE.md`](LOD_ARCHITECTURE.md)): 曝露構造(LOD 0, 数理)からペルソナ(LOD 3, 解釈)までを解像度の階層として扱い、4戒律(Anchor Preservation / Non-overwrite / Projection Consistency / Provenance)を制約とする CSP として定式化。プロトタイプ [`lod_persona.py`](lod_persona.py) は LOD 制約を積んでペルソナを生成し、Projection Consistency と Axiom 違反で SAT/UNSAT を判定する(`arch -arm64 python3.12 lod_persona.py`)。
+**Paper 2: working draft**([`docs/paper2_contextual_mode_resolver.md`](docs/paper2_contextual_mode_resolver.md))。Contextual Mode Resolver を実装し、米英の設計グリッド(US 96 / UK 117 セル)で観測者依存性・モード分岐・共同体間発散・同一入力ペルソナの分岐を報告済み。**実証(Prolific)は Paper 3 へ。**
+
+達成済み:
+- **Contextual Mode Resolver**: `Event × Premise → ResolvedImpact` を二観測者マージで実装。Event-level MFR 両国 100%(選定争点事象)、CDI 0.32–0.34。
+- **LOD アーキテクチャ**([`LOD_ARCHITECTURE.md`](LOD_ARCHITECTURE.md)): 曝露構造(LOD 0, 数理)からペルソナ(LOD 3, 解釈)までを解像度の階層として扱い、4公理(Anchor Preservation / Non-overwrite / Projection Consistency / Provenance)を制約とする CSP として定式化。[`lod_persona.py`](lod_persona.py) は Projection Consistency と Axiom 違反で SAT/UNSAT を判定(`arch -arm64 python3.12 lod_persona.py ... --variant grid`)。
+- **3C フレームワーク**: Culture / Community / **Code**(=共同体の「許可・禁止・黙認・推奨」の規範コード。プログラミング技能ではない)。
+
+次の課題:
+- **実証(Prolific パネル)**: プロファイル一致率・断絶境界・干渉特異性・CMR 解決モードの人手検証。
+- **第2観測者を Claude Research に置換**(Gemini の出力破損対策)。先頭共同体の欠落(US Coastal Liberal / UK London Multicultural)を補完。
 
 ---
 
