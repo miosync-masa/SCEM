@@ -140,6 +140,9 @@ src/                         全 Python コード
   cmr_compare.py           Same Birth Year, Different Community 比較(指紋/MFR/CDI; --variant v1|grid)
   make_paper2_figures.py   Paper2 mode matrix / community 指紋 図(v1 + grid)
   build_paper_html.py      docs/*.md → 投稿体裁の単一HTML(marked.js + MathJax)
+  # ── Paper 2 外部照合(GSS=US / ESS=UK・Europe)──
+  gss_acquire/segments/core_contrast/interaction/valuepack/overlay.py  GSS二次分析(US, 実装・実行済)
+  ess_acquire/segments/core_validation.py  ESS二次分析(UK/Europe, 実装済・実データ投入待ち)
 
 data/    events_patched.jsonl   社会事象DB(日本, 156件, 出典URL付き)
          events_{us,uk}_v1.jsonl / Gemini_events_*_v1.jsonl  Paper2 探索版入力(ChatGPT/Gemini)
@@ -151,6 +154,8 @@ data/    events_patched.jsonl   社会事象DB(日本, 156件, 出典URL付き)
 docs/    paper1_media_generation.md / paper1.html   Paper 1 本文(全7章 + 付録A–D)
          paper2_contextual_mode_resolver.md / paper2.html   Paper 2 本文(CMR)
          paper2_cmr_report.md(巴向け報告)  paper2_grid_spec.md  paper2_prompt_{us,uk}.md(再現プロンプト)
+         paper2_gss_spec_v0.2.md(GSS実証 確定spec)  gss_validation_findings.md(GSS結果 §2.5-2.8)
+         ess_validation_plan.md(ESS実証 確定設計・実データ投入待ち)
 figures/ fig2_cohort_fingerprint.png  fig3_music_disruption.png(Paper1)
          fig_p2_modematrix_*_grid.png  fig_p2_fingerprints_*_1985_grid.png(Paper2)
 cache/   picks_cache/(9世代)  community_experiment_cache.json(Appendix D)

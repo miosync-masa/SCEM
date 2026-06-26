@@ -25,3 +25,4 @@ venv/
 persona_*.json
 culture_result_*.json
 data/gss/
+data/ess/
