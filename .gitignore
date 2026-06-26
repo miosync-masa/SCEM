@@ -24,3 +24,4 @@ venv/
 # 配布用成果物として追跡する。
 persona_*.json
 culture_result_*.json
+data/gss/
