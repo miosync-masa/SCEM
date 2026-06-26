@@ -33,6 +33,15 @@ INTERP = ROOT / "data" / "interpretations_us_grid.jsonl"
 PRIOR = ["ACTIVE", "REFRAME", "PASSIVE"]   # tie-break(operational, cmr_compare と同じ)
 EVENTS_PRED = {"同性婚": "us_obergefell_2015", "中絶": "us_dobbs_2022", "銃規制": "us_sandy_hook_2012"}
 EVENTS_EXPLORATORY = ["移民増"]            # グリッド予測なし
+
+# 事象の時間構造(真道さま 2026-06-26):出生年×態度という GSS の観測装置と噛み合うか。
+#   single_moment = 特定の歴史的瞬間に着弾(Obergefell 2015 / Dobbs 2022)
+#       → 出生年で着弾年齢が変わる → 出生年勾配が出る → GSS で見える(装置の射程内)
+#   recurrent_burst = 反復バースト(乱射: Columbine→VTech→Sandy Hook→Parkland→Uvalde)
+#       → 全出生年が感受性窓で必ず食らう → 出生年で差がつかない → GSS では原理的に見えない(射程外)
+#       grid の ACTIVE 解決は正しいが、その ACTIVE は強度/行動に出て、出生年×態度には映らない。
+EVENT_STRUCTURE = {"同性婚": "single_moment", "中絶": "single_moment",
+                   "銃規制": "recurrent_burst", "移民増": "single_moment"}
 COMM = {
     "Coastal Liberal": "secular_white_coastal_graduate",
     "Bible Belt": "evangelical_white_bible_belt_no_college",
@@ -100,11 +109,16 @@ def main():
     ov = pd.DataFrame(rows)
     ov.to_csv(RES / "overlay_predicted_vs_observed.csv", index=False)
 
-    # ── 集計(PASSIVE等の鋭い予測なしは分母から除外) ──
-    scored = ov[ov.pred_state.notna()]
-    def tally(col):
-        return int(scored[col].sum()), int(len(scored))
-    hl, n = tally("hit_linear"); hc, _ = tally("hit_cp")
+    ov["event_structure"] = ov.event.map(EVENT_STRUCTURE)
+    # ── 集計 ──
+    # 装置の正当な射程 = single_moment 事象のみ(出生年×態度で見える)。
+    # recurrent_burst(銃) は出生年で原理的に差がつかない → 射程外(grid失敗でなく観測装置ミスマッチ)。
+    scored_all = ov[ov.pred_state.notna()]
+    scored = scored_all[scored_all.event_structure == "single_moment"]   # 主集計=単発事象
+    def tally(df, col):
+        return int(df[col].sum()), int(len(df))
+    hl, n = tally(scored, "hit_linear"); hc, _ = tally(scored, "hit_cp")
+    hl_all, n_all = tally(scored_all, "hit_linear"); hc_all, _ = tally(scored_all, "hit_cp")
 
     print("=" * 96)
     print("  overlay: Paper 2 グリッド事前予測 × GSS 観測(予測どおりか / §5.2 predict→check)")
@@ -117,17 +131,20 @@ def main():
               f"{r.gss_state_linear:<11}{r.gss_state_cp:<11}{hl_}/{hc_}  "
               f"(pool={r.gss_pool:.2f}, slope={r.gss_slope_FE})")
 
-    print(f"\n  ── 予測的中率(grid REFRAME/ACTIVE のみ, n={n})──")
+    print(f"\n  ── 予測的中率【主=単発事象のみ(装置の射程内): SSM+中絶, n={n}】──")
     print(f"     線形読み   : {hl}/{n} = {hl/n:.0%}")
     print(f"     変化点読み : {hc}/{n} = {hc/n:.0%}")
+    print(f"  ── 参考(銃=反復バースト込み, n={n_all})── 変化点 {hc_all}/{n_all}={hc_all/n_all:.0%}"
+          "(銃は出生年軸で原理的に不可視=装置ミスマッチ。grid失敗ではない)")
     # 事象別
     print("\n  ── 事象別(変化点読み)──")
     for en in EVENTS_PRED:
-        s = scored[scored.event == en]
-        print(f"     {en:<7}: {int(s.hit_cp.sum())}/{len(s)}  "
+        s = scored_all[scored_all.event == en]
+        tag = "" if EVENT_STRUCTURE[en] == "single_moment" else " [反復バースト=射程外]"
+        print(f"     {en:<7}: {int(s.hit_cp.sum())}/{len(s)}{tag}  "
               + " ".join(f"{r.community.split()[0]}={'○' if r.hit_cp else '×'}" for _, r in s.iterrows()))
-    # 2x2 混同(変化点読み)
-    print("\n  ── 2×2 混同(grid予測 × GSS観測, 変化点読み)──")
+    # 2x2 混同(変化点読み, 単発事象のみ)
+    print("\n  ── 2×2 混同(grid予測 × GSS観測, 変化点読み, 単発事象)──")
     conf = collections.Counter((r.pred_state, r.gss_state_cp) for _, r in scored.iterrows())
     print(f"     grid ACTIVE → GSS transition: {conf[('transition','transition')]}  / GSS flat: {conf[('transition','flat')]}")
     print(f"     grid REFRAME→ GSS flat      : {conf[('flat','flat')]}  / GSS transition: {conf[('flat','transition')]}")
@@ -142,8 +159,13 @@ def main():
                   f"slope={r['slope_pp_decade_FE']}, cp_knot={r['changepoint_knot']})")
 
     out = {"events_predicted": EVENTS_PRED, "events_exploratory": EVENTS_EXPLORATORY,
-           "hit_linear": [hl, n], "hit_changepoint": [hc, n],
-           "confusion_cp": {f"{a}->{b}": v for (a, b), v in conf.items()},
+           "event_structure": EVENT_STRUCTURE,
+           "scope": "primary accuracy = single_moment events only (birth-year×attitude instrument valid). "
+                    "recurrent_burst (guns) is out-of-scope: every cohort is hit in-window so no birth-year "
+                    "variation can exist — instrument-event time-structure mismatch, NOT a grid failure.",
+           "hit_linear_singlemoment": [hl, n], "hit_changepoint_singlemoment": [hc, n],
+           "hit_changepoint_incl_guns": [hc_all, n_all],
+           "confusion_cp_singlemoment": {f"{a}->{b}": v for (a, b), v in conf.items()},
            "note": "saturation is NOT auto-labeled REFRAME; we check whether the prior grid mode "
                    "predicted the GSS flat/transition state. immigration excluded (no grid prediction)."}
     (RES / "overlay_summary.json").write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")

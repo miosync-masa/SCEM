@@ -7,19 +7,29 @@
   "events_exploratory": [
     "移民増"
   ],
-  "hit_linear": [
-    11,
-    18
+  "event_structure": {
+    "同性婚": "single_moment",
+    "中絶": "single_moment",
+    "銃規制": "recurrent_burst",
+    "移民増": "single_moment"
+  },
+  "scope": "primary accuracy = single_moment events only (birth-year×attitude instrument valid). recurrent_burst (guns) is out-of-scope: every cohort is hit in-window so no birth-year variation can exist — instrument-event time-structure mismatch, NOT a grid failure.",
+  "hit_linear_singlemoment": [
+    9,
+    12
   ],
-  "hit_changepoint": [
+  "hit_changepoint_singlemoment": [
+    10,
+    12
+  ],
+  "hit_changepoint_incl_guns": [
     12,
     18
   ],
-  "confusion_cp": {
-    "flat->flat": 4,
+  "confusion_cp_singlemoment": {
+    "flat->flat": 2,
     "transition->transition": 8,
-    "flat->transition": 2,
-    "transition->flat": 4
+    "flat->transition": 2
   },
   "note": "saturation is NOT auto-labeled REFRAME; we check whether the prior grid mode predicted the GSS flat/transition state. immigration excluded (no grid prediction)."
 }
