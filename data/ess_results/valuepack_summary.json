@@ -1,0 +1,108 @@
+{
+  "event_structure": {
+    "freehms": "single_moment",
+    "euftf": "recurrent_burst_suspected",
+    "immigration": "recurrent_burst"
+  },
+  "pillars": {
+    "freehms": {
+      "event_structure": "single_moment",
+      "segments": {
+        "Secular HiEdu Urban": {
+          "level": 0.899,
+          "slope_FE": -0.2,
+          "slope_z": -0.1,
+          "cp_knot": 1990,
+          "state": "弱/不明瞭"
+        },
+        "Religious LowEdu": {
+          "level": 0.661,
+          "slope_FE": -0.13,
+          "slope_z": -0.14,
+          "cp_knot": 1960,
+          "state": "弱/不明瞭"
+        },
+        "Immigrant-bg": {
+          "level": 0.752,
+          "slope_FE": 2.33,
+          "slope_z": 2.65,
+          "cp_knot": 1985,
+          "state": "移行中(線形)"
+        },
+        "Native HiEdu Urban": {
+          "level": 0.832,
+          "slope_FE": -11.32,
+          "slope_z": -2.31,
+          "cp_knot": 1990,
+          "state": "弱/不明瞭"
+        }
+      }
+    },
+    "euftf": {
+      "event_structure": "recurrent_burst_suspected",
+      "segments": {
+        "Secular HiEdu Urban": {
+          "level": 6.14,
+          "slope_FE": -1.02,
+          "slope_z": -4.88,
+          "cp_knot": 1940,
+          "state": "弱/不明瞭"
+        },
+        "Religious LowEdu": {
+          "level": 5.185,
+          "slope_FE": 0.1,
+          "slope_z": 0.97,
+          "cp_knot": 1985,
+          "state": "弱/不明瞭"
+        },
+        "Immigrant-bg": {
+          "level": 5.586,
+          "slope_FE": 0.63,
+          "slope_z": 4.79,
+          "cp_knot": 1950,
+          "state": "移行中(線形)"
+        },
+        "Native HiEdu Urban": {
+          "level": 5.962,
+          "slope_FE": 0.19,
+          "slope_z": 4.95,
+          "cp_knot": 1940,
+          "state": "移行中(線形)"
+        }
+      }
+    },
+    "immigration": {
+      "event_structure": "recurrent_burst",
+      "segments": {
+        "Secular HiEdu Urban": {
+          "level": 6.717,
+          "slope_FE": -0.07,
+          "slope_z": -0.34,
+          "cp_knot": 1980,
+          "state": "弱/不明瞭"
+        },
+        "Religious LowEdu": {
+          "level": 5.108,
+          "slope_FE": 1.33,
+          "slope_z": 5.65,
+          "cp_knot": 1990,
+          "state": "移行中(線形)"
+        },
+        "Immigrant-bg": {
+          "level": 6.175,
+          "slope_FE": -1.13,
+          "slope_z": -5.45,
+          "cp_knot": 1990,
+          "state": "弱/不明瞭"
+        },
+        "Native HiEdu Urban": {
+          "level": 6.202,
+          "slope_FE": -0.14,
+          "slope_z": -0.65,
+          "cp_knot": 1950,
+          "state": "弱/不明瞭"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "scored": "7/9",
+  "scope": "UK-only, proxy segments, Brexit=euftf proxy, exploratory",
+  "rows": [
+    {
+      "pillar": "freehms",
+      "event": "uk_same_sex_marriage_2014",
+      "proxy": "Secular HiEdu Urban",
+      "grid_premise": "middle_class_london_native_2nd_gen_oxbridge",
+      "grid_mode": "PASSIVE",
+      "pred_state": "flat",
+      "obs_state": "flat",
+      "obs_pool": 0.952,
+      "obs_slope": -1.8,
+      "obs_n": 514,
+      "hit": true
+    },
+    {
+      "pillar": "freehms",
+      "event": "uk_same_sex_marriage_2014",
+      "proxy": "Religious LowEdu",
+      "grid_premise": "working_class_leave_town_native_4plus_gen_no_qualifications",
+      "grid_mode": "ACTIVE",
+      "pred_state": "transition",
+      "obs_state": "flat",
+      "obs_pool": 0.762,
+      "obs_slope": -3.55,
+      "obs_n": 1270,
+      "hit": false
+    },
+    {
+      "pillar": "freehms",
+      "event": "uk_same_sex_marriage_2014",
+      "proxy": "Immigrant-bg",
+      "grid_premise": "middle_class_london_immigrant_2nd_gen_russell_group",
+      "grid_mode": "PASSIVE",
+      "pred_state": "flat",
+      "obs_state": "flat",
+      "obs_pool": 0.826,
+      "obs_slope": 3.1,
+      "obs_n": 2024,
+      "hit": true
+    },
+    {
+      "pillar": "euftf",
+      "event": "uk_brexit_2016",
+      "proxy": "Secular HiEdu Urban",
+      "grid_premise": "middle_class_london_native_2nd_gen_oxbridge",
+      "grid_mode": "REFRAME",
+      "pred_state": "flat",
+      "obs_state": "flat",
+      "obs_pool": 5.807,
+      "obs_slope": null,
+      "obs_n": 500,
+      "hit": true
+    },
+    {
+      "pillar": "euftf",
+      "event": "uk_brexit_2016",
+      "proxy": "Religious LowEdu",
+      "grid_premise": "working_class_leave_town_native_4plus_gen_no_qualifications",
+      "grid_mode": "ACTIVE",
+      "pred_state": "transition",
+      "obs_state": "transition",
+      "obs_pool": 4.837,
+      "obs_slope": 0.99,
+      "obs_n": 1169,
+      "hit": true
+    },
+    {
+      "pillar": "euftf",
+      "event": "uk_brexit_2016",
+      "proxy": "Immigrant-bg",
+      "grid_premise": "middle_class_london_immigrant_2nd_gen_russell_group",
+      "grid_mode": "REFRAME",
+      "pred_state": "flat",
+      "obs_state": "flat",
+      "obs_pool": 5.381,
+      "obs_slope": 0.28,
+      "obs_n": 1883,
+      "hit": true
+    },
+    {
+      "pillar": "immigration",
+      "event": "uk_immigration_debate_2015",
+      "proxy": "Secular HiEdu Urban",
+      "grid_premise": "middle_class_london_native_2nd_gen_oxbridge",
+      "grid_mode": "ACTIVE",
+      "pred_state": "transition",
+      "obs_state": "transition",
+      "obs_pool": 7.758,
+      "obs_slope": 0.23,
+      "obs_n": 516,
+      "hit": true
+    },
+    {
+      "pillar": "immigration",
+      "event": "uk_immigration_debate_2015",
+      "proxy": "Religious LowEdu",
+      "grid_premise": "working_class_leave_town_native_4plus_gen_no_qualifications",
+      "grid_mode": "ACTIVE",
+      "pred_state": "transition",
+      "obs_state": "flat",
+      "obs_pool": 6.167,
+      "obs_slope": 0.18,
+      "obs_n": 1294,
+      "hit": false
+    },
+    {
+      "pillar": "immigration",
+      "event": "uk_immigration_debate_2015",
+      "proxy": "Immigrant-bg",
+      "grid_premise": "middle_class_london_immigrant_2nd_gen_russell_group",
+      "grid_mode": "REFRAME",
+      "pred_state": "flat",
+      "obs_state": "flat",
+      "obs_pool": 6.959,
+      "obs_slope": null,
+      "obs_n": 2062,
+      "hit": true
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+cluster,pillar,segment,kind,n,level,ci_lo,ci_hi,slope_FE,slope_z,cp_knot,cp_improve,state
+Nordic,freehms,Secular HiEdu Urban,binary,2547,0.984,0.975,0.989,-5.03,-7.58,,,飽和/平坦(REFRAME署名)
+Nordic,freehms,Religious LowEdu,binary,4459,0.787,0.768,0.806,-1.84,-0.79,1950.0,0.004,弱/不明瞭
+Western,freehms,Secular HiEdu Urban,binary,3455,0.967,0.954,0.976,37.41,4.87,,,飽和/平坦(REFRAME署名)
+Western,freehms,Religious LowEdu,binary,16559,0.797,0.786,0.808,-4.55,-5.7,1950.0,0.008,弱/不明瞭
+Southern,freehms,Secular HiEdu Urban,binary,870,0.946,0.921,0.963,4.63,0.18,,,飽和/平坦(REFRAME署名)
+Southern,freehms,Religious LowEdu,binary,9962,0.663,0.651,0.675,4.35,11.78,1960.0,0.016,移行中(線形)
+Central-East,freehms,Secular HiEdu Urban,binary,2921,0.724,0.693,0.753,12.98,1.63,1950.0,0.002,弱/不明瞭
+Central-East,freehms,Religious LowEdu,binary,17219,0.441,0.427,0.456,3.83,1.35,1955.0,0.005,弱/不明瞭

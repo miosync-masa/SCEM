@@ -1,0 +1,10 @@
+pillar,event,proxy,grid_premise,grid_mode,pred_state,obs_state,obs_pool,obs_slope,obs_n,hit
+freehms,uk_same_sex_marriage_2014,Secular HiEdu Urban,middle_class_london_native_2nd_gen_oxbridge,PASSIVE,flat,flat,0.952,-1.8,514,True
+freehms,uk_same_sex_marriage_2014,Religious LowEdu,working_class_leave_town_native_4plus_gen_no_qualifications,ACTIVE,transition,flat,0.762,-3.55,1270,False
+freehms,uk_same_sex_marriage_2014,Immigrant-bg,middle_class_london_immigrant_2nd_gen_russell_group,PASSIVE,flat,flat,0.826,3.1,2024,True
+euftf,uk_brexit_2016,Secular HiEdu Urban,middle_class_london_native_2nd_gen_oxbridge,REFRAME,flat,flat,5.807,,500,True
+euftf,uk_brexit_2016,Religious LowEdu,working_class_leave_town_native_4plus_gen_no_qualifications,ACTIVE,transition,transition,4.837,0.99,1169,True
+euftf,uk_brexit_2016,Immigrant-bg,middle_class_london_immigrant_2nd_gen_russell_group,REFRAME,flat,flat,5.381,0.28,1883,True
+immigration,uk_immigration_debate_2015,Secular HiEdu Urban,middle_class_london_native_2nd_gen_oxbridge,ACTIVE,transition,transition,7.758,0.23,516,True
+immigration,uk_immigration_debate_2015,Religious LowEdu,working_class_leave_town_native_4plus_gen_no_qualifications,ACTIVE,transition,flat,6.167,0.18,1294,False
+immigration,uk_immigration_debate_2015,Immigrant-bg,middle_class_london_immigrant_2nd_gen_russell_group,REFRAME,flat,flat,6.959,,2062,True

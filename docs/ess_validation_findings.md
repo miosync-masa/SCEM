@@ -71,3 +71,63 @@ ESS API(`https://api.ess.sikt.no`)で取得成功。エンドポイント `GET /
 > 正味:**ESS で「共同体が寛容水準をゲートする」は出た(US と一貫)。だが『出生年スロープのゲート』は
 > Europe では移行完了ゆえ弱い** ── GSS の「スロープ交互作用 n.s.」と整合。spin せず、これを cross-national の
 > 正直な発見として記録。移行段階の国差(US 進行中 / EU 完了)は Paper 3 / (c) effective_year 時間発展へ橋。
+
+---
+
+## 2. step1.5(country clusters)— **金脈:均しが隠した b′ スロープ・ゲートを Southern Europe で発見**
+
+`src/ess_valuepack.py`。Europe-wide(country FE)で消えた freehms 移行が、どのクラスタに在るか分解。
+
+| クラスタ | Secular HiEdu Urban | Religious LowEdu |
+|---|---|---|
+| Nordic | 98% 飽和/平坦 | 79% flat(完了) |
+| Western(UK含) | 97% 飽和/平坦 | 80% flat(完了, slope −4.6 z−5.7) |
+| **Southern** | 95% 飽和/平坦 | **66% slope +4.35 (z=11.78)= 移行中** |
+| Central-East | 72% 弱(未飽和) | 44% 弱(低位・全体が後発) |
+
+**発見**:Europe-wide の「Religious=移行完了(flat)」は**均しのアーチファクト**。クラスタに割ると、
+**Southern Europe では b′ スロープ・ゲートがクリーンに出る**(secular 飽和高位 / religious 強い正勾配 z=11.78)。
+Nordic/Western/UK は完了済で flat。Central-East は全体が後発で未飽和。
+→ **b′(共同体が出生年スロープをゲート)は「移行中のクラスタ」で出る**。US Bible Belt が移行中で出たのと同型。
+**移行段階(REFRAME 完了度)が moderator** = 水準ゲートは普遍、スロープ・ゲートは移行中の時だけ可視。
+
+> 注意(綻び):一部セルのスロープが不安定(例 Native HiEdu Urban freehms −11.32、Western Secular +37.41)。
+> 飽和近傍 × country FE × コホート細セルの過適合アーチファクト(改善0 と整合)。解釈に使わない。
+
+## 3. step2 euftf / step3 移民(§3 反復=flat を誤読しない・EVENT_STRUCTURE 事前適用)
+
+`ess_valuepack.py`(柱×セグメント, `figures/ess_valuepack.png`)。**反復イベントは flat でも「CMR外れ」と読まない**設計。
+
+- **euftf(EU統合, 反復疑い)**:水準は secular>religious(6.14 vs 5.18)だが、出生年スロープは小・混在
+  (secular −1.0/religious +0.1)。**clean なコホート勾配なし=反復イベントの予測どおり**(§3 事前織込み)。
+- **移民 index(反復濃厚)**:水準 secular 6.72 / religious 5.11(水準差は明確=水準ゲート)。religious は
+  +1.33(z5.65)の正勾配だが反復イベントゆえ慎重(§3)。immigrant-bg は高位(6.17)。
+- 総じて **水準ゲートは 3 柱で再現(secular/educated/urban が高位)、スロープは反復柱では弱い/混在**
+  = §3 の事前振り分けが効いた(銃の罠を踏まない)。
+
+## 4. step4 overlay(探索的・UK-only・proxy・Brexit=euftf proxy)
+
+`src/ess_overlay.py`(UK GB N=9,260)。UKグリッド事前 resolved_mode × ESS UK 観測。
+照合:grid ACTIVE→transition / REFRAME・PASSIVE→flat。**UK-only・proxy・N薄 → 探索的(確証でない)**。
+
+**予測対応 7/9**(`data/ess_results/overlay_uk.csv`):
+- **euftf↔Brexit:3/3 的中**(Secular=flat/REFRAME、**Leave-Town religious=transition/ACTIVE**、Immigrant-bg=flat/REFRAME)。Brexit=euftf proxy が機能。
+- freehms↔同性婚:Secular/Immigrant-bg=flat(PASSIVE)○、**Religious LowEdu=grid ACTIVE→実 flat ×**(UK は LGBT 移行完了=step1.5 と整合)。
+- 移民↔移民論争:Secular=transition(ACTIVE)○、Immigrant-bg=flat(REFRAME)○、Religious=ACTIVE→flat ×。
+
+**正直な限界**:7/9 は **base rate 膨れ**(9セル中 flat が 7=多数)。**識別力のある grid-ACTIVE→transition 予測は
+2/4**(外し2件は Religious-LowEdu で、UK の LGBT/移民の移行完了と整合)。grid-REFRAME/PASSIVE→flat は 5/5。
+n=9・UK-only・proxy・Brexit proxy → **「探索的に予測対応・suggestive」止まり、確証と書かない**。
+9共同体粒度(NI 等)は ESS で N不足 → BSA/NILT/Understanding Society 向き(Limitation)。
+
+---
+
+## 5. ESS 実証の正味(cross-national の正直な結論)
+
+1. **水準ゲート(REFRAME 飽和の高さ)は普遍**:secular/educated/urban が高位、religious/low-edu が低位 ── US/Europe・3 柱で一貫。**共同体 premise がモードの*水準*を解決する**(CMR の核)。
+2. **スロープ・ゲート(b′)は「移行中」でのみ可視**:US Bible Belt(進行中)・Southern Europe religious(z=11.78)で出る。Nordic/Western/UK は完了で flat。**移行段階が moderator**(= Paper 3 / (c) effective_year 時間発展)。
+3. **EVENT_STRUCTURE が効いた**:euftf/移民の flat/混在を「CMR外れ」と誤読せず、反復イベントの予測どおりと扱えた(銃の教訓の移植が機能)。
+4. **overlay は探索的に suggestive**(euftf↔Brexit 3/3 が光る)が UK-thin・proxy。確証でない。
+5. **§5 普遍性=部分支持**:水準ゲートは軸が違っても両国再現(普遍作用素)。スロープは移行段階依存。
+
+> 強度の言葉:全体「**予測対応・modest**」。確証と書かない。ESS は mode を直接測らない外部照合。
