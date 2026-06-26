@@ -1,0 +1,28 @@
+{
+  "estimand": "community x cohort interaction (b′): difference in birth-cohort slope",
+  "scale": "probability (LPM main); logit-AME robustness",
+  "weighting": "unweighted",
+  "period": "survey-year fixed effects",
+  "lpm_main": {
+    "coastal_slope_pp_per_decade": 1.43,
+    "biblebelt_slope_pp_per_decade": 4.13,
+    "biblebelt_slope_se_pp": 0.69,
+    "interaction_slope_diff_pp_per_decade": 2.69,
+    "interaction_se_pp": 1.9,
+    "interaction_z": 1.41,
+    "interaction_p": 0.15731099157404227,
+    "n": 1282
+  },
+  "lpm_no_period_control": {
+    "interaction_pp_per_decade": 2.8,
+    "z": 1.45
+  },
+  "logit_ame": {
+    "Coastal Liberal_AME_pp_per_decade": 1.59,
+    "Bible Belt_AME_pp_per_decade": 4.08
+  },
+  "changepoint_descriptive": {
+    "biblebelt_acceleration_birthyear": 1975,
+    "post_knot_extra_slope_pp_per_decade": 8.14
+  }
+}
