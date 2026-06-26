@@ -2,24 +2,31 @@
 """
 ess_acquire.py — ESS(European Social Survey)integrated rounds を slim parquet 化する。
 
-⚠️ ESS は登録制で配布が SAS トークン認証付き → 自動ダウンロード不可(GSS と違う)。
-手動取得が必要(無料):
-  1. ESS Data Portal で登録・ログイン:
-       https://www.europeansocialsurvey.org/  /  https://ess-search.nsd.no/
-  2. integrated rounds(ESS1–ESS11)の **Stata 形式** をダウンロード
-       (per-round の ESS1..ESS11 でも、cumulative/Data Wizard 抽出でも可)
-  3. ダウンロードした .dta(または .sav)を data/ess/ に置く(複数可)
-  4. python3 src/ess_acquire.py   → data/ess/ess_slim.parquet を生成
+ESS API(https://api.ess.sikt.no/docs)経由で取得する。**User ID は認証でなく利用統計用**だが、
+公開リポジトリに焼かないため **環境変数 ESS_USER_ID から読む**(コミットしない)。
+  endpoint: GET /v1/data/dataFile/{doiPrefix}/{doiSuffix}?userId=...&fileFormat=parquet
+  fileFormat=parquet を直接取得(Stata 解析不要)。recodeMissingValues=1 で欠損を NaN 化。
+
+取得:
+  export ESS_USER_ID="<あなたのESS User ID>"   # https://ess.sikt.no/en/api で確認(認証ではない)
+  python3 src/ess_acquire.py                    # ROUND_DOIS を API DL → slim parquet
+既に data/ess/ に ESS*.parquet / *.dta / *.sav があればそれを使う(再DLしない)。
 
 生データ(data/ess/)は .gitignore(リポジトリに入れない)。捏造なし=実データのみ。
-core モジュール変数(freehms / euftf / 移民3項 / デモグラ / weight)は全 round 共通で取れる。
+core 変数(freehms / euftf / 移民3項 / デモグラ / weight)は全 round 共通。
 
-Run: python3 src/ess_acquire.py
+Run: ESS_USER_ID=... python3 src/ess_acquire.py
 """
 from __future__ import annotations
+import os
 import sys
+import urllib.request
 from pathlib import Path
 import pandas as pd
+
+# ESS integrated rounds の DOI suffix(2026-06-27 時点で API が返す最新編集版)。
+API = "https://api.ess.sikt.no/v1/data/dataFile/10.21338"
+ROUND_DOIS = {7: "ess7e02_2", 8: "ess8e02_3", 9: "ess9e03_1", 10: "ess10e03_1", 11: "ess11e03_0"}
 
 ROOT = Path(__file__).resolve().parent.parent
 ESS_DIR = ROOT / "data" / "ess"
@@ -41,26 +48,48 @@ NEED = [
 ]
 
 
+def download_via_api(user_id: str):
+    """ROUND_DOIS を ESS API から parquet 取得(欠損 NaN 化)。既存ファイルは再DLしない。"""
+    for r, suf in ROUND_DOIS.items():
+        out = ESS_DIR / f"ESS{r}.parquet"
+        if out.exists() and out.stat().st_size > 100_000:
+            print(f"[skip] ESS{r} 既存")
+            continue
+        url = f"{API}/{suf}?userId={user_id}&fileFormat=parquet&recodeMissingValues=1"
+        print(f"[download] ESS{r} ({suf}) …")
+        urllib.request.urlretrieve(url, out)
+        if out.stat().st_size < 100_000:
+            out.unlink(missing_ok=True)
+            print(f"  ⚠️ ESS{r} 取得失敗(DOI 改訂の可能性: {suf})")
+
+
 def read_one(path: Path) -> pd.DataFrame:
-    cols_in = set((pd.io.stata.StataReader(str(path)).variable_labels().keys()
-                   if path.suffix == ".dta" else []))
+    if path.suffix == ".parquet":
+        df = pd.read_parquet(path)
+        return df[[c for c in NEED if c in df.columns]]
     if path.suffix == ".dta":
-        use = [c for c in NEED if c in cols_in]
-        df = pd.read_stata(str(path), columns=use, convert_categoricals=False)
-    else:  # .sav 等は pyreadstat が要るので Stata 推奨。ここは簡易対応。
-        df = pd.read_spss(str(path))
-        df = df[[c for c in NEED if c in df.columns]]
-    return df
+        cols_in = set(pd.io.stata.StataReader(str(path)).variable_labels().keys())
+        return pd.read_stata(str(path), columns=[c for c in NEED if c in cols_in],
+                             convert_categoricals=False)
+    df = pd.read_spss(str(path))   # .sav(pyreadstat 要)。Stata/parquet 推奨。
+    return df[[c for c in NEED if c in df.columns]]
 
 
 def main():
     ESS_DIR.mkdir(parents=True, exist_ok=True)
-    files = sorted([p for p in ESS_DIR.glob("*.dta")] + [p for p in ESS_DIR.glob("*.sav")])
+    files = sorted(ESS_DIR.glob("*.parquet")) + sorted(ESS_DIR.glob("*.dta")) + sorted(ESS_DIR.glob("*.sav"))
+    files = [p for p in files if p.name != "ess_slim.parquet"]
     if not files:
-        print("⚠️ data/ess/ に ESS ファイル(.dta/.sav)がありません。")
-        print("   ESS Data Portal で登録・ログイン → integrated rounds(Stata)を DL → data/ess/ に配置。")
-        print("   詳細は本スクリプト冒頭 docstring / docs/ess_validation_plan.md §D。")
-        raise SystemExit(1)
+        uid = os.environ.get("ESS_USER_ID")
+        if uid:
+            download_via_api(uid)
+            files = sorted(ESS_DIR.glob("*.parquet"))
+            files = [p for p in files if p.name != "ess_slim.parquet"]
+        if not files:
+            print("⚠️ data/ess/ に ESS ファイルがありません。")
+            print("   ESS API で取得: export ESS_USER_ID=<your-ESS-user-id>; python3 src/ess_acquire.py")
+            print("   User ID は https://ess.sikt.no/en/api(認証でなく利用統計用)。詳細 docs/ess_validation_plan.md §D。")
+            raise SystemExit(1)
     frames = []
     for p in files:
         try:

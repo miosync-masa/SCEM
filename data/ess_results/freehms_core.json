@@ -1,0 +1,48 @@
+{
+  "pillar": "freehms",
+  "event_structure": "single_moment",
+  "us_reference_gss_ssm": {
+    "Coastal(REFRAME) flat-high": "91% [85,95]",
+    "Bible Belt(ACTIVE) gradient": "6%→66%"
+  },
+  "segments": {
+    "Secular HiEdu Urban": {
+      "pool_tolerant": 0.899,
+      "pool_ci": [
+        0.886,
+        0.911
+      ],
+      "cohort_slope_pp_decade": -0.2,
+      "changepoint": {
+        "knot": 1990,
+        "pre_slope_pp_decade": 1.1,
+        "post_extra_slope_pp_decade": 4.2,
+        "sse_improve_vs_linear": 0.001,
+        "note": "線形で十分",
+        "pool": 0.899
+      },
+      "n": 10511,
+      "state": "弱/不明瞭"
+    },
+    "Religious LowEdu": {
+      "pool_tolerant": 0.661,
+      "pool_ci": [
+        0.653,
+        0.669
+      ],
+      "cohort_slope_pp_decade": -0.13,
+      "changepoint": {
+        "knot": 1960,
+        "pre_slope_pp_decade": 6.5,
+        "post_extra_slope_pp_decade": -6.5,
+        "sse_improve_vs_linear": 0.005,
+        "note": "線形で十分",
+        "pool": 0.662
+      },
+      "n": 49992,
+      "state": "弱/不明瞭"
+    }
+  },
+  "interaction_slope_diff_pp_decade": 0.07,
+  "interaction_z": 0.03
+}
