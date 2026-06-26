@@ -22,7 +22,8 @@ DTA = GSS_DIR / "gss7224_r3.dta"
 NEED = ["year", "cohort", "age", "reltrad", "reltrad16", "relig", "denom", "other",
         "race", "hispanic", "region", "region_7222", "srcbelt", "xnorcsiz", "degree", "educ",
         "attend", "fund", "marsame", "marsame1", "marsamey",
-        "abany", "abdefect", "abrape", "gunlaw", "letinhsp", "letinasn", "racopen",
+        "abany", "abdefect", "abrape", "gunlaw",
+        "letin1a", "letinhsp", "letinasn", "immjobs", "immcrime", "racopen",
         "confinan", "confed", "conlegis", "conarmy", "wtssall", "wtssps", "wtssnrps", "ballot", "id"]
 
 

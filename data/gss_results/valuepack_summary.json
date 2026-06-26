@@ -1,0 +1,198 @@
+{
+  "同性婚": {
+    "mode_tag": "REFRAME(SSM)",
+    "communities": {
+      "Coastal Liberal": {
+        "slope_FE": 1.2,
+        "p": 0.5319,
+        "pool": 0.914,
+        "knot": null,
+        "state": "飽和/平坦"
+      },
+      "Bible Belt": {
+        "slope_FE": 4.1,
+        "p": 0.0,
+        "pool": 0.238,
+        "knot": 1975,
+        "state": "移行中(勾配/変化点)"
+      },
+      "Rust Belt WWC": {
+        "slope_FE": 5.4,
+        "p": 0.0,
+        "pool": 0.4,
+        "knot": 1950,
+        "state": "移行中(勾配/変化点)"
+      },
+      "Black urban": {
+        "slope_FE": 2.2,
+        "p": 0.6101,
+        "pool": 0.524,
+        "knot": null,
+        "state": "弱/不明瞭"
+      },
+      "Suburban MC": {
+        "slope_FE": 7.1,
+        "p": 0.0015,
+        "pool": 0.629,
+        "knot": 1960,
+        "state": "移行中(勾配/変化点)"
+      },
+      "Rural Conservative": {
+        "slope_FE": 4.5,
+        "p": 0.0,
+        "pool": 0.192,
+        "knot": 1970,
+        "state": "移行中(勾配/変化点)"
+      }
+    }
+  },
+  "中絶": {
+    "mode_tag": "分岐(Dobbs系)",
+    "communities": {
+      "Coastal Liberal": {
+        "slope_FE": 4.7,
+        "p": 0.0137,
+        "pool": 0.897,
+        "knot": 1950,
+        "state": "移行中(勾配/変化点)"
+      },
+      "Bible Belt": {
+        "slope_FE": 2.6,
+        "p": 0.0,
+        "pool": 0.234,
+        "knot": 1970,
+        "state": "移行中(勾配/変化点)"
+      },
+      "Rust Belt WWC": {
+        "slope_FE": 1.4,
+        "p": 0.0324,
+        "pool": 0.404,
+        "knot": 1965,
+        "state": "移行中(勾配/変化点)"
+      },
+      "Black urban": {
+        "slope_FE": -3.1,
+        "p": 0.4634,
+        "pool": 0.592,
+        "knot": 1965,
+        "state": "弱/不明瞭"
+      },
+      "Suburban MC": {
+        "slope_FE": 3.2,
+        "p": 0.0434,
+        "pool": 0.635,
+        "knot": 1955,
+        "state": "移行中(勾配/変化点)"
+      },
+      "Rural Conservative": {
+        "slope_FE": 1.7,
+        "p": 0.0014,
+        "pool": 0.177,
+        "knot": 1965,
+        "state": "移行中(勾配/変化点)"
+      }
+    }
+  },
+  "銃規制": {
+    "mode_tag": "ACTIVE(gun)",
+    "communities": {
+      "Coastal Liberal": {
+        "slope_FE": -2.2,
+        "p": 0.1737,
+        "pool": 0.891,
+        "knot": 1960,
+        "state": "弱/不明瞭"
+      },
+      "Bible Belt": {
+        "slope_FE": -0.5,
+        "p": 0.2181,
+        "pool": 0.652,
+        "knot": 1975,
+        "state": "弱/不明瞭"
+      },
+      "Rust Belt WWC": {
+        "slope_FE": -0.8,
+        "p": 0.0737,
+        "pool": 0.767,
+        "knot": 1970,
+        "state": "弱/不明瞭"
+      },
+      "Black urban": {
+        "slope_FE": -1.7,
+        "p": 0.5794,
+        "pool": 0.865,
+        "knot": 1950,
+        "state": "弱/不明瞭"
+      },
+      "Suburban MC": {
+        "slope_FE": 1.9,
+        "p": 0.1299,
+        "pool": 0.789,
+        "knot": 1940,
+        "state": "弱/不明瞭"
+      },
+      "Rural Conservative": {
+        "slope_FE": -0.9,
+        "p": 0.1556,
+        "pool": 0.6,
+        "knot": 1975,
+        "state": "弱/不明瞭"
+      }
+    }
+  },
+  "移民増": {
+    "mode_tag": "分岐(immigration)",
+    "communities": {
+      "Coastal Liberal": {
+        "slope_FE": -3.3,
+        "p": 0.2802,
+        "pool": 0.571,
+        "knot": 1980,
+        "state": "弱/不明瞭"
+      },
+      "Bible Belt": {
+        "slope_FE": 1.4,
+        "p": 0.001,
+        "pool": 0.058,
+        "knot": null,
+        "state": "飽和/平坦"
+      },
+      "Rust Belt WWC": {
+        "slope_FE": -0.3,
+        "p": 0.7715,
+        "pool": 0.092,
+        "knot": null,
+        "state": "飽和/平坦"
+      },
+      "Black urban": {
+        "slope_FE": 0.4,
+        "p": 0.9308,
+        "pool": 0.208,
+        "knot": null,
+        "state": "弱/不明瞭"
+      },
+      "Suburban MC": {
+        "slope_FE": -0.1,
+        "p": 0.944,
+        "pool": 0.19,
+        "knot": 1975,
+        "state": "弱/不明瞭"
+      },
+      "Rural Conservative": {
+        "slope_FE": 0.4,
+        "p": 0.4962,
+        "pool": 0.049,
+        "knot": null,
+        "state": "飽和/平坦"
+      }
+    }
+  },
+  "_repetition_transition_count": {
+    "Coastal Liberal": 1,
+    "Bible Belt": 2,
+    "Rust Belt WWC": 2,
+    "Black urban": 0,
+    "Suburban MC": 2,
+    "Rural Conservative": 2
+  }
+}
