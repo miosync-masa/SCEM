@@ -1,7 +1,7 @@
 # ESS 二次分析 — 実行結果(黒子 → 環・真道さま)
 
 **版:** 0.1(2026-06-27)/ **親:** `ess_validation_plan.md`(確定設計)/ spec 0.2(GSS)/ findings(GSS) §2.5–2.8
-**状態:** ESS API でデータ取得 → step1(freehms 主検証)実行。作法は GSS と同一(確定のみ/未決決め打ちせず/spin しない/綻び記録)。
+**状態:** ESS API でデータ取得 → **step1–4 全実行**(§1 freehms 主検証 / §2 country clusters / §3 euftf・移民 / §4 UK overlay / §5 正味 / §6 残る未決)。作法は GSS と同一(確定のみ/未決決め打ちせず/spin しない/綻び記録)。
 
 ---
 
@@ -53,24 +53,12 @@ ESS API(`https://api.ess.sikt.no`)で取得成功。エンドポイント `GET /
   *水準*で見え、*出生年スロープ*では弱い ── という cross-national の正直な結論。
 
 ### 1.3 綻び・限界(隠さない)
-- Europe-wide pooled(country FE)は 33 か国を均す。**UK 単独 / 西欧クラスタ**では slope が違う可能性
-  (依頼 step1「country clusters」未実施 → 次)。
-- freehms は単発型(§3)で出生年軸 OK。euftf / 移民は反復(§3)で flat を誤読しない設計 ── **step2/3 未実施**。
-- overlay(UKグリッド事前予測 × ESS 割れ)**未実施**(step4)。Brexit は euftf proxy。
+- **Europe-wide pooled(country FE)は 33 か国を均す** → この均しが移行中クラスタを隠していた(§2 で分解=金脈)。
+- freehms は単発型(§3)で出生年軸 OK。euftf / 移民は反復(§3)で flat を誤読しない設計(§3 で実施)。
 
----
-
-## 2. 次(依頼 §E の残り)
-
-- **step1.5**:country clusters(UK単独 / 西欧 / 中東欧)で freehms スロープを分解(均しの影響を見る)。
-- **step2**:euftf(EU統合)。§3 反復疑い=flat でも誤読しない。
-- **step3**:immigration_index。§3 反復濃厚。
-- **step4**:overlay(UKグリッド grid 事前 resolved_mode × ESS 割れ)。grid 無し事象は探索分離。
-- 未決(GSS 同様・決め打ちしない):変化点閾値の確定 / 重みの感度 / country クラスタ定義。
-
-> 正味:**ESS で「共同体が寛容水準をゲートする」は出た(US と一貫)。だが『出生年スロープのゲート』は
-> Europe では移行完了ゆえ弱い** ── GSS の「スロープ交互作用 n.s.」と整合。spin せず、これを cross-national の
-> 正直な発見として記録。移行段階の国差(US 進行中 / EU 完了)は Paper 3 / (c) effective_year 時間発展へ橋。
+> 正味(step1):**ESS で「共同体が寛容水準をゲートする」は出た(US と一貫)。だが『出生年スロープのゲート』は
+> Europe-wide では移行完了ゆえ弱い** ── GSS の「スロープ交互作用 n.s.」と整合。移行段階の国差(US 進行中 /
+> EU 完了)は §2 のクラスタ分解でさらに鮮明になる。
 
 ---
 
@@ -131,3 +119,25 @@ n=9・UK-only・proxy・Brexit proxy → **「探索的に予測対応・suggest
 5. **§5 普遍性=部分支持**:水準ゲートは軸が違っても両国再現(普遍作用素)。スロープは移行段階依存。
 
 > 強度の言葉:全体「**予測対応・modest**」。確証と書かない。ESS は mode を直接測らない外部照合。
+
+---
+
+## 6. 残る未決(決め打ちしない)/ 次
+
+- **未決(GSS 同様)**:変化点閾値の確定 / 重み(anweight)の感度 / country クラスタ定義の頑健性 /
+  飽和近傍スロープの不安定セルの扱い(§2 注:解釈に使わない)。
+- **次の候補**:Southern Europe の b′ を国別(ES/PT/IT/GR)に分解(z=11.78 がどの国由来か)/
+  9 共同体粒度は BSA・NILT・Understanding Society(UK 専用調査)で / Prolific 本検証(主観的 mode, Paper 3)。
+- **Paper への入れ方**は `ess_validation_plan.md` §H(5.5.2 ESS)。GSS と対称に。
+
+---
+
+## 環へ:1 分サマリ(忙しい時はここだけ)
+
+- ESS API で 5 波(2014–24, 33 か国)取得 → 3 本柱 × proxy 共同体 × 出生年で照合(GSS の移植)。
+- **水準ゲートは普遍**:secular/高学歴/都市が寛容高位・religious/低学歴が低位(US と一貫、3 柱で再現)。= CMR の核。
+- **スロープ・ゲート(b′)は「移行中のクラスタ」でだけ出る**:Southern Europe の religious が z=11.78 でクリーン、
+  Nordic/Western/UK は移行完了で flat。= US Bible Belt(移行中)の鏡像。**移行段階が moderator**。
+- **EVENT_STRUCTURE(銃の教訓)が効いた**:euftf/移民の flat を「CMR 外れ」と誤読せず反復イベントとして処理。
+- **overlay は探索的に suggestive**(euftf↔Brexit 3/3 が光る)が UK-thin・proxy。確証ではない。
+- 強度は **「予測対応・modest」**。spin なし・綻び(不安定スロープ・UK薄N)も全部記録。
