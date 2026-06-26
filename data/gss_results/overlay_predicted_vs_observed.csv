@@ -1,0 +1,19 @@
+event,community,grid_pred_mode,pred_state,gss_pool,gss_slope_FE,gss_p,cp_knot,cp_improve,gss_state_linear,gss_state_cp,hit_linear,hit_cp
+同性婚,Coastal Liberal,REFRAME,flat,0.914,1.2,0.5319,,,flat,flat,True,True
+同性婚,Bible Belt,ACTIVE,transition,0.238,4.1,0.0,1975.0,0.005,transition,transition,True,True
+同性婚,Rust Belt WWC,ACTIVE,transition,0.4,5.4,0.0,1950.0,0.003,transition,transition,True,True
+同性婚,Black urban,REFRAME,flat,0.524,2.2,0.6101,,,flat,flat,True,True
+同性婚,Suburban MC,REFRAME,flat,0.629,7.1,0.0015,1960.0,0.008,transition,transition,False,False
+同性婚,Rural Conservative,ACTIVE,transition,0.192,4.5,0.0,1970.0,0.007,transition,transition,True,True
+中絶,Coastal Liberal,REFRAME,flat,0.897,4.7,0.0137,1950.0,0.006,transition,transition,False,False
+中絶,Bible Belt,ACTIVE,transition,0.234,2.6,0.0,1970.0,0.004,transition,transition,True,True
+中絶,Rust Belt WWC,ACTIVE,transition,0.404,1.4,0.0324,1965.0,0.002,transition,transition,True,True
+中絶,Black urban,ACTIVE,transition,0.592,-3.1,0.4634,1965.0,0.022,flat,transition,False,True
+中絶,Suburban MC,ACTIVE,transition,0.635,3.2,0.0434,1955.0,0.006,transition,transition,True,True
+中絶,Rural Conservative,ACTIVE,transition,0.177,1.7,0.0014,1965.0,0.005,transition,transition,True,True
+銃規制,Coastal Liberal,ACTIVE,transition,0.891,-2.2,0.1737,1960.0,0.002,flat,flat,False,False
+銃規制,Bible Belt,ACTIVE,transition,0.652,-0.5,0.2181,1975.0,0.002,flat,flat,False,False
+銃規制,Rust Belt WWC,ACTIVE,transition,0.767,-0.8,0.0737,1970.0,0.001,flat,flat,False,False
+銃規制,Black urban,REFRAME,flat,0.865,-1.7,0.5794,1950.0,0.019,flat,flat,True,True
+銃規制,Suburban MC,REFRAME,flat,0.789,1.9,0.1299,1940.0,0.003,flat,flat,True,True
+銃規制,Rural Conservative,ACTIVE,transition,0.6,-0.9,0.1556,1975.0,0.002,flat,flat,False,False

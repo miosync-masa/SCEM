@@ -1,0 +1,25 @@
+{
+  "events_predicted": {
+    "同性婚": "us_obergefell_2015",
+    "中絶": "us_dobbs_2022",
+    "銃規制": "us_sandy_hook_2012"
+  },
+  "events_exploratory": [
+    "移民増"
+  ],
+  "hit_linear": [
+    11,
+    18
+  ],
+  "hit_changepoint": [
+    12,
+    18
+  ],
+  "confusion_cp": {
+    "flat->flat": 4,
+    "transition->transition": 8,
+    "flat->transition": 2,
+    "transition->flat": 4
+  },
+  "note": "saturation is NOT auto-labeled REFRAME; we check whether the prior grid mode predicted the GSS flat/transition state. immigration excluded (no grid prediction)."
+}
