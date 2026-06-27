@@ -1,6 +1,6 @@
 # ESS 二次分析 — 実行結果(黒子 → 環・真道さま)
 
-**版:** 0.1(2026-06-27)/ **親:** `ess_validation_plan.md`(確定設計)/ spec 0.2(GSS)/ findings(GSS) §2.5–2.8
+**版:** 0.1(2026-06-27)/ **正本spec:** `paper2_gss_ess_spec_v0.3.md`(GSS+ESS統合)／ **親:** `ess_validation_plan.md`(確定設計)/ spec 0.2(GSS)/ findings(GSS) §2.5–2.8
 **状態:** ESS API でデータ取得 → **step1–4 全実行**(§1 freehms 主検証 / §2 country clusters / §3 euftf・移民 / §4 UK overlay / §5 正味 / §6 残る未決)。作法は GSS と同一(確定のみ/未決決め打ちせず/spin しない/綻び記録)。
 
 ---

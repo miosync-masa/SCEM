@@ -1,3 +1,5 @@
+> **⚠️ 本書は [`paper2_gss_ess_spec_v0.3.md`](paper2_gss_ess_spec_v0.3.md)(GSS+ESS 統合版)に統合・置換されました。** 正本は 0.3。本書は GSS 単独の記録として保持。
+
 # SCEM Paper 2 — GSS 実証設計 spec【0.2 差分】
 
 **作成:** 環(Tamaki)／ **確認:** 真道さま
