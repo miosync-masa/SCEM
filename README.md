@@ -11,6 +11,7 @@
 
 - 📄 Paper 1(preprint draft, 日本語): [`docs/paper1_media_generation.md`](docs/paper1_media_generation.md) · [HTML](docs/paper1.html)
 - 📄 Paper 2 — Contextual Mode Resolver(海外版, draft): [`docs/paper2_contextual_mode_resolver.md`](docs/paper2_contextual_mode_resolver.md) · [HTML](docs/paper2.html)
+- 🔁 §5.5 外部照合(GSS+ESS)完全再現 SI: [`SI/README.md`](SI/README.md)(三対応表)· [`SI/reproduce_all.sh`](SI/reproduce_all.sh)
 - 🏛 正典アーキテクチャ(v6 FIXED): [`ARCHITECTURE.md`](ARCHITECTURE.md)
 
 ---
