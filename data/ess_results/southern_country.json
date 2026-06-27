@@ -1,0 +1,178 @@
+{
+  "present": [
+    "ES",
+    "PT",
+    "IT",
+    "GR",
+    "CY"
+  ],
+  "verdict_counts": {
+    "pos": 5,
+    "zero": 0,
+    "neg": 0,
+    "excluded": 0
+  },
+  "conclusion": "複数国(5)で正勾配一貫 → Southern 一般化OK(b′ 金脈確定)",
+  "rows": [
+    {
+      "country": "ES",
+      "religious": {
+        "n": 1417,
+        "pool": 0.8,
+        "ci": [
+          0.774,
+          0.823
+        ],
+        "slope_pp_decade": 27.4,
+        "slope_z": 6.86,
+        "saturated": false,
+        "knot": 1945,
+        "cp_improve": 0.044,
+        "thin": false
+      },
+      "secular": {
+        "n": 304,
+        "pool": 0.968,
+        "ci": [
+          0.937,
+          0.984
+        ],
+        "slope_pp_decade": null,
+        "slope_z": null,
+        "saturated": true,
+        "knot": null,
+        "cp_improve": null,
+        "thin": false
+      },
+      "verdict": "正勾配(移行中)"
+    },
+    {
+      "country": "PT",
+      "religious": {
+        "n": 2165,
+        "pool": 0.773,
+        "ci": [
+          0.748,
+          0.796
+        ],
+        "slope_pp_decade": 6.7,
+        "slope_z": 7.41,
+        "saturated": false,
+        "knot": 1940,
+        "cp_improve": 0.014,
+        "thin": false
+      },
+      "secular": {
+        "n": 249,
+        "pool": 0.95,
+        "ci": [
+          0.905,
+          0.974
+        ],
+        "slope_pp_decade": null,
+        "slope_z": null,
+        "saturated": true,
+        "knot": null,
+        "cp_improve": null,
+        "thin": false
+      },
+      "verdict": "正勾配(移行中)"
+    },
+    {
+      "country": "IT",
+      "religious": {
+        "n": 3626,
+        "pool": 0.612,
+        "ci": [
+          0.596,
+          0.628
+        ],
+        "slope_pp_decade": 5.9,
+        "slope_z": 14.56,
+        "saturated": false,
+        "knot": 1960,
+        "cp_improve": 0.017,
+        "thin": false
+      },
+      "secular": {
+        "n": 97,
+        "pool": 0.888,
+        "ci": [
+          0.806,
+          0.938
+        ],
+        "slope_pp_decade": 0.7,
+        "slope_z": 0.29,
+        "saturated": false,
+        "knot": null,
+        "cp_improve": null,
+        "thin": true
+      },
+      "verdict": "正勾配(移行中)"
+    },
+    {
+      "country": "GR",
+      "religious": {
+        "n": 2173,
+        "pool": 0.573,
+        "ci": [
+          0.548,
+          0.598
+        ],
+        "slope_pp_decade": 9.5,
+        "slope_z": 13.9,
+        "saturated": false,
+        "knot": 1955,
+        "cp_improve": 0.023,
+        "thin": false
+      },
+      "secular": {
+        "n": 169,
+        "pool": 0.916,
+        "ci": [
+          0.857,
+          0.953
+        ],
+        "slope_pp_decade": null,
+        "slope_z": null,
+        "saturated": true,
+        "knot": null,
+        "cp_improve": null,
+        "thin": false
+      },
+      "verdict": "正勾配(移行中)"
+    },
+    {
+      "country": "CY",
+      "religious": {
+        "n": 653,
+        "pool": 0.441,
+        "ci": [
+          0.395,
+          0.488
+        ],
+        "slope_pp_decade": 4.2,
+        "slope_z": 3.14,
+        "saturated": false,
+        "knot": 1965,
+        "cp_improve": 0.006,
+        "thin": false
+      },
+      "secular": {
+        "n": 56,
+        "pool": 0.935,
+        "ci": [
+          0.815,
+          0.979
+        ],
+        "slope_pp_decade": null,
+        "slope_z": null,
+        "saturated": true,
+        "knot": null,
+        "cp_improve": null,
+        "thin": true
+      },
+      "verdict": "正勾配(移行中)"
+    }
+  ]
+}

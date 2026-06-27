@@ -1,0 +1,6 @@
+country,verdict,rel_n,rel_pool,rel_slope_pp_decade,rel_slope_z,rel_knot,rel_saturated,rel_thin,sec_n,sec_pool,sec_saturated
+ES,正勾配(移行中),1417,0.8,27.4,6.86,1945,False,False,304,0.968,True
+PT,正勾配(移行中),2165,0.773,6.7,7.41,1940,False,False,249,0.95,True
+IT,正勾配(移行中),3626,0.612,5.9,14.56,1960,False,False,97,0.888,False
+GR,正勾配(移行中),2173,0.573,9.5,13.9,1955,False,False,169,0.916,True
+CY,正勾配(移行中),653,0.441,4.2,3.14,1965,False,False,56,0.935,True
