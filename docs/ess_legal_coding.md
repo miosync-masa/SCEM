@@ -1,6 +1,6 @@
 # ESS effective_year — LGBT 制度モーメント年 コーディング表(出典付き)
 
-**用途:** `src/ess_effective_year.py` の `LEGAL` 辞書の出典。findings §2.2(ρ=+0.41/+0.54)の制度年の根拠。
+**用途:** `src/adapters/ess/ess_effective_year.py` の `LEGAL` 辞書の出典。findings §2.2(ρ=+0.41/+0.54)の制度年の根拠。
 **検証(2026-06-27):** 各国の年を Wikipedia *"Recognition of same-sex unions in Europe"*(各国の**国内立法を脚注で引用**)
 + ILGA-Europe(Rainbow Map / Annual Review)で横断確認。**主要アンカー国は国内法を明記**(下表「primary law」)。
 **強度:** 制度年 = **事象の着弾年**であって個人の mode ではない。年の付与は外部照合用。論文最終版では

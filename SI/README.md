@@ -27,29 +27,29 @@
 
 | 本文の主張/図表 | データ/コード(src/) | 出力 | 再現コマンド |
 |---|---|---|---|
-| データ取得(GSS 1972–2024 Cumulative, NORC) | `gss_acquire.py` | `data/gss/gss_slim.parquet`(.gitignore) | `python3 src/gss_acquire.py` |
+| データ取得(GSS 1972–2024 Cumulative, NORC) | `gss_acquire.py` | `data/gss/gss_slim.parquet`(.gitignore) | `python3 src/adapters/gss/gss_acquire.py` |
 | premise 8共同体の操作化(RELTRAD+RACE/HISPANIC+REGION/SRCBELT+DEGREE) | `gss_segments.py`(import) | — | (各分析が import) |
-| CMR グリッド統合(interpretations) | `merge_paper2_data.py` | `data/interpretations_{us,uk}_grid.jsonl` 他 | `python3 src/merge_paper2_data.py --country us --variant grid`(uk も) |
-| **SSM コア対比(Coastal 91%[85,95] vs Bible Belt 6→66%, CI分離, period頑健)** | `gss_core_contrast.py` | `data/gss_results/core_contrast_ssm.csv` / `figures/gss_core_contrast_ssm.png` | `python3 src/gss_core_contrast.py` |
-| **b′ 交互作用(+2.7pp/10年, p=0.157 n.s., FE≈非統制で period頑健)** | `gss_interaction.py` | `data/gss_results/interaction_ssm.json` | `python3 src/gss_interaction.py` |
-| **徳用パックの割れ(4事象×6共同体, 事象保持)** | `gss_valuepack.py` | `data/gss_results/valuepack_matrix.csv` / `figures/gss_valuepack_slopes.png` | `python3 src/gss_valuepack.py` |
+| CMR グリッド統合(interpretations) | `merge_paper2_data.py` | `data/interpretations_{us,uk}_grid.jsonl` 他 | `python3 src/cmr/merge_paper2_data.py --country us --variant grid`(uk も) |
+| **SSM コア対比(Coastal 91%[85,95] vs Bible Belt 6→66%, CI分離, period頑健)** | `gss_core_contrast.py` | `data/gss_results/core_contrast_ssm.csv` / `figures/gss_core_contrast_ssm.png` | `python3 src/adapters/gss/gss_core_contrast.py` |
+| **b′ 交互作用(+2.7pp/10年, p=0.157 n.s., FE≈非統制で period頑健)** | `gss_interaction.py` | `data/gss_results/interaction_ssm.json` | `python3 src/adapters/gss/gss_interaction.py` |
+| **徳用パックの割れ(4事象×6共同体, 事象保持)** | `gss_valuepack.py` | `data/gss_results/valuepack_matrix.csv` / `figures/gss_valuepack_slopes.png` | `python3 src/adapters/gss/gss_valuepack.py` |
 | **変化点>線形(移民×Coastal 線形−3.3 → 変化点1980 +41.5)** | `gss_valuepack.py` | `valuepack_matrix.csv`(cp_knot=1980, cp_post_extra_slope=41.5) | (同上) |
-| **overlay(単発10/12=83%, grid ACTIVE→transition 8/8)** | `gss_overlay.py` | `data/gss_results/overlay_predicted_vs_observed.csv` / `overlay_summary.json` | `python3 src/gss_overlay.py` |
+| **overlay(単発10/12=83%, grid ACTIVE→transition 8/8)** | `gss_overlay.py` | `data/gss_results/overlay_predicted_vs_observed.csv` / `overlay_summary.json` | `python3 src/adapters/gss/gss_overlay.py` |
 | **銃=観測装置×時間構造ミスマッチ(EVENT_STRUCTURE 単発/反復)** | `gss_overlay.py`(`EVENT_STRUCTURE`)+ findings §2.8 | `overlay_summary.json`(`event_structure`, scoped vs incl-guns) | (同上) |
-| Paper2 §5 CMR 図(mode matrix / fingerprint / 指紋) | `cmr_matrix.py` / `cmr_compare.py` / `make_paper2_figures.py` | `figures/fig_p2_*` | `python3 src/cmr_matrix.py --country us --variant grid` 他 / `python3 src/make_paper2_figures.py` |
+| Paper2 §5 CMR 図(mode matrix / fingerprint / 指紋) | `cmr_matrix.py` / `cmr_compare.py` / `make_paper2_figures.py` | `figures/fig_p2_*` | `python3 src/cmr/cmr_matrix.py --country us --variant grid` 他 / `python3 src/cmr/make_paper2_figures.py` |
 
 ### §5.5.2 ESS(UK/Europe)
 
 | 本文の主張/図表 | データ/コード(src/) | 出力 | 再現コマンド |
 |---|---|---|---|
-| データ取得(ESS7–11, Sikt API, DOI 明記) | `ess_acquire.py` | `data/ess/ess_slim.parquet`(.gitignore) | `ESS_USER_ID=… python3 src/ess_acquire.py` |
+| データ取得(ESS7–11, Sikt API, DOI 明記) | `ess_acquire.py` | `data/ess/ess_slim.parquet`(.gitignore) | `ESS_USER_ID=… python3 src/adapters/ess/ess_acquire.py` |
 | proxy セグメント / EVENT_STRUCTURE / 重み(anweight) | `ess_segments.py`(import) | — | (各分析が import) |
-| **水準ゲート(Secular 90%[89,91] vs Religious 66%[65,67], US並置)** | `ess_core_validation.py` | `data/ess_results/freehms_core.{csv,json}` / `figures/ess_freehms_core.png` | `python3 src/ess_core_validation.py` |
-| **country clusters + euftf + 移民(EVENT_STRUCTURE 事前適用)** | `ess_valuepack.py` | `data/ess_results/valuepack_matrix.csv` / `freehms_clusters.csv` / `figures/ess_valuepack.png` | `python3 src/ess_valuepack.py` |
-| **Southern 5国 b′ 正勾配一貫(ES z6.86/PT7.41/IT14.56/GR13.9/CY3.14)** | `ess_southern_country.py` | `data/ess_results/southern_country.csv` | `python3 src/ess_southern_country.py` |
-| **effective_year→移行段階(Spearman 承認年0.41/0.54, 婚姻年0.34/0.67)** | `ess_effective_year.py` | `data/ess_results/effective_year.{csv,json}` / `figures/ess_effective_year.png` | `python3 src/ess_effective_year.py` |
+| **水準ゲート(Secular 90%[89,91] vs Religious 66%[65,67], US並置)** | `ess_core_validation.py` | `data/ess_results/freehms_core.{csv,json}` / `figures/ess_freehms_core.png` | `python3 src/adapters/ess/ess_core_validation.py` |
+| **country clusters + euftf + 移民(EVENT_STRUCTURE 事前適用)** | `ess_valuepack.py` | `data/ess_results/valuepack_matrix.csv` / `freehms_clusters.csv` / `figures/ess_valuepack.png` | `python3 src/adapters/ess/ess_valuepack.py` |
+| **Southern 5国 b′ 正勾配一貫(ES z6.86/PT7.41/IT14.56/GR13.9/CY3.14)** | `ess_southern_country.py` | `data/ess_results/southern_country.csv` | `python3 src/adapters/ess/ess_southern_country.py` |
+| **effective_year→移行段階(Spearman 承認年0.41/0.54, 婚姻年0.34/0.67)** | `ess_effective_year.py` | `data/ess_results/effective_year.{csv,json}` / `figures/ess_effective_year.png` | `python3 src/adapters/ess/ess_effective_year.py` |
 | 制度年コーディング(出典付き) | `docs/ess_legal_coding.md` | (出典付き表; ILGA-Europe + 国内立法) | — |
-| **overlay UK(7/9 探索的, euftf↔Brexit 3/3)** | `ess_overlay.py` | `data/ess_results/overlay_uk.csv` / `overlay_uk_summary.json` | `python3 src/ess_overlay.py` |
+| **overlay UK(7/9 探索的, euftf↔Brexit 3/3)** | `ess_overlay.py` | `data/ess_results/overlay_uk.csv` / `overlay_uk_summary.json` | `python3 src/adapters/ess/ess_overlay.py` |
 
 > 順序依存:`gss_overlay.py` は `gss_valuepack.py` 出力(valuepack_matrix.csv)を読む → valuepack を先に。
 > `*_overlay` / `*_southern` 等は CMR グリッド統合(merge)と slim 取得が前提。`reproduce_all.sh` が正しい順で実行。
@@ -59,14 +59,14 @@
 ## 2. SI に含めるもの(4層・完全再現型)
 
 ### 2.1 データ層
-- 取得:`src/gss_acquire.py`(GSS Cumulative Stata zip を NORC から直 DL → slim)/ `src/ess_acquire.py`(ESS API, parquet 直取得)。
+- 取得:`src/adapters/gss/gss_acquire.py`(GSS Cumulative Stata zip を NORC から直 DL → slim)/ `src/adapters/ess/ess_acquire.py`(ESS API, parquet 直取得)。
 - DOI:**GSS** = `gss7224_r3`(2024 release, NORC GSS_stata.zip)。**ESS** = `10.21338/ess7e02_2, ess8e02_3, ess9e03_1, ess10e03_1, ess11e03_0`(`ess_acquire.py` の `ROUND_DOIS`)。
 - 制度年:`docs/ess_legal_coding.md`(recognition_year/ssm_year/種別/primary law、ILGA-Europe + Wikipedia 国内立法脚注)。
 - 生データ(GSS 570MB / ESS per-round parquet)は `.gitignore`。取得スクリプトで再生成可。
 
 ### 2.2 操作化層
-- US 8共同体:`src/gss_segments.py`(RELTRAD[公式変数]+RACE/HISPANIC+REGION/region_7222/SRCBELT+DEGREE。Mormon は `other`∈{60,64,162} で別抽出)。
-- ESS proxy:`src/ess_segments.py`(secular/religious×edu×urban×immigrant-bg、weight=anweight)。
+- US 8共同体:`src/adapters/gss/gss_segments.py`(RELTRAD[公式変数]+RACE/HISPANIC+REGION/region_7222/SRCBELT+DEGREE。Mormon は `other`∈{60,64,162} で別抽出)。
+- ESS proxy:`src/adapters/ess/ess_segments.py`(secular/religious×edu×urban×immigrant-bg、weight=anweight)。
 - **EVENT_STRUCTURE**:`gss_overlay.py` / `ess_segments.py` の `EVENT_STRUCTURE`(単発モーメント vs 反復バースト)。銃=反復、freehms=単発、euftf/移民=反復。
 - **同性婚3変数接続**:`gss_segments.py:ssm_approve()`(marsame/marsame1/marsamey)。ESS は `ess_segments.py:freehms_tolerant()`。
 

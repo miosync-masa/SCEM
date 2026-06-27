@@ -150,10 +150,10 @@ ChatGPT 版と Gemini 版を**同一プロンプト**で別々に回す → 2モ
 #   data/Gemini_events_{country}_grid.jsonl   (Gemini)
 # 破損していれば recover_gemini_jsonl.py で復旧。
 # merge は入力名を grid 版に向ければ流せる(or v1 を置換)。
-python3 src/merge_paper2_data.py --country us     # consensus/interpretations/disagreements 再生成
-python3 src/cmr_matrix.py  --country us           # 欠損ゼロの mode 変換マトリクス
-python3 src/cmr_compare.py --country us --birth_year 1985
-python3 src/make_paper2_figures.py                # Fig2/Fig3 を欠損なしで再描画
+python3 src/cmr/merge_paper2_data.py --country us     # consensus/interpretations/disagreements 再生成
+python3 src/cmr/cmr_matrix.py  --country us           # 欠損ゼロの mode 変換マトリクス
+python3 src/cmr/cmr_compare.py --country us --birth_year 1985
+python3 src/cmr/make_paper2_figures.py                # Fig2/Fig3 を欠損なしで再描画
 ```
 
 完全グリッドになれば、Fig2(Same Event × Community)は `—` の無い密な行列になり、
