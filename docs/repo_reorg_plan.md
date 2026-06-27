@@ -3,7 +3,8 @@
 **版:** 1.0(2026-06-27)/ **親:** spec 0.3 §9-1 / Paper2 §8.1(Core / CMR / Exposure Adapters)
 **握り(2026-06-27):** **深いサブパッケージ(§8.1準拠)** / **data/ は今回触らない**(別タスク)。
 **目的:** src/ の34フラットファイルを、論文 §8.1 の層構成に物理対応させる。再現性(SI/reproduce_all)を1ミリも壊さない。
-**状態:** 計画確定・**未実行**。本書どおり実行すれば文脈死んでも完遂できる精度で記述。
+**状態:** ✅ **実行完了(2026-06-27, branch `reorg/src-layering`)**。34ファイルを §1 ツリーへ移動、検証(§5)で **data/*_results・figures バイト一致=再現性保持**を確認。
+> **実装上の逸脱(計画 §2 から):** `_paths.py` 一元化は採らず、**深度非依存の walk-up**(`next(p for p in Path(__file__).resolve().parents if p.name=="src")`)を各スクリプトのパス解決に採用。理由=`_paths` import は「src を path に載せる前に import する」順序依存(bootstrap 必須)を生むが、walk-up は `Path` だけで完結し**循環なし・深度非依存**。絶対 import も全面採用せず、**intra-package は bare import 維持(sys.path[0]=スクリプトのdir)+ cross-package(cmr/culture → core)のみ core dir を sys.path 追加**。結果は同等(§8.1 物理層化)でリスク最小。
 
 ---
 
@@ -86,7 +87,7 @@ from core import media_generation_v4 as v4      # 絶対 import(例)
 
 ## 4. SI / ドキュメントの追従更新(再現性を守る)
 
-- **`SI/README.md` 三対応表**:`src/gss_core_contrast.py` → `src/adapters/gss/gss_core_contrast.py` 等、全コマンドのパスを新ツリーへ。
+- **`SI/README.md` 三対応表**:`src/adapters/gss/gss_core_contrast.py` → `src/adapters/gss/gss_core_contrast.py` 等、全コマンドのパスを新ツリーへ。
 - **`SI/reproduce_all.sh`**:`src/X.py` → 新パス(`src/adapters/gss/...`, `src/cmr/...`, `src/adapters/ess/...`)。
 - **`README.md` リポジトリ構成**:src/ ツリーを §1 の層化に差し替え。
 - **`docs/exposure_adapters_spec.md`**:Adapter 実装が src/adapters/ に対応した旨を1行。

@@ -23,18 +23,18 @@ run() { echo; echo ">>> $*"; "$@"; }
 
 echo "######################## GSS (US) ########################"
 echo "NORC GSS data: by running gss_acquire you agree to NORC/GSS terms of use."
-run $PY src/gss_acquire.py                                   # → data/gss/gss_slim.parquet (.gitignore)
-run $PY src/merge_paper2_data.py --country us --variant grid # → interpretations_us_grid.jsonl 等
-run $PY src/merge_paper2_data.py --country uk --variant grid
-run $PY src/cmr_matrix.py  --country us --variant grid
-run $PY src/cmr_matrix.py  --country uk --variant grid
-run $PY src/cmr_compare.py --country us --variant grid
-run $PY src/cmr_compare.py --country uk --variant grid
-run $PY src/gss_core_contrast.py     # SSM コア対比 (Coastal 91% / Bible Belt 6→66%)
-run $PY src/gss_interaction.py       # b′ 交互作用 (p=0.157, period頑健)
-run $PY src/gss_valuepack.py         # 徳用パックの割れ + 変化点>線形 (移民×Coastal +41.5)
-run $PY src/gss_overlay.py           # overlay 10/12, ACTIVE→transition 8/8, 銃=装置ミスマッチ
-run $PY src/make_paper2_figures.py   # Paper2 §5 CMR 図 (fig_p2_*)
+run $PY src/adapters/gss/gss_acquire.py                                   # → data/gss/gss_slim.parquet (.gitignore)
+run $PY src/cmr/merge_paper2_data.py --country us --variant grid # → interpretations_us_grid.jsonl 等
+run $PY src/cmr/merge_paper2_data.py --country uk --variant grid
+run $PY src/cmr/cmr_matrix.py  --country us --variant grid
+run $PY src/cmr/cmr_matrix.py  --country uk --variant grid
+run $PY src/cmr/cmr_compare.py --country us --variant grid
+run $PY src/cmr/cmr_compare.py --country uk --variant grid
+run $PY src/adapters/gss/gss_core_contrast.py     # SSM コア対比 (Coastal 91% / Bible Belt 6→66%)
+run $PY src/adapters/gss/gss_interaction.py       # b′ 交互作用 (p=0.157, period頑健)
+run $PY src/adapters/gss/gss_valuepack.py         # 徳用パックの割れ + 変化点>線形 (移民×Coastal +41.5)
+run $PY src/adapters/gss/gss_overlay.py           # overlay 10/12, ACTIVE→transition 8/8, 銃=装置ミスマッチ
+run $PY src/cmr/make_paper2_figures.py   # Paper2 §5 CMR 図 (fig_p2_*)
 
 if [ "${ESS_USER_ID:-}" = "" ]; then
   echo
@@ -46,12 +46,12 @@ else
   echo
   echo "######################## ESS (UK/Europe) ########################"
   echo "ESS data: by running ess_acquire you agree to ESS/Sikt terms of use."
-  run $PY src/ess_acquire.py            # ESS7-11 API parquet → ess_slim.parquet (.gitignore)
-  run $PY src/ess_core_validation.py    # 水準ゲート (Secular 90% / Religious 66%, US並置)
-  run $PY src/ess_valuepack.py          # clusters + euftf + 移民 (EVENT_STRUCTURE)
-  run $PY src/ess_southern_country.py   # Southern 5国 b′ 正勾配一貫
-  run $PY src/ess_effective_year.py     # effective_year→移行段階 (ρ 0.54/0.67)
-  run $PY src/ess_overlay.py            # overlay UK (euftf↔Brexit 3/3)
+  run $PY src/adapters/ess/ess_acquire.py            # ESS7-11 API parquet → ess_slim.parquet (.gitignore)
+  run $PY src/adapters/ess/ess_core_validation.py    # 水準ゲート (Secular 90% / Religious 66%, US並置)
+  run $PY src/adapters/ess/ess_valuepack.py          # clusters + euftf + 移民 (EVENT_STRUCTURE)
+  run $PY src/adapters/ess/ess_southern_country.py   # Southern 5国 b′ 正勾配一貫
+  run $PY src/adapters/ess/ess_effective_year.py     # effective_year→移行段階 (ρ 0.54/0.67)
+  run $PY src/adapters/ess/ess_overlay.py            # overlay UK (euftf↔Brexit 3/3)
 fi
 
 echo
