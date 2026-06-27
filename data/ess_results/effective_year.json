@@ -2,6 +2,8 @@
   "spearman_rec_vs_slopez": 0.406,
   "spearman_rec_vs_knot": 0.537,
   "spearman_legalized_only": 0.473,
+  "sensitivity_ssm_vs_slopez": 0.341,
+  "sensitivity_ssm_vs_knot": 0.669,
   "conclusion": "単調対応あり(ρ=+0.41) → effective_year が移行段階を駆動=(c)時間発展 支持(exploratory/suggestive)",
   "n_countries": 32,
   "rows": [
@@ -422,5 +424,5 @@
       "thin": false
     }
   ],
-  "coding_note": "legal years from public legislative records (author coding); VERIFY against primary sources before publication"
+  "coding_source": "docs/ess_legal_coding.md (verified vs Wikipedia 'Recognition of same-sex unions in Europe' which cites national legislation, + ILGA-Europe). Definitional choices documented there."
 }

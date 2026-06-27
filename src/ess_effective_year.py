@@ -122,10 +122,16 @@ def main():
     # 制度ありの国のみ(sentinel 除外)で頑健性
     leg = R[R["recognition_year"].notna()]
     sp_z_leg, n3 = spearman(leg["rec_eff"], leg["slope_z"])
+    # 感度:effective_year を「承認年」でなく「同性婚年」にした版(操作化の幅を潰す)
+    R["ssm_eff"] = R["ssm_year"].fillna(NONE_SENTINEL)
+    sp_z_ssm, n4 = spearman(R["ssm_eff"], R["slope_z"])
+    sp_k_ssm, n5 = spearman(R["ssm_eff"], R["knot"])
     print("\n" + "-" * 100)
     print(f"  Spearman(承認年 vs スロープz)= {sp_z:+.2f} (n={n1})  ※予測:正(遅い国ほど正スロープ大)")
     print(f"  Spearman(承認年 vs 変化点出生年)= {sp_k:+.2f} (n={n2})  ※予測:正(遅い国ほど若い変化点)")
     print(f"  制度あり国のみ Spearman(承認年 vs スロープz)= {sp_z_leg:+.2f} (n={n3})")
+    print(f"  [感度] 同性婚年版 Spearman(婚姻年 vs スロープz)= {sp_z_ssm:+.2f} (n={n4}) / vs 変化点= {sp_k_ssm:+.2f}")
+    print(f"         → 承認年版と同符号・近似なら操作化(パートナー vs 婚姻)に頑健")
 
     # 事前固定判定
     if not math.isnan(sp_z) and sp_z >= 0.4:
@@ -142,9 +148,10 @@ def main():
     R.to_csv(res / "effective_year.csv", index=False)
     (res / "effective_year.json").write_text(json.dumps(
         {"spearman_rec_vs_slopez": round(sp_z, 3), "spearman_rec_vs_knot": round(sp_k, 3),
-         "spearman_legalized_only": round(sp_z_leg, 3), "conclusion": concl,
-         "n_countries": len(R), "rows": rows,
-         "coding_note": "legal years from public legislative records (author coding); VERIFY against primary sources before publication"},
+         "spearman_legalized_only": round(sp_z_leg, 3),
+         "sensitivity_ssm_vs_slopez": round(sp_z_ssm, 3), "sensitivity_ssm_vs_knot": round(sp_k_ssm, 3),
+         "conclusion": concl, "n_countries": len(R), "rows": rows,
+         "coding_source": "docs/ess_legal_coding.md (verified vs Wikipedia 'Recognition of same-sex unions in Europe' which cites national legislation, + ILGA-Europe). Definitional choices documented there."},
         ensure_ascii=False, indent=2), encoding="utf-8")
 
     # 散布図
