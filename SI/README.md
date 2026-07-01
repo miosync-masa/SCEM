@@ -2,6 +2,7 @@
 
 **版:** 1.0(2026-06-27)/ **親:** `docs/paper2_gss_ess_spec_v0.3.md`(正本 spec)
 **型:** **完全再現型(complete-reproduction)**。誰でも同じ DOI から生データを取得 → 同じ slim → 同じ結果・図表が出る。
+**数値一覧:** 執筆用の全 study 実数値 compendium は [`results_tables.md`](results_tables.md)(S1–S11 + 二段構造 + 早見)。
 **ライセンス:** MIT(コード)。生データは NORC(GSS)/ Sikt(ESS)規約に従い**再配布しない**(DOI + 取得スクリプトで代替)。
 **秘匿情報:** ESS API の User ID は**認証でなく利用統計用**だが、環境変数 `ESS_USER_ID` から読み**リポジトリに焼かない**。
 
