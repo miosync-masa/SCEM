@@ -3,7 +3,7 @@
 lod2_cluster.py — LOD 2(戦略分岐)を複数生成して cos クラスタリング
                   (community_experiment.py の手法と接続)
 
-LOD_ARCHITECTURE.md §2.1 の LOD2 例
+ARCHITECTURE.md Part B(LOD階層)の LOD2 例
   「技術で攻める / 人脈で攻める / 大企業で守る / 公務員で守る」
 を、固定 LOD0(1981年生まれ)× LOD1(攻める=Fight / 守る=Flight)の上で複数生成し、
 ペルソナを埋め込みベクトル化して、community_experiment.py の cos / greedy_clusters で

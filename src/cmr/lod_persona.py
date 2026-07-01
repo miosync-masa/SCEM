@@ -2,7 +2,7 @@
 """
 lod_persona.py — SCEM LOD ペルソナ生成プロトタイプ(Paper 2 素材 / MVP)
 
-LOD_ARCHITECTURE.md §3(4戒律)・§4(CSP)・§7(実装仕様)に準拠。
+ARCHITECTURE.md Part B(B2 4公理・B3 CSP・B4 プロトタイプ仕様)に準拠。
 
 役割分担(§1.1):
   LOD 0 = 数理 = 固定 = 曝露構造        … Paper 1 エンジン(v4/v5)で計算

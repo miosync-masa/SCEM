@@ -67,7 +67,7 @@ US(GSS)+ UK/Europe(ESS 33か国)で立ち上がった **二段構造**:
 - **Bible Belt**(evangelical×lowedu):同じ Fight でも「9.11 を ACTIVE 分岐として引き受ける」。
 → 出力全文は [`data/personas_grid/`](data/personas_grid/)。
 
-**仕組み:** LOD(Level of Detail)階層 = 曝露構造(LOD0, 数理・固定)→ ペルソナ(LOD3, 解釈)を解像度の階層として扱い、**4公理を制約とする CSP** で生成。**Projection Consistency と Axiom 違反で SAT/UNSAT を判定**(数理アンカーに由来しないペルソナは構造的に拒否)。実装:[`src/cmr/lod_persona.py`](src/cmr/lod_persona.py)、理論:[`LOD_ARCHITECTURE.md`](LOD_ARCHITECTURE.md)。
+**仕組み:** LOD(Level of Detail)階層 = 曝露構造(LOD0, 数理・固定)→ ペルソナ(LOD3, 解釈)を解像度の階層として扱い、**4公理を制約とする CSP** で生成。**Projection Consistency と Axiom 違反で SAT/UNSAT を判定**(数理アンカーに由来しないペルソナは構造的に拒否)。実装:[`src/cmr/lod_persona.py`](src/cmr/lod_persona.py)、理論:[`ARCHITECTURE.md`](ARCHITECTURE.md) Part B。
 
 **倫理境界(製品化時も第一条・不変):** SCEM は**個人の内面を断定しない**。出力は「ある出生年・共同体・制度環境に置かれた人が**どんな曝露構造を持ちやすいか**」の推定であって、個人の決めつけではない。**分類でなく理解 / 操作でなく翻訳 / 断定でなく来歴追跡 / 分断でなく相互理解**(誤用防止の四線)。= 人を分類する道具でなく**異なる意味世界の翻訳地図**。
 
@@ -105,7 +105,7 @@ arch -arm64 python3.12 src/cmr/lod_persona.py --country us --birth_year 1985 \
 ## リポジトリ構成
 
 ```
-README.md  ARCHITECTURE.md(正典 v6 FIXED)  LOD_ARCHITECTURE.md(LOD/4公理/CSP)  requirements.txt
+README.md  ARCHITECTURE.md(正典 v7 — Track A 構造/学術 + Track B ペルソナ生成)  requirements.txt
 
 src/                  全 Python(フレームワーク層構成)
   core/      = SCEM Core(media_generation_v4/v5, event_loader, make_figures, build_html, tests)
