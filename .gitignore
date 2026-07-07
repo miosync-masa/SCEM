@@ -19,6 +19,15 @@ __pycache__/
 .venv/
 venv/
 
+# ── intermediate work docs (kept locally, not published) ──
+docs/paper2_cmr_report.md
+docs/repo_reorg_plan.md
+docs/paper2_gss_spec_v0.2.md
+docs/internal_notes.md
+docs/gss_validation_findings.md
+docs/ess_validation_findings.md
+docs/ess_validation_plan.md
+
 # ── generated artifacts (regenerable) ──
 # 論文HTML(paper1.html/paper2.html)は build_paper_html.py で再生成可だが、
 # 配布用成果物として追跡する。

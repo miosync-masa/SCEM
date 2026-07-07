@@ -88,7 +88,7 @@ def main():
         if not files:
             print("⚠️ data/ess/ に ESS ファイルがありません。")
             print("   ESS API で取得: export ESS_USER_ID=<your-ESS-user-id>; python3 src/ess_acquire.py")
-            print("   User ID は https://ess.sikt.no/en/api(認証でなく利用統計用)。詳細 docs/ess_validation_plan.md §D。")
+            print("   User ID は https://ess.sikt.no/en/api(認証でなく利用統計用)。")
             raise SystemExit(1)
     frames = []
     for p in files:

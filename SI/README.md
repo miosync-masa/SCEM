@@ -115,5 +115,5 @@
 
 - `SI/README.md`(本書:三対応表 + 検証の問い + 再現手順 + チェック項目)
 - `SI/reproduce_all.sh`(ワンショット完全再現:GSS network / ESS `ESS_USER_ID`)
-- 指す先(正本):`src/`(コード)・`data/{gss,ess}_results/`(集計出力, committed)・`figures/`・`docs/ess_legal_coding.md` / `gss_validation_findings.md` / `ess_validation_findings.md`。
+- 指す先(正本):`src/`(コード)・`data/{gss,ess}_results/`(集計出力, committed)・`figures/`・`docs/ess_legal_coding.md`。
 - → これが固まったら Repository 整理(Core/CMR/Adapters)の土台。その後 本文 §5.5 を SI 参照で執筆。

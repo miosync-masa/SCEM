@@ -7,7 +7,7 @@
 
 **黒子検証(2026-06-27):** 本書の引用数値を committed 結果と突合 — 全一致。
 GSS overlay 単発 10/12・銃込 12/18・ACTIVE→transition 8/8 / SSM 交互作用 p=0.157 / ESS freehms Secular 90% [89,91]・Religious 66% [65,67] / Southern 国別 z(ES 6.86 / PT 7.41 / IT 14.56 / GR 13.9 / CY 3.14)/ effective_year Spearman(承認年: slope 0.41・変化点 0.54 / 婚姻年感度: 0.34・0.67・制度あり 0.47)。
-関連: `gss_validation_findings.md` §2.5–2.8 / `ess_validation_findings.md` §0–6 / `ess_legal_coding.md` / `paper2_gss_spec_v0.2.md`(GSS 単独・本書に統合)。
+関連: `ess_legal_coding.md`(制度年コーディング)/ `../SI/results_tables.md`(数値一覧)。
 
 > 読み方マーク:**確定** = 合意済み・書いてよい ／ **一部未決** = 方向確定・細部要詰め ／ **未決** = 次回決定・決め打ちしない(Non-overwrite)
 

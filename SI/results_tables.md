@@ -83,7 +83,7 @@
 **読み:** *issues-differ* 帰無を棄却する方向。ただし base rate 膨れ・n=12 → 「予測対応・modest」。
 
 ## S5. 銃 = 観測装置 × 事象の時間構造ミスマッチ(EVENT_STRUCTURE)
-出力:`overlay_summary.json`(`event_structure`)+ `docs/gss_validation_findings.md` §2.8
+出力:`overlay_summary.json`(`event_structure`)
 
 | 型 | 例 | 出生年勾配 | GSS(出生年×態度) |
 |---|---|---|---|

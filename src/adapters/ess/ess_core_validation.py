@@ -115,7 +115,7 @@ def main():
         print("⚠️ data/ess/ess_slim.parquet が無い。先に ESS を取得:")
         print("   1) ESS Data Portal 登録 → integrated rounds(Stata)DL → data/ess/ に配置")
         print("   2) python3 src/ess_acquire.py")
-        print("   (docs/ess_validation_plan.md §D)。捏造しない=データが来るまで結果は出さない。")
+        print("   捏造しない=データが来るまで結果は出さない。")
         raise SystemExit(1)
 
     df = pd.read_parquet(SLIM)

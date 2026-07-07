@@ -1,200 +1,200 @@
 # SCEM — Architecture (v7)
 
-**Status: FIXED (2026-07-01).** 正典(single source of truth)。以降のコード・論文はこの仕様に従う。仕様変更はバージョンを上げること。
-v6(2026-06-24, 構造層のみ)+ LOD Architecture(2026-06-25, ペルソナ生成)を **Track A / Track B に統合**したのが v7。
+**Status: FIXED (2026-07-01).** The single source of truth. All subsequent code and papers follow this spec. Any change to the spec must bump the version.
+v7 is the integration of v6 (2026-06-24, structural layer only) + the LOD Architecture (2026-06-25, persona generation) into **Track A / Track B**.
 
-**対象:** 集団の曝露構造(collective exposure structure)。**個人の内面・個人ラグは対象外**(→ [スコープ外](#スコープ外意図的境界))。
-略称 **SCEM**。Paper 1 和名「年齢同期型メディア世代論」は本モデルの世代論的提示。
-
----
-
-## 0. 位置づけ — 二つの顔・一つのエンジン
-
-SCEM は **共通エンジン(Core = LOD 0 = 曝露構造の数理)** の上に二つの顔を持つ:
-
-- **Track A(構造・学術)** — LOD 0 を**世代論**として使う。事象×着弾年齢×作用モードのテンソルで世代指紋を計算し、共同体 premise でモードを解決する(CMR)。→ [Part A](#part-a--構造学術のアーキテクチャtrack-a)
-- **Track B(ペルソナ生成)** — LOD 0 を**生成のアンカー**として使う。曝露構造(LOD 0)からペルソナ(LOD 3)を、4公理を制約とする CSP で由来追跡可能に生成する。→ [Part B](#part-b--ペルソナ生成のアーキテクチャtrack-b)
-
-**中心原理(両トラック共通):**
-> **数理(Python)= 事象 = 固定 = 曝露構造 / 解釈(LLM)= 反応 = 分岐可能 = ペルソナ表現。**
-
-数理は安定して数値化できるもの(年齢・感受性カーブ・cos・effective_year)を、解釈は数値化すると痩せるもの(質感・規範・文脈)を担う。**相互に代替不能**で、cos と Projection を接続点に組み合わさる。この役割分担が両トラックの土台。
+**Scope:** the collective exposure structure. **Individual inner life and individual lag are out of scope** (→ [Out of scope](#out-of-scope-deliberate-boundaries)).
+Abbreviation: **SCEM**. Paper 1's Japanese title, "Age-synchronized media generation theory," is the generational presentation of this model.
 
 ---
 
-# Part A — 構造・学術のアーキテクチャ(Track A)
+## 0. Positioning — two faces, one engine
 
-## A1. 構造層(Core)— 事象 × 着弾年齢 × 作用モード  〔実装済: `src/core/media_generation_v4.py` / `v5.py` / `event_loader.py`〕
+SCEM has two faces standing on a **shared engine (Core = LOD 0 = the mathematics of exposure structure):**
 
-- **3作用モード** PASSIVE / ACTIVE / REFRAME。生の合計で同列にせず **3軸**で保持(`mode_density`, `report_3axis`):
-  - PASSIVE(受動着弾):$w = s\cdot\lambda$
-  - ACTIVE(能動分岐=決断強制):$w = s\cdot(0.30+0.70\alpha)\cdot\lambda$
-  - REFRAME(参照点書き換え):$w = s\cdot(0.50+0.50\alpha)\cdot\lambda$
-- **感受性カーブ** 非対称ガウス・**個別 peak 優先ハイブリッド**(個別 `sensitivity_peak_age` があれば使用、無ければ領域×モードのフォールバック33本):
-  $g(a)=\max(\phi,\ \exp[-(a-\mu)^2/2\sigma(a)^2])$、$\sigma=\sigma_L\,(a\le\mu)\ /\ \sigma_R\,(a>\mu)$。
-- **REFRAME 発火** 同一 `reframe_group` 内のアンカー→トリガーで `reference_value` の**対数比**で差分発火:
-  $\delta=\min(1,\ \log(\max/\min)/\log 2)$、$\text{fire}=w_a(0.35+0.65\,w_t)\,\delta$。
-- **干渉** 同一認知バンドへの同時着弾のみ。**作用直交性** $D=1.6-1.05\min(\cos,1)$ で増幅(cos=0→1.6 / cos=1→0.55):
-  $\text{score}=\frac{w_a+w_b}{2}\cdot D\cdot(0.5+0.5\,p)$、$p=1-\min(\delta a/W,1)$。
-- **被り判定** `effect_vector` の**コサインのみ**で4段階(duplicate/sibling/interference/independent)。**domain は計算に非関与**。
-- **イベントを単一カテゴリに潰さない**=連続作用ベクトル $\mathbf{v}_e$。domain は**人間用の表示タグ**にすぎず計算に入らない(設計根拠は §C3)。
+- **Track A (structural / academic)** — uses LOD 0 as **generation theory**. It computes generational fingerprints from a tensor of event × impact age × action mode, and resolves the mode by community premise (CMR). → [Part A](#part-a--architecture-of-the-structural--academic-track-track-a)
+- **Track B (persona generation)** — uses LOD 0 as a **generative anchor**. It generates a persona (LOD 3) from the exposure structure (LOD 0), provenance-traceable, within a CSP whose constraints are the 4 axioms. → [Part B](#part-b--architecture-of-persona-generation-track-b)
 
-## A2. Community層 — Situated(環境)の変調  〔プロトタイプ: `src/culture/community_experiment.py`〕
+**Central principle (shared by both tracks):**
+> **Mathematics (Python) = event = fixed = exposure structure / interpretation (LLM) = response = branchable = persona expression.**
 
-- **閉鎖度** = **離散アーキタイプ**(開放/中間/閉鎖)。**塊(クラスタ)を作る**。Code(規範コード=許可・禁止・黙認・推奨)を内包。
-  - 実測根拠:閉鎖度固定(速度可変)の平均cos=0.90 > 速度固定=0.86。閉鎖型は速度に依らず一点収束(内部cos=0.93)→ 離散扱いが妥当。
-- **伝播速度** = **連続 offset**。`effective_year` を地域で変調(速0/中+1/遅+2年)。**塊を作らない**(同一閉鎖度内をなめらかにずらす)。
-- 閉鎖度が個人の具現化遅延を生むが、**個人ラグ自体は測らない**(集団曝露構造として扱う)。
-
-## A3. Culture層 — 嗜好分岐(仮説生成器)  〔実装済: `src/culture/culture_axis.py` / `generate_picks.py` / `compare_picks.py`〕
-
-- 4軸 pickリスト(音楽/スポーツ/文学/映画)を世代別に LLM 生成。構造プロファイル+嗜好で文化サブクラスタを生成。
-- 位置づけは**仮説生成器**。実在分布の測定ではない。
-
-## A4. CMR Layer — 文脈依存モード解決(Paper 2 で追加)  〔実装済: `src/cmr/`〕
-
-- `Event.mode` を固定値から**作用素 `Event × Premise → ResolvedImpact`** へ持ち上げる。同じ事象でも共同体 premise で PASSIVE/ACTIVE/REFRAME が変わる。
-- 複数 LLM 観測者(ChatGPT × Gemini × Claude)で mode を解決し、不一致を消さず **observer-dependence として測る**(`cmr_matrix.py` / `cmr_compare.py` / `merge_paper2_data.py`)。
-- 設計済み比較グリッド(US 8×12 / UK 9×13)で mode 変換・MFR・CDI を測定。詳細は `docs/paper2_contextual_mode_resolver.md`。
-
-## A5. Exposure Adapters — 曝露構造の供給層  〔`src/adapters/{gss,ess}/`〕
-
-- 曝露構造の**差し替え可能なデータ源**:curated DB(`events_patched.jsonl`)/ 外部サーベイ(GSS=US, ESS=UK/Europe)/ 将来 GDELT 等。
-- 実体曝露(統計・政策)と情報曝露(報道)を別系統で観測し Core で統合する設計は `docs/exposure_adapters_spec.md`。
-
-## A6. グラウンディング — プロンプト調整(アーキテクチャ非依存)
-
-- LLM 側の地域特性解像度を磨く=**唯一の残調整**。アーキテクチャは変えない、プロンプト品質の問題。
-
-## スコープ外(意図的境界)
-
-「対象=集団の曝露構造」を保つために**やらない**と決めた境界:
-- **個人層**(self-efficacy、個人の能力・意志)。※ ただし Track B は「個人ペルソナ表現」を LOD 3 として扱う — これは**個人の断定でなく**「その位置の人が持ちやすい曝露構造」の解釈生成(→ Part B 倫理境界)。
-- **個人の情報-具現化ラグ**(`test_lag.py` で味見 → 集団普及ラグは仮説と逆向き+右側打ち切り汚染。個人の「知る vs なる」ギャップは本プロキシで測れず境界外)。
-- **地域間具現化波及の動的モデル**(キャズム/普及の地域間ダイナミクス)。
-
-## 検証アーキテクチャ(外部照合の位置づけ)
-
-- Core/CMR の妥当性は **外部サーベイ(GSS/ESS)との照合**で見る。**検証の問い=予測精度でなく「個人化↔統計束のトレードオフをクリアした中間傾向束の実在」**。強度は「予測対応・suggestive・modest」、確証と書かない。
-- 主結果=**二段構造**:premise が水準を、`effective_year` がスロープ可視性(移行段階)を駆動。数値は `SI/results_tables.md`、再現は `SI/reproduce_all.sh`。
+Mathematics handles what can be stably quantified (age, sensitivity curves, cos, `effective_year`); interpretation handles what thins out when quantified (texture, norms, context). The two are **mutually irreplaceable** and combine at the junctions of cos and Projection. This division of labor is the foundation of both tracks.
 
 ---
 
-# Part B — ペルソナ生成のアーキテクチャ(Track B)
+# Part A — Architecture of the Structural / Academic Track (Track A)
 
-Paper 1 が「個人層は射程外」とした境界の**その先**を、LOD 0(曝露構造)→ LOD 3(個人ペルソナ)の**解像度の階層**として定式化する。Core エンジン(`v4/v5`)には**一切変更を加えない**。
+## A1. Structural layer (Core) — event × impact age × action mode  〔implemented: `src/core/media_generation_v4.py` / `v5.py` / `event_loader.py`〕
 
-## B1. LOD 階層(Level of Detail)
+- **Three action modes** PASSIVE / ACTIVE / REFRAME. Not equated by raw sum but held on **3 axes** (`mode_density`, `report_3axis`):
+  - PASSIVE (passive impact): $w = s\cdot\lambda$
+  - ACTIVE (active branching = forced decision): $w = s\cdot(0.30+0.70\alpha)\cdot\lambda$
+  - REFRAME (reference-point rewriting): $w = s\cdot(0.50+0.50\alpha)\cdot\lambda$
+- **Sensitivity curve** an asymmetric Gaussian, an **individual-peak-preferring hybrid** (use the per-item `sensitivity_peak_age` if present, otherwise fall back to the 33 domain×mode curves):
+  $g(a)=\max(\phi,\ \exp[-(a-\mu)^2/2\sigma(a)^2])$, $\sigma=\sigma_L\,(a\le\mu)\ /\ \sigma_R\,(a>\mu)$.
+- **REFRAME firing** anchor→trigger within the same `reframe_group`, firing on the **log ratio** of `reference_value`:
+  $\delta=\min(1,\ \log(\max/\min)/\log 2)$, $\text{fire}=w_a(0.35+0.65\,w_t)\,\delta$.
+- **Interference** only for simultaneous impacts on the same cognitive band. Amplified by **action orthogonality** $D=1.6-1.05\min(\cos,1)$ (cos=0→1.6 / cos=1→0.55):
+  $\text{score}=\frac{w_a+w_b}{2}\cdot D\cdot(0.5+0.5\,p)$, $p=1-\min(\delta a/W,1)$.
+- **Overlap judgment** uses **only the cosine** of the `effect_vector`, in 4 grades (duplicate/sibling/interference/independent). **Domain does not enter the computation.**
+- **Do not collapse an event into a single category** = a continuous action vector $\mathbf{v}_e$. Domain is merely a **human-facing display tag** and does not enter the computation (design rationale in §C3).
 
-3D グラフィックスの LOD と同型。用途(カメラ距離)が LOD を、LOD がスコープを決める。
+## A2. Community layer — modulation by the Situated (environment)  〔prototype: `src/culture/community_experiment.py`〕
 
-| LOD | 名称 | 内容 | 数理:解釈 | 担当 |
-|-----|------|------|-----------|------|
-| 0 | ExposureStructure | 曝露プロファイル(3軸指紋・主要事象・干渉・REFRAME発火) | 100:0 | Python(Core) |
-| 1 | ResponseOrientation | 応答方向(Fight / Flight 等) | 50:50 | LLM |
-| 2 | StrategyBranch | 戦略分岐(技術で攻める / 大企業で守る 等) | 25:75 | LLM |
-| 3 | PersonalContext | 個人文脈(職種・家族・地域・資産・学歴・関係資本) | 5:95 | LLM |
+- **Degree of closure** = **discrete archetype** (open / intermediate / closed). It **forms clusters**. It contains the Code (normative code = permitted / forbidden / tolerated / recommended).
+  - Empirical basis: with closure fixed (speed varying), mean cos = 0.90 > with speed fixed = 0.86. A closed type converges to a single point regardless of speed (internal cos = 0.93) → discrete treatment is justified.
+- **Propagation speed** = **continuous offset**. It modulates `effective_year` by region (fast 0 / medium +1 / slow +2 years). It **does not form clusters** (it smoothly shifts points within the same degree of closure).
+- Closure produces individual embodiment delay, but **individual lag itself is not measured** (it is treated as collective exposure structure).
 
-**遷移:** `refine: LOD_n → LOD_{n+1}`(解釈追加=分岐)/ `project: LOD_{n+1} → LOD_n`(要約=射影)。
+## A3. Culture layer — preference divergence (hypothesis generator)  〔implemented: `src/culture/culture_axis.py` / `generate_picks.py` / `compare_picks.py`〕
+
+- LLM-generated 4-axis pick lists (music / sports / literature / film) per generation. A structural profile + preferences generate cultural subclusters.
+- Its status is a **hypothesis generator**, not a measurement of a real distribution.
+
+## A4. CMR Layer — contextual mode resolution (added in Paper 2)  〔implemented: `src/cmr/`〕
+
+- Lifts `Event.mode` from a fixed value into the **operator `Event × Premise → ResolvedImpact`**. Even for the same event, the community premise changes PASSIVE/ACTIVE/REFRAME.
+- Resolves the mode with multiple LLM observers (ChatGPT × Gemini × Claude), and rather than erasing disagreement, **measures it as observer-dependence** (`cmr_matrix.py` / `cmr_compare.py` / `merge_paper2_data.py`).
+- Measures mode transformation, MFR, and CDI over designed comparison grids (US 8×12 / UK 9×13). Details in `docs/paper2_contextual_mode_resolver.md`.
+
+## A5. Exposure Adapters — the supply layer for exposure structure  〔`src/adapters/{gss,ess}/`〕
+
+- **Swappable data sources** for exposure structure: curated DB (`events_patched.jsonl`) / external surveys (GSS = US, ESS = UK/Europe) / future GDELT, etc.
+- The design of observing material exposure (statistics, policy) and informational exposure (news coverage) as separate lines and integrating them in Core is in `docs/exposure_adapters_spec.md`.
+
+## A6. Grounding — prompt tuning (architecture-independent)
+
+- Sharpening the LLM's resolution of regional characteristics = the **only remaining adjustment**. The architecture does not change; this is a matter of prompt quality.
+
+## Out of scope (deliberate boundaries)
+
+Boundaries we chose **not** to cross, to keep "the object = the collective exposure structure":
+- **The individual layer** (self-efficacy, individual ability and will). * However, Track B treats "individual persona expression" as LOD 3 — this is **not an assertion about the individual** but interpretive generation of "the exposure structure a person in that position is likely to hold" (→ Part B ethical boundary).
+- **The individual information-embodiment lag** (sampled in `test_lag.py` → collective diffusion lag runs opposite to the hypothesis and is contaminated by right-censoring. The individual "know vs. become" gap cannot be measured with this proxy and is out of bounds).
+- **A dynamic model of cross-regional embodiment spillover** (chasm / diffusion dynamics between regions).
+
+## Validation architecture (the place of external cross-checking)
+
+- The validity of Core/CMR is examined by **cross-checking against external surveys (GSS/ESS)**. **The validation question is not predictive accuracy but "the existence of an intermediate tendency bundle that clears the personalization ↔ statistical-aggregate trade-off."** The strength is "prediction-consistent, suggestive, modest"; never write "confirmation."
+- The main result = the **two-tier structure**: premise drives the level, `effective_year` drives slope visibility (transition stage). Numbers in `SI/results_tables.md`; reproduction via `SI/reproduce_all.sh`.
+
+---
+
+# Part B — Architecture of Persona Generation (Track B)
+
+This formalizes **what lies beyond** the boundary at which Paper 1 declared "the individual layer is out of scope," as a **resolution hierarchy** from LOD 0 (exposure structure) → LOD 3 (individual persona). **No change whatsoever** is made to the Core engine (`v4/v5`).
+
+## B1. The LOD hierarchy (Level of Detail)
+
+Isomorphic to LOD in 3D graphics. The use case (camera distance) determines the LOD, and the LOD determines the scope.
+
+| LOD | Name | Content | Math : interpretation | Owner |
+|-----|------|---------|-----------------------|-------|
+| 0 | ExposureStructure | exposure profile (3-axis fingerprint, key events, interference, REFRAME firing) | 100:0 | Python (Core) |
+| 1 | ResponseOrientation | response direction (Fight / Flight, etc.) | 50:50 | LLM |
+| 2 | StrategyBranch | strategy branch (attack via technology / defend via a large firm, etc.) | 25:75 | LLM |
+| 3 | PersonalContext | personal context (occupation, family, region, assets, education, relational capital) | 5:95 | LLM |
+
+**Transitions:** `refine: LOD_n → LOD_{n+1}` (adding interpretation = branching) / `project: LOD_{n+1} → LOD_n` (summarizing = projection).
 ```
 LOD₀ = ExposureStructure
 LOD₁ = refine(LOD₀, response_orientation)
 LOD₂ = refine(LOD₁, strategy_branch)
 LOD₃ = refine(LOD₂, personal_context)
 ```
-**用途対応:** 社会学=LOD 0 で十分 / マーケ=LOD 1〜2(Paper 1 Appendix D の正体)/ カウンセリング=LOD 3。**用途を超えた LOD は冗長**。
-**連続性:** LOD は離散スイッチでなくシームレス(LOD 1.5 も許す)。「世代を連続プロファイルとして扱う」と構造的に同型。
+**Use-case mapping:** sociology = LOD 0 is enough / marketing = LOD 1–2 (the true identity of Paper 1 Appendix D) / counseling = LOD 3. **An LOD beyond the use case is redundant.**
+**Continuity:** LOD is not a discrete switch but seamless (LOD 1.5 is allowed). It is structurally isomorphic to "treating a generation as a continuous profile."
 
-## B2. 4公理(Honest Structuralism / SCEM Axioms)
+## B2. The 4 axioms (Honest Structuralism / SCEM Axioms)
 
-LOD 操作が満たすべき正当性条件。同時に LLM 生成のバリデーション基準。
+The correctness conditions LOD operations must satisfy — and simultaneously the validation criteria for LLM generation.
 
-- **Axiom 1: Anchor Preservation(固定点保存)** — 低LODの事象・年齢・mode・weight は保存される(数理は不動の骨格)。違反例:LOD 3 で「就職氷河期の影響を受けていない」と生成し LOD 0 と矛盾。
-- **Axiom 2: Non-overwrite(非上書き)** — 高LODの解釈は数理結果を書き換えない。情報を**足す**のは可、**書き換え**は不可。違反例:「Fight型だから感受性ピークが若年化」と解釈で数理を変更。
-- **Axiom 3: Projection Consistency(射影整合性)** — `project(LOD₃→LOD₀)=LOD₀`。生成ペルソナを要約すると元の曝露構造が復元される(LOD 3 が LOD 0 を包含する操作的定義)。違反例:LOD 3「大学進学なし」だが LOD 0 に「大学進学19歳ACTIVE」が高重み。
-- **Axiom 4: Provenance Traceability(由来追跡可能性)** — すべての解釈枝は、どの事象・干渉・REFRAME から派生したか追跡できる。違反例:「不安を抱えている」が LOD 0 の何に対応するか不明。
+- **Axiom 1: Anchor Preservation** — the events, ages, modes, and weights of a lower LOD are preserved (the mathematics is an immovable skeleton). Violation example: LOD 3 generates "was not affected by the employment ice age," contradicting LOD 0.
+- **Axiom 2: Non-overwrite** — a higher LOD's interpretation does not rewrite the mathematical result. **Adding** information is fine; **rewriting** is not. Violation example: interpreting "because this is a Fight type, the sensitivity peak shifts younger" to change the mathematics.
+- **Axiom 3: Projection Consistency** — `project(LOD₃→LOD₀)=LOD₀`. Summarizing the generated persona restores the original exposure structure (the operational definition that LOD 3 contains LOD 0). Violation example: LOD 3 says "no college" while LOD 0 has a high-weight "college enrollment at 19, ACTIVE."
+- **Axiom 4: Provenance Traceability** — every interpretive branch can be traced to which event, interference, or REFRAME it derived from. Violation example: it is unclear what in LOD 0 "carries anxiety" corresponds to.
 
-**2軸整理(対称・レトラクション構造):**
+**Two-axis organization (symmetric, retraction structure):**
 
-| | 静的制約(構造) | 動的制約(過程) |
+| | Static constraint (structure) | Dynamic constraint (process) |
 |---|---|---|
-| **refine時(下→上)** | Axiom 2: Non-overwrite | Axiom 4: Provenance |
-| **project時(上→下)** | Axiom 1: Anchor Preservation | Axiom 3: Projection Consistency |
+| **On refine (down→up)** | Axiom 2: Non-overwrite | Axiom 4: Provenance |
+| **On project (up→down)** | Axiom 1: Anchor Preservation | Axiom 3: Projection Consistency |
 
-上り下り両方向に2つずつ制約 → refine で足した解釈は project で落ちるが元の LOD 0 は保存(=情報損失なき往復)。
+Two constraints each in both the up and down directions → the interpretation added on refine drops away on project, but the original LOD 0 is preserved (= a round trip with no information loss).
 
-## B3. CSP(制約充足問題)としての定式化
+## B3. Formulation as a CSP (Constraint Satisfaction Problem)
 
 ```
-変数 = 各LODの解釈内容 / ドメイン = LLM生成可能な全パターン / 制約 = 4公理 + ユーザー指定
+variables = the interpretive content of each LOD / domain = all patterns the LLM can generate / constraints = the 4 axioms + user specification
 ```
-LOD が上がるごとに制約が**増え**、解空間が狭まる(LOD 3 で「この人」に絞られる)。どの LOD でも LOD 0 の制約は保存(=Anchor Preservation)。
+As the LOD rises, constraints **increase** and the solution space narrows (at LOD 3 it is pinned to "this person"). At every LOD the LOD 0 constraints are preserved (= Anchor Preservation).
 
-**SAT / UNSAT 検出**(単なるエラー処理でなく診断信号):
-- **SAT**: 全制約充足 → 有効ペルソナとして出力。
-- **UNSAT**: 矛盾 → リジェクト・再生成。用途:
-  - **LLM 幻覚検出**(もっともらしいが LOD 0 と矛盾 → Projection Consistency 違反で捕捉)。
-  - **自己認識のズレ可視化**(「Flight のつもりだが構造的には Fight」— カウンセリング応用の設計機能)。
-  - **制約組合せの矛盾発見**。
+**SAT / UNSAT detection** (a diagnostic signal, not mere error handling):
+- **SAT**: all constraints satisfied → output as a valid persona.
+- **UNSAT**: contradiction → reject and regenerate. Uses:
+  - **LLM hallucination detection** (plausible but contradicts LOD 0 → caught by a Projection Consistency violation).
+  - **Making self-perception mismatch visible** ("thinks they are Flight but structurally they are Fight" — a design feature for counseling applications).
+  - **Discovering contradictions in constraint combinations.**
 
-制約(LOD 0 という数理アンカー)が LLM の自由度を絞り、生成を**観測**に近づける(「次どうする?」でなく「この人はこう反応する」)。
+The constraint (the mathematical anchor that is LOD 0) narrows the LLM's degrees of freedom and brings generation closer to **observation** ("this person will respond like this" rather than "what should you do next?").
 
-## B4. 実装プロトタイプ仕様(`src/cmr/lod_persona.py`)
+## B4. Implementation prototype spec (`src/cmr/lod_persona.py`)
 
-Core エンジンには触らない。
+The Core engine is untouched.
 ```
-入力 LODConstraints: lod0_exposure / lod1_response(Fight|Flight|None) / lod2_strategy / lod3_context
-出力 dict: status(SAT|UNSAT) / persona{summary, narrative, provenance} / attempts
+input LODConstraints: lod0_exposure / lod1_response (Fight|Flight|None) / lod2_strategy / lod3_context
+output dict: status (SAT|UNSAT) / persona{summary, narrative, provenance} / attempts
 ```
-**検証フロー:** (1) 4公理を明示したプロンプト構築 → (2) LLM 呼び出し → (3) 生成ペルソナを `project(LOD0)` で射影 → (4) 元 lod0_exposure と比較(一致=SAT / 不一致=UNSAT 再試行)→ (5) max_retries 超過で理由付き UNSAT。
-**Projection Consistency の MVP:** ペルソナの `provenance` から LOD 0 要素を抽出し、**核事象(上位重み・REFRAME発火ペア・主要干渉)の大半**(閾値 MVP 70%)が現れるかで判定。厳密一致は要求しない。
-**MVP 範囲外(意図的):** 完全 CSP ソルバー / LOD0↔3 双方向変換の数学的厳密性 / ペルソナDB化 / WebUI・API化。
+**Validation flow:** (1) build a prompt that states the 4 axioms explicitly → (2) call the LLM → (3) project the generated persona via `project(LOD0)` → (4) compare with the original lod0_exposure (match = SAT / mismatch = UNSAT, retry) → (5) UNSAT with a reason once max_retries is exceeded.
+**MVP of Projection Consistency:** extract LOD 0 elements from the persona's `provenance` and judge whether **most of the core events (top weights, REFRAME-firing pairs, key interferences)** appear (MVP threshold 70%). Exact match is not required.
+**Out of MVP scope (deliberate):** a complete CSP solver / mathematical rigor of bidirectional LOD0↔3 conversion / persona database / WebUI · API.
 
-## 倫理境界(Track B の第一条・製品化時も不変)
+## Ethical boundary (Track B's first principle, invariant even in productization)
 
-SCEM は**個人の内面を断定しない**。LOD 3 出力は「ある出生年・共同体・制度環境に置かれた人が**どんな曝露構造を持ちやすいか**」の推定であって個人の決めつけではない。四線:**分類でなく理解 / 操作でなく翻訳 / 断定でなく来歴追跡 / 分断でなく相互理解**。= 人を分類する道具でなく**異なる意味世界の翻訳地図**(Paper 2 §6.4 と一致)。
+SCEM **does not assert an individual's inner life.** LOD 3 output is an estimate of "what exposure structure a person placed in a given birth year, community, and institutional environment is *likely to hold*," not a verdict about the individual. The four lines: **understanding not classification / translation not manipulation / provenance-tracing not assertion / mutual understanding not division.** It is not a tool for classifying people but a **translation map between different worlds of meaning** (consistent with Paper 2 §6.4).
 
 ---
 
-# 共通
+# Common
 
-## 実装ステータス早見
+## Implementation status at a glance
 
-| 層 | Track | 状態 | 実装 |
+| Layer | Track | Status | Implementation |
 |---|---|---|---|
-| 構造層(Core) | A | **実装済・純化済**(domain非依存・D項統合) | `src/core/` |
-| Community層 | A | プロトタイプ | `src/culture/community_experiment.py` |
-| Culture層 | A | 実装済 | `src/culture/` |
-| CMR Layer | A | 実装済(グリッド・複数観測者) | `src/cmr/` |
-| Exposure Adapters | A | 実装済(GSS・ESS) | `src/adapters/{gss,ess}/` |
-| LOD / ペルソナ生成 | B | 実装済(CSP・SAT/UNSAT) | `src/cmr/lod_persona.py` |
+| Structural layer (Core) | A | **implemented & purified** (domain-independent, D-term integrated) | `src/core/` |
+| Community layer | A | prototype | `src/culture/community_experiment.py` |
+| Culture layer | A | implemented | `src/culture/` |
+| CMR Layer | A | implemented (grids, multiple observers) | `src/cmr/` |
+| Exposure Adapters | A | implemented (GSS, ESS) | `src/adapters/{gss,ess}/` |
+| LOD / persona generation | B | implemented (CSP, SAT/UNSAT) | `src/cmr/lod_persona.py` |
 
-**FIX スタンプ(1981年生まれ):** 指紋 PASSIVE 0.81 / ACTIVE 0.56 / REFRAME 0.55。干渉トップ=Windows95発売 × プリクラ普及(score 1.60)。被り判定 domain非依存=True、干渉 D項統合=True。
+**FIX stamp (born 1981):** fingerprint PASSIVE 0.81 / ACTIVE 0.56 / REFRAME 0.55. Top interference = Windows 95 launch × spread of Purikura (score 1.60). Overlap judgment domain-independent = True, interference D-term integrated = True.
 
-## 検証アーティファクト(再現性)
+## Validation artifacts (reproducibility)
 
-- `src/core/test_domainless.py` — domain冗長性の実測(指紋・バッチ不変、干渉9/10一致 → domain廃止を正当化)
-- `src/culture/community_experiment.py` — 閉鎖度=離散 / 速度=連続 の非対称を実測
-- `src/core/test_lag.py` — 情報-具現化ラグ味見(個人ラグをスコープ外とする根拠)
-- `src/core/make_figures.py` / `src/cmr/make_paper2_figures.py` — 図
-- `SI/reproduce_all.sh` / `SI/results_tables.md` — GSS/ESS 外部照合の完全再現・数値一覧
+- `src/core/test_domainless.py` — empirical test of domain redundancy (fingerprint & batch invariant, interference matches 9/10 → justifies abolishing domain)
+- `src/culture/community_experiment.py` — empirical test of the closure=discrete / speed=continuous asymmetry
+- `src/core/test_lag.py` — sampling of the information-embodiment lag (grounds for placing individual lag out of scope)
+- `src/core/make_figures.py` / `src/cmr/make_paper2_figures.py` — figures
+- `SI/reproduce_all.sh` / `SI/results_tables.md` — full reproduction and results compendium of the GSS/ESS external cross-check
 
-## 設計根拠(なぜこう設計したか・思想は最小)
+## Design rationale (why it is designed this way; philosophy kept minimal)
 
-- **domain を計算に入れない**:イベントを単一カテゴリに潰すのは「出生年という離散バケツを拒む」中心主張の**イベント側への自己適用**。作用ベクトルの cos だけで被りを判定し、domain は表示タグに格下げ(`test_domainless.py` で不変を実測)。
-- **数理/解釈を分ける**:混ぜるとカテゴリ違反(解釈に N数・検定を当てる/数理に解釈を混ぜる)を生む。両者は代替不能。
-- **4公理を課す**:LOD 0 を持たない LLM 出力は Projection Consistency が破綻し「上手いが空虚」になる。数理アンカーに縛ることで生成を観測に近づけ、捏造を構造的に拒否する。
-- **LOD(3Dグラフィックス同型)**:用途を超えた解像度は冗長。社会学は LOD 0、マーケは LOD 1〜2、個人は LOD 3。
-- (より広い存在設計理論・領域横断の同型論は実装に不要な思想として `docs/internal_notes.md` に分離。)
+- **Do not let domain enter the computation:** collapsing an event into a single category would be exactly the defect the central claim rejects ("refuse the discrete bucket of birth year"), now **self-applied to the event side**. Overlap is judged by the cos of the action vector alone, and domain is demoted to a display tag (invariance measured in `test_domainless.py`).
+- **Separate mathematics from interpretation:** mixing them produces category violations (applying N and significance tests to interpretation / mixing interpretation into mathematics). The two are irreplaceable.
+- **Impose the 4 axioms:** an LLM output without LOD 0 breaks Projection Consistency and becomes "skillful but empty." Binding to the mathematical anchor brings generation closer to observation and structurally rejects fabrication.
+- **LOD (isomorphic to 3D graphics):** resolution beyond the use case is redundant. Sociology is LOD 0, marketing LOD 1–2, the individual LOD 3.
+- (The broader theory of existence design and the cross-domain isomorphism are kept as philosophy unnecessary to the implementation, and are not part of the public repository.)
 
-## Appendix: 用語対応表
+## Appendix: glossary crosswalk
 
-| 用語 | 等価表現 |
+| Term | Equivalent expressions |
 |---|---|
-| LOD 0 | exposure profile / 3軸指紋 / 曝露構造 / 数理アンカー |
-| LOD 1〜3 | refine された解釈レイヤー / ペルソナ表現 |
-| refine / project | 解釈分岐(制約追加)/ 解釈射影(要約) |
-| 4公理 | SCEM Axioms / Honest Structuralism |
-| CMR | Contextual Mode Resolver(`Event × Premise → ResolvedImpact`) |
-| premise | 共同体前提(宗教×人種×地域×学歴 / 階級×EU距離×religiosity 等) |
-| SAT / UNSAT | 制約充足 / 不充足 |
+| LOD 0 | exposure profile / 3-axis fingerprint / exposure structure / mathematical anchor |
+| LOD 1–3 | refined interpretation layers / persona expression |
+| refine / project | interpretive branching (adding constraints) / interpretive projection (summarizing) |
+| 4 axioms | SCEM Axioms / Honest Structuralism |
+| CMR | Contextual Mode Resolver (`Event × Premise → ResolvedImpact`) |
+| premise | community premise (religion × race × region × education / class × EU distance × religiosity, etc.) |
+| SAT / UNSAT | constraints satisfied / unsatisfied |

@@ -2,7 +2,7 @@
 """
 gss_interaction.py — b′(抑制された2軸)の主検定:共同体 × 出生年スロープの交互作用。
 
-真道さま承認スタック(2026-06-26, docs/gss_validation_findings.md §2.4):
+真道さま承認スタック(2026-06-26):
   主    : LPM  approve ~ cohort * community (+ 調査年FE, HC1 robust SE)
           → 各共同体 simple slope と 交互作用=スロープ差(pp/10年)を報告。
   ②天井 : Coastal を片側問題に変換(BB slope>0 ∧ Coastal slope≈0=飽和)。

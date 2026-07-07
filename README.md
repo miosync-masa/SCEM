@@ -3,78 +3,78 @@
 [![DOI](https://zenodo.org/badge/1279042311.svg)](https://doi.org/10.5281/zenodo.20827897)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**「世代」を出生年バケツではなく曝露構造として計算し、同じ社会事象が共同体ごとに別の作用モードへ解決される様子を扱う計算フレームワーク。**
+**A computational framework that treats "a generation" as an exposure structure rather than a birth-year bucket, and models how the same social event resolves into a different action mode for each community.**
 
-SCEM には**二つの顔**がある。同じエンジン(Core / CMR)の上に立つ:
+SCEM has **two faces**, both standing on the same engine (Core / CMR):
 
-- 🎓 **学術フレームワーク**(↓ Track A)— 世代を計算可能・反証可能に再定義し、GSS/ESS で外部照合した研究基盤。
-- 🎭 **ペルソナ生成エンジン**(↓ Track B)— 出生年 × 共同体 premise から、曝露構造に**由来追跡可能な**ペルソナを生成する実装。
+- 🎓 **Academic framework** (↓ Track A) — a research base that redefines generations as computable and falsifiable, externally cross-checked against GSS/ESS.
+- 🎭 **Persona-generation engine** (↓ Track B) — an implementation that generates personas **traceable back to** the exposure structure, from birth year × community premise.
 
-> **中核主張(2つ):**
-> 1. **世代 = 出生年コホートではない。** 社会事象の作用ベクトルが認知発達上の**感受性窓**にどう着弾したかで決まる連続プロファイル。
-> 2. **作用モードは事象に固有ではない。** 共同体の前提(premise)によって解決される —— `Event × Premise → ResolvedImpact`(Contextual Mode Resolver)。
+> **Two core claims:**
+> 1. **A generation is not a birth-year cohort.** It is a continuous profile determined by how the action vectors of social events land on the **sensitivity windows** of cognitive development.
+> 2. **An action mode is not intrinsic to an event.** It is resolved by the community's premise —— `Event × Premise → ResolvedImpact` (Contextual Mode Resolver).
 
 ---
 
-## 共通エンジン(層構成)
+## Shared engine (layered structure)
 
-`src/` はこの層構成に物理対応する。両トラックがこのエンジンを共有する。
+`src/` maps physically onto this layered structure. Both tracks share this engine.
 
-| 層 | 役割 | 実装(`src/`) |
+| Layer | Role | Implementation (`src/`) |
 |---|---|---|
-| **Core**(構造層) | 事象 × 着弾年齢 × 作用モードのテンソル。世代指紋(3軸)・感受性窓・干渉・REFRAME発火・effective_year | `core/` |
-| **CMR Layer** | `Event.mode` を作用素 `Event × Premise → ResolvedImpact` へ持ち上げ、複数 LLM 観測者で mode を解決。LOD/CSP でペルソナ生成 | `cmr/` |
-| **Exposure Adapters** | 曝露構造の供給層(差し替え可能):curated DB / GSS・ESS / 将来 GDELT 等 | `adapters/{gss,ess}/` |
+| **Core** (structural layer) | Tensor of event × impact age × action mode. Generational fingerprint (3 axes), sensitivity windows, interference, REFRAME firing, `effective_year`. | `core/` |
+| **CMR Layer** | Lifts `Event.mode` into the operator `Event × Premise → ResolvedImpact` and resolves the mode with multiple LLM observers. Generates personas via LOD/CSP. | `cmr/` |
+| **Exposure Adapters** | Swappable supply layer for exposure structure: curated DB / GSS · ESS / future GDELT, etc. | `adapters/{gss,ess}/` |
 
-**3作用モード**(合算せず3軸):**PASSIVE**(受動着弾)/ **ACTIVE**(能動分岐=決断強制)/ **REFRAME**(参照点書き換え)。
-**2つの軸**:着弾年齢(何歳で食らうか)× 共同体 premise(どの規範コードで食らうか)。
-**Honest Structuralism(4公理)**:Anchor Preservation / Non-overwrite / Projection Consistency / Provenance。生成を数理アンカーに縛り、捏造を CSP/SAT-UNSAT で構造的に拒否する。
+**Three action modes** (kept as 3 axes, not summed): **PASSIVE** (passive impact) / **ACTIVE** (active branching = forced decision) / **REFRAME** (reference-point rewriting).
+**Two axes:** impact age (at what age it hits) × community premise (under which normative code it hits).
+**Honest Structuralism (4 axioms):** Anchor Preservation / Non-overwrite / Projection Consistency / Provenance. These bind generation to a mathematical anchor and structurally reject fabrication via CSP / SAT-UNSAT.
 
 ---
 
-## 🎓 Track A — 学術フレームワーク
+## 🎓 Track A — Academic framework
 
-**貢献:** マーケの「Z世代論」の三欠陥(恣意的カットオフ・反証不能・出生年への単一還元)を、計算可能で反証可能な枠組みで置換。Mannheim (1928) を計算可能にし、Strauss & Howe (1991) の恣意的カットオフを連続関数に。
+**Contribution:** Replaces the three defects of marketing's "Gen-Z discourse" (arbitrary cutoffs, unfalsifiability, single reduction to birth year) with a computable, falsifiable framework. It makes Mannheim (1928) computable and turns the arbitrary cutoffs of Strauss & Howe (1991) into continuous functions.
 
-**計算するもの:**
-- **世代指紋(3軸)**:任意の出生年 →(PASSIVE, ACTIVE, REFRAME)。例:1981年生 = 0.81 / 0.56 / 0.55。9世代バッチで PASSIVE 密度が 1980–85 でピーク→減衰の非単調構造。
-- **設計された比較グリッド**:固定 Community × 固定 Event で mode 変換を測る。US 8×12=96 / UK 9×13=117、Event-level MFR 両国 100%(選定争点)、CDI US 0.289 / UK 0.338。
+**What it computes:**
+- **Generational fingerprint (3 axes):** any birth year → (PASSIVE, ACTIVE, REFRAME). Example: born 1981 = 0.81 / 0.56 / 0.55. A 9-generation batch shows a non-monotonic structure where PASSIVE density peaks around 1980–85 and then decays.
+- **Designed comparison grids:** measure mode transformation over fixed Community × fixed Event. US 8×12 = 96 / UK 9×13 = 117; Event-level MFR is 100% in both countries (on selected high-contention events); CDI US 0.289 / UK 0.338.
 
-**外部照合(GSS + ESS)— 強度は正確に(「予測対応・modest」、確証と書かない):**
-> 検証の問い=「態度を正確に予測できるか」でなく「個人化↔統計束のトレードオフをクリアした中間傾向束が実在するか」。
+**External cross-check (GSS + ESS) — state the strength precisely ("prediction-consistent, modest"; never write "confirmation"):**
+> The validation question is not "can we predict attitudes accurately?" but "does an intermediate tendency bundle that clears the personalization ↔ statistical-aggregate trade-off actually exist?"
 
-US(GSS)+ UK/Europe(ESS 33か国)で立ち上がった **二段構造**:
-- **水準ゲート(普遍)**:secular/educated/urban が寛容高位、religious/low-edu が低位(GSS Coastal 91% vs Bible Belt / ESS Secular 90% vs Religious 66%、3柱で一貫)。
-- **スロープ・ゲート(移行段階依存)**:出生年スロープは「移行中の共同体」でのみ可視(US Bible Belt 6→66% / Southern Europe 5国すべて正勾配)。承認年(effective_year)と単調対応(Spearman 0.41–0.67)。
+The **two-tier structure** that emerged across the US (GSS) and UK/Europe (ESS, 33 countries):
+- **Level gate (universal):** secular/educated/urban sit high on tolerance, religious/low-education sit low (GSS Coastal 91% vs Bible Belt / ESS Secular 90% vs Religious 66%, consistent across 3 pillars).
+- **Slope gate (transition-stage-dependent):** the birth-year slope is visible only in "communities mid-transition" (US Bible Belt 6→66% / all five Southern-European countries with positive slopes). It corresponds monotonically to the adoption year (`effective_year`) (Spearman 0.41–0.67).
 
-**書き出し・数値・再現:**
-- 論文:[Paper 1](docs/paper1_media_generation.md)([HTML](docs/paper1.html))/ [Paper 2 (CMR)](docs/paper2_contextual_mode_resolver.md)([HTML](docs/paper2.html))
-- 確定 spec:[`docs/paper2_gss_ess_spec_v0.3.md`](docs/paper2_gss_ess_spec_v0.3.md)
-- **SI**:[数値一覧 `SI/results_tables.md`](SI/results_tables.md)(全 study S1–S11 の実数)/ [再現の三対応表 `SI/README.md`](SI/README.md) / [`reproduce_all.sh`](SI/reproduce_all.sh)
-- findings:[GSS](docs/gss_validation_findings.md) / [ESS](docs/ess_validation_findings.md)
+**Write-ups, numbers, reproduction:**
+- Papers: [Paper 1](docs/paper1_media_generation.md) ([HTML](docs/paper1.html)) / [Paper 2 (CMR)](docs/paper2_contextual_mode_resolver.md) ([HTML](docs/paper2.html))
+- Fixed spec: [`docs/paper2_gss_ess_spec_v0.3.md`](docs/paper2_gss_ess_spec_v0.3.md)
+- **SI:** [results compendium `SI/results_tables.md`](SI/results_tables.md) (real numbers for all studies S1–S11) / [three-way reproduction crosswalk `SI/README.md`](SI/README.md) / [`reproduce_all.sh`](SI/reproduce_all.sh)
+- Data provenance: [grid spec](docs/paper2_grid_spec.md) / DeepResearch prompts ([US](docs/paper2_prompt_us.md), [UK](docs/paper2_prompt_uk.md))
 
 ![cohort fingerprint](figures/fig2_cohort_fingerprint.png)
-![mode matrix US](figures/fig_p2_modematrix_us_grid.png)
+![mode matrix](figures/fig1_modematrix.png)
 
 ---
 
-## 🎭 Track B — ペルソナ生成エンジン
+## 🎭 Track B — Persona-generation engine
 
-**何をするか:** `出生年 × 共同体 premise × 自己記述(応答/戦略)` を入力すると、その人が置かれた**曝露構造に由来追跡可能な**ペルソナ(物語 + provenance)を生成する。**同じ出生年・同じ自己記述でも、premise を変えると別のペルソナになる。**
+**What it does:** Given `birth year × community premise × self-report (response / strategy)`, it generates a persona (narrative + provenance) **traceable back to** the exposure structure that person was placed in. **The same birth year and the same self-report yield a different persona once the premise changes.**
 
-**例(同一入力・premise だけ変える):** 1985年生・"Fight"(自分の選択で介入)固定で —
-- **Coastal Liberal**(secular×hiedu×urban):全事象が REFRAME(参照点書き換え)として着弾。「Obama 当選=能動分岐」を Claude 観測者が加えると provenance が分化。
-- **Bible Belt**(evangelical×lowedu):同じ Fight でも「9.11 を ACTIVE 分岐として引き受ける」。
-→ 出力全文は [`data/personas_grid/`](data/personas_grid/)。
+**Example (identical input, varying only the premise):** with born-1985 and "Fight" (intervening by one's own choice) held fixed —
+- **Coastal Liberal** (secular × hi-edu × urban): every event lands as REFRAME (reference-point rewriting). Adding a Claude observer for "Obama's election = active branching" differentiates the provenance.
+- **Bible Belt** (evangelical × low-edu): the same Fight instead "takes on 9/11 as an ACTIVE branch."
+→ Full outputs in [`data/personas_grid/`](data/personas_grid/).
 
-**仕組み:** LOD(Level of Detail)階層 = 曝露構造(LOD0, 数理・固定)→ ペルソナ(LOD3, 解釈)を解像度の階層として扱い、**4公理を制約とする CSP** で生成。**Projection Consistency と Axiom 違反で SAT/UNSAT を判定**(数理アンカーに由来しないペルソナは構造的に拒否)。実装:[`src/cmr/lod_persona.py`](src/cmr/lod_persona.py)、理論:[`ARCHITECTURE.md`](ARCHITECTURE.md) Part B。
+**How it works:** The LOD (Level of Detail) hierarchy treats exposure structure (LOD 0, mathematical and fixed) → persona (LOD 3, interpretive) as a resolution hierarchy, and generates within a **CSP whose constraints are the 4 axioms**. **SAT/UNSAT is decided by Projection Consistency and axiom violations** (a persona not derivable from the mathematical anchor is structurally rejected). Implementation: [`src/cmr/lod_persona.py`](src/cmr/lod_persona.py); theory: [`ARCHITECTURE.md`](ARCHITECTURE.md) Part B.
 
-**倫理境界(製品化時も第一条・不変):** SCEM は**個人の内面を断定しない**。出力は「ある出生年・共同体・制度環境に置かれた人が**どんな曝露構造を持ちやすいか**」の推定であって、個人の決めつけではない。**分類でなく理解 / 操作でなく翻訳 / 断定でなく来歴追跡 / 分断でなく相互理解**(誤用防止の四線)。= 人を分類する道具でなく**異なる意味世界の翻訳地図**。
+**Ethical boundary (first principle, invariant even in productization):** SCEM **does not assert an individual's inner life.** Its output is an estimate of "what exposure structure a person placed in a given birth year, community, and institutional environment is *likely to hold*," not a verdict about the individual. The four lines against misuse: **understanding not classification / translation not manipulation / provenance-tracing not assertion / mutual understanding not division.** It is not a tool for classifying people but a **translation map between different worlds of meaning.**
 
-**使いどころ:** 「同じメッセージが共同体ごとに別の意味に着弾する」を可視化 —— コピー/採用広報/コミュニケーション設計、研究用の由来つきペルソナ。
+**Where it fits:** making "the same message lands with a different meaning in each community" visible —— copywriting / recruitment communications / communication design, and provenance-bearing personas for research.
 
 ```bash
-# ペルソナ生成(要 OpenAI キー)
+# Persona generation (requires an OpenAI key)
 cp .env.example .env
 arch -arm64 python3.12 src/cmr/lod_persona.py --country us --birth_year 1985 \
   --premise secular_white_coastal_graduate --response Fight --variant grid
@@ -82,58 +82,58 @@ arch -arm64 python3.12 src/cmr/lod_persona.py --country us --birth_year 1985 \
 
 ---
 
-## クイックスタート
+## Quick start
 
 ```bash
-# 【共通/学術】Core は標準ライブラリのみ
-python3 src/core/media_generation_v5.py 1981        # 1981年生の3軸プロファイル
-python3 src/core/make_figures.py                     # 図 → figures/
+# [Shared / Academic] Core uses the standard library only
+python3 src/core/media_generation_v5.py 1981        # 3-axis profile for a 1981 birth cohort
+python3 src/core/make_figures.py                     # figures → figures/
 
-# 【学術】CMR グリッド / 外部照合
+# [Academic] CMR grid / external cross-check
 python3 src/cmr/cmr_matrix.py --country us --variant grid
-bash SI/reproduce_all.sh          # GSS=ネット / ESS=ESS_USER_ID(未設定でスキップ)
+bash SI/reproduce_all.sh          # GSS = network / ESS = ESS_USER_ID (skipped if unset)
 
-# 【ペルソナ生成】要 OpenAI キー
+# [Persona generation] requires an OpenAI key
 arch -arm64 python3.12 src/cmr/lod_persona.py --country us --birth_year 1985 \
   --premise secular_white_coastal_graduate --response Fight --variant grid
 ```
 
-依存:[`requirements.txt`](requirements.txt)(`numpy` `pandas` `pyarrow` `matplotlib` / LLM層 `openai` `python-dotenv`)。scipy/statsmodels 不使用(OLS+HC1・ロジット・Spearman は numpy 自前実装)。
+Dependencies: [`requirements.txt`](requirements.txt) (`numpy` `pandas` `pyarrow` `matplotlib` / LLM layer `openai` `python-dotenv`). No scipy/statsmodels (OLS+HC1, logit, and Spearman are hand-implemented in numpy).
 
 ---
 
-## リポジトリ構成
+## Repository layout
 
 ```
-README.md  ARCHITECTURE.md(正典 v7 — Track A 構造/学術 + Track B ペルソナ生成)  requirements.txt
+README.md  ARCHITECTURE.md (canonical v7 — Track A structure/academic + Track B persona generation)  requirements.txt
 
-src/                  全 Python(フレームワーク層構成)
-  core/      = SCEM Core(media_generation_v4/v5, event_loader, make_figures, build_html, tests)
-  cmr/       = CMR Layer + ペルソナ生成(cmr_matrix/compare, merge_paper2_data, lod_persona[CSP/SAT-UNSAT],
+src/                  all Python (framework layers)
+  core/      = SCEM Core (media_generation_v4/v5, event_loader, make_figures, build_html, tests)
+  cmr/       = CMR Layer + persona generation (cmr_matrix/compare, merge_paper2_data, lod_persona [CSP/SAT-UNSAT],
                generate_claude_observer, recover_gemini_jsonl, make_paper2_figures)
-  adapters/  = Exposure Adapters(gss/・ess/ = US・UK/Europe 外部照合)
-  culture/   Culture/Community 層(culture_axis, generate_picks, community_experiment, lod2_cluster)
+  adapters/  = Exposure Adapters (gss/, ess/ = US and UK/Europe external cross-checks)
+  culture/   Culture/Community layer (culture_axis, generate_picks, community_experiment, lod2_cluster)
   tools/     build_paper_html
 
-data/   events_patched.jsonl(日本156件)/ events_{us,uk}_grid.jsonl(設計グリッド)/
-        interpretations_*・disagreements_* / personas_grid/(ペルソナ4本)/ gss_results・ess_results
-        ※生データ(GSS/ESS)は .gitignore・取得スクリプトで再生成
-docs/   論文(paper1/2 .md+.html)・spec(paper2_gss_ess_spec_v0.3)・findings(gss/ess)・
-        ess_legal_coding・exposure_adapters_spec・internal_notes(思想・非公開)
-SI/     results_tables.md(数値一覧)・README.md(再現の三対応表)・reproduce_all.sh
+data/   events_patched.jsonl (156 Japanese events) / events_{us,uk}_grid.jsonl (designed grids) /
+        interpretations_*, disagreements_* / personas_grid/ (4 personas) / gss_results, ess_results
+        * Raw data (GSS/ESS) is .gitignore'd and regenerated via the acquisition scripts.
+docs/   papers (paper1/2 .md+.html), spec (paper2_gss_ess_spec_v0.3), ess_legal_coding, exposure_adapters_spec,
+        data provenance (paper2_grid_spec + DeepResearch prompts paper2_prompt_{us,uk})
+SI/     results_tables.md (results compendium), README.md (three-way reproduction crosswalk), reproduce_all.sh
 figures/ cache/
 ```
 
 ---
 
-## 開発状況
+## Development status
 
-**実装済み:** Core(3軸エンジン・domain純化)/ CMR(複数観測者グリッド)/ ペルソナ生成(LOD/CSP・SAT-UNSAT)/ Exposure Adapters(GSS・ESS 外部照合)/ Honest Structuralism。Paper 1・Paper 2 は構築過程の書き出し(docs/)。
-**次:** 論文 §5.5 本文執筆 → 主観的 mode 経験の本検証(Prolific)/ effective_year 時間発展(Dynamic SCEM)→ **CLI / インターフェース(プロダクト化)**。
+**Implemented:** Core (3-axis engine, domain purification) / CMR (multi-observer grids) / persona generation (LOD/CSP, SAT-UNSAT) / Exposure Adapters (GSS, ESS external cross-check) / Honest Structuralism. Paper 1 and Paper 2 are write-ups from the construction process (docs/).
+**Next:** writing the §5.5 body → primary validation of subjective mode experience (Prolific) / `effective_year` temporal evolution (Dynamic SCEM) → **CLI / interface (productization)**.
 
 ---
 
-## 引用・ライセンス
+## Citation & license
 
 Masamichi Iizumi, Tamaki Iizumi (Miosync, Inc.)
 
