@@ -113,6 +113,7 @@ def landed_for(pack_ids: list[str], subpack_ids: list[str] | None = None) -> dic
             "weight": {"status": v3.get("grounding_status", "ungrounded")},
             "kaiwai": True,
             "packs": labels,
+            "needs_source_check": bool(r.get("source_verification_required")),
         }
     return out
 
