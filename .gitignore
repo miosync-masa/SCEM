@@ -44,5 +44,6 @@ ui/
 # ── generated artifacts (regenerable) ──
 persona_*.json
 culture_result_*.json
+data/ons/
 data/gss/
 data/ess/

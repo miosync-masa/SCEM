@@ -1,0 +1,35 @@
+{
+  "window": {
+    "baseline": "2008 Q1",
+    "assess": "2009 Q4",
+    "peak_window": [
+      "2008 Q2",
+      "2010 Q4"
+    ]
+  },
+  "by_sex": {
+    "male": {
+      "series": "MGSY",
+      "title": "Male unemployment rate (aged 16 and over, seasonally adjusted): %",
+      "baseline_2008Q1": 5.5,
+      "assess_2009Q4": 8.8,
+      "rise_pp": 3.3,
+      "peak_in_window": 9.1,
+      "peak_date": "2010 Q1",
+      "rise_to_peak_pp": 3.6
+    },
+    "female": {
+      "series": "MGSZ",
+      "title": "Female unemployment rate (aged 16 and over, seasonally adjusted): %",
+      "baseline_2008Q1": 4.8,
+      "assess_2009Q4": 6.6,
+      "rise_pp": 1.8,
+      "peak_in_window": 7.1,
+      "peak_date": "2010 Q3",
+      "rise_to_peak_pp": 2.3
+    }
+  },
+  "male_female_rise_ratio": 1.83,
+  "criterion_male_gt_female": true,
+  "license": "ONS, Open Government Licence v3.0"
+}
