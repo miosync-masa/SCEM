@@ -1,0 +1,1 @@
+{"event_id": "us_sandy_hook_2012", "event_name": "Sandy Hook", "premise_pattern": "*_female", "channel": "child_safety_reference", "multiplier_tier": "elevated", "status": "grounded", "source": "GSS gunlaw gender gap +13.1pp (year-FE, 1972-2024; V1 event-matched cross-check)", "computed_by": "src/adapters/gss/gss_gender_gap.py"}
