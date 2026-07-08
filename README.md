@@ -48,7 +48,7 @@ The **two-tier structure** that emerged across the US (GSS) and UK/Europe (ESS, 
 - **Slope gate (transition-stage-dependent):** the birth-year slope is visible only in "communities mid-transition" (US Bible Belt 6→66% / all five Southern-European countries with positive slopes). It corresponds monotonically to the adoption year (`effective_year`) (Spearman 0.41–0.67).
 
 **Write-ups, numbers, reproduction:**
-- Papers: [Paper 1](docs/paper1_media_generation.md) ([HTML](docs/paper1.html)) / [Paper 2 (CMR)](docs/paper2_contextual_mode_resolver.md) ([HTML](docs/paper2.html))
+- Papers: Paper 1 (media-generation) / Paper 2 (Contextual Mode Resolver) — manuscripts in preparation (not included in this repository)
 - Fixed spec: [`docs/paper2_gss_ess_spec_v0.3.md`](docs/paper2_gss_ess_spec_v0.3.md)
 - **SI:** [results compendium `SI/results_tables.md`](SI/results_tables.md) (real numbers for all studies S1–S11) / [three-way reproduction crosswalk `SI/README.md`](SI/README.md) / [`reproduce_all.sh`](SI/reproduce_all.sh)
 - Data provenance: [grid spec](docs/paper2_grid_spec.md) / DeepResearch prompts ([US](docs/paper2_prompt_us.md), [UK](docs/paper2_prompt_uk.md))

@@ -17,8 +17,8 @@ recover_gemini_jsonl.py — 破損した Gemini DeepResearch 出力(txt)を決�
                        event_rationale_recovered として退避(由来曖昧のため premise/mode は補わない)。
 
 Usage:
-    python3 recover_gemini_jsonl.py --country uk --src data/gemini-code-1782379054633.txt
-出力: data/Gemini_events_{country}_v1.jsonl(復旧版)。破損元があれば .broken.jsonl に退避。
+    python3 recover_gemini_jsonl.py --country uk --src data/_archive/gemini-code-1782379054633.txt
+出力: data/observers/Gemini_events_{country}_v1.jsonl(復旧版)。破損元があれば .broken.jsonl に退避。
 """
 from __future__ import annotations
 import argparse
@@ -83,9 +83,10 @@ def main():
         stats["events"] += 1
         stats["interps_kept"] += len(clean)
 
-    out = Path(args.out) if args.out else DATA / f"Gemini_events_{args.country}_v1.jsonl"
+    out = Path(args.out) if args.out else DATA / "observers" / f"Gemini_events_{args.country}_v1.jsonl"
     if not out.is_absolute():
         out = next(_p for _p in Path(__file__).resolve().parents if _p.name == "src").parent / out
+    out.parent.mkdir(parents=True, exist_ok=True)
     if out.exists():   # 既存の出力があれば .broken に退避(破損元 src は別物なので触らない)
         out.with_suffix(out.suffix + ".bak").write_text(out.read_text(encoding="utf-8"), encoding="utf-8")
     out.write_text("\n".join(json.dumps(o, ensure_ascii=False) for o in recovered) + "\n", encoding="utf-8")

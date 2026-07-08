@@ -28,9 +28,13 @@ docs/gss_validation_findings.md
 docs/ess_validation_findings.md
 docs/ess_validation_plan.md
 
+# ── paper manuscripts (kept locally, not published; regenerate HTML via build scripts) ──
+docs/paper1_media_generation.md
+docs/paper1.html
+docs/paper2_contextual_mode_resolver.md
+docs/paper2.html
+
 # ── generated artifacts (regenerable) ──
-# 論文HTML(paper1.html/paper2.html)は build_paper_html.py で再生成可だが、
-# 配布用成果物として追跡する。
 persona_*.json
 culture_result_*.json
 data/gss/

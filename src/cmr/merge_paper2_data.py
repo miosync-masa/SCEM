@@ -15,8 +15,9 @@ Usage:
     python3 merge_paper2_data.py --country uk   # 後日 UK 版
 
 入力 (data/):
-    events_{country}_v1.jsonl          # ChatGPT 版
-    Gemini_events_{country}_v1.jsonl   # Gemini 版
+    events_{country}_v1.jsonl                    # ChatGPT 版
+    observers/Gemini_events_{country}_v1.jsonl   # Gemini 版(観測者生データ)
+    observers/Claude_events_{tag}.jsonl          # Claude 追加観測者(あれば)
 出力 (data/):
     events_{country}_merged.jsonl      # LOD 0: 事象の数理属性のみ(affected_groups は含めない)
     interpretations_{country}.jsonl    # LOD 1: 解釈ベルト(source_model 付き)
@@ -332,7 +333,7 @@ def main():
     tag = f"{country}_{variant}" if variant != "v1" else country   # 出力名: v1は従来通り、それ以外は _grid 等
 
     cg_path = DATA / f"events_{country}_{variant}.jsonl"
-    ge_path = DATA / f"Gemini_events_{country}_{variant}.jsonl"
+    ge_path = DATA / "observers" / f"Gemini_events_{country}_{variant}.jsonl"
     for p in (cg_path, ge_path):
         if not p.exists():
             raise SystemExit(f"[error] 入力が見つかりません: {p}")
@@ -392,7 +393,7 @@ def main():
     #   設計: LOD0(events_merged の数値属性)は ChatGPT×Gemini のまま不変。Claude は LOD1(解釈)にのみ寄与。
     #   目的: Gemini が破損で落とした先頭共同体(US Coastal Liberal / UK London Multicultural)を
     #         ChatGPT 単独のまま残さず、第2観測者 Claude で 2 観測者化する(Gemini オミット決定の第一歩)。
-    claude_path = DATA / f"Claude_events_{tag}.jsonl"
+    claude_path = DATA / "observers" / f"Claude_events_{tag}.jsonl"
     claude_err: list = []
     n_claude_events = 0
     if claude_path.exists():

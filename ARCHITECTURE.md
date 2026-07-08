@@ -55,7 +55,7 @@ Mathematics handles what can be stably quantified (age, sensitivity curves, cos,
 
 - Lifts `Event.mode` from a fixed value into the **operator `Event × Premise → ResolvedImpact`**. Even for the same event, the community premise changes PASSIVE/ACTIVE/REFRAME.
 - Resolves the mode with multiple LLM observers (ChatGPT × Gemini × Claude), and rather than erasing disagreement, **measures it as observer-dependence** (`cmr_matrix.py` / `cmr_compare.py` / `merge_paper2_data.py`).
-- Measures mode transformation, MFR, and CDI over designed comparison grids (US 8×12 / UK 9×13). Details in `docs/paper2_contextual_mode_resolver.md`.
+- Measures mode transformation, MFR, and CDI over designed comparison grids (US 8×12 / UK 9×13). Details in the Paper 2 manuscript (Contextual Mode Resolver).
 
 ## A5. Exposure Adapters — the supply layer for exposure structure  〔`src/adapters/{gss,ess}/`〕
 

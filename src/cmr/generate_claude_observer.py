@@ -17,7 +17,7 @@ Claude を観測者として埋める。Gemini オミット決定(2026-06-25)の
 Usage:
     python3 generate_claude_observer.py --country us
     python3 generate_claude_observer.py --country uk
-出力: data/Claude_events_{country}_grid.jsonl(対象共同体のみ。merge が解釈として畳み込む)
+出力: data/observers/Claude_events_{country}_grid.jsonl(対象共同体のみ。merge が解釈として畳み込む)
 """
 from __future__ import annotations
 import argparse
@@ -146,7 +146,8 @@ def main():
         else:
             by_eid[r["event_id"]] = r
 
-    out = DATA / f"Claude_events_{tag}.jsonl"
+    out = DATA / "observers" / f"Claude_events_{tag}.jsonl"
+    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in by_eid.values()) + "\n",
                    encoding="utf-8")
     print(f"[claude observer] {out.name}: events {len(by_eid)} / cells {n_cells} "
