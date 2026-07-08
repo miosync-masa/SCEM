@@ -1,0 +1,999 @@
+{
+  "country": "uk",
+  "birth_year": 1985,
+  "cdi": 0.20335547292372058,
+  "profiles": {
+    "London Multicult F": {
+      "fingerprint": {
+        "P": 0.948,
+        "A": 0.389,
+        "R": 0.641
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、7/7は多文化都市の自明性を崩し、忠誠や安全保障の視線の中で自らの帰属を考え直させる再枠づけになった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、緊縮は公的サービスを薄くし、多世代扶養と国家の距離感を変えることで、国家との関係を再定義させた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、生活費危機は上昇移動しても安定は薄いと示し、中間層らしさの基準を組み替える再枠づけになりやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、金融危機は上昇移動と専門職安定の前提を揺るがし、努力すれば報われるという参照枠を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、2015年の移民・難民論争は自分たちが『議論される側』に置かれる感覚を強め、帰属の基準を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、Section 28 repeal は学校で語ってよい性と家族の境界を変え、多文化都市の常識を再定義する再枠づけとして響いた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、Windrush scandal は長期居住者でも国家に排除されうると示し、市民権の安心感を根底から揺らした。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "London Multicult M": {
+      "fingerprint": {
+        "P": 0.948,
+        "A": 0.389,
+        "R": 0.641
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、7/7は多文化都市の自明性を崩し、忠誠や安全保障の視線の中で自らの帰属を考え直させる再枠づけになった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、緊縮は公的サービスを薄くし、多世代扶養と国家の距離感を変えることで、国家との関係を再定義させた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、生活費危機は上昇移動しても安定は薄いと示し、中間層らしさの基準を組み替える再枠づけになりやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、金融危機は上昇移動と専門職安定の前提を揺るがし、努力すれば報われるという参照枠を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、2015年の移民・難民論争は自分たちが『議論される側』に置かれる感覚を強め、帰属の基準を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、Section 28 repeal は学校で語ってよい性と家族の境界を変え、多文化都市の常識を再定義する再枠づけとして響いた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンの第二世代移民中間層には、Windrush scandal は長期居住者でも国家に排除されうると示し、市民権の安心感を根底から揺らした。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Home Counties MC F": {
+      "fingerprint": {
+        "P": 1.187,
+        "A": 0.365,
+        "R": 0.687
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、緊縮は自治体・福祉・教育の削減を通じて、戦後的な公的支えへの期待を組み替える再枠づけとして作用した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、Brexitは主権と統治の選択を迫る国民投票として、まず決断と陣営化を要する能動的事件として現れた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、生活費危機は『普通の暮らし』の維持費を急騰させ、戦後的な中流安定観を再定義させる出来事になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、金融・住宅・専門職の安定が無条件ではないと示し、戦後的な中間層安定観を再枠づけする効果が大きかった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、2015年論争は選挙・EU論争・受け入れの是非で立場表明を迫り、能動的な政治選択として現れた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、待機リスト危機は私的代替の余地があるぶん、まずNHSという制度への信頼と期待を組み替える再枠づけとして現れやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、Section 28 repeal は学校と家庭の間で共有される家族観の基準を更新し、価値の参照点を書き換えた。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Home Counties MC M": {
+      "fingerprint": {
+        "P": 1.187,
+        "A": 0.365,
+        "R": 0.687
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、緊縮は自治体・福祉・教育の削減を通じて、戦後的な公的支えへの期待を組み替える再枠づけとして作用した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、Brexitは主権と統治の選択を迫る国民投票として、まず決断と陣営化を要する能動的事件として現れた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、生活費危機は『普通の暮らし』の維持費を急騰させ、戦後的な中流安定観を再定義させる出来事になった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、金融・住宅・専門職の安定が無条件ではないと示し、戦後的な中間層安定観を再枠づけする効果が大きかった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、2015年論争は選挙・EU論争・受け入れの是非で立場表明を迫り、能動的な政治選択として現れた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、待機リスト危機は私的代替の余地があるぶん、まずNHSという制度への信頼と期待を組み替える再枠づけとして現れやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ホームカウンティの高学歴中間層には、Section 28 repeal は学校と家庭の間で共有される家族観の基準を更新し、価値の参照点を書き換えた。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "N.Post-indust F": {
+      "fingerprint": {
+        "P": 1.231,
+        "A": 0.436,
+        "R": 0.588
+      },
+      "interference": [
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票",
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.23076923076923078,
+      "cmrlog": [
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北部イングランドの労働者階級には、Brexitは『置き去り』感覚と教育格差を政治化し、地域不満を投票と日常会話で表明させる動員の場になりやすかった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北部イングランドの労働者階級には、2015年論争は雇用・地域資源・国境管理をめぐる不満表明を促し、Brexit前夜の能動的動員として働いた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北部イングランドのGCSE層には、Section 28 repeal は学校文化で何が言えるかを直接変えるため、若年の日常規範を再枠づけする出来事として着地しや",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "N.Post-indust M": {
+      "fingerprint": {
+        "P": 1.187,
+        "A": 0.445,
+        "R": 0.588
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル"
+      ],
+      "reframe": [],
+      "mfr": 0.3076923076923077,
+      "cmrlog": [
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北部イングランドの労働者階級には、Brexitは『置き去り』感覚と教育格差を政治化し、地域不満を投票と日常会話で表明させる動員の場になりやすかった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北部イングランドの労働者階級には、危機は賃金停滞と不安定就労の背景条件として刻まれたが、日常の強制的再編はむしろ後続の緊縮で前景化した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北部イングランドの労働者階級には、2015年論争は雇用・地域資源・国境管理をめぐる不満表明を促し、Brexit前夜の能動的動員として働いた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北部イングランドのGCSE層には、Section 28 repeal は学校文化で何が言えるかを直接変えるため、若年の日常規範を再枠づけする出来事として着地しや",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Scotland F": {
+      "fingerprint": {
+        "P": 1.248,
+        "A": 0.536,
+        "R": 0.497
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル"
+      ],
+      "reframe": [],
+      "mfr": 0.23076923076923078,
+      "cmrlog": [
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "スコットランドの労働者階級には、英中心の強い反移民論争は、より包摂的なスコットランド像との対比を際立たせ、帰属の参照点を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "スコットランドの労働者階級には、2014年住民投票は84.6%という高投票率が示す通り、生活世界に直接入り込んで判断と参加を迫る能動的事件だった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee rise to £9,000 / 大学授業料引き上げ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "スコットランドの労働者階級には、英9千ポンド化そのものより、無償志向の自国モデルとの差が『別の社会契約』を可視化し、参照枠を組み替える契機となった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Scotland M": {
+      "fingerprint": {
+        "P": 1.21,
+        "A": 0.531,
+        "R": 0.497
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.3076923076923077,
+      "cmrlog": [
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "スコットランドの労働者階級には、金融危機は生活水準停滞の背景として沈着し、政治的な行為要求よりまず長い停滞感を印する出来事になりやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "スコットランドの労働者階級には、英中心の強い反移民論争は、より包摂的なスコットランド像との対比を際立たせ、帰属の参照点を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "スコットランドの労働者階級には、2014年住民投票は84.6%という高投票率が示す通り、生活世界に直接入り込んで判断と参加を迫る能動的事件だった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee rise to £9,000 / 大学授業料引き上げ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "スコットランドの労働者階級には、英9千ポンド化そのものより、無償志向の自国モデルとの差が『別の社会契約』を可視化し、参照枠を組み替える契機となった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "NI Catholic F": {
+      "fingerprint": {
+        "P": 1.226,
+        "A": 0.425,
+        "R": 0.594
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル",
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.07692307692307693,
+      "cmrlog": [
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック労働者階級には、スコットランドの住民投票は自地域の将来の憲政選択を想像可能にし、連合王国の形を再考させる再枠づけになった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "NI Catholic M": {
+      "fingerprint": {
+        "P": 1.193,
+        "A": 0.438,
+        "R": 0.594
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.15384615384615385,
+      "cmrlog": [
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック労働者階級には、危機は既存の低所得地域にさらに不安定さを重ねる背景条件となり、直接的な新判断より生活防衛の受動的刻印として残りやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのカトリック労働者階級には、スコットランドの住民投票は自地域の将来の憲政選択を想像可能にし、連合王国の形を再考させる再枠づけになった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "NI Protestant F": {
+      "fingerprint": {
+        "P": 1.226,
+        "A": 0.412,
+        "R": 0.709
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル",
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.15384615384615385,
+      "cmrlog": [
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント労働者階級にも、Brexitは連合王国への結びつきの意味を逆に不安定化し、英国性の参照点を再調整させる出来事となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント労働者階級にも、2014年住民投票は連合維持の意味を可視化し、英国への帰属の基準を改めて捉え直させた。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "NI Protestant M": {
+      "fingerprint": {
+        "P": 1.193,
+        "A": 0.425,
+        "R": 0.709
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.23076923076923078,
+      "cmrlog": [
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント労働者階級にも、Brexitは連合王国への結びつきの意味を逆に不安定化し、英国性の参照点を再調整させる出来事となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント労働者階級にも、危機は地域格差を深める背景条件として作用し、ただちに価値観を作り替えるより長期停滞を刻印した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Scottish independence referendum / スコットランド独立投票",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "北アイルランドのプロテスタント労働者階級にも、2014年住民投票は連合維持の意味を可視化し、英国への帰属の基準を改めて捉え直させた。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "British Asian F": {
+      "fingerprint": {
+        "P": 0.948,
+        "A": 0.389,
+        "R": 0.641
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代には、7/7後の反ムスリム逆風と監視強化が、日常の英国性を治安の言語で読み替えさせる力を持った。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、緊縮は少数派家族が担うケアと地域サービスの前提を削り、成功した中間層でも国家の後退を実感させた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、生活費危機は家計・親族支援・住宅費の圧迫を通じて、中間層の余裕という想定を揺るがした。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、金融危機は教育投資と職業上昇への信頼を弱め、危機後の停滞を世代経験として再解釈させた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、難民・移民の語りが人道主義と排外主義のせめぎ合いを可視化し、英国での居場所の理解を再枠づけした。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、Section 28 repeal は性的少数者を公に語れる条件を拡げ、若い世代の道徳基準を組み替える出来事となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、Windrush scandal は『自分たちも次かもしれない』というホストイル環境への不信を生み、帰属の参照点を組み替え",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "British Asian M": {
+      "fingerprint": {
+        "P": 0.948,
+        "A": 0.389,
+        "R": 0.641
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "2008 financial crisis / 2008 金融危機 × Scottish independence referendum / スコットランド独立投票"
+      ],
+      "reframe": [],
+      "mfr": 0.5384615384615384,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代には、7/7後の反ムスリム逆風と監視強化が、日常の英国性を治安の言語で読み替えさせる力を持った。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、緊縮は少数派家族が担うケアと地域サービスの前提を削り、成功した中間層でも国家の後退を実感させた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、生活費危機は家計・親族支援・住宅費の圧迫を通じて、中間層の余裕という想定を揺るがした。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、金融危機は教育投資と職業上昇への信頼を弱め、危機後の停滞を世代経験として再解釈させた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、難民・移民の語りが人道主義と排外主義のせめぎ合いを可視化し、英国での居場所の理解を再枠づけした。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、Section 28 repeal は性的少数者を公に語れる条件を拡げ、若い世代の道徳基準を組み替える出来事となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのアジア系第二世代中間層には、Windrush scandal は『自分たちも次かもしれない』というホストイル環境への不信を生み、帰属の参照点を組み替え",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Brexit LeaveTown F": {
+      "fingerprint": {
+        "P": 1.011,
+        "A": 0.466,
+        "R": 0.54
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル"
+      ],
+      "reframe": [],
+      "mfr": 0.3076923076923077,
+      "cmrlog": [
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、Brexitは遠い政策議論ではなく、反エリート感情と地域の停滞感を直接政治化する能動的選択として着地しやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、金融危機はすでに脆い地域労働市場の上に停滞を重ねる背景条件であり、危機そのものよりその後の慢性化が深く刻まれた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、2015年論争は国境管理と資源配分をめぐる怒りを言語化し、能動的な政治的自己表現に結びつきやすかった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee rise to £9,000 / 大学授業料引き上げ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、大学料金改革は上方移動回路の外側で起きるため、機会構造の背景変化としては刻まれても即時の行動要求は弱い。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Brexit LeaveTown M": {
+      "fingerprint": {
+        "P": 1.011,
+        "A": 0.466,
+        "R": 0.54
+      },
+      "interference": [
+        "7/7 London bombings / 7-7 ロンドン同時爆破 × Repeal of Section 28 / Section 28 撤廃",
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Immigration and refugee debate / 移民・難民論争 × Windrush scandal / Windrush スキャンダル"
+      ],
+      "reframe": [],
+      "mfr": 0.3076923076923077,
+      "cmrlog": [
+        {
+          "event": "Brexit referendum and withdrawal / EU離脱国民投票",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、Brexitは遠い政策議論ではなく、反エリート感情と地域の停滞感を直接政治化する能動的選択として着地しやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、金融危機はすでに脆い地域労働市場の上に停滞を重ねる背景条件であり、危機そのものよりその後の慢性化が深く刻まれた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、2015年論争は国境管理と資源配分をめぐる怒りを言語化し、能動的な政治的自己表現に結びつきやすかった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Tuition fee rise to £9,000 / 大学授業料引き上げ",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "リーブ志向の町の無資格層には、大学料金改革は上方移動回路の外側で起きるため、機会構造の背景変化としては刻まれても即時の行動要求は弱い。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Univ Remain F": {
+      "fingerprint": {
+        "P": 0.948,
+        "A": 0.266,
+        "R": 0.663
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "Cost of living crisis / 生活費危機 × NHS waiting-list crisis / NHS 待機リスト危機"
+      ],
+      "reframe": [],
+      "mfr": 0.6153846153846154,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのエリート層には、7/7は都市的コスモポリタニズムと治安国家の緊張を可視化し、自由と安全の基準を組み替える事件として残りやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、緊縮は単なる歳出管理ではなく、どの国家を良しとするかをめぐる価値の転換点として受け取られやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、生活費危機は高所得資格があっても都市生活の確実性は低いと示し、生活水準の参照点を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、危機はエリート統治と市場合理性への信頼を傷つけ、制度の正当性の見方を変える再枠づけとして残りやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、2015年論争は人道主義的自己理解と国家の境界管理との緊張を露出させ、価値の参照点を再配置した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、待機リスト危機は戦後福祉国家の中核制度が揺らぐ感覚を強め、医療国家への参照点を変える出来事となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、Section 28 repeal は自由主義的な道徳秩序の制度化として受け止められ、価値の参照点を明確に更新した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、Windrush scandal は法治と公正という国家像を損ない、英国的フェアネスの基準を再評価させる再枠づけとなった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Univ Remain M": {
+      "fingerprint": {
+        "P": 0.948,
+        "A": 0.266,
+        "R": 0.663
+      },
+      "interference": [
+        "Same-sex marriage legalization / 同性婚合法化 × Scottish independence referendum / スコットランド独立投票",
+        "Austerity / 緊縮政策 × Scottish independence referendum / スコットランド独立投票",
+        "Cost of living crisis / 生活費危機 × NHS waiting-list crisis / NHS 待機リスト危機"
+      ],
+      "reframe": [],
+      "mfr": 0.6153846153846154,
+      "cmrlog": [
+        {
+          "event": "7/7 London bombings / 7-7 ロンドン同時爆破",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのエリート層には、7/7は都市的コスモポリタニズムと治安国家の緊張を可視化し、自由と安全の基準を組み替える事件として残りやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Austerity / 緊縮政策",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、緊縮は単なる歳出管理ではなく、どの国家を良しとするかをめぐる価値の転換点として受け取られやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Cost of living crisis / 生活費危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、生活費危機は高所得資格があっても都市生活の確実性は低いと示し、生活水準の参照点を組み替えた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "2008 financial crisis / 2008 金融危機",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、危機はエリート統治と市場合理性への信頼を傷つけ、制度の正当性の見方を変える再枠づけとして残りやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Immigration and refugee debate / 移民・難民論争",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、2015年論争は人道主義的自己理解と国家の境界管理との緊張を露出させ、価値の参照点を再配置した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "NHS waiting-list crisis / NHS 待機リスト危機",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、待機リスト危機は戦後福祉国家の中核制度が揺らぐ感覚を強め、医療国家への参照点を変える出来事となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Repeal of Section 28 / Section 28 撤廃",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、Section 28 repeal は自由主義的な道徳秩序の制度化として受け止められ、価値の参照点を明確に更新した。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Windrush scandal / Windrush スキャンダル",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ロンドンのオックスブリッジ層には、Windrush scandal は法治と公正という国家像を損ない、英国的フェアネスの基準を再評価させる再枠づけとなった。",
+          "source_model": "chatgpt"
+        }
+      ]
+    }
+  }
+}

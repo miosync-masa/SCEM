@@ -1,0 +1,47 @@
+{
+  "country": "uk",
+  "cells_pairs": 117,
+  "gfr_operational": 0.0342,
+  "gfr_per_observer": {
+    "chatgpt": 0.0,
+    "claude": 0.094
+  },
+  "robust_flips": 0,
+  "gfr_by_event": {
+    "uk_brexit_2016": 0.0,
+    "uk_77_bombings_2005": 0.0,
+    "uk_financial_crisis_2008": 0.4444,
+    "uk_austerity_2010": 0.0,
+    "uk_tuition_fees_2010": 0.0,
+    "uk_section28_repeal_2003": 0.0,
+    "uk_scottish_referendum_2014": 0.0,
+    "uk_same_sex_marriage_2014": 0.0,
+    "uk_immigration_debate_2015": 0.0,
+    "uk_windrush_2018": 0.0,
+    "uk_covid_lockdown_2020": 0.0,
+    "uk_cost_of_living_2022": 0.0,
+    "uk_nhs_crisis_2022": 0.0
+  },
+  "emphasis_distance_by_event": {
+    "uk_brexit_2016": 0.0,
+    "uk_77_bombings_2005": 0.037,
+    "uk_financial_crisis_2008": 0.1111,
+    "uk_austerity_2010": 0.1481,
+    "uk_tuition_fees_2010": 0.0,
+    "uk_section28_repeal_2003": 0.0556,
+    "uk_scottish_referendum_2014": 0.0,
+    "uk_same_sex_marriage_2014": 0.0556,
+    "uk_immigration_debate_2015": 0.0278,
+    "uk_windrush_2018": 0.0278,
+    "uk_covid_lockdown_2020": 0.2037,
+    "uk_cost_of_living_2022": 0.1111,
+    "uk_nhs_crisis_2022": 0.1481
+  },
+  "prefixed": {
+    "P1_satisfied": false,
+    "P2_satisfied": true,
+    "charged_median": 0.0,
+    "peripheral_median": 0.0,
+    "peripheral_pooled": 0.1481
+  }
+}
