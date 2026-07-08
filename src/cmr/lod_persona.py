@@ -388,10 +388,13 @@ def build_user_prompt(c: LODConstraints, lod0: dict, missing: Optional[list] = N
 # ───────────────────────────────────────────────
 def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES,
           cumulative: bool = False,
-          llm_client: Optional[OpenAI] = None, model: Optional[str] = None) -> dict:
+          llm_client: Optional[OpenAI] = None, model: Optional[str] = None,
+          required_anchors: Optional[list] = None) -> dict:
     """cumulative=False: 誘導された自己修正(毎回再生成。whack-a-mole あり)
        cumulative=True : 累積方式(最良ペルソナに不足分を追記。単調非減少を狙う)
-       llm_client/model: 呼び出し側から注入可(UI 等でユーザー入力キーを使う。既定は .env)"""
+       llm_client/model: 呼び出し側から注入可(UI 等でユーザー入力キーを使う。既定は .env)
+       required_anchors: 呼び出し側が『provenance に必須』と指定する追加アンカー事象名。
+                         core(top8) の割合判定とは別に、全件の出現を要求する(不足は retry へ差し戻し)。"""
     if constraints.country in ("us", "uk"):
         # Contextual Mode Resolver(§2.5): premise で mode 解決 → US LOD0
         if constraints.lod0_exposure:
@@ -441,19 +444,27 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES,
         eff_rate = best_rate if cumulative else rate
         eff_persona = best_persona if cumulative else persona
         eff_matched = best_matched if cumulative else matched
-        if eff_rate >= PROJECTION_THRESHOLD:
-            return {
+        # required_anchors: 割合でなく全件必須(呼び出し側指定の追加core)
+        eff_prov = json.dumps((eff_persona or {}).get("provenance", ""), ensure_ascii=False)
+        req_missing = [n for n in (required_anchors or []) if n not in eff_prov]
+        if eff_rate >= PROJECTION_THRESHOLD and not req_missing:
+            result = {
                 "status": "SAT", "attempts": attempts, "persona": eff_persona,
                 "projection": {
                     "rate": round(eff_rate, 2), "threshold": PROJECTION_THRESHOLD,
                     "matched": eff_matched, "core": core, "rate_trace": rate_trace,
                 },
             }
-        # (3) 不足 core 事象を次回プロンプトへ差し戻す
+            if required_anchors:
+                result["projection"]["required"] = {"anchors": required_anchors, "missing": []}
+            return result
+        # (3) 不足 core 事象 + 不足必須アンカーを次回プロンプトへ差し戻す
         missing = [name for name in core if name not in eff_matched]
+        missing += [n for n in req_missing if n not in missing]
         last_reason = (f"Projection Consistency 不足: core事象 {len(eff_matched)}/{len(core)} "
-                       f"({eff_rate:.0%}) しか provenance に現れず(閾値 {PROJECTION_THRESHOLD:.0%})。"
-                       f"trace={rate_trace}")
+                       f"({eff_rate:.0%}, 閾値 {PROJECTION_THRESHOLD:.0%})"
+                       + (f" / 必須アンカー未反映 {req_missing}" if req_missing else "")
+                       + f"。trace={rate_trace}")
 
     # (3) backstop: max_retries 超過
     return {"status": "UNSAT", "stage": "projection",
