@@ -1,6 +1,5 @@
 # SCEM — Situated Cohort Exposure Model
 
-[![DOI](https://zenodo.org/badge/1279042311.svg)](https://doi.org/10.5281/zenodo.20827897)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **A computational framework that treats "a generation" as an exposure structure rather than a birth-year bucket, and models how the same social event resolves into a different action mode for each community.**
@@ -133,22 +132,6 @@ figures/ cache/
 
 ---
 
-## Citation & license
+## License
 
-Masamichi Iizumi, Tamaki Iizumi (Miosync, Inc.)
-
-```bibtex
-@software{iizumi2026scem,
-  title     = {Situated Cohort Exposure Model (SCEM): Reconstructing Generations
-               from Social Event Impact Vectors and Life-Stage Sensitivity Windows},
-  author    = {Iizumi, Masamichi and Iizumi, Tamaki},
-  year      = {2026},
-  publisher = {Zenodo},
-  version   = {1.0.0},
-  doi       = {10.5281/zenodo.20827897},
-  url       = {https://doi.org/10.5281/zenodo.20827897},
-  note      = {Concept DOI (all versions); v1.0.0 = 10.5281/zenodo.20827898}
-}
-```
-
-© 2026 Masamichi Iizumi, Tamaki Iizumi (Miosync, Inc.). License: [MIT](LICENSE).
+MIT (see [LICENSE](LICENSE)). Author and citation information redacted for anonymous review.
