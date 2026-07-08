@@ -308,10 +308,10 @@ provenance の derived_from には、提示された LOD0 の top_events / inter
 事象名を【正確な表記のまま】用いること。"""
 
 
-def _call_llm(user_prompt: str) -> dict:
-    client = OpenAI()
+def _call_llm(user_prompt: str, client: Optional[OpenAI] = None, model: Optional[str] = None) -> dict:
+    client = client or OpenAI()   # 既定: .env の OPENAI_API_KEY(従来挙動)
     base = {
-        "model": MODEL,
+        "model": model or MODEL,
         "messages": [
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": user_prompt},
@@ -387,9 +387,11 @@ def build_user_prompt(c: LODConstraints, lod0: dict, missing: Optional[list] = N
 # CSP ソルバー本体: 制約検査 → LLM 生成 → Projection 検証ループ(§7.2)
 # ───────────────────────────────────────────────
 def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES,
-          cumulative: bool = False) -> dict:
+          cumulative: bool = False,
+          llm_client: Optional[OpenAI] = None, model: Optional[str] = None) -> dict:
     """cumulative=False: 誘導された自己修正(毎回再生成。whack-a-mole あり)
-       cumulative=True : 累積方式(最良ペルソナに不足分を追記。単調非減少を狙う)"""
+       cumulative=True : 累積方式(最良ペルソナに不足分を追記。単調非減少を狙う)
+       llm_client/model: 呼び出し側から注入可(UI 等でユーザー入力キーを使う。既定は .env)"""
     if constraints.country in ("us", "uk"):
         # Contextual Mode Resolver(§2.5): premise で mode 解決 → US LOD0
         if constraints.lod0_exposure:
@@ -419,7 +421,7 @@ def solve(constraints: LODConstraints, max_retries: int = MAX_RETRIES,
             constraints, lod0, missing,
             best_persona=best_persona if cumulative else None,
         )
-        out = _call_llm(prompt)
+        out = _call_llm(prompt, client=llm_client, model=model)
 
         # (2) LLM 自己判定の UNSAT(Axiom 違反)
         if str(out.get("status", "")).upper() == "UNSAT":

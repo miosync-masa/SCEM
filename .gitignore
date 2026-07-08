@@ -38,6 +38,9 @@ docs/paper2.html
 # ── local archive (deprecated/intermediate data + junk; kept locally, not published) ──
 data/_archive/
 
+# ── Track B persona UI (local-only for now; may move to its own repo) ──
+ui/
+
 # ── generated artifacts (regenerable) ──
 persona_*.json
 culture_result_*.json

@@ -50,6 +50,7 @@ The **two-tier structure** that emerged across the US (GSS) and UK/Europe (ESS, 
 - Papers: Paper 1 (media-generation) / Paper 2 (Contextual Mode Resolver) — manuscripts in preparation (not included in this repository)
 - **SI:** [results compendium `SI/results_tables.md`](SI/results_tables.md) (real numbers for all studies S1–S11) / [three-way reproduction crosswalk `SI/README.md`](SI/README.md) / [`reproduce_all.sh`](SI/reproduce_all.sh)
 - Data provenance: [grid spec](docs/paper2_grid_spec.md) / DeepResearch prompts ([US](docs/paper2_prompt_us.md), [UK](docs/paper2_prompt_uk.md))
+- Next round (design fixed, data pending): [gender-extended grid spec](docs/paper2_gender_grid_spec.md) / prompts ([US](docs/paper2_prompt_us_gender.md), [UK](docs/paper2_prompt_uk_gender.md))
 
 ![cohort fingerprint](figures/fig2_cohort_fingerprint.png)
 ![mode matrix](figures/fig1_modematrix.png)
