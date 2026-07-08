@@ -48,6 +48,7 @@ import media_generation_v5 as v5
 
 load_dotenv()
 MODEL = os.getenv("OPENAI_MODEL", "gpt-4o")
+REASONING_EFFORT = os.getenv("OPENAI_REASONING_EFFORT", "high")   # Responses API の reasoning.effort
 
 DATA = next(_p for _p in Path(__file__).resolve().parents if _p.name == "src").parent / "data"   # US/UK の merged / interpretations 置き場
 FORMATIVE_CAP = 22          # 社会接続期(18-22)の上限。これ以降に着弾した事象は人格形成アンカーになり得ない
@@ -308,25 +309,35 @@ provenance の derived_from には、提示された LOD0 の top_events / inter
 事象名を【正確な表記のまま】用いること。"""
 
 
-def _call_llm(user_prompt: str, client: Optional[OpenAI] = None, model: Optional[str] = None) -> dict:
+def _call_llm(user_prompt: str, client: Optional[OpenAI] = None, model: Optional[str] = None,
+              effort: Optional[str] = None) -> dict:
+    """Responses API を第一経路にする(reasoning.effort を使うため)。
+    フォールバック階段: reasoning対応モデル → 非reasoningモデル(gpt-4o等) →
+    旧 Chat Completions(古いSDK/互換プロキシ)。
+    注: text.format=json_object は input 側に 'json' の語が必要(API仕様)。"""
     client = client or OpenAI()   # 既定: .env の OPENAI_API_KEY(従来挙動)
-    base = {
-        "model": model or MODEL,
-        "messages": [
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
-        ],
-    }
+    mdl = model or MODEL
+    eff = effort or REASONING_EFFORT
+    json_hint = user_prompt + "\n\n(出力は指示された JSON 形式のみ)"
+    base_r = {"model": mdl, "instructions": SYSTEM_PROMPT, "input": json_hint}
     attempts = [
-        {**base, "temperature": 0.7, "response_format": {"type": "json_object"}},
-        {**base, "response_format": {"type": "json_object"}},
-        {**base},
+        ("responses", {**base_r, "reasoning": {"effort": eff},
+                       "text": {"format": {"type": "json_object"}}}),
+        ("responses", {**base_r, "text": {"format": {"type": "json_object"}}}),   # 非reasoningモデル
+        ("responses", base_r),
+        ("chat", None),   # 最終フォールバック(旧経路)
     ]
     last = None
-    for kw in attempts:
+    for kind, kw in attempts:
         try:
-            resp = client.chat.completions.create(**kw)
-            raw = resp.choices[0].message.content.strip()
+            if kind == "responses":
+                raw = client.responses.create(**kw).output_text.strip()
+            else:
+                resp = client.chat.completions.create(
+                    model=mdl,
+                    messages=[{"role": "system", "content": SYSTEM_PROMPT},
+                              {"role": "user", "content": user_prompt}])
+                raw = resp.choices[0].message.content.strip()
             if raw.startswith("```"):
                 raw = raw.split("```", 2)[1]
                 raw = raw[4:] if raw.startswith("json") else raw
