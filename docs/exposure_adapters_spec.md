@@ -1,142 +1,141 @@
-# Exposure Adapters 実装仕様書 — SCEM の曝露構造を供給する層
+# Exposure Adapters — Implementation Spec: the layer that supplies SCEM's exposure structure
 
-**Status:** specification(将来実装。現時点の本体は curated_event_db + DeepResearch grid のみ稼働)
-**Scope:** SCEM Core / CMR Layer の **下に置く曝露供給層(Exposure Adapters)** の設計と、その一つである **GDELT Adapter の仕様**。
-**設計原則(巴):** GDELT を本体設計の中核に置かない。無料 API や運用制約に本体を引きずられないため、GDELT は **Information Exposure Adapter の仕様**に留める。本体はあくまで「実体曝露構造・情報曝露構造・Community/Code・年齢同期・3作用モード を分けて、最後に統合する」設計。
+**Status:** specification (future implementation; today only curated_event_db + the DeepResearch grid are live).
+**Scope:** the design of the **exposure-supply layer (Exposure Adapters)** placed *below* SCEM Core / the CMR Layer, and the specification of one such adapter, the **GDELT Adapter**.
+**Design principle:** do not put GDELT at the core of the main design. To avoid dragging the core around by a free API and its operational constraints, GDELT is confined to the **Information Exposure Adapter spec**. The core stays a design that "separates material exposure structure, informational exposure structure, Community/Code, age-synchrony, and the 3 action modes — and integrates them last."
 
 ---
 
-## 0. 全体アーキテクチャ
+## 0. Overall architecture
 
-SCEM は三層 + 曝露供給層からなる。曝露 Adapter は**差し替え可能なデータ源**であり、本体(Core/CMR)はその出自に依存しない。
+SCEM consists of three layers + an exposure-supply layer. Exposure Adapters are **swappable data sources**; the core (Core/CMR) does not depend on their provenance.
 
 ```text
-┌──────────────────────────────────────────────┐
-│ SCEM Core                                     │  Paper 1
-│   年齢同期 / 3作用モード(PASSIVE,ACTIVE,REFRAME)│  (実装済)
-│   effect_vector / interference / REFRAME fire │
-├──────────────────────────────────────────────┤
-│ CMR Layer                                     │  Paper 2
-│   Community / Code / premise                  │  (実装済)
-│   resolved_mode(agree/disagree/operational)   │
-│   rationale / effect_emphasis / source_model  │
-├──────────────────────────────────────────────┤
-│ Exposure Adapters(差し替え可能なデータ源)      │  ← 本仕様書
-│   ├ curated_event_db        実装済(JP 156件) │
-│   ├ DeepResearch grid       実装済(US/UK grid)│
-│   ├ official_statistics     将来(実体曝露)    │
-│   ├ policy_datasets         将来(実体曝露)    │
-│   └ gdelt_adapter           将来(情報曝露・仕様)│
-└──────────────────────────────────────────────┘
+SCEM Core                                            [Paper 1, implemented]
+  age-synchrony / 3 action modes (PASSIVE, ACTIVE, REFRAME)
+  effect_vector / interference / REFRAME fire
+────────────────────────────────────────────────────────────────────
+CMR Layer                                            [Paper 2, implemented]
+  Community / Code / premise
+  resolved_mode (agree / disagree / operational)
+  rationale / effect_emphasis / source_model
+────────────────────────────────────────────────────────────────────
+Exposure Adapters (swappable data sources)                ← THIS SPEC
+  ├ curated_event_db      implemented (JP, 156 events)
+  ├ DeepResearch grid     implemented (US/UK grid)
+  ├ official_statistics   future (material exposure)
+  ├ policy_datasets       future (material exposure)
+  └ gdelt_adapter         future (informational exposure, spec only)
 ```
 
-本体(Core/CMR)が受け取るのは、出自を問わず正規化済みの **Event レコード**(`name / year / effective_year / effect_vector / salience / domain(表示タグ) / sensitivity_peak_age` …)である。Adapter の責務は「各データ源 → この正規化レコード」への変換に限定する。
+What the core (Core/CMR) receives is, regardless of provenance, a normalized **Event record** (`name / year / effective_year / effect_vector / salience / domain (display tag) / sensitivity_peak_age` …). An adapter's responsibility is limited to the conversion "each data source → this normalized record."
 
 ---
 
-## 1. 二種類の曝露構造を分ける
+## 1. Separate the two kinds of exposure structure
 
-SCEM の将来拡張の核心は、**実体曝露構造と情報曝露構造を別系統として観測し、最後に統合する**ことにある。両者を混ぜると「報道が多い=生活が変わった」という誤った等値に陥る。
+The heart of SCEM's future extension is to **observe material exposure structure and informational exposure structure as separate lines, and integrate them last.** Mixing the two collapses into the false equation "lots of coverage = life changed."
 
-| | Material Exposure Structure(実体曝露) | Informational Exposure Structure(情報曝露) |
+| | Material Exposure Structure | Informational Exposure Structure |
 |---|---|---|
-| 定義 | 制度・経済・物理・インフラの直接の着弾 | 報道・メディア・社会的言説・象徴的注目を介した曝露 |
-| 例 | 雇用、就学、住宅、災害被害、法的地位、公衆衛生規制 | ニュース報道量、論調、SNS 言説、注目の集中 |
-| データ源 | official_statistics / policy_datasets / 災害・住宅・労働記録 | gdelt_adapter / メディアアーカイブ |
-| SCEM での役割 | effect_vector の実体成分・effective_year の接地 | salience・tone・burst・拡散・候補 REFRAME 期 |
-| 誤用の禁止 | 「報道量で代理する」ことをしない | 「生活影響そのもの」とみなさない |
+| Definition | direct impact of institutions, economy, physical world, infrastructure | exposure mediated by coverage, media, social discourse, symbolic attention |
+| Examples | employment, schooling, housing, disaster damage, legal status, public-health regulation | volume of news coverage, tone, social-media discourse, concentration of attention |
+| Data sources | official_statistics / policy_datasets / disaster, housing, labor records | gdelt_adapter / media archives |
+| Role in SCEM | the material component of effect_vector, grounding of effective_year | salience, tone, burst, diffusion, candidate REFRAME periods |
+| Prohibited misuse | do not proxy it by coverage volume | do not treat it as the life impact itself |
 
-統合は **Core の effect_vector 上で行う**:情報曝露は salience と effective_attention_year を、実体曝露は effect_vector の実体成分と reference_value を供給する。どちらか一方では Event は完成しない。
+Integration happens **on Core's effect_vector**: informational exposure supplies salience and effective_attention_year; material exposure supplies the material component of effect_vector and reference_value. Neither alone completes an Event.
 
 ---
 
 ## 2. GDELT Adapter Specification
 
-GDELT は「社会そのもの」ではなく、**報道空間上に現れた情報曝露の波**を測る。本体に組み込まず、以下の入出力契約を満たす Adapter 仕様として定義する。
+GDELT measures not "society itself" but the **wave of informational exposure that appears in the coverage space.** Rather than building it into the core, it is defined as an adapter spec satisfying the following input/output contract.
 
 ```text
 GDELT Adapter Specification
 
-目的:
-  情報曝露構造 Informational Exposure Structure の自動観測
+Purpose:
+  automatic observation of the Informational Exposure Structure
 
-入力:
-  event_keyword     対象事象を表すキーワード/クエリ
-  actor             関与アクター(任意)
-  location          地理スコープ(国/地域)
-  time_range        観測期間
-  language          言語
-  region            集計地域単位
+Inputs:
+  event_keyword     keyword/query representing the target event
+  actor             involved actor (optional)
+  location          geographic scope (country/region)
+  time_range        observation period
+  language          language
+  region            aggregation region unit
 
-出力:
-  media_observed_salience   報道空間で観測された顕著性
-  tone_trajectory           論調(肯定/否定)の時系列推移
-  burstiness                報道の集中度(バースト性)
-  geographic_spread         地理的拡散
-  language_spread           言語的拡散
-  effective_attention_year  実効注目年(着弾年齢の計算に使う注目ピーク)
-  candidate_reframe_periods  参照点書き換えが起きた候補期間
+Outputs:
+  media_observed_salience    salience observed in the coverage space
+  tone_trajectory            time series of tone (positive/negative)
+  burstiness                 concentration of coverage (burstiness)
+  geographic_spread          geographic diffusion
+  language_spread            linguistic diffusion
+  effective_attention_year   effective attention year (attention peak for impact-age computation)
+  candidate_reframe_periods  candidate periods where reference-point rewriting occurred
 
-非対象(NOT measured):
-  実体曝露構造そのもの
-  個人の心理状態
-  実際の制度影響・生活影響の完全測定
+NOT measured:
+  the material exposure structure itself
+  individual psychological state
+  a complete measurement of actual institutional / life impact
 ```
 
-### 2.1 本体への接続点
+### 2.1 Connection points to the core
 
-- `effective_attention_year` → Core の着弾年齢計算(`year`/`effective_year` の情報曝露版)。報道ピークが実イベント年とずれる事象(遅効性スキャンダル等)で有用。
-- `media_observed_salience` → Event の `salience`(情報曝露成分)。実体曝露の salience とは別系統で持ち、統合時に合成する。
-- `candidate_reframe_periods` → REFRAME fire の**候補**を提示するに留める。発火判定は Core の reference_value 差分式が行う(Adapter は判定しない)。
-- `tone_trajectory` / `burstiness` → CMR の rationale 補助・observer-dependence の文脈(§2.3 の「情報曝露の観測スタンスの差」)。
+- `effective_attention_year` → Core's impact-age computation (the informational-exposure version of `year`/`effective_year`). Useful for events whose coverage peak diverges from the actual event year (e.g. slow-burn scandals).
+- `media_observed_salience` → the Event's `salience` (informational-exposure component). Held on a separate line from material-exposure salience and combined at integration.
+- `candidate_reframe_periods` → only *proposes* candidates for REFRAME fire. The firing decision is made by Core's reference_value difference formula (the adapter does not decide).
+- `tone_trajectory` / `burstiness` → auxiliary to the CMR rationale and to the context of observer-dependence (the "difference in observation stance on informational exposure" in §2.3).
 
-### 2.2 運用上の境界
+### 2.2 Operational boundaries
 
-- GDELT は **情報曝露 Adapter の一実装**であり、欠落・偏りがある。出力は「報道空間に現れた限りの」量であって母集団ではない。
-- 無料 API・レート制限・GKG スキーマ変更などの運用制約は **Adapter 内に閉じ込め**、Core/CMR には波及させない。
-- 実体曝露は GDELT で代理しない。必ず official_statistics / policy_datasets と突き合わせる。
+- GDELT is **one implementation of an information-exposure adapter**, with gaps and biases. Its output is the quantity "only as it appears in the coverage space," not a population.
+- Operational constraints (free API, rate limits, GKG schema changes, etc.) are **confined inside the adapter** and do not propagate to Core/CMR.
+- Do not proxy material exposure with GDELT. Always cross-check against official_statistics / policy_datasets.
 
 ---
 
-## 3. 倫理的境界(プロダクト化時も不変)
+## 3. Ethical boundary (invariant even in productization)
 
-このエンジンは **個人の内面を断定しない**。出力は次の形でのみ意味を持つ:
+This engine **does not assert an individual's inner life.** Its output is meaningful only in this form:
 
-> ある出生年・共同体・文化嗜好・制度環境に置かれた人が、**どのような曝露構造を持ちやすいか**の推定。
+> an estimate of **what exposure structure a person placed in a given birth year, community, cultural preference, and institutional environment is likely to hold.**
 
-すなわち SCEM は人を分類・上書き・優劣判定する道具ではなく、**異なる意味世界のあいだの翻訳地図**である(Paper 2 §6.4 の倫理宣言と一致)。Adapter 層がデータ源をどれだけ増やしても、この境界は越えない:
+That is, SCEM is not a tool for classifying, overwriting, or ranking people, but a **translation map between different worlds of meaning** (consistent with the ethics statement of Paper 2 §6.4). No matter how many data sources the adapter layer adds, it does not cross this boundary:
 
-- 個人の心理状態を測定しない(GDELT 非対象に明記)。
-- 共同体プロファイルは「その環境に置かれた人が持ちやすい曝露構造」であって、個人の断定ではない。
-- 差異の由来(年齢・共同体・規範コード・実体曝露・情報曝露・身体化された参照点)は常に追跡可能に保つ(Provenance)。
+- It does not measure individual psychological state (explicitly listed as NOT measured for GDELT).
+- A community profile is "the exposure structure a person placed in that environment is likely to hold," not a verdict about the individual.
+- The provenance of any difference (age, community, normative code, material exposure, informational exposure, embodied reference point) is always kept traceable (Provenance).
 
-**誤用防止の四線(設計段階で明記):** このモデルは強力で、悪用すれば「この共同体にはこの刺激を当てれば動く」という操作モデルになりうる。それを防ぐため、
+**Four lines against misuse (stated at the design stage):** this model is powerful, and misused it could become an operational model of "hit this community with this stimulus and it moves." To prevent that:
 
-| 守る | 退ける |
+| Uphold | Reject |
 |---|---|
-| 分類ではなく **理解** | 人を属性で分類して終える |
-| 操作ではなく **翻訳** | 共同体を動かすための刺激設計 |
-| 断定ではなく **来歴追跡** | 個人内面の断定 |
-| 分断ではなく **相互理解** | 対立の固定化・正当化 |
+| **understanding**, not classification | classifying people by attribute and stopping there |
+| **translation**, not manipulation | designing stimuli to move a community |
+| **provenance-tracing**, not assertion | asserting an individual's inner life |
+| **mutual understanding**, not division | fixing and legitimizing conflict |
 
 ---
 
-## 4. 価値の三段(参考)
+## 4. Three tiers of value (for reference)
 
-1. **研究ツール**:世代を出生年ラベルではなく曝露構造として再定義(Paper 1 + Paper 2)。
-2. **マーケティングツール**:同じ年齢・嗜好でも Community/Code が違えば「自然だと思う選択肢・胡散臭いと感じる言葉」が変わる。コピー生成の裏側に置ける。
-3. **社会分析ツール**:移民・宗教・階級・地域・教育・住宅・雇用・治安・災害・戦争・パンデミックを「出来事」ではなく**共同体ごとの作用変換**として扱う。
+1. **Research tool:** redefine generations as exposure structure rather than birth-year labels (Paper 1 + Paper 2).
+2. **Marketing tool:** even at the same age and preferences, a different Community/Code changes "which options feel natural / which words feel fishy." Can sit behind copy generation.
+3. **Social-analysis tool:** treat immigration, religion, class, region, education, housing, employment, public safety, disaster, war, and pandemic not as "events" but as **per-community action transformation.**
 
-いずれも §3 の倫理的境界の下でのみ運用する。
+All are operated only under the ethical boundary of §3.
 
 ---
 
-## 5. 実装順序(巴の助言)
+## 5. Implementation order
 
 ```text
-今やる:    固定イベント × 固定コミュニティの完全グリッド(US/UK 完成済)
-将来やる:  GDELT で報道量・トーン・地域拡散・バーストを拾う(本仕様)
-もっと将来: 統計データと合わせ、情報曝露と実体曝露を分けて動的更新(Dynamic SCEM)
+Now:          full grid of fixed events × fixed communities (US/UK complete)
+Future:       pick up coverage volume, tone, geographic diffusion, burst via GDELT (this spec)
+Further out:  combine with statistical data; separate informational and material exposure
+              and update dynamically (Dynamic SCEM)
 ```
 
-GDELT は Future 仕様に留め、まずは **US/UK 完全グリッド版 CMR** を固めることを最優先とする。
+GDELT stays a Future spec; the top priority is first to solidify the **full-grid US/UK CMR.**
