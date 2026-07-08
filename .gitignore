@@ -34,6 +34,9 @@ docs/paper1.html
 docs/paper2_contextual_mode_resolver.md
 docs/paper2.html
 
+# ── local archive (deprecated/intermediate data + junk; kept locally, not published) ──
+data/_archive/
+
 # ── generated artifacts (regenerable) ──
 persona_*.json
 culture_result_*.json
