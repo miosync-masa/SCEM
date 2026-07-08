@@ -13,11 +13,18 @@ data/events_kaiwai_overlay.jsonl(schema kaiwai_overlay_v0.1):
   - v3 と同じ数値規律: salience は名前のみ・ungrounded は m=1.0。
   - not_personal_history: 表示は「文脈的な曝露経路」であって個人史の断定ではない。
 
+Subpack(lane)ルール(巴設計):
+  - 大pack内の生活圏の違い(2次元オタク vs K-POP vs VTuber等)は subpack_ids で表現。
+  - requires_subpack_match=True のレコードは、lane_pack 経由の参照時のみ「選択subpackとの一致」を要求。
+    他のpack(例: creator_economy)からの参照は素通し(そのpackを選んだ=その文脈にopt-in済み)。
+  - subpack 未選択(「特に分けない」)なら common(requires=False)だけが出る。
+
 API:
-  packs()                    -> [{id, label, n_events, sensitive}]
-  records(pack_ids)          -> 選択packに属する全レコード
-  landed_for(pack_ids)       -> {event_name: {aspects, channels, axes, weight, kaiwai, packs}}
-  new_event_dicts(pack_ids)  -> kaiwai_candidate の生 dict 列(呼び出し側で v4.Event 化)
+  packs()                              -> [{id, label, n_events, sensitive}]
+  subpacks()                           -> {pack_id: [{id, label, n_events}]}(laneを持つpackのみ)
+  records(pack_ids, subpack_ids)       -> 選択pack/laneに属するレコード
+  landed_for(pack_ids, subpack_ids)    -> {event_name: {aspects, channels, axes, weight, kaiwai, packs}}
+  new_event_dicts(pack_ids, subpack_ids) -> kaiwai_candidate の生 dict 列(呼び出し側で v4.Event 化)
 Run(検証): python3 kaiwai_packs.py
 """
 from __future__ import annotations
@@ -48,15 +55,55 @@ def packs() -> list[dict]:
     return list(agg.values())
 
 
-def records(pack_ids: list[str]) -> list[dict]:
-    sel = set(pack_ids or [])
-    return [r for r in _load() if sel & set(r["pack_ids"])]
+SUBPACK_LABELS = {
+    "common_oshi_infrastructure_jp": "推し活一般(インフラ)",
+    "otaku_2d_fandom_jp": "2次元・オタク創作文化",
+    "male_idol_fandom_jp": "男性アイドル・FC文化",
+    "kpop_fandom_jp": "K-POP・韓流",
+    "vtuber_streamer_jp": "VTuber・配信者",
+    "live_event_goods_jp": "現場・ライブ・グッズ",
+    "relationship_consumption_sensitive_jp": "親密性消費リスク圏",
+}
 
 
-def landed_for(pack_ids: list[str]) -> dict:
+def subpacks() -> dict:
+    """lane を持つ pack ごとの subpack 一覧(イベントが実在する lane のみ・common除く)。"""
+    agg: dict = {}
+    for r in _load():
+        lp = r.get("lane_pack")
+        if not lp:
+            continue
+        for sid in r.get("subpack_ids") or []:
+            if sid == "common_oshi_infrastructure_jp":
+                continue   # common は「特に分けない」で自動的に出る側
+            a = agg.setdefault(lp, {}).setdefault(sid, {"id": sid,
+                "label": SUBPACK_LABELS.get(sid, sid), "n_events": 0})
+            a["n_events"] += 1
+    return {lp: list(v.values()) for lp, v in agg.items()}
+
+
+def _admitted(r: dict, sel: set, sub: set) -> bool:
+    """選択pack/laneでこのレコードを出すか(lane は lane_pack の参照だけをゲート)。"""
+    hit = sel & set(r["pack_ids"])
+    if not hit:
+        return False
+    lp = r.get("lane_pack")
+    if hit - {lp}:                    # lane と無関係な pack から参照されている → 素通し
+        return True
+    if not r.get("requires_subpack_match"):
+        return True                   # common(一般インフラ)
+    return bool(sub & set(r.get("subpack_ids") or []))
+
+
+def records(pack_ids: list[str], subpack_ids: list[str] | None = None) -> list[dict]:
+    sel, sub = set(pack_ids or []), set(subpack_ids or [])
+    return [r for r in _load() if _admitted(r, sel, sub)]
+
+
+def landed_for(pack_ids: list[str], subpack_ids: list[str] | None = None) -> dict:
     """選択packの三層情報。既存 v3_overlay(landed_as)に union-merge される側。"""
     out: dict = {}
-    for r in records(pack_ids):
+    for r in records(pack_ids, subpack_ids):
         v3 = r.get("v3_overlay") or {}
         labels = [lab for pid, lab in zip(r["pack_ids"], r["pack_labels_ja"]) if pid in set(pack_ids)]
         out[r["event_name"]] = {
@@ -70,8 +117,8 @@ def landed_for(pack_ids: list[str]) -> dict:
     return out
 
 
-def new_event_dicts(pack_ids: list[str]) -> list[dict]:
-    return [r for r in records(pack_ids) if r.get("event_status") == "kaiwai_candidate"]
+def new_event_dicts(pack_ids: list[str], subpack_ids: list[str] | None = None) -> list[dict]:
+    return [r for r in records(pack_ids, subpack_ids) if r.get("event_status") == "kaiwai_candidate"]
 
 
 def main():
