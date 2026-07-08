@@ -48,7 +48,6 @@ The **two-tier structure** that emerged across the US (GSS) and UK/Europe (ESS, 
 
 **Write-ups, numbers, reproduction:**
 - Papers: Paper 1 (media-generation) / Paper 2 (Contextual Mode Resolver) — manuscripts in preparation (not included in this repository)
-- Fixed spec: [`docs/paper2_gss_ess_spec_v0.3.md`](docs/paper2_gss_ess_spec_v0.3.md)
 - **SI:** [results compendium `SI/results_tables.md`](SI/results_tables.md) (real numbers for all studies S1–S11) / [three-way reproduction crosswalk `SI/README.md`](SI/README.md) / [`reproduce_all.sh`](SI/reproduce_all.sh)
 - Data provenance: [grid spec](docs/paper2_grid_spec.md) / DeepResearch prompts ([US](docs/paper2_prompt_us.md), [UK](docs/paper2_prompt_uk.md))
 
@@ -117,7 +116,7 @@ src/                  all Python (framework layers)
 data/   events_patched.jsonl (156 Japanese events) / events_{us,uk}_grid.jsonl (designed grids) /
         interpretations_*, disagreements_* / personas_grid/ (4 personas) / gss_results, ess_results
         * Raw data (GSS/ESS) is .gitignore'd and regenerated via the acquisition scripts.
-docs/   papers (paper1/2 .md+.html), spec (paper2_gss_ess_spec_v0.3), ess_legal_coding, exposure_adapters_spec,
+docs/   ess_legal_coding, exposure_adapters_spec,
         data provenance (paper2_grid_spec + DeepResearch prompts paper2_prompt_{us,uk})
 SI/     results_tables.md (results compendium), README.md (three-way reproduction crosswalk), reproduce_all.sh
 figures/ cache/

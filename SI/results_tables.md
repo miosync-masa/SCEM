@@ -1,6 +1,6 @@
 # SI — Results Compendium / SCEM Paper 2 §5.5 External Validation (GSS + ESS)
 
-**Version:** 1.0 (2026-07-01) / **Parent:** `SI/README.md` (three-way reproduction table) / `docs/paper2_gss_ess_spec_v0.3.md` (canonical spec)
+**Version:** 1.0 (2026-07-01) / **Parent:** `SI/README.md` (three-way reproduction table)
 **Purpose:** for writing the §5.5 body, aggregate **all GSS/ESS studies and their real numbers on a single page.** Each value is transcribed from a committed output file (`data/{gss,ess}_results/`). Referenced from body and figures by study ID (S1–S11).
 
 **Strength wording (common to all studies, strict):** never write "**confirmation**." Use "**prediction-consistent / suggestive / modest / validity of the tendency bundle**." Sensitivity-robustness = operationalization-independence, not strong evidence. **The validation question** = not predictive accuracy but a validity check of "the existence of an intermediate tendency bundle that clears the personalization ↔ statistical-aggregate trade-off" (spec 0.3 §0).

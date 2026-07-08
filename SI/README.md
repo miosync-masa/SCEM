@@ -1,6 +1,6 @@
 # Supporting Information (SI) — SCEM Paper 2 §5.5 External Validation (GSS + ESS)
 
-**Version:** 1.0 (2026-06-27) / **Parent:** `docs/paper2_gss_ess_spec_v0.3.md` (canonical spec)
+**Version:** 1.0 (2026-06-27)
 **Type:** **complete-reproduction.** Anyone can acquire the raw data from the same DOI → build the same slim → obtain the same results and figures.
 **Numbers:** the full per-study results compendium for writing is in [`results_tables.md`](results_tables.md) (S1–S11 + two-tier structure + quick reference).
 **License:** MIT (code). Raw data is **not redistributed** under the NORC (GSS) / Sikt (ESS) terms (DOI + acquisition scripts instead).

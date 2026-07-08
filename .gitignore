@@ -27,6 +27,7 @@ docs/internal_notes.md
 docs/gss_validation_findings.md
 docs/ess_validation_findings.md
 docs/ess_validation_plan.md
+docs/paper2_gss_ess_spec_v0.3.md
 
 # ── paper manuscripts (kept locally, not published; regenerate HTML via build scripts) ──
 docs/paper1_media_generation.md
