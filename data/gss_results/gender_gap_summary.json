@@ -1,0 +1,54 @@
+{
+  "prefixed_H1_satisfied": true,
+  "prediction_gfr_satisfied": true,
+  "prediction_emphasis_satisfied": true,
+  "rank_concordant_gfr": true,
+  "rank_concordant_emphasis": true,
+  "overlay": [
+    {
+      "gss_item": "gunlaw",
+      "grid_event": "us_sandy_hook_2012",
+      "label": "Sandy Hook / gun control",
+      "n_female": 27838,
+      "n_male": 22660,
+      "mean_female": 0.8092,
+      "mean_male": 0.678,
+      "gap_pooled": 0.1312,
+      "gap_se": 0.0039,
+      "gap_year_adjusted": 0.1306,
+      "abs_gap": 0.1306,
+      "grid_gfr": 0.75,
+      "grid_emphasis_distance": 0.3021
+    },
+    {
+      "gss_item": "abany",
+      "grid_event": "us_dobbs_2022",
+      "label": "Dobbs / abortion (any reason)",
+      "n_female": 23177,
+      "n_male": 18221,
+      "mean_female": 0.4255,
+      "mean_male": 0.443,
+      "gap_pooled": -0.0174,
+      "gap_se": 0.0049,
+      "gap_year_adjusted": -0.0151,
+      "abs_gap": 0.0151,
+      "grid_gfr": 0.0,
+      "grid_emphasis_distance": 0.0312
+    },
+    {
+      "gss_item": "ssm",
+      "grid_event": "us_obergefell_2015",
+      "label": "Obergefell / same-sex marriage",
+      "n_female": 11346,
+      "n_male": 9280,
+      "mean_female": 0.5422,
+      "mean_male": 0.4928,
+      "gap_pooled": 0.0494,
+      "gap_se": 0.007,
+      "gap_year_adjusted": 0.0538,
+      "abs_gap": 0.0538,
+      "grid_gfr": 0.0,
+      "grid_emphasis_distance": 0.0625
+    }
+  ]
+}

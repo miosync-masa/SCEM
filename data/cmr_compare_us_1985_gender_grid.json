@@ -1,0 +1,807 @@
+{
+  "country": "us",
+  "birth_year": 1985,
+  "cdi": 0.4557941186329934,
+  "profiles": {
+    "Coastal Liberal F": {
+      "fingerprint": {
+        "P": 0.806,
+        "A": 0.33,
+        "R": 0.878
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Lehman Shock × Sandy Hook",
+        "Black Lives Matter × Lehman Shock"
+      ],
+      "reframe": [],
+      "mfr": 0.25,
+      "cmrlog": [
+        {
+          "event": "Lehman Shock",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "沿岸高学歴白人層は打撃を免れたわけではないが、Pewは高学歴・高所得層ほど不況関連の困難を『持ちこたえた』と示している。したがって危機は強い不安を刻みつつも、直",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "沿岸高学歴の世俗白人女性には、オバマ当選は多文化主義と能力主義の国家像を現実のものとして示す象徴だった。Pewが示す若年・高学歴・多様な連合の勝利は、この出来事",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "沿岸高学歴の世俗白人女性では、サンディフックは子どもの安全と銃規制を結ぶ典型的な動員事件になった。女性は男性より厳格な銃規制を支持しやすく、郊外・都市圏でこの傾",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Coastal Liberal M": {
+      "fingerprint": {
+        "P": 0.806,
+        "A": 0.33,
+        "R": 0.878
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Lehman Shock × Sandy Hook",
+        "Black Lives Matter × Lehman Shock"
+      ],
+      "reframe": [],
+      "mfr": 0.25,
+      "cmrlog": [
+        {
+          "event": "Lehman Shock",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "沿岸高学歴白人男性でも、金融危機は職場と資産観を冷やしたが、無学位層や人種的少数派ほどの直撃ではない。学歴勾配の研究では、この層は相対的に緩衝されていた。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "世俗的な沿岸高学歴男性でも、当選は『ポスト公民権時代のアメリカ』という自己像を強めた。比較政治研究でも、2008年選挙は人種と民主主義の参照点を更新したとされる",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "沿岸高学歴の世俗白人男性でも、事件は『銃は自由の象徴か危険の媒介か』という理解を再定義した。だが女性ほど直ちに運動化するとは限らず、主効果は参照枠の更新にある。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Bible Belt Evang F": {
+      "fingerprint": {
+        "P": 0.775,
+        "A": 0.333,
+        "R": 0.544
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Black Lives Matter × Student Debt Crisis",
+        "Sandy Hook × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.5,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "白人福音派女性には、BLMは教会的共感の言語と『法と秩序』のあいだの緊張を可視化した。PRRIは白人福音派と有色人種のキリスト者のあいだに大きな文化政治差がある",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派の聖書地帯女性には、公民権法は学校・商業・地域慣行への直接介入として現れやすかった。史学研究は白人福音派の反応が容認から露骨な敵視まで広がりつつ、反国",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派では同性婚支持が他集団より低く、判決後も宗教的自由や学校・家族規範をめぐる対抗動員が強かった。ゆえにこれは背景条件ではなく、教会・家庭・投票行動で応答",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "白人福音派女性には、サンディフックは学校安全への共感と銃権保護の価値が衝突する契機になった。全面的な行動要求より、家庭防衛観の再整理として落ちやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派の聖書地帯では、9/11後の愛国心と宗教言説の高まりが教会活動や対テロ支持と結びつきやすかった。Pewは全宗教層で宗教の公共的重要性が上がったと報告し",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派・無学位女性では、債務危機は自分の返済実務より『大学は危うい賭けだ』という背景認識として沈着しやすい。大学進学率が相対的に高くない層では、直接的行動要",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Bible Belt Evang M": {
+      "fingerprint": {
+        "P": 0.775,
+        "A": 0.336,
+        "R": 0.811
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.4166666666666667,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派の聖書地帯男性にとって、公民権法は日常秩序と雇用・学校運営に介入する連邦権力として具体的対応を迫った。比較史ではこの層の反応は明らかに能動的である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派男性にとっても、判決は『婚姻の定義』を国家が上書きした出来事として受け止められやすかった。研究では白人福音派の支持は低位にとどまり、文化戦争的な再動員",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派男性では、銃規制論争への賛否表明が即座に政治化しやすく、対抗動員も強い。サンディフック後の連邦銃政策論争の激化は、その能動性をよく示す。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派男性では、軍事・保安・愛国儀礼への参加期待が強く、9/11は判断と動員を促す事件になりやすい。比較世論は攻撃後に宗教と愛国心が同時に強まったことを示し",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "白人福音派・無学位男性でも、学生債務危機は返済主体というより高等教育への警戒心を強める背景条件になりやすい。したがって主たる影響は受動的である。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Rust Belt WWC F": {
+      "fingerprint": {
+        "P": 0.358,
+        "A": 0.292,
+        "R": 0.568
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.4166666666666667,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派女性では、BLMは労働者共同体の記憶と警察暴力批判をどう接続するかを問い直した。60年にわたる公民権抗議の継続として理解されるため、主に",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing Surge",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派女性では、全国的高騰の衝撃はあるが、超高コスト沿岸や山岳西部ほど即時性が強くない場合も多い。したがって不安は大きくても、やや背景条件化し",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "白人主流派プロテスタントは福音派ほど反対が強くなく、むしろ合法化は『まともな家族』の境界を広げる再定義として作用した。抵抗よりも、何が礼儀正しい公的承認かを静か",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派女性では、事件は『学校は安全な私的空間』という前提を揺らした。これはまず家庭と地域の安心感を組み替える再定義として作用する。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派無学位女性では、学生債務危機は『大学は安定への梯子』という信念を弱める。地域経済衰退と結びつくことで、これは教育観の再定義として作用しや",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Rust Belt WWC M": {
+      "fingerprint": {
+        "P": 0.446,
+        "A": 0.371,
+        "R": 0.542
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Sandy Hook × Student Debt Crisis",
+        "Obama Election / オバマ当選 × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.4166666666666667,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派男性でも、BLMは『労働の不満』だけでは説明できない人種正義の問いを突きつけた。主効果は位置づけの再考であり、必ずしも全面的抗議参加では",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Housing Surge",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派男性でも、住宅高騰は意識されるが、地域差のため能動性は相対的に弱い。主効果はじわじわした価格不安の刻印である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "白人主流派プロテスタント男性でも、判決は教会的慣習より市民的承認の基準を書き換える性格が強い。主流派の比較的高い支持は、これを動員より規範転換として受け取らせや",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派男性でも、9/11は国民共同体の自己理解を『安全保障中心』に変えた。比較史的にはこの事件が以後の外交・内政の基準時点となった。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ラストベルトの白人主流派無学位男性でも、学生債務は大学進学を価値ある投資とみなす感覚を揺らした。危機は進学の意味づけ自体を書き換える。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Black community F": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.377,
+        "R": 0.513
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Sandy Hook × Student Debt Crisis",
+        "Obama Election / オバマ当選 × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.3333333333333333,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市の世俗的黒人女性にとって、公民権法は長い運動の成果であり、さらに権利請求を進めるための実務的武器だった。議会図書館は、この法が以後の差別挑戦の基盤となったと",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市の世俗的黒人女性には、オバマ当選は象徴であると同時に投票参加と地域政治関与を強く掻き立てた。Pewは黒人有権者比率と支持率の上昇を示し、これは『ただの背景』",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "世俗的な黒人都市層では、同性婚は『公民権の連鎖』として理解されやすく、誰が完全な市民かという基準を押し広げた。教会中心の黒人保守層ほどの抵抗が弱い分、価値座標の",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "都市の黒人世俗女性には、サンディフックは『白い郊外の悲劇』がほうぼうの都市銃暴力より注目される構図を見せた。ゆえに出来事は行動命令というより、どの死が公的に悼ま",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Black community M": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.377,
+        "R": 0.513
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Sandy Hook × Student Debt Crisis",
+        "Obama Election / オバマ当選 × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.3333333333333333,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市の世俗的黒人男性でも、1964年法は職場・公共施設・学校をめぐる権利行使を可能にする能動的転機だった。これは背景条件ではなく、生活場面で使うべき法的資源であ",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市の世俗的黒人男性にとっても、最初の黒人大統領の選出は投票・祝祭・世代語りを伴う能動的出来事だった。比較研究はこの選挙が黒人政治感情を強く喚起したと示す。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "世俗的な黒人都市男性にとっても、判決は『権利の言語』の適用範囲を広げる出来事として理解されやすい。運動史の比較では、公民権後の少数者承認政治と接続して参照枠を変",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "都市の黒人世俗男性でも、サンディフックは学校銃撃と日常的街区暴力の差異的可視化を意識させた。主効果は、銃暴力の公的意味づけの再解釈にある。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Latino Immigrant F": {
+      "fingerprint": {
+        "P": 0.0,
+        "A": 0.377,
+        "R": 0.513
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Sandy Hook × Student Debt Crisis",
+        "Obama Election / オバマ当選 × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.25,
+      "cmrlog": [
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "都市のヒスパニック系カトリック女性には、オバマ当選は多民族連合の一員として自分たちを位置づける契機になった。Pewが示す2008年選挙の人種的多様化は、この受け",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ヒスパニック系カトリックでは教会教義と都市的実践がずれやすく、合法化は家族と信仰の関係を再解釈する契機になった。カトリック系では支持が過半で、ラテン系カトリック",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "都市のヒスパニック系カトリック女性では、事件は子ども保護の情動を強く動かしつつも、まず学校と家庭の安全観を変えた。ヒスパニック層は銃規制支持が比較的高いが、効果",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Latino Immigrant M": {
+      "fingerprint": {
+        "P": 0.534,
+        "A": 0.377,
+        "R": 0.589
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Sandy Hook × Student Debt Crisis",
+        "Obama Election / オバマ当選 × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.16666666666666666,
+      "cmrlog": [
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "ヒスパニック系カトリック都市男性でも、当選は白黒二元論だけでない多民族市民権の想像力を強めた。主効果は即時の動員より、政治連合の見取り図の更新にある。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "ヒスパニック系カトリック男性にとっても、判決は教義と公民権的包摂のあいだの均衡を取り直させた。ラテン系カトリックの支持拡大は、これを価値地図の更新として受け止め",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Mormon/Utah F": {
+      "fingerprint": {
+        "P": 1.081,
+        "A": 0.31,
+        "R": 0.566
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.4166666666666667,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "山岳西部のLDS女性では、BLMは教会共同体の白さと米国的徳の語りを省みる契機として作用した。直接の中心ではないが、帰属と悔い改めの参照点を書き換える。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "山岳西部のLDS女性には、公民権法は全国的規範変化として届いても、南部白人や都市黒人ほど即時の実務性は低かった。したがって主たる落ち方は受動的刻印に近い。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "山岳西部のLDS女性では、当選は歴史的意味をもっていても、自派共同体の日常判断をただちに変える度合いは限定的だった。信仰投票分析でも、LDSは2008年にオバマ",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "LDS圏では同性婚支持は全国平均より低く、2015年以後も宗教的自由と家族規範をめぐる議論が続いた。したがって女性にとってもこれは静かな背景ではなく、教会・学校",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "LDS女性では、サンディフックは家族中心文化のなかで学校安全と自己防衛の優先順位を問い直した。能動的全国運動の中心ではないが、価値の秩序を揺らした。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Mormon/Utah M": {
+      "fingerprint": {
+        "P": 0.807,
+        "A": 0.371,
+        "R": 0.381
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Sandy Hook × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.5,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "LDS男性でも、BLMは共同体の『秩序』理解を見直させる再定義的効果が強い。白人キリスト教圏と有色人種キリスト教圏の分極は、この問いを避け難くした。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "LDS男性でも、公民権法は米国規範の変化として受け止められるが、共同体の日常秩序をただちに再編する比重は限定的である。主効果は背景化しやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obama Election / オバマ当選",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "LDS男性でも、オバマ当選は全国史の節目として認識されつつ、自分たちの共同体に直ちに行動転換を迫るものではなかった。したがって主たる落ち方は受動的刻印である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "LDS男性でも、判決はProp 8後に続く『家族を守る政治』の延長で受け止められやすい。支持がまだ拮抗水準にあることは、順応より対応行動を促したことを示す。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "LDS男性にとっても、9/11は宣教・軍務・愛国心を結ぶアメリカ的宗教性を強く意識させた。だが事件の主効果は、持続的な参照枠の更新にある。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Trump Election",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "LDS男性には、トランプ当選は『共和党支持』と『トランプ支持』を切り分ける新しい参照枠を作った。ユタのモルモン票の揺れやマクマリン現象は、主効果が共同体の自己理",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Suburban MC F": {
+      "fingerprint": {
+        "P": 0.806,
+        "A": 0.277,
+        "R": 0.845
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Lehman Shock × Sandy Hook",
+        "Black Lives Matter × Lehman Shock"
+      ],
+      "reframe": [],
+      "mfr": 0.16666666666666666,
+      "cmrlog": [
+        {
+          "event": "Lehman Shock",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "郊外高学歴の白人主流派女性では、資産減少はあっても無学位層ほど切迫しない場合が多い。Pewは白人・高学歴層が相対的に『持ちこたえた』と示しており、危機は不安の背",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "郊外高学歴の白人主流派女性は、サンディフック後の学校安全・銃規制運動の典型的担い手となりやすい。女性の方が一貫して厳格な銃法を支持するというGallup知見とも",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Suburban MC M": {
+      "fingerprint": {
+        "P": 0.806,
+        "A": 0.244,
+        "R": 0.562
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Lehman Shock × Sandy Hook",
+        "Black Lives Matter × Lehman Shock"
+      ],
+      "reframe": [],
+      "mfr": 0.3333333333333333,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "郊外高学歴の白人主流派男性は、BLMを通じて住宅・学校・警察の制度的不平等を捉え直しやすい。主作用は自己の制度的位置の再解釈である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Lehman Shock",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "郊外高学歴の白人主流派男性でも、危機は資産観を傷つけたが、即時の生計再編を迫る度合いは相対的に低い。比較的資源のある郊外中産層では、受動的刻印の側面が強い。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "郊外高学歴の白人主流派男性では、事件は家庭と学校の安全観を変えるが、必ずしも自分を運動へ押し出すとは限らない。主効果は子育て環境の基準の更新にある。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Trump Election",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "郊外高学歴の白人主流派男性では、当選は企業・学校・専門職の中道規範と共和党政治の距離を広げた。能動的抗議よりまず、党派帰属の再考として落ちやすい。",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Rural Conserv F": {
+      "fingerprint": {
+        "P": 0.775,
+        "A": 0.333,
+        "R": 0.544
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Black Lives Matter × Student Debt Crisis",
+        "Sandy Hook × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.5,
+      "cmrlog": [
+        {
+          "event": "Black Lives Matter",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "白人農村福音派女性では、BLMは共感と不信の間で『誰の命が守られるべきか』をめぐる枠組みを揺らした。だが参加よりは価値の再整理として落ちやすい。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人農村福音派女性では、公民権法は地域慣行に外から入る命令として感じられやすかった。白人福音派史の研究は、この層の多くが反発や対抗行動に向かったことを示す。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人農村福音派女性では、判決は家族・学校・教会の境界を脅かす文化的出来事として受け止められやすかった。福音派の低支持とその後の保守運動の強さから、これは応答を迫",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "REFRAME",
+          "n_matched": 2,
+          "rationale": "白人農村福音派女性には、サンディフックは子どもの死への共感と銃所有の安心感が競合する契機だった。ゆえに行動よりも、家庭防衛と学校安全の秩序の再整理として落ちやす",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人農村福音派女性では、事件後の教会祈祷・国旗儀礼・学校共同体の結束が濃く、9/11は行為を促す出来事になりやすい。宗教の公共的重要性の上昇はこの層で特に実践化",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "白人農村無学位女性では、学生債務危機は子ども世代の進学不安として感じられても、自分自身の即時的返済問題ではない場合が多い。したがって主には背景条件として作用する",
+          "source_model": "chatgpt"
+        }
+      ]
+    },
+    "Rural Conserv M": {
+      "fingerprint": {
+        "P": 0.775,
+        "A": 0.336,
+        "R": 0.811
+      },
+      "interference": [
+        "Lehman Shock × Obama Election / オバマ当選",
+        "Obama Election / オバマ当選 × Student Debt Crisis",
+        "Black Lives Matter × Student Debt Crisis"
+      ],
+      "reframe": [],
+      "mfr": 0.4166666666666667,
+      "cmrlog": [
+        {
+          "event": "Civil Rights Act of 1964 / 公民権法",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人農村福音派男性にとって、公民権法は学校・商慣行・地方自治の水準で具体的対応を迫る事件だった。南部白人バックラッシュの一部としてみるのが比較史的に妥当である。",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Obergefell v. Hodges",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人農村福音派男性にとっても、同性婚合法化は国家が道徳秩序を再定義した瞬間として記憶されやすい。ゆえに受動的順応ではなく、対抗的な政治参加や地域規範の防衛を促し",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Sandy Hook",
+          "base_mode_majority": "PASSIVE",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人農村福音派男性では、事件後の銃規制論争は直ちに自己防衛・権利・国家介入の争点となった。農村では銃が安全を高めるとみる割合が高く、したがって立場表明を迫る能動",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "9.11 同時多発テロ",
+          "base_mode_majority": "REFRAME",
+          "resolved_mode": "ACTIVE",
+          "n_matched": 2,
+          "rationale": "白人農村福音派男性では、対テロ戦争支持や軍務志向を含む具体的行動の圧力が強かった。したがって9/11は価値の更新にとどまらず、選択と動員を迫る事件として落ちやす",
+          "source_model": "chatgpt"
+        },
+        {
+          "event": "Student Debt Crisis",
+          "base_mode_majority": "ACTIVE",
+          "resolved_mode": "PASSIVE",
+          "n_matched": 2,
+          "rationale": "白人農村無学位男性でも、債務危機は『大学は割に合うのか』という疑念を深めるが、直接の実務対応を迫るとは限らない。受動的な世代不安として刻まれやすい。",
+          "source_model": "chatgpt"
+        }
+      ]
+    }
+  }
+}

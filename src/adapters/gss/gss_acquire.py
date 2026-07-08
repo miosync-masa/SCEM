@@ -19,7 +19,7 @@ URL = "https://gss.norc.org/content/dam/gss/get-the-data/documents/stata/GSS_sta
 DTA = GSS_DIR / "gss7224_r3.dta"
 
 # Paper 2 GSS spec で使う列(§8)。デモグラ + 態度 + 信頼 + 重み。
-NEED = ["year", "cohort", "age", "reltrad", "reltrad16", "relig", "denom", "other",
+NEED = ["year", "cohort", "age", "sex", "reltrad", "reltrad16", "relig", "denom", "other",
         "race", "hispanic", "region", "region_7222", "srcbelt", "xnorcsiz", "degree", "educ",
         "attend", "fund", "marsame", "marsame1", "marsamey",
         "abany", "abdefect", "abrape", "gunlaw",

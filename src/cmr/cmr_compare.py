@@ -145,7 +145,10 @@ def main():
     c, by = args.country, args.birth_year
     grid_mode = args.variant != "v1"
     merged, by_name, by_eid = load(c, args.variant)
-    comms = CM.COMMUNITIES_GRID[c] if grid_mode else CM.COMMUNITIES[c]
+    if args.variant == "gender_grid":
+        comms = CM.COMMUNITIES_GENDER_GRID[c]
+    else:
+        comms = CM.COMMUNITIES_GRID[c] if grid_mode else CM.COMMUNITIES[c]
 
     profiles = {}
     for name, spec in comms:
@@ -171,8 +174,8 @@ def main():
             print(f"     {e['event'][:40]:42} {e['base_mode_majority']}→{e['resolved_mode']} "
                   f"[{e['source_model']}] {e['rationale'][:40]}")
 
-    # JSON 保存(Paper 2 素材)
-    suffix = f"{c}_{by}" if not grid_mode else f"{c}_{by}_grid"
+    # JSON 保存(Paper 2 素材)。suffix は variant 名に追随(gender_grid が grid を上書きしない)
+    suffix = f"{c}_{by}" if not grid_mode else f"{c}_{by}_{args.variant}"
     out = DATA / f"cmr_compare_{suffix}.json"
     out.write_text(json.dumps({"country": c, "birth_year": by, "cdi": cdi(profiles),
                                "profiles": profiles}, ensure_ascii=False, indent=2), encoding="utf-8")

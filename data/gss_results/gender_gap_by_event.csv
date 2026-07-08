@@ -1,0 +1,4 @@
+gss_item,n_female,n_male,mean_female,mean_male,gap_pooled,gap_se,gap_year_adjusted,abs_gap
+gunlaw,27838,22660,0.8092,0.678,0.1312,0.0039,0.1306,0.1306
+abany,23177,18221,0.4255,0.443,-0.0174,0.0049,-0.0151,0.0151
+ssm,11346,9280,0.5422,0.4928,0.0494,0.007,0.0538,0.0538

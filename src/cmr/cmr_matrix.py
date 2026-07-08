@@ -91,6 +91,13 @@ COMMUNITIES_GRID = {
     ],
 }
 
+# 性別拡張 grid(gender_grid): 各共同体 × {female, male}。premise は正準文字列 + suffix。
+COMMUNITIES_GENDER_GRID = {
+    c: [(f"{name} {'F' if g == '_female' else 'M'}", premise + g)
+        for name, premise in COMMUNITIES_GRID[c] for g in ("_female", "_male")]
+    for c in ("us", "uk")
+}
+
 # grid 版は event_id で安定マッチ(label, event_id)
 EVENTS_GRID = {
     "us": [
@@ -140,7 +147,10 @@ def main():
             by_eid[it["event_id"]].append(it)
 
     grid_mode = args.variant != "v1"
-    comms = COMMUNITIES_GRID[c] if grid_mode else COMMUNITIES[c]
+    if args.variant == "gender_grid":
+        comms = COMMUNITIES_GENDER_GRID[c]
+    else:
+        comms = COMMUNITIES_GRID[c] if grid_mode else COMMUNITIES[c]
     events = EVENTS_GRID[c] if grid_mode else EVENTS[c]
     comm_names = [n for n, _ in comms]
 
